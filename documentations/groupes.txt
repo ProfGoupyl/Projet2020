@@ -1,0 +1,28 @@
+PM Général
+	GOMAND Jonathan			- Waryen
+
+GROUPE Base de données
+	LEBEGUE Sébastien	 	- Lukraste
+	AMIR Ilham					- ilham2805
+	PERRIARD Céline			- seliawebdev
+
+GROUPE API Back-End
+	CHAOUNI Saïd				- xspray
+	DEMOLDER Thierry		- Thierry.Dev
+	SCORNEAUX Romain		- RomainCE	
+
+GROUPE Template
+	REMY Clémentine(PM)	 	- clemremy
+	CHAVALLE Céline				- celine130899
+	MARCHAND François			- Oro-boro
+
+GROUPE Front-End
+	GOMAND Jonathan				- Waryen
+	MILICAN Nicolas				- Morphee-creator
+	ROULEZ Antoine				- roulette0901
+
+GROUPE Administration
+	LEGRAND Florian			- Legrand3101
+	GUERRERA Hugo				- HugoGuerrera
+	SIMONET Xavier (PM)	- Xaviet159
+	GENDARME Jo 				- Jo0010
