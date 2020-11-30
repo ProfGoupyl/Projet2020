@@ -23,4 +23,15 @@ Pour créer une application il suffit de taper :
 laravel new monappli
 Laravel sera alors installé dans le dossier monappli.
 
+CONFIGURATION DANS LARAVEL: à la racine de votre dossier Laravel il y a un fichier qui s'appel .env
+Dans ce fichier il faudra adapter les paramètres à vos données.
+Touver ces lignes dans le fichier .env et modifiez les avec vos paramètres
+
+DB_CONNECTION=mysql 
+DB_HOST=127.0.0.1 
+DB_PORT=3306 
+DB_DATABASE=laravel <--"nom de votre base de données"
+DB_USERNAME=root <--"votre username"
+DB_PASSWORD=  <--"votre mot de passe si vous en avez un"
+
 Source: https://laravel.sillo.org/cours-laravel-8-les-bases-installation-et-organisation/
