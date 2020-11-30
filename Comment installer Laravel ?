@@ -1,0 +1,26 @@
+Installation de laravel
+
+Prérequis
+
+Laravel utilise Composer pour gérer ses dépendances. Donc, avant d'utiliser Laravel, assurez-vous que Composer est installé sur votre machine.
+https://getcomposer.org/download/
+Composer fonctionne en ligne de commande. Vous avez donc besoin de la console (nommée Terminal ou Konsole sur OS X et Linux).
+
+Installation avec composer
+
+Il y a plusieurs façons de créer une application Laravel. La plus classique consiste à utiliser la commande create-project de composer. Par exemple je veux créer une application dans un dossier laravel8 à la racine de mon serveur, voici la syntaxe à utiliser :
+composer create-project --prefer-dist laravel/laravel laravel8
+L’installation démarre et je n’ai plus qu’à attendre quelques minutes pour que Composer fasse son travail jusqu’au bout.
+On peux vérifier que tout fonctionne bien avec l’URL http://localhost/laravel8/public.
+
+Installation avec Laravel Installer
+
+Une autre solution pour installer Laravel  consiste à utiliser l’installeur. Il faut commencer par installer globalement l’installeur avec Composer :
+composer global require laravel/installer
+Pour Windows il faut ensuite informer la variable d’environnement path de l’emplacement du dossier %USERPROFILE%\AppData\Roaming\Composer\vendor\bin.
+Pour créer une application il suffit de taper :
+laravel new monappli
+Laravel sera alors installé dans le dossier monappli.
+
+Source: https://laravel.sillo.org/cours-laravel-8-les-bases-installation-et-organisation/
+
