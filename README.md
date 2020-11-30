@@ -3,7 +3,7 @@ Projet web dynamique groupe 2020-2021
 
 Pour installer la base de données créer une db que vous nommerez projet2020_db et lancer les migrations Laravel.
 Si vous avez un souci pendant l'installation ou l'utilisation merci de le signaler.
-La db peut éventuellement être modifier, si c'est le cas je le signalera et il faudra relancer une migration.
+La db peut éventuellement être modifier, si c'est le cas je le signalerai et il faudra relancer une migration.
 
 Pour faire une migration allez dans le terminal et tapez la commande
 php artisan migrate
