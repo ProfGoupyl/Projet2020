@@ -9,7 +9,7 @@ Pour faire une migration allez dans le terminal et tapez la commande
 php artisan migrate
 
 et si vous avez besoin de metre à jour la base de données tapez
-php artisan migrate:refres
+php artisan migrate:refresh
 
 Pour plus d'infos sur les migrations aller voir dans readme.
 
