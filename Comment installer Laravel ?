@@ -8,7 +8,8 @@ Composer fonctionne en ligne de commande. Vous avez donc besoin de la console (n
 
 Installation avec composer
 
-Il y a plusieurs façons de créer une application Laravel. La plus classique consiste à utiliser la commande create-project de composer. Par exemple je veux créer une application dans un dossier laravel8 à la racine de mon serveur, voici la syntaxe à utiliser :
+Il y a plusieurs façons de créer une application Laravel. La plus classique consiste à utiliser la commande create-project de composer. 
+Par exemple je veux créer une application dans un dossier laravel8 à la racine de mon serveur, voici la syntaxe à utiliser :
 composer create-project --prefer-dist laravel/laravel laravel8
 L’installation démarre et je n’ai plus qu’à attendre quelques minutes pour que Composer fasse son travail jusqu’au bout.
 On peux vérifier que tout fonctionne bien avec l’URL http://localhost/laravel8/public.
