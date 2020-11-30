@@ -11,9 +11,7 @@ php artisan migrate
 et si vous avez besoin de metre à jour la base de données tapez
 php artisan migrate:refresh
 
-Pour plus d'infos sur les migrations aller voir dans readme.
-
-Comment faire une migration Laravel ?
+Pour plus d'infos sur comment faire une migration Laravel ?
 
 https://www.youtube.com/watch?v=uJUJqn7V8pk&ab_channel=Grafikart.fr
 
