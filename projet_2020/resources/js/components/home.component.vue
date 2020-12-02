@@ -8,18 +8,15 @@
             <form action="" method="post" v-on:submit.prevent>
                 <p>
                     <label for="email">Adresse e-mail:</label>
-                    <input v-model="email" type="email" name="email"><br>
-                    email: {{ email }}
+                    <input v-model="email" type="email" name="email">
                 </p>
                 <p>
                     <label for="pwd">Mot de passe:</label>
-                    <input v-model="password" type="password" name="pwd"><br>
-                    pwd: {{ password }}
+                    <input v-model="password" type="password" name="pwd">
                 </p>
                 <p>
                     <label for="code">Code d'inscription:</label>
-                    <input v-model="code" type="text" name="code"><br>
-                    code: {{ code }}
+                    <input v-model="code" type="text" name="code">
                 </p>
                 <p>
                     <button type="submit" v-on:click="auth()">Connexion</button>
@@ -56,7 +53,3 @@ export default {
     }
 }
 </script>
-
-<style>
-
-</style>

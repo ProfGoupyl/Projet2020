@@ -1939,9 +1939,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -37602,11 +37599,7 @@ var render = function() {
                   _vm.email = $event.target.value
                 }
               }
-            }),
-            _c("br"),
-            _vm._v(
-              "\n                email: " + _vm._s(_vm.email) + "\n            "
-            )
+            })
           ]),
           _vm._v(" "),
           _c("p", [
@@ -37631,13 +37624,7 @@ var render = function() {
                   _vm.password = $event.target.value
                 }
               }
-            }),
-            _c("br"),
-            _vm._v(
-              "\n                pwd: " +
-                _vm._s(_vm.password) +
-                "\n            "
-            )
+            })
           ]),
           _vm._v(" "),
           _c("p", [
@@ -37664,11 +37651,7 @@ var render = function() {
                   _vm.code = $event.target.value
                 }
               }
-            }),
-            _c("br"),
-            _vm._v(
-              "\n                code: " + _vm._s(_vm.code) + "\n            "
-            )
+            })
           ]),
           _vm._v(" "),
           _c("p", [
