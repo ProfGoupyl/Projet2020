@@ -1,8 +1,8 @@
 <!-- sidebar nav -->
 <nav id="sidebar-nav">
         <ul class="nav nav-pills nav-stacked">
-            <li><a href="#">Fly to the Moon</a></li>
-            <li><a href="#">Dig to China</a></li>
-            <li><a href="#">Swim Across the Sea</a></li>
+            <li><a href="#">Cours suivant</a></li>
+            <li><a href="#">Cours precedent</a></li>
+            <li><a href="#">Synthese</a></li>
         </ul>
     </nav>
