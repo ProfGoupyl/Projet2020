@@ -1937,16 +1937,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       email: null,
       password: null,
-      code: null
+      code: null,
+      emailTrue: 'test@mail.com',
+      passwordTrue: 'pwd',
+      connexion: false
     };
   },
   mounted: function mounted() {
     console.log('Composant Home monté');
+  },
+  methods: {
+    auth: function auth() {
+      if (this.email === this.emailTrue && this.password === this.passwordTrue) {
+        this.connexion = true;
+      }
+    }
   }
 });
 
@@ -37548,6 +37563,10 @@ var render = function() {
     _c("div", [
       _c("h2", [_vm._v("Connexion")]),
       _vm._v(" "),
+      _c("p", [_vm._v("email : test@mail.com")]),
+      _vm._v(" "),
+      _c("p", [_vm._v("password: pwd")]),
+      _vm._v(" "),
       _c(
         "form",
         {
@@ -37573,7 +37592,7 @@ var render = function() {
                   expression: "email"
                 }
               ],
-              attrs: { type: "email", name: "email", id: "" },
+              attrs: { type: "email", name: "email" },
               domProps: { value: _vm.email },
               on: {
                 input: function($event) {
@@ -37602,7 +37621,7 @@ var render = function() {
                   expression: "password"
                 }
               ],
-              attrs: { type: "text", name: "pwd", id: "" },
+              attrs: { type: "password", name: "pwd" },
               domProps: { value: _vm.password },
               on: {
                 input: function($event) {
@@ -37635,7 +37654,7 @@ var render = function() {
                   expression: "code"
                 }
               ],
-              attrs: { type: "text", name: "code", id: "" },
+              attrs: { type: "text", name: "code" },
               domProps: { value: _vm.code },
               on: {
                 input: function($event) {
@@ -37652,22 +37671,34 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _vm._m(0)
+          _c("p", [
+            _c(
+              "button",
+              {
+                attrs: { type: "submit" },
+                on: {
+                  click: function($event) {
+                    return _vm.auth()
+                  }
+                }
+              },
+              [_vm._v("Connexion")]
+            )
+          ])
         ]
       )
-    ])
+    ]),
+    _vm._v(" "),
+    _vm.connexion
+      ? _c("div", [
+          _c("p", { staticStyle: { color: "green" } }, [
+            _vm._v("Connexion réussie")
+          ])
+        ])
+      : _vm._e()
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", [
-      _c("button", { attrs: { type: "submit" } }, [_vm._v("Connexion")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
