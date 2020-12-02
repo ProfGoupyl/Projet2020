@@ -17,8 +17,8 @@ class CreateInvitationsTable extends Migration
             $table->id();
             $table->string('code');
             $table->date('expired_at');
-            $table->integer('users_id');
-            $table->integer('cours_id');
+            // $table->integer('users_id');
+            // $table->integer('cours_id');
             $table->timestamps();
         });
     }
