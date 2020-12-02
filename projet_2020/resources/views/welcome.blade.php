@@ -6,7 +6,7 @@
 @endsection
 
 @section('body')
-    <div id="app">
+    <div id="home">
         <home></home>
     </div>
 @endsection

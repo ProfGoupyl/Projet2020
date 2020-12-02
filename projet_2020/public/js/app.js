@@ -1912,7 +1912,45 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      students: [{
+        firstname: 'Jean',
+        lastname: 'Delatour'
+      }, {
+        firstname: 'Pierre',
+        lastname: 'Tombale'
+      }, {
+        firstname: 'Sarah',
+        lastname: 'Croche'
+      }],
+      email: null,
+      password: null,
+      code: null
+    };
+  },
   mounted: function mounted() {
     console.log('Hello');
   }
@@ -38155,7 +38193,102 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("Accueil")])
+  return _c("div", [
+    _c("h1", [_vm._v("Accueil")]),
+    _vm._v(" "),
+    _c("div", [
+      _c("form", { attrs: { action: "", method: "post" } }, [
+        _c("p", [
+          _c("label", { attrs: { for: "email" } }, [_vm._v("Adresse e-mail:")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.email,
+                expression: "email"
+              }
+            ],
+            attrs: { type: "email", name: "email", id: "" },
+            domProps: { value: _vm.email },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.email = $event.target.value
+              }
+            }
+          }),
+          _c("br"),
+          _vm._v(
+            "\n                email: " + _vm._s(_vm.email) + "\n            "
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _c("label", { attrs: { for: "pwd" } }, [_vm._v("Mot de passe:")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.password,
+                expression: "password"
+              }
+            ],
+            attrs: { type: "text", name: "pwd", id: "" },
+            domProps: { value: _vm.password },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.password = $event.target.value
+              }
+            }
+          }),
+          _c("br"),
+          _vm._v(
+            "\n                pwd: " + _vm._s(_vm.password) + "\n            "
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _c("label", { attrs: { for: "code" } }, [
+            _vm._v("Code d'inscription:")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.code,
+                expression: "code"
+              }
+            ],
+            attrs: { type: "text", name: "code", id: "" },
+            domProps: { value: _vm.code },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.code = $event.target.value
+              }
+            }
+          }),
+          _c("br"),
+          _vm._v(
+            "\n                code: " + _vm._s(_vm.code) + "\n            "
+          )
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -53442,8 +53575,8 @@ Vue.component('home', __webpack_require__(/*! ./components/home.component.vue */
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-new Vue({
-  el: '#app'
+var home = new Vue({
+  el: '#home'
 });
 
 /***/ }),

@@ -29,6 +29,6 @@ Vue.component('home', require('./components/home.component.vue').default);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-new Vue({
-    el: '#app',
+let home = new Vue({
+    el: '#home',
 });
