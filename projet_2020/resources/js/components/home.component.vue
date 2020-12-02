@@ -3,7 +3,7 @@
         <h1>Accueil</h1>
         <div>
             <h2>Connexion</h2>
-            <form action="" method="post">
+            <form action="" method="post" v-on:submit.prevent>
                 <p>
                     <label for="email">Adresse e-mail:</label>
                     <input v-model="email" type="email" name="email" id=""><br>
