@@ -5,6 +5,7 @@
             <h2>Connexion</h2>
             <p>email : test@mail.com</p>
             <p>password: pwd</p>
+            <p>code: 123</p>
             <form action="" method="post" v-on:submit.prevent>
                 <p>
                     <label for="email">Adresse e-mail:</label>
@@ -36,8 +37,9 @@ export default {
             email: null,
             password: null,
             code: null,
-            emailTrue: 'test@mail.com',
-            passwordTrue: 'pwd',
+            emailCheck: 'test@mail.com',
+            passwordCheck: 'pwd',
+            codeCheck: '123',
             connexion: false,
         }
     },
@@ -46,7 +48,7 @@ export default {
     },
     methods: {
         auth() {
-            if ( (this.email === this.emailTrue) && (this.password === this.passwordTrue) ) {
+            if ( ((this.email === this.emailTrue) && (this.password === this.passwordTrue)) || (this.code === this.codeCheck) ) {
                 this.connexion = true
             }
         },

@@ -1939,14 +1939,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       email: null,
       password: null,
       code: null,
-      emailTrue: 'test@mail.com',
-      passwordTrue: 'pwd',
+      emailCheck: 'test@mail.com',
+      passwordCheck: 'pwd',
+      codeCheck: '123',
       connexion: false
     };
   },
@@ -1955,7 +1957,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     auth: function auth() {
-      if (this.email === this.emailTrue && this.password === this.passwordTrue) {
+      if (this.email === this.emailTrue && this.password === this.passwordTrue || this.code === this.codeCheck) {
         this.connexion = true;
       }
     }
@@ -37563,6 +37565,8 @@ var render = function() {
       _c("p", [_vm._v("email : test@mail.com")]),
       _vm._v(" "),
       _c("p", [_vm._v("password: pwd")]),
+      _vm._v(" "),
+      _c("p", [_vm._v("code: 123")]),
       _vm._v(" "),
       _c(
         "form",
