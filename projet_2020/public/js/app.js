@@ -1940,6 +1940,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1949,7 +1952,7 @@ __webpack_require__.r(__webpack_exports__);
       emailCheck: 'test@mail.com',
       passwordCheck: 'pwd',
       codeCheck: '123',
-      connexion: false
+      connexion: null
     };
   },
   mounted: function mounted() {
@@ -1957,8 +1960,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     auth: function auth() {
-      if (this.email === this.emailTrue && this.password === this.passwordTrue || this.code === this.codeCheck) {
+      if (this.email === this.emailCheck && this.password === this.passwordCheck || this.code === this.codeCheck) {
         this.connexion = true;
+      } else {
+        this.connexion = false;
       }
     }
   }
@@ -37676,10 +37681,18 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _vm.connexion
+    _vm.connexion === true
       ? _c("div", [
           _c("p", { staticStyle: { color: "green" } }, [
             _vm._v("Connexion réussie")
+          ])
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.connexion === false
+      ? _c("div", [
+          _c("p", { staticStyle: { color: "red" } }, [
+            _vm._v("Connexion échouée")
           ])
         ])
       : _vm._e()

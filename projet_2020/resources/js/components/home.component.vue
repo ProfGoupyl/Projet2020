@@ -24,8 +24,11 @@
                 </p>
             </form>
         </div>
-        <div v-if="connexion">
+        <div v-if="connexion === true">
             <p style="color: green">Connexion réussie</p>
+        </div>
+        <div v-if="connexion === false">
+            <p style="color: red">Connexion échouée</p>
         </div>
     </div>
 </template>
@@ -40,7 +43,7 @@ export default {
             emailCheck: 'test@mail.com',
             passwordCheck: 'pwd',
             codeCheck: '123',
-            connexion: false,
+            connexion: null,
         }
     },
     mounted() {
@@ -48,8 +51,10 @@ export default {
     },
     methods: {
         auth() {
-            if ( ((this.email === this.emailTrue) && (this.password === this.passwordTrue)) || (this.code === this.codeCheck) ) {
+            if ( ((this.email === this.emailCheck) && (this.password === this.passwordCheck)) || (this.code === this.codeCheck) ) {
                 this.connexion = true
+            } else {
+                this.connexion = false
             }
         },
     }
