@@ -1943,6 +1943,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1953,11 +1956,20 @@ __webpack_require__.r(__webpack_exports__);
       passwordCheck: 'pwd',
       codeCheck: '123',
       admin: 1,
-      connexion: null
+      connexion: null,
+      users: null
     };
   },
   mounted: function mounted() {
+    var _this = this;
+
     console.log('Composant Home monté');
+    axios.get('http://localhost:8000/api/user').then(function (response) {
+      return _this.users = response;
+    })["catch"](function (error) {
+      return console.log(error);
+    });
+    console.log(this.users);
   },
   methods: {
     auth: function auth() {
@@ -37704,7 +37716,9 @@ var render = function() {
             _vm._v("Connexion échouée")
           ])
         ])
-      : _vm._e()
+      : _vm._e(),
+    _vm._v(" "),
+    _c("div", [_vm._v("\n        " + _vm._s(_vm.users) + "\n    ")])
   ])
 }
 var staticRenderFns = []

@@ -30,6 +30,9 @@
         <div v-if="connexion === false">
             <p style="color: red">Connexion échouée</p>
         </div>
+        <div>
+            {{ users }}
+        </div>
     </div>
 </template>
 
@@ -45,10 +48,16 @@ export default {
             codeCheck: '123',
             admin: 1,
             connexion: null,
+            users: null
         }
     },
     mounted() {
         console.log('Composant Home monté')
+        axios
+            .get('http://localhost:8000/api/user')
+            .then(response => (this.users = response))
+            .catch(error => console.log(error))
+        console.log(this.users)
     },
     methods: {
         auth() {
