@@ -43,7 +43,7 @@ export default {
             emailCheck: 'test@mail.com',
             passwordCheck: 'pwd',
             codeCheck: '123',
-            admin: 0,
+            admin: 1,
             connexion: null,
         }
     },
@@ -54,12 +54,12 @@ export default {
         auth() {
             if ( ((this.email === this.emailCheck) && (this.password === this.passwordCheck)) || (this.code === this.codeCheck) ) {
                 this.connexion = true
-                if (this.adminCheck === 1) {
+                if (this.admin === 1) {
                     // Accès admin
-                    console.log(this.admin)
+                    console.log("Accès admin")
                 } else {
                     // Accès étudiant
-                    console.log(this.admin)
+                    console.log("Accès étudiant")
                 }
             } else {
                 this.connexion = false
