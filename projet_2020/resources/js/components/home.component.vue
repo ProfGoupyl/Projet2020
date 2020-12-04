@@ -38,7 +38,9 @@ export default {
             password: null,
             code: null,
             connexion: null,
-            usersCheck: null
+            userCheck: null,
+            userId: null,
+            userAdmin: null,
         }
     },
     mounted() {
@@ -46,16 +48,17 @@ export default {
         // Récupération des users
         axios
             .get('http://localhost:8000/api/user')
-            .then(response => (this.usersCheck = response.data))
+            .then(response => (this.userCheck = response.data))
             .catch(error => console.log(error))
     },
     methods: {
         api() {
-            for (let i = 0; i < this.usersCheck.length; i++) {
-                if (this.email === this.usersCheck[i].email) {
+            for (let i = 0; i < this.userCheck.length; i++) {
+                if (this.email === this.userCheck[i].email) {
                     this.connexion = true
-                    if (this.usersCheck[i].admin === 1) {
-                        console.log('admin')
+                    this.userId = this.userCheck[i].id
+                    if (this.userCheck[i].admin === 1) {
+                        this.userAdmin = this.userCheck[i].admin
                     } else {
                         console.log('student')
                     }

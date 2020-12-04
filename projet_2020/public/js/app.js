@@ -1947,7 +1947,9 @@ __webpack_require__.r(__webpack_exports__);
       password: null,
       code: null,
       connexion: null,
-      usersCheck: null
+      userCheck: null,
+      userId: null,
+      userAdmin: null
     };
   },
   mounted: function mounted() {
@@ -1956,18 +1958,19 @@ __webpack_require__.r(__webpack_exports__);
     console.log('Composant Home monté'); // Récupération des users
 
     axios.get('http://localhost:8000/api/user').then(function (response) {
-      return _this.usersCheck = response.data;
+      return _this.userCheck = response.data;
     })["catch"](function (error) {
       return console.log(error);
     });
   },
   methods: {
     api: function api() {
-      for (var i = 0; i < this.usersCheck.length; i++) {
-        if (this.email === this.usersCheck[i].email) {
+      for (var i = 0; i < this.userCheck.length; i++) {
+        if (this.email === this.userCheck[i].email) {
           this.connexion = true;
+          this.userId = this.userCheck[i].id;
 
-          if (this.usersCheck[i].admin === 1) {
+          if (this.userCheck[i].admin === 1) {
             console.log('admin');
           } else {
             console.log('student');
