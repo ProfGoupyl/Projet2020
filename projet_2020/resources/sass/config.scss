@@ -1,0 +1,25 @@
+// Général
+$background: #ffffff;
+$color: #000000;
+
+// Typography
+$font-family-base: 'Open Sans', sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+$font-family-title: 'Fira Sans', sans-serif;
+$font-size-title: 1.1rem;
+$line-height-title: 1.8;
+
+// Button
+// de base
+$btn-basic: #c0c0c0;
+$btn-basic-hover: #1a90b1;
+// delete
+$btn-delete: #e92222;
+$btn-delete-dark: darken($btn-delete,5%);
+// add
+$btn-add: #82e922;
+$btn-add-dark: darken($btn-add,5%);
+// update
+$btn-update: #ffae18 ;
+$btn-update-dark: darken($btn-update,5%);
