@@ -17,8 +17,6 @@ class CreateFaqsTable extends Migration
             $table->id();
             $table->text('question');
             $table->text('reponse');
-            // $table->integer('module_id');
-            // $table->integer('user_id');
             $table->timestamps();
         });
     }

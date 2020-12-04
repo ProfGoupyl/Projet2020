@@ -17,8 +17,6 @@ class CreateUsersCoursTable extends Migration
             $table->id();
             $table->date('start_at');
             $table->date('end_at');
-            // $table->integer('users_id');
-            // $table->integer('cours_id');
             $table->timestamps();
         });
     }

@@ -19,7 +19,6 @@ class CreateModulesTable extends Migration
             $table->text('description');
             $table->integer('ordre');
             $table->string('url_video');
-            // $table->integer('cours_id');
             $table->timestamps();
         });
     }
