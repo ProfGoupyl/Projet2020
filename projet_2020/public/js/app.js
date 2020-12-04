@@ -1964,37 +1964,17 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
-    api: function api() {
+    // Vérification du user avec l'API
+    auth: function auth() {
       for (var i = 0; i < this.userCheck.length; i++) {
         if (this.email === this.userCheck[i].email) {
           this.connexion = true;
           this.userId = this.userCheck[i].id;
-
-          if (this.userCheck[i].admin === 1) {
-            console.log('admin');
-          } else {
-            console.log('student');
-          }
+          this.userAdmin = this.userCheck[i].admin;
         }
       }
 
       if (this.connexion === null) {
-        this.connexion = false;
-      }
-    },
-    // Check connexion
-    auth: function auth() {
-      if (this.email === this.emailCheck && this.password === this.passwordCheck || this.code === this.codeCheck) {
-        this.connexion = true;
-
-        if (this.admin === 1) {
-          // Accès admin
-          console.log("Accès admin");
-        } else {
-          // Accès étudiant
-          console.log("Accès étudiant");
-        }
-      } else {
         this.connexion = false;
       }
     }
@@ -37602,7 +37582,7 @@ var render = function() {
       _c(
         "form",
         {
-          attrs: { action: "", method: "post" },
+          attrs: { action: "", method: "get" },
           on: {
             submit: function($event) {
               $event.preventDefault()
@@ -37696,7 +37676,7 @@ var render = function() {
                 attrs: { type: "submit" },
                 on: {
                   click: function($event) {
-                    return _vm.api()
+                    return _vm.auth()
                   }
                 }
               },
