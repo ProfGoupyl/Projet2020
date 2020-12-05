@@ -3,9 +3,6 @@
         <h1>Accueil</h1>
         <div>
             <h2>Connexion</h2>
-            <p>email : test@mail.com</p>
-            <p>password: pwd</p>
-            <p>code: 123</p>
             <form action="" method="get" v-on:submit.prevent>
                 <p>
                     <label for="email">Adresse e-mail:</label>
@@ -30,9 +27,6 @@
         <div v-if="connexion === false">
             <p style="color: red">Connexion échouée</p>
         </div>
-        <div>
-            {{ users }}
-        </div>
     </div>
 </template>
 
@@ -43,37 +37,34 @@ export default {
             email: null,
             password: null,
             code: null,
-            emailCheck: 'test@mail.com',
-            passwordCheck: 'pwd',
-            codeCheck: '123',
-            admin: 1,
             connexion: null,
-            users: null
+            userCheck: null,
+            userId: null,
+            userAdmin: null
         }
     },
     mounted() {
         console.log('Composant Home monté')
+        // Récupération des users
         axios
-            .get('http://localhost/Projet2020/projet_2020/public/api/user')
-            .then(response => (this.users = response))
+            .get('http://localhost:8000/api/user')
+            .then(response => (this.userCheck = response.data))
             .catch(error => console.log(error))
-        console.log(this.users)
     },
     methods: {
+        // Vérification du user avec l'API
         auth() {
-            if ( ((this.email === this.emailCheck) && (this.password === this.passwordCheck)) || (this.code === this.codeCheck) ) {
-                this.connexion = true
-                if (this.admin === 1) {
-                    // Accès admin
-                    console.log("Accès admin")
-                } else {
-                    // Accès étudiant
-                    console.log("Accès étudiant")
+            for (let i = 0; i < this.userCheck.length; i++) {
+                if (this.email === this.userCheck[i].email) {
+                    this.connexion = true
+                    this.userId = this.userCheck[i].id
+                    this.userAdmin = this.userCheck[i].admin
                 }
-            } else {
+            }
+            if (this.connexion === null) {
                 this.connexion = false
             }
-        },
+        }
     }
 }
 </script>

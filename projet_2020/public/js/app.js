@@ -1940,50 +1940,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       email: null,
       password: null,
       code: null,
-      emailCheck: 'test@mail.com',
-      passwordCheck: 'pwd',
-      codeCheck: '123',
-      admin: 1,
       connexion: null,
-      users: null
+      userCheck: null,
+      userId: null,
+      userAdmin: null
     };
   },
   mounted: function mounted() {
     var _this = this;
 
-    console.log('Composant Home monté');
+    console.log('Composant Home monté'); // Récupération des users
+
     axios.get('http://localhost:8000/api/user').then(function (response) {
-      return _this.users = response;
+      return _this.userCheck = response.data;
     })["catch"](function (error) {
       return console.log(error);
     });
-    console.log(this.users);
   },
   methods: {
+    // Vérification du user avec l'API
     auth: function auth() {
-      if (this.email === this.emailCheck && this.password === this.passwordCheck || this.code === this.codeCheck) {
-        this.connexion = true;
-
-        if (this.admin === 1) {
-          // Accès admin
-          console.log("Accès admin");
-        } else {
-          // Accès étudiant
-          console.log("Accès étudiant");
+      for (var i = 0; i < this.userCheck.length; i++) {
+        if (this.email === this.userCheck[i].email) {
+          this.connexion = true;
+          this.userId = this.userCheck[i].id;
+          this.userAdmin = this.userCheck[i].admin;
         }
-      } else {
+      }
+
+      if (this.connexion === null) {
         this.connexion = false;
       }
     }
@@ -37588,16 +37579,10 @@ var render = function() {
     _c("div", [
       _c("h2", [_vm._v("Connexion")]),
       _vm._v(" "),
-      _c("p", [_vm._v("email : test@mail.com")]),
-      _vm._v(" "),
-      _c("p", [_vm._v("password: pwd")]),
-      _vm._v(" "),
-      _c("p", [_vm._v("code: 123")]),
-      _vm._v(" "),
       _c(
         "form",
         {
-          attrs: { action: "", method: "post" },
+          attrs: { action: "", method: "get" },
           on: {
             submit: function($event) {
               $event.preventDefault()
@@ -37716,9 +37701,7 @@ var render = function() {
             _vm._v("Connexion échouée")
           ])
         ])
-      : _vm._e(),
-    _vm._v(" "),
-    _c("div", [_vm._v("\n        " + _vm._s(_vm.users) + "\n    ")])
+      : _vm._e()
   ])
 }
 var staticRenderFns = []
