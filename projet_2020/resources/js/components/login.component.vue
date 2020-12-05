@@ -38,7 +38,7 @@ export default {
             password: null,
             code: null,
             connexion: null,
-            userCheck: null,
+            userCheck: [],
             userId: null,
             userAdmin: null
         }
@@ -55,13 +55,16 @@ export default {
         // Vérification du user avec l'API
         auth() {
             for (let i = 0; i < this.userCheck.length; i++) {
+                if (this.connexion === true) {
+                    break
+                }
                 if ((this.email === this.userCheck[i].email) && (this.password === this.userCheck[i].password)) {
                     this.connexion = true
                     this.userId = this.userCheck[i].id
                     this.userAdmin = this.userCheck[i].admin
                 }
             }
-            if (this.connexion === null) {
+            if (this.connexion !== true) {
                 this.connexion = false
             }
         }
