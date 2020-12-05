@@ -47,7 +47,7 @@ export default {
         console.log('Composant Home monté')
         // Récupération des users
         axios
-            .get('http://localhost:8000/api/user')
+            .get('http://localhost:8000/api/user?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9')
             .then(response => (this.userCheck = response.data))
             .catch(error => console.log(error))
     },
@@ -55,7 +55,7 @@ export default {
         // Vérification du user avec l'API
         auth() {
             for (let i = 0; i < this.userCheck.length; i++) {
-                if (this.email === this.userCheck[i].email) {
+                if ((this.email === this.userCheck[i].email) && (this.password === this.userCheck[i].password)) {
                     this.connexion = true
                     this.userId = this.userCheck[i].id
                     this.userAdmin = this.userCheck[i].admin

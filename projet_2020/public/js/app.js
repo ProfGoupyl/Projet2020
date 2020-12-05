@@ -1957,7 +1957,7 @@ __webpack_require__.r(__webpack_exports__);
 
     console.log('Composant Home monté'); // Récupération des users
 
-    axios.get('http://localhost:8000/api/user').then(function (response) {
+    axios.get('http://localhost:8000/api/user?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
       return _this.userCheck = response.data;
     })["catch"](function (error) {
       return console.log(error);
@@ -1967,7 +1967,7 @@ __webpack_require__.r(__webpack_exports__);
     // Vérification du user avec l'API
     auth: function auth() {
       for (var i = 0; i < this.userCheck.length; i++) {
-        if (this.email === this.userCheck[i].email) {
+        if (this.email === this.userCheck[i].email && this.password === this.userCheck[i].password) {
           this.connexion = true;
           this.userId = this.userCheck[i].id;
           this.userAdmin = this.userCheck[i].admin;
