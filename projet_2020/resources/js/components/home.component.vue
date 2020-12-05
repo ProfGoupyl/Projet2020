@@ -6,7 +6,7 @@
             <p>email : test@mail.com</p>
             <p>password: pwd</p>
             <p>code: 123</p>
-            <form action="" method="post" v-on:submit.prevent>
+            <form action="" method="get" v-on:submit.prevent>
                 <p>
                     <label for="email">Adresse e-mail:</label>
                     <input v-model="email" type="email" name="email">
@@ -54,7 +54,7 @@ export default {
     mounted() {
         console.log('Composant Home monté')
         axios
-            .get('http://localhost:8000/api/user')
+            .get('http://localhost/Projet2020/projet_2020/public/api/user')
             .then(response => (this.users = response))
             .catch(error => console.log(error))
         console.log(this.users)
