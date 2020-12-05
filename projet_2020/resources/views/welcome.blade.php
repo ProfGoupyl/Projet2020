@@ -6,7 +6,7 @@
 @endsection
 
 @section('body')
-    <div id="home">
-        <home></home>
+    <div id="login">
+        <login></login>
     </div>
 @endsection
