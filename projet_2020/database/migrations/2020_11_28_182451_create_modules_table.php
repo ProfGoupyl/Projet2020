@@ -19,8 +19,11 @@ class CreateModulesTable extends Migration
             $table->text('description');
             $table->integer('ordre');
             $table->string('url_video');
+            $table->unsignedBigInteger('cours_id');
+            $table->foreign('cours_id')->references('id')->on('cours')->onDelete('cascade');
             $table->timestamps();
         });
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -30,6 +33,11 @@ class CreateModulesTable extends Migration
      */
     public function down()
     {
+        Schema::table('modules', function (Blueprint $table) {
+            Schema::disableForeignKeyConstraints();
+            $table->dropForeign(['cours_id']);
+            $table->dropColumn(['cours_id']);
+        });
         Schema::dropIfExists('modules');
     }
 }

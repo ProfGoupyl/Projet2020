@@ -17,8 +17,13 @@ class CreateInvitationsTable extends Migration
             $table->id();
             $table->string('code');
             $table->date('expired_at');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('cours_id');      
+            $table->foreign('cours_id')->references('id')->on('cours')->onDelete('cascade');
             $table->timestamps();
         });
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -28,6 +33,11 @@ class CreateInvitationsTable extends Migration
      */
     public function down()
     {
+        Schema::table('invitations', function (Blueprint $table) {
+            Schema::disableForeignKeyConstraints();
+            $table->dropForeign(['user_id', 'cours_id']);
+            $table->dropColumn(['user_id', 'cours_id']);
+        });
         Schema::dropIfExists('invitations');
     }
 }
