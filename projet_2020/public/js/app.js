@@ -1936,52 +1936,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       email: null,
       password: null,
-      code: null,
-      connexion: null,
-      userCheck: [],
-      userId: null,
-      userAdmin: null
+      connexion: null
     };
-  },
-  mounted: function mounted() {
-    var _this = this;
-
-    console.log('Composant Home monté'); // Récupération des users
-
-    axios.get('http://localhost:8000/api/user?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
-      return _this.userCheck = response.data;
-    })["catch"](function (error) {
-      return console.log(error);
-    });
-  },
-  methods: {
-    // Vérification du user avec l'API
-    auth: function auth() {
-      for (var i = 0; i < this.userCheck.length; i++) {
-        if (this.connexion === true) {
-          break;
-        }
-
-        if (this.email === this.userCheck[i].email && this.password === this.userCheck[i].password) {
-          this.connexion = true;
-          this.userId = this.userCheck[i].id;
-          this.userAdmin = this.userCheck[i].admin;
-        }
-      }
-
-      if (this.connexion !== true) {
-        this.connexion = false;
-      }
-    }
   }
 });
 
@@ -37583,112 +37544,59 @@ var render = function() {
     _c("div", [
       _c("h2", [_vm._v("Connexion")]),
       _vm._v(" "),
-      _c(
-        "form",
-        {
-          attrs: { action: "", method: "get" },
-          on: {
-            submit: function($event) {
-              $event.preventDefault()
-            }
-          }
-        },
-        [
-          _c("p", [
-            _c("label", { attrs: { for: "email" } }, [
-              _vm._v("Adresse e-mail:")
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.email,
-                  expression: "email"
-                }
-              ],
-              attrs: { type: "email", name: "email" },
-              domProps: { value: _vm.email },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.email = $event.target.value
-                }
-              }
-            })
-          ]),
+      _c("form", { attrs: { action: "", method: "post" } }, [
+        _c("p", [
+          _c("label", { attrs: { for: "email" } }, [_vm._v("Adresse e-mail:")]),
           _vm._v(" "),
-          _c("p", [
-            _c("label", { attrs: { for: "pwd" } }, [_vm._v("Mot de passe:")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.password,
-                  expression: "password"
-                }
-              ],
-              attrs: { type: "password", name: "pwd" },
-              domProps: { value: _vm.password },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.password = $event.target.value
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _c("label", { attrs: { for: "code" } }, [
-              _vm._v("Code d'inscription:")
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.code,
-                  expression: "code"
-                }
-              ],
-              attrs: { type: "text", name: "code" },
-              domProps: { value: _vm.code },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.code = $event.target.value
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _c(
-              "button",
+          _c("input", {
+            directives: [
               {
-                attrs: { type: "submit" },
-                on: {
-                  click: function($event) {
-                    return _vm.auth()
-                  }
+                name: "model",
+                rawName: "v-model",
+                value: _vm.email,
+                expression: "email"
+              }
+            ],
+            attrs: { type: "email", name: "email" },
+            domProps: { value: _vm.email },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
                 }
-              },
-              [_vm._v("Connexion")]
-            )
-          ])
-        ]
-      )
+                _vm.email = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _c("label", { attrs: { for: "pwd" } }, [_vm._v("Mot de passe:")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.password,
+                expression: "password"
+              }
+            ],
+            attrs: { type: "password", name: "pwd" },
+            domProps: { value: _vm.password },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.password = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _vm._m(0)
+      ])
     ]),
     _vm._v(" "),
     _vm.connexion === true
@@ -37708,7 +37616,16 @@ var render = function() {
       : _vm._e()
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _c("button", { attrs: { type: "submit" } }, [_vm._v("Connexion")])
+    ])
+  }
+]
 render._withStripped = true
 
 
