@@ -21,15 +21,23 @@ Route::get('home', function()
 {
     return View('pages.home');
 });
-Route::get('about', function()
+Route::get('user', function()
 {
-    return View('pages.about');
+    return View('pages.user');
 });
-Route::get('projects', function()
+Route::get('cours', function()
 {
-    return View('pages.projects');
+    return View('pages.cours');
 });
-Route::get('contact', function()
+Route::get('session', function()
 {
-    return View('pages.contact');
+    return View('pages.session');
+});
+Route::get('profile', function()
+{
+    return View('pages.profile');
+});
+Route::get('faq', function()
+{
+    return View('pages.faq');
 });
