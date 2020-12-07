@@ -34,11 +34,11 @@ class CreateCommentairesTable extends Migration
      */
     public function down()
     {
-        Schema::table('commentaires', function (Blueprint $table) {
-            Schema::disableForeignKeyConstraints();
-            $table->dropForeign(['user_id', 'module_id', 'cours_id']);
-            $table->dropColumn(['user_id', 'module_id', 'cours_id']);
-        });
+        // Schema::table('commentaires', function (Blueprint $table) {
+        //     Schema::disableForeignKeyConstraints();
+        //     $table->dropForeign(['user_id', 'module_id', 'cours_id']);
+        //     $table->dropColumn(['user_id', 'module_id', 'cours_id']);
+        // });
         Schema::dropIfExists('commentaires');
     }
 }

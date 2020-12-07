@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Note;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class NoteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::all();
+        return Note::all();
     }
 
     /**
@@ -25,7 +25,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        if (User::create($request->all())){
+        if (Note::create($request->all())){
             return response()->json(['insert succes'], 200);
         }
     }
@@ -33,24 +33,24 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Note  $note
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Note $note)
     {
-        return $user;
+        return $note;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Note  $note
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, Note $note)
     {
-        if ($user->update($request->all())){
+        if ($note->update($request->all())){
             return response()->json(['update succes'], 200);
         }
     }
@@ -58,12 +58,12 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Note  $note
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Note $note)
     {
-        if ($user->delete()){
+        if ($note->delete()){
             return response()->json(['delete succes'], 200);
         }
     }

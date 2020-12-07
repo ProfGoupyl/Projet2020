@@ -11,6 +11,27 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    public function notes() {
+        return $this->hasMany(Note::class);
+    }
+
+    public function invitations() {
+        return $this->hasMany(Invitation::class);
+    }
+
+    public function commentaires() {
+        return $this->hasMany(Commentaire::class);
+    }
+
+    public function faqs() {
+        return $this->hasMany(Faqs::class);
+    }
+
+    public function cours() {
+        return $this->belongsTo(Cours::class);
+    }
+
+
     /**
      * The attributes that are mass assignable.
      *

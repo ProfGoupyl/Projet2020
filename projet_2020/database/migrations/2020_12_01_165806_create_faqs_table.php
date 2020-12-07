@@ -33,11 +33,11 @@ class CreateFaqsTable extends Migration
      */
     public function down()
     {
-        Schema::table('faqs', function (Blueprint $table) {
-            Schema::disableForeignKeyConstraints();
-            $table->dropForeign(['user_id', 'module_id']);
-            $table->dropColumn(['user_id', 'module_id']);
-        });
+        // Schema::table('faqs', function (Blueprint $table) {
+        //     Schema::disableForeignKeyConstraints();
+        //     $table->dropForeign(['user_id', 'module_id']);
+        //     $table->dropColumn(['user_id', 'module_id']);
+        // });
         Schema::dropIfExists('faqs');
     }
 }

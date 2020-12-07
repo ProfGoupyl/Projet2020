@@ -33,11 +33,11 @@ class CreateModulesTable extends Migration
      */
     public function down()
     {
-        Schema::table('modules', function (Blueprint $table) {
-            Schema::disableForeignKeyConstraints();
-            $table->dropForeign(['cours_id']);
-            $table->dropColumn(['cours_id']);
-        });
+        // Schema::table('modules', function (Blueprint $table) {
+        //     Schema::disableForeignKeyConstraints();
+        //     $table->dropForeign(['cours_id']);
+        //     $table->dropColumn(['cours_id']);
+        // });
         Schema::dropIfExists('modules');
     }
 }

@@ -35,11 +35,11 @@ class CreateUsersCoursTable extends Migration
     public function down()
     {
 
-        Schema::table('users_cours', function (Blueprint $table) {
-            Schema::disableForeignKeyConstraints();
-            $table->dropForeign(['user_id', 'cours_id']);
-            $table->dropColumn(['user_id', 'cours_id']);
-        });
+        // Schema::table('users_cours', function (Blueprint $table) {
+        //     Schema::disableForeignKeyConstraints();
+        //     $table->dropForeign(['user_id', 'cours_id']);
+        //     $table->dropColumn(['user_id', 'cours_id']);
+        // });
 
         Schema::dropIfExists('users_cours');
     }

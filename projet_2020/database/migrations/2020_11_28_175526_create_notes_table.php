@@ -32,12 +32,12 @@ class CreateNotesTable extends Migration
      */
     public function down()
     {
-        Schema::table('notes', function (Blueprint $table) {
+        // Schema::table('notes', function (Blueprint $table) {
 
-            Schema::disableForeignKeyConstraints();
-            $table->dropForeign(['user_id', 'cours_id']);
-            $table->dropColumn(['user_id', 'cours_id']);
-        });
+        //     Schema::disableForeignKeyConstraints();
+        //     $table->dropForeign(['user_id', 'cours_id']);
+        //     $table->dropColumn(['user_id', 'cours_id']);
+        // });
         Schema::dropIfExists('notes');
     }
 }

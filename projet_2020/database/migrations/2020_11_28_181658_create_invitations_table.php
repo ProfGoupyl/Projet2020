@@ -33,11 +33,11 @@ class CreateInvitationsTable extends Migration
      */
     public function down()
     {
-        Schema::table('invitations', function (Blueprint $table) {
-            Schema::disableForeignKeyConstraints();
-            $table->dropForeign(['user_id', 'cours_id']);
-            $table->dropColumn(['user_id', 'cours_id']);
-        });
+        // Schema::table('invitations', function (Blueprint $table) {
+        //     Schema::disableForeignKeyConstraints();
+        //     $table->dropForeign(['user_id', 'cours_id']);
+        //     $table->dropColumn(['user_id', 'cours_id']);
+        // });
         Schema::dropIfExists('invitations');
     }
 }
