@@ -25,7 +25,7 @@ Vue.component('login', require('./components/login.component.vue').default);
 Vue.component('user', require('./components/user.component.vue').default);
 Vue.component('modifyuser', require('./components/modify-user.component.vue').default);
 Vue.component('faq', require('./components/faq.component.vue').default);
-
+Vue.component('cours', require('./components/cours.component.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

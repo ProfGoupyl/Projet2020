@@ -5,7 +5,7 @@
             <li><a href="/">Home</a></li>
             <li><a href="/faq">Faq</a></li>
             <li><a href="/profile">Profile</a></li>
-            <li><a href="/session">Cours</a></li>
+            <li><a href="/cours">Cours</a></li>
         </ul>
     </div>
 </div>

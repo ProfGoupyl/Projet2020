@@ -1,4 +1,4 @@
 @extends('layouts.default')
 @section('content')
-    page de liste des cours
+<a href="{{url('session')}}"><cours> </cours></a>
 @stop
