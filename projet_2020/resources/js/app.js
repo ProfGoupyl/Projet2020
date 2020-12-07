@@ -29,6 +29,6 @@ Vue.component('login', require('./components/login.component.vue').default);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-let login = new Vue({
-    el: '#login',
+new Vue({
+    el: '#app'
 });
