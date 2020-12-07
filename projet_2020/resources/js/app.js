@@ -7,8 +7,8 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-import VueRouter from 'vue-router';
-Vue.use(VueRouter);
+//import VueRouter from 'vue-router';
+//Vue.use(VueRouter);
 
 /**
  * The following block of code may be used to automatically register your
@@ -22,7 +22,7 @@ Vue.use(VueRouter);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('login', require('./components/login.component.vue').default);
-Vue.component('modifystudent', require('./components/modify-student.component.vue').default);
+Vue.component('modifyuser', require('./components/modify-user.component.vue').default);
 Vue.component('faq', require('./components/faq.component.vue').default);
 Vue.component('cours', require('./components/cours.component.vue').default);
 /**
