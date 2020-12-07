@@ -22,6 +22,8 @@ Vue.use(VueRouter);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('login', require('./components/login.component.vue').default);
+Vue.component('modifystudent', require('./components/modify-student.component.vue').default);
+Vue.component('faq', require('./components/faq.component.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
