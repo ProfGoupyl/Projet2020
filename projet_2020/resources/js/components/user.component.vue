@@ -1,12 +1,6 @@
 <template>
     <div>
-        <nav>
-            <ul>
-                <li><a v-bind:href="`../../views/pages/profile.blade.php?id=${this.userId}`">Profil</a></li>
-                <li><a href="../../views/pages/faq.blade.php">FAQ</a></li>
-                <li>Se déconnecter</li>
-            </ul>
-        </nav>
+        <h1>Page utilisateur</h1>
     </div>
 </template>
 
@@ -14,7 +8,7 @@
     export default {
         data() {
             return {
-                userId: 5,
+                userId: null,
                 url: null
             }
         },
