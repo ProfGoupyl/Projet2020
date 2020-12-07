@@ -22,6 +22,7 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('login', require('./components/login.component.vue').default);
+Vue.component('user', require('./components/user.component.vue').default);
 Vue.component('modifyuser', require('./components/modify-user.component.vue').default);
 Vue.component('faq', require('./components/faq.component.vue').default);
 

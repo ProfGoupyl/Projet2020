@@ -2,7 +2,7 @@
     <div>
         <nav>
             <ul>
-                <li><a href="../../views/pages/profile.blade.php">Profil</a></li>
+                <li><a v-bind:href="`../../views/pages/profile.blade.php?id=${this.userId}`">Profil</a></li>
                 <li><a href="../../views/pages/faq.blade.php">FAQ</a></li>
                 <li>Se déconnecter</li>
             </ul>
@@ -14,7 +14,7 @@
     export default {
         data() {
             return {
-                userid: null,
+                userId: 5,
                 url: null
             }
         },
