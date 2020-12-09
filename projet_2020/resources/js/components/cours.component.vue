@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>page COURS</h1>
-        <h2>Liste des cours</h2>
+        <h2>Liste des session dispo pour le cours</h2>
         <ol>
             <li v-for="module in moduleList" :key="module.titre">
                {{ module.titre }}

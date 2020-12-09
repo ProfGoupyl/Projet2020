@@ -39532,7 +39532,7 @@ var render = function() {
   return _c("div", [
     _c("h1", [_vm._v("page COURS")]),
     _vm._v(" "),
-    _c("h2", [_vm._v("Liste des cours")]),
+    _c("h2", [_vm._v("Liste des session dispo pour le cours")]),
     _vm._v(" "),
     _c(
       "ol",
