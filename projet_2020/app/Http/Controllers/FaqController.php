@@ -25,7 +25,7 @@ class FaqController extends Controller
      */
     public function store(Request $request)
     {
-        if (Faqs::create($request->all())){
+        if (Faqs::create($request->all())) {
             return response()->json(['insert succes'], 200);
         }
     }
@@ -36,9 +36,10 @@ class FaqController extends Controller
      * @param  \App\Models\Faqs  $faqs
      * @return \Illuminate\Http\Response
      */
-    public function show(Faqs $faqs)
+    public function show(Faqs $faq)
     {
-        return $faqs;
+
+        return $faq;
     }
 
     /**
@@ -48,9 +49,9 @@ class FaqController extends Controller
      * @param  \App\Models\Faqs  $faqs
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Faqs $faqs)
+    public function update(Request $request, Faqs $faq)
     {
-        if ($faqs->update($request->all())){
+        if ($faq->update($request->all())) {
             return response()->json(['update succes'], 200);
         }
     }
@@ -61,9 +62,9 @@ class FaqController extends Controller
      * @param  \App\Models\Faqs  $faqs
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Faqs $faqs)
+    public function destroy(Faqs $faq)
     {
-        if ($faqs->delete()){
+        if ($faq->delete()) {
             return response()->json(['delete succes'], 200);
         }
     }

@@ -25,7 +25,7 @@ class NoteController extends Controller
      */
     public function store(Request $request)
     {
-        if (Note::create($request->all())){
+        if (Note::create($request->all())) {
             return response()->json(['insert succes'], 200);
         }
     }
@@ -50,7 +50,7 @@ class NoteController extends Controller
      */
     public function update(Request $request, Note $note)
     {
-        if ($note->update($request->all())){
+        if ($note->update($request->all())) {
             return response()->json(['update succes'], 200);
         }
     }
@@ -63,7 +63,7 @@ class NoteController extends Controller
      */
     public function destroy(Note $note)
     {
-        if ($note->delete()){
+        if ($note->delete()) {
             return response()->json(['delete succes'], 200);
         }
     }

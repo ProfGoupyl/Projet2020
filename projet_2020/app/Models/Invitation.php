@@ -9,11 +9,13 @@ class Invitation extends Model
 {
     use HasFactory;
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function cours() {
+    public function cours()
+    {
         return $this->belongsTo(Cours::class);
     }
 
@@ -27,6 +29,6 @@ class Invitation extends Model
         'code',
         'expired_at',
         'user_id',
-        'cours_id',
+        'cours_id'
     ];
 }

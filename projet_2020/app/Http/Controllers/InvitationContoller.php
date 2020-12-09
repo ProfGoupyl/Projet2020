@@ -25,7 +25,7 @@ class InvitationContoller extends Controller
      */
     public function store(Request $request)
     {
-        if (Invitation::create($request->all())){
+        if (Invitation::create($request->all())) {
             return response()->json(['insert succes'], 200);
         }
     }
@@ -50,7 +50,7 @@ class InvitationContoller extends Controller
      */
     public function update(Request $request, Invitation $invitation)
     {
-        if ($invitation->update($request->all())){
+        if ($invitation->update($request->all())) {
             return response()->json(['update succes'], 200);
         }
     }
@@ -63,7 +63,7 @@ class InvitationContoller extends Controller
      */
     public function destroy(Invitation $invitation)
     {
-        if ($invitation->delete()){
+        if ($invitation->delete()) {
             return response()->json(['delete succes'], 200);
         }
     }

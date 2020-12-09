@@ -9,19 +9,22 @@ class Module extends Model
 {
     use HasFactory;
 
-    public function commentaires() {
+    public function commentaires()
+    {
         return $this->hasMany(Commentaire::class);
     }
 
-    public function faqs() {
+    public function faqs()
+    {
         return $this->hasMany(Faqs::class);
     }
 
-    public function cours() {
+    public function cours()
+    {
         return $this->belongsTo(Cours::class);
     }
 
-        protected $fillable = [
+    protected $fillable = [
         'titre',
         'description',
         'ordre',

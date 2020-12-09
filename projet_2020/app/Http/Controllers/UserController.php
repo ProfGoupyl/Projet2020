@@ -25,7 +25,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        if (User::create($request->all())){
+        if (User::create($request->all())) {
             return response()->json(['insert succes'], 200);
         }
     }
@@ -50,7 +50,7 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        if ($user->update($request->all())){
+        if ($user->update($request->all())) {
             return response()->json(['update succes'], 200);
         }
     }
@@ -63,7 +63,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        if ($user->delete()){
+        if ($user->delete()) {
             return response()->json(['delete succes'], 200);
         }
     }

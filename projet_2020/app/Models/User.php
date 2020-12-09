@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -11,23 +11,28 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    public function notes() {
+    public function notes()
+    {
         return $this->hasMany(Note::class);
     }
 
-    public function invitations() {
+    public function invitations()
+    {
         return $this->hasMany(Invitation::class);
     }
 
-    public function commentaires() {
+    public function commentaires()
+    {
         return $this->hasMany(Commentaire::class);
     }
 
-    public function faqs() {
+    public function faqs()
+    {
         return $this->hasMany(Faqs::class);
     }
 
-    public function cours() {
+    public function cours()
+    {
         return $this->belongsTo(Cours::class);
     }
 
@@ -38,12 +43,13 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nom',
+        'name',
         'prenom',
         'pseudo',
         'admin',
         'email',
         'password',
+        'api_token',
     ];
 
     /**

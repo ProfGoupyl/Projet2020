@@ -25,7 +25,7 @@ class UserCoursController extends Controller
      */
     public function store(Request $request)
     {
-        if (Users_cours::create($request->all())){
+        if (Users_cours::create($request->all())) {
             return response()->json(['insert succes'], 200);
         }
     }
@@ -36,9 +36,9 @@ class UserCoursController extends Controller
      * @param  \App\Models\Users_cours  $users_cours
      * @return \Illuminate\Http\Response
      */
-    public function show(Users_cours $users_cours)
+    public function show(Users_cours $users_cour)
     {
-        return $users_cours;
+        return $users_cour;
     }
 
     /**
@@ -48,9 +48,9 @@ class UserCoursController extends Controller
      * @param  \App\Models\Users_cours  $users_cours
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Users_cours $users_cours)
+    public function update(Request $request, Users_cours $users_cour)
     {
-        if ($users_cours->update($request->all())){
+        if ($users_cour->update($request->all())) {
             return response()->json(['update succes'], 200);
         }
     }
@@ -61,9 +61,9 @@ class UserCoursController extends Controller
      * @param  \App\Models\Users_cours  $users_cours
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Users_cours $users_cours)
+    public function destroy(Users_cours $users_cour)
     {
-        if ($users_cours->delete()){
+        if ($users_cour->delete()) {
             return response()->json(['delete succes'], 200);
         }
     }

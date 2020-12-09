@@ -25,7 +25,7 @@ class CommentaireController extends Controller
      */
     public function store(Request $request)
     {
-        if (Commentaire::create($request->all())){
+        if (Commentaire::create($request->all())) {
             return response()->json(['insert succes'], 200);
         }
     }
@@ -50,7 +50,7 @@ class CommentaireController extends Controller
      */
     public function update(Request $request, Commentaire $commentaire)
     {
-        if ($commentaire->update($request->all())){
+        if ($commentaire->update($request->all())) {
             return response()->json(['update succes'], 200);
         }
     }
@@ -63,7 +63,7 @@ class CommentaireController extends Controller
      */
     public function destroy(Commentaire $commentaire)
     {
-        if ($commentaire->delete()){
+        if ($commentaire->delete()) {
             return response()->json(['delete succes'], 200);
         }
     }

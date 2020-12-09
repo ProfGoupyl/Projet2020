@@ -25,7 +25,7 @@ class CoursController extends Controller
      */
     public function store(Request $request)
     {
-        if (Cours::create($request->all())){
+        if (Cours::create($request->all())) {
             return response()->json(['insert succes'], 200);
         }
     }
@@ -36,9 +36,9 @@ class CoursController extends Controller
      * @param  \App\Models\Cours  $cours
      * @return \Illuminate\Http\Response
      */
-    public function show(Cours $cours)
+    public function show(Cours $cour)
     {
-        return $cours;
+        return $cour;
     }
 
     /**
@@ -48,9 +48,9 @@ class CoursController extends Controller
      * @param  \App\Models\Cours  $cours
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cours $cours)
+    public function update(Request $request, Cours $cour)
     {
-        if ($cours->update($request->all())){
+        if ($cour->update($request->all())) {
             return response()->json(['update succes'], 200);
         }
     }
@@ -61,9 +61,9 @@ class CoursController extends Controller
      * @param  \App\Models\Cours  $cours
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cours $cours)
+    public function destroy(Cours $cour)
     {
-        if ($cours->delete()){
+        if ($cour->delete()) {
             return response()->json(['delete succes'], 200);
         }
     }
