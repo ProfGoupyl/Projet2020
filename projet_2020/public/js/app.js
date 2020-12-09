@@ -3889,15 +3889,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       userId: null,
-      url: null
+      url: null,
+      coursList: []
     };
   },
   mounted: function mounted() {
-    this.url = window.location.pathname;
+    var _this = this;
+
+    axios.get('http://localhost:8000/api/cours?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
+      return _this.coursList = response.data;
+    })["catch"](function (error) {
+      return console.log(error);
+    });
   }
 });
 
@@ -39586,16 +39599,23 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("h1", [_vm._v("Page utilisateur")]),
+    _vm._v(" "),
+    _c("h2", [_vm._v("Liste des cours")]),
+    _vm._v(" "),
+    _c(
+      "ol",
+      _vm._l(_vm.coursList, function(cours) {
+        return _c("li", { key: cours.titre }, [
+          _vm._v("\n            " + _vm._s(cours.titre) + "\n        ")
+        ])
+      }),
+      0
+    )
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("Page utilisateur")])])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -51784,7 +51804,8 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-__webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js");
+__webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js"); // Vue.js
+
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 Vue.component('cours', __webpack_require__(/*! ./components/cours.component */ "./resources/js/components/cours.component.vue")["default"]);

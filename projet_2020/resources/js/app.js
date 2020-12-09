@@ -1,6 +1,10 @@
 require('./bootstrap');
 require('alpinejs');
 
+
+
+// Vue.js
+
 window.Vue = require('vue');
 
 Vue.component('cours', require('./components/cours.component').default)
