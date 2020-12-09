@@ -54948,6 +54948,7 @@ var routes = [{
   component: __webpack_require__(/*! ./components/modify-user.component.vue */ "./resources/js/components/modify-user.component.vue")
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
+  mode: 'history',
   routes: routes // raccourci pour `routes: routes`
 
 });
@@ -55286,8 +55287,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })
