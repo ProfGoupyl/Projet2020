@@ -6,6 +6,7 @@
             <li><a href="/faq">Faq</a></li>
             <li><a href="/profile">Profile</a></li>
             <li><a href="/cours">Cours</a></li>
+            <li><a href="/user">User</a></li>
         </ul>
     </div>
 </div>
