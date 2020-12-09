@@ -4,7 +4,7 @@
         <h2>Liste des cours</h2>
         <ol>
             <li v-for="cours in coursList" :key="cours.titre">
-                {{ cours.titre }}
+                <router-link to="/cours"> {{ cours.titre }} </router-link>
             </li>
         </ol>
     </div>
