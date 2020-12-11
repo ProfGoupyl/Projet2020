@@ -1,0 +1,62 @@
+*{
+	box-sizing: border-box;
+}
+
+body{
+	margin: 2%;
+	width: 100vw;
+	background-color: $background;
+	color: $main;
+}
+
+header{
+	height: 15vh;
+	padding: 2%;
+}
+
+section{
+	height: auto;
+	padding: 2%;
+}
+
+input[value="submit"]{
+	text-decoration: none;
+	background-color: $btn-add;
+	color: $btn-main;
+	transition:.5s ease;
+	&:hover, &:focus{
+	background-color: $btn-add-dark
+	}
+	&:active{
+	position: relative;
+	top: 1px;
+	}
+}
+
+input[value="delete"]{
+	text-decoration: none;
+	background-color: $btn-delete;
+	color: $btn-main;
+	transition:.5s ease;
+	&:hover, &:focus{
+	background-color: $btn-delete-dark
+	}
+	&:active{
+	position: relative;
+	top: 1px;
+	}
+}
+
+input[value="update"]{
+	text-decoration: none;
+	background-color: $btn-update;
+	color: $btn-main;
+	transition:.5s ease;
+	&:hover, &:focus{
+	background-color: $btn-update-dark
+	}
+	&:active{
+	position: relative;
+	top: 1px;
+	}
+}
