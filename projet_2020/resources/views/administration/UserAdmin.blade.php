@@ -123,7 +123,7 @@
                 <a href="{{Delete,id}}"></a>
             </td>
         </tr>
-        <?php endforeach; ?>
+
         </tbody>
     </table>
 </div>
