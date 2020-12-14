@@ -4,8 +4,4 @@
 
 <title>Homepage</title>
 
-@push('styles')
-
-    <link rel="stylesheet" href="{{ asset('../../css/default.scss') }}">
-
-@endpush
+<link rel="stylesheet" href="css/default.css">

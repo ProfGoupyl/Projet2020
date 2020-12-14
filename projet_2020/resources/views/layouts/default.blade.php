@@ -2,7 +2,7 @@
 <html>
 <head>
     @include('includes.head')
-    @stack('includes.styles')
+    
 </head>
 <body>
     <div>
