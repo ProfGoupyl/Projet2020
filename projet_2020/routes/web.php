@@ -54,12 +54,10 @@ Route::get('/administrationModule', function () {
     return view('administration.CreateCoursAdmin');
 });
 
-<<<<<<< HEAD
-require __DIR__.'/auth.php';
-=======
+
 Route::group(['middleware' => ['auth']], function () {
 
 });
 
 require __DIR__.'/auth.php';
->>>>>>> 00ee7e8bf7154b8ffd103d8f3eb6657d67521620
+
