@@ -8,6 +8,11 @@
             <li><a href="/cours">Cours</a></li>
             <li><a href="/user">User</a></li>
             <li><a href="/session">Session</a></li>
+            @if (Auth::user() && Auth::user()->admin === 1)
+            <li>
+               <a href="{{ url('/admin') }}">Dashboard</a>
+            </li>
+            @endif
         </ul>
     </div>
 </div>
