@@ -1,9 +1,37 @@
 <template>
     <div>
-        <h1>page FAQ</h1>
+        <h1>Page FAQ</h1>
+        <div>
+            <h2>Questions:</h2>
+            <ol>
+                <li v-for="question in faqList" :key="question.id">
+                    <a href='/faq'> {{ question.question }} </a>
+                </li>
+            </ol>
+        </div>
+        <div>
+            <h2>Réponses:</h2>
+            <ol>
+                <li v-for="reponse in faqList" :key="reponse.id">
+                    <a href='/faq'> {{ reponse.reponse }} </a>
+                </li>
+            </ol>
+        </div>
     </div>
 </template>
 
 <script>
-    export default {}
+    export default {
+        data() {
+            return {
+                faqList: [],
+            }
+        },
+        mounted() {
+            axios
+                .get('http://localhost:8000/api/faq?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9')
+                .then(response => (this.faqList = response.data))
+                .catch(error => console.log(error))
+        }
+    }
 </script>
