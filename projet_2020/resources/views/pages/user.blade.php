@@ -2,4 +2,4 @@
 
 @section('content')
     <user></user>
-@stop
+@stop 

@@ -67,4 +67,6 @@ class UserController extends Controller
             return response()->json(['delete succes'], 200);
         }
     }
+
+    
 }

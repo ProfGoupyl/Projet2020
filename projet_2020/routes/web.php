@@ -41,11 +41,17 @@ Route::get('faq', function()
 {
     return View('pages.faq');
 });
-Route::get('/', function () {
-    return view('auth/login');
-});
+// Route::get('/', function () {
+//     return view('auth/login');
+// });
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+Route::get('/administrationUser', function () {
+    return view('administration.UserAdmin');
+});
+Route::get('/administrationModule', function () {
+    return view('administration.CreateCoursAdmin');
+});
 
-require __DIR__.'/auth.php';
+
