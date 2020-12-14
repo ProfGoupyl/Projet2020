@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,9 +45,9 @@ Route::get('faq', function()
 // Route::get('/', function () {
 //     return view('auth/login');
 // });
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 Route::get('/administrationUser', function () {
     return view('administration.UserAdmin');
 });
@@ -54,10 +55,21 @@ Route::get('/administrationModule', function () {
     return view('administration.CreateCoursAdmin');
 });
 
-
 Route::group(['middleware' => ['auth']], function () {
 
 });
 
-require __DIR__.'/auth.php';
+// Toutes les routes commencant par "/admin" utilisent le middleware IsAdmin (vérifie si l'user est ADMIN). 
+Route::prefix('admin')
+    ->middleware(IsAdmin::class)
+    ->group(function() {
 
+        // Mettez vos routes en dessous de la première
+        // Route de base renvoyant au dashboard de l'administration
+        Route::get('/', function() {
+            return view('dashboard');
+        })->name('dashboard');
+    });
+
+
+require __DIR__.'/auth.php';
