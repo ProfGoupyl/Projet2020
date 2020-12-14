@@ -3874,7 +3874,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      faqList: []
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('http://localhost:8000/api/faq?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
+      return _this.faqList = response.data;
+    })["catch"](function (error) {
+      return console.log(error);
+    });
+  }
+});
 
 /***/ }),
 
@@ -3893,7 +3924,53 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      id: 1,
+      url: null,
+      userList: []
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('http://localhost:8000/api/users?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
+      return _this.userList = response.data;
+    })["catch"](function (error) {
+      return console.log(error);
+    });
+  }
+});
 
 /***/ }),
 
@@ -39616,16 +39693,43 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("h1", [_vm._v("Page FAQ")]),
+    _vm._v(" "),
+    _c("div", [
+      _c("h2", [_vm._v("Questions:")]),
+      _vm._v(" "),
+      _c(
+        "ol",
+        _vm._l(_vm.faqList, function(question) {
+          return _c("li", { key: question.id }, [
+            _c("a", { attrs: { href: "/faq" } }, [
+              _vm._v(" " + _vm._s(question.question) + " ")
+            ])
+          ])
+        }),
+        0
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", [
+      _c("h2", [_vm._v("Réponses:")]),
+      _vm._v(" "),
+      _c(
+        "ol",
+        _vm._l(_vm.faqList, function(reponse) {
+          return _c("li", { key: reponse.id }, [
+            _c("a", { attrs: { href: "/faq" } }, [
+              _vm._v(" " + _vm._s(reponse.reponse) + " ")
+            ])
+          ])
+        }),
+        0
+      )
+    ])
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("page FAQ")])])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -39647,14 +39751,58 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("h1", [_vm._v("Modifier le profil ")]),
+    _vm._v(" "),
+    _c(
+      "table",
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._l(_vm.userList, function(users, info) {
+          return _c("tbody", { key: info, attrs: { id: users.id } }, [
+            _c("td", [
+              _vm._v("\n            " + _vm._s(users.id) + "\n        ")
+            ]),
+            _vm._v(" "),
+            _c("td", [
+              _vm._v("\n            " + _vm._s(users.nom) + "\n        ")
+            ]),
+            _vm._v(" "),
+            _c("td", [
+              _vm._v("\n            " + _vm._s(users.prenom) + "\n        ")
+            ]),
+            _vm._v(" "),
+            _c("td", [
+              _vm._v("\n            " + _vm._s(users.email) + "\n        ")
+            ]),
+            _vm._v(" "),
+            _c("td", [
+              _vm._v("\n            " + _vm._s(users.pseudo) + "\n        ")
+            ])
+          ])
+        })
+      ],
+      2
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("Modifier le profil")])])
+    return _c("tr", [
+      _c("th", [_vm._v("ID")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Nom")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Prenom")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Email")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Pseudo")])
+    ])
   }
 ]
 render._withStripped = true
@@ -55442,8 +55590,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\www\Projet2020\projet_2020\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\wamp64\www\Projet2020\projet_2020\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })

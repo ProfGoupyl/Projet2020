@@ -1,0 +1,69 @@
+/*
+$font-family-sans-serif: 'Nunito', sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+*/
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500&family=Open+Sans:wght@300;400;600&display=swap%27");
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 2%;
+  width: 100vw;
+  background-color: #faf9f9;
+  color: #000000;
+}
+
+header {
+  padding: 2%;
+}
+
+section {
+  height: auto;
+  padding: 2%;
+}
+
+input[value=submit] {
+  text-decoration: none;
+  background-color: #82e922;
+  color: white;
+  transition: 0.5s ease;
+}
+input[value=submit]:hover, input[value=submit]:focus {
+  background-color: #75dc16;
+}
+input[value=submit]:active {
+  position: relative;
+  top: 1px;
+}
+
+input[value=delete] {
+  text-decoration: none;
+  background-color: #e92222;
+  color: white;
+  transition: 0.5s ease;
+}
+input[value=delete]:hover, input[value=delete]:focus {
+  background-color: #dc1616;
+}
+input[value=delete]:active {
+  position: relative;
+  top: 1px;
+}
+
+input[value=update] {
+  text-decoration: none;
+  background-color: #ffae18;
+  color: white;
+  transition: 0.5s ease;
+}
+input[value=update]:hover, input[value=update]:focus {
+  background-color: #fea500;
+}
+input[value=update]:active {
+  position: relative;
+  top: 1px;
+}
+
+/*# sourceMappingURL=default.css.map */
