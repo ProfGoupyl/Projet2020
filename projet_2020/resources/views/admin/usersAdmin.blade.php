@@ -1,5 +1,4 @@
 <!-- Reprend le tableau des utilisateur avec le CRUD + Suppression des étudiants/cours à la fin de l'année scolaire -->
-
 <!-- Creat New user -->
 <button class="btn btn-primary addUser">+ Ajouter un utilisateur</button>
 <script>
@@ -30,8 +29,9 @@
             <!-- Validation Errors -->
             <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="http://localhost:8000/api/users">
                 @csrf
+                <input type="hidden" value="sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9" name="api_token">
 
                 <!-- Name -->
                 <div>
@@ -46,47 +46,15 @@
 
                     <x-input id="prenom" class="block mt-1 w-full" type="text" name="prenom" :value="old('prenom')" required autofocus />
                 </div>
-
-                <!-- Pseudo -->
-                <div class="mt-4">
-                    <x-label for="pseudo" :value="__('Pseudo')" />
-
-                    <x-input id="pseudo" class="block mt-1 w-full" type="text" name="pseudo" :value="old('pseudo')" required autofocus />
-                </div>
-
                 <!-- Email Address -->
                 <div class="mt-4">
                     <x-label for="email" :value="__('Email')" />
 
                     <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
                 </div>
-
-                <!-- Password -->
-                <div class="mt-4">
-                    <x-label for="password" :value="__('Password')" />
-
-                    <x-input id="password" class="block mt-1 w-full"
-                                    type="password"
-                                    name="password"
-                                    required autocomplete="new-password" />
-                </div>
-
-                <!-- Confirm Password -->
-                <div class="mt-4">
-                    <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                    <x-input id="password_confirmation" class="block mt-1 w-full"
-                                    type="password"
-                                    name="password_confirmation" required />
-                </div>
-
                 <div class="flex items-center justify-end mt-4">
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                        {{ __('Already registered?') }}
-                    </a>
-
                     <x-button class="ml-4">
-                        {{ __('Register') }}
+                        {{ __('M\'inscrire') }}
                     </x-button>
                 </div>
             </form>
@@ -98,7 +66,7 @@
 
 <h1>Tableau des utilisateurs</h1>
 
-
+<?php dd($users); ?>
 <div class="col-12">
     <table>
         <thead>
@@ -112,7 +80,7 @@
         </tr>
         </thead>
         <tbody>
-        <?php foreach($users as $urser) ?>
+        @foreach($users as $user)
         <tr>
             <td>{{user.name}}</td>
             <td>{{user.prenom}}</td>
@@ -123,9 +91,10 @@
                 <a href="{{Delete,id}}"></a>
             </td>
         </tr>
-
+        @endforeach
         </tbody>
     </table>
+
 </div>
 
 

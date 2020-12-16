@@ -47,19 +47,17 @@ Route::get('faq', function()
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
-Route::get('/administrationUser', function () {
-    return view('administration.UserAdmin');
-});
-Route::get('/administrationModule', function () {
-    return view('administration.CreateCoursAdmin');
+
+
+
+Route::get('/usersAdmin', UserAdminController::class, "show");
+
+Route::get('/coursAdmin', function () {
+    return view('admin.coursAdmin');
 });
 
-<<<<<<< HEAD
-require __DIR__.'/auth.php';
-=======
 Route::group(['middleware' => ['auth']], function () {
 
 });
 
 require __DIR__.'/auth.php';
->>>>>>> 00ee7e8bf7154b8ffd103d8f3eb6657d67521620
