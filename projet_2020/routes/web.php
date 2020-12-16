@@ -15,6 +15,8 @@ use App\Http\Controllers\CsvController;
 |
 */
 
+
+
 Route::get('/', function()
 {
     return View('welcome');
@@ -70,6 +72,9 @@ Route::prefix('admin')
         Route::get('/', function() {
             return view('dashboard');
         })->name('dashboard');
+
+        // route pour les users
+        Route::resource('users',UserAdminController::class);
     });
 
 //Test de l'ajout d'utilisateurs par fichier .csv;
