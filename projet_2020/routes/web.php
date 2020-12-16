@@ -73,10 +73,10 @@ Route::prefix('admin')
     });
 
 //Test de l'ajout d'utilisateurs par fichier .csv;
-Route::get('/csv', function (){
-    return view('administration.Csv');
-});
-Route::get('CsvController', CsvController::class, 'index');
+// Route::get('/csv', function (){
+//     return view('administration.Csv');
+// });
+// Route::get('CsvController', CsvController::class, 'index');
 
 require __DIR__.'/auth.php';
 
