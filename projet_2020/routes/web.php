@@ -2,7 +2,7 @@
 
 use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Administration\UserAdminController;
+use App\Http\Controllers\CsvController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,7 +57,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 });
 
-// Toutes les routes commencant par "/admin" utilisent le middleware IsAdmin (vérifie si l'user est ADMIN). 
+// Toutes les routes commencant par "/admin" utilisent le middleware IsAdmin (vérifie si l'user est ADMIN).
 Route::prefix('admin')
     ->middleware(IsAdmin::class)
     ->group(function() {
@@ -72,6 +72,11 @@ Route::prefix('admin')
         Route::resource('users',UserAdminController::class);
     });
 
+//Test de l'ajout d'utilisateurs par fichier .csv;
+Route::get('/csv', function (){
+    return view('administration.Csv');
+});
+Route::get('CsvController', CsvController::class, 'index');
 
 require __DIR__.'/auth.php';
 
