@@ -12,13 +12,29 @@
             <li>
                 <p>Vous êtes connecté(e) en tant que {{ Auth::user()->name }} {{ Auth::user()->prenom }} (Admin)</p>
                <a href="{{ url('/admin') }}">Dashboard</a>
-               <a href="{{ url('/logout') }}">Logout</a>
+               <form method="POST" action="{{ route('logout') }}">
+                @csrf
+
+                <x-dropdown-link :href="route('logout')"
+                        onclick="event.preventDefault();
+                                    this.closest('form').submit();">
+                    {{ __('Logout') }}
+                </x-dropdown-link>
+            </form>
             </li>
             @endif
             @if (Auth::user() && Auth::user()->admin === 0)
             <li>
                 <p>Vous êtes connecté(e) en tant que <span>{{ Auth::user()->name }} {{ Auth::user()->prenom }}</span></p>
-                <a href="{{ url('/logout') }}">Logout</a>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                    <x-dropdown-link :href="route('logout')"
+                            onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                        {{ __('Logout') }}
+                    </x-dropdown-link>
+                </form>
             </li>
             @endif
         </ul>
