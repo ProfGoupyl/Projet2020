@@ -69,6 +69,8 @@ Route::prefix('admin')
         Route::get('/', function() {
             return view('dashboard');
         })->name('dashboard');
+
+        
     });
 
 
