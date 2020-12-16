@@ -42,12 +42,7 @@ Route::get('faq', function()
 {
     return View('pages.faq');
 });
-// Route::get('/', function () {
-//     return view('auth/login');
-// });
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
+
 Route::get('/administrationUser', function () {
     return view('administration.UserAdmin');
 });
@@ -73,3 +68,9 @@ Route::prefix('admin')
 
 
 require __DIR__.'/auth.php';
+
+
+Route::get('test', function()
+{
+    return View('pages.test');
+});

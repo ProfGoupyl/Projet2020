@@ -44,6 +44,9 @@ class RegisteredUserController extends Controller
             'prenom' => $request->prenom,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'api_token' => 'sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9',
+            'remember_token' => '123456789sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV',
+            'register_token' => 'registerPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9',
         ]));
 
         event(new Registered($user));
