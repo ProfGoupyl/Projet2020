@@ -39780,7 +39780,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("td", [
-              _vm._v("\n            " + _vm._s(users.nom) + "\n        ")
+              _vm._v("\n            " + _vm._s(users.name) + "\n        ")
             ]),
             _vm._v(" "),
             _c("td", [
