@@ -18,6 +18,7 @@
         data() {
             return {
                 coursList: [],
+                coursNames: []
             }
         },
         beforeMount() {
@@ -25,6 +26,17 @@
                 .get('http://localhost:8000/api/users_cours?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9')
                 .then(response => (this.coursList = response.data))
                 .catch(error => console.log(error))
+            axios
+                .get('http://localhost:8000/api/cours?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9')
+                .then(response => (this.coursNames = response.data))
+                .catch(error => console.log(error))
+        },
+        updated() {
+            for(let i = 0; i < this.coursList; i++) {
+                if(this.coursList[i].cours_id === this.coursNames[i].id) {
+                    console.log(this.coursNames.titre)
+                }
+            }
         }
     }
 </script>

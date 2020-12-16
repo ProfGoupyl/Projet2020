@@ -4044,7 +4044,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      coursList: []
+      coursList: [],
+      coursNames: []
     };
   },
   beforeMount: function beforeMount() {
@@ -4055,6 +4056,18 @@ __webpack_require__.r(__webpack_exports__);
     })["catch"](function (error) {
       return console.log(error);
     });
+    axios.get('http://localhost:8000/api/cours?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
+      return _this.coursNames = response.data;
+    })["catch"](function (error) {
+      return console.log(error);
+    });
+  },
+  updated: function updated() {
+    for (var i = 0; i < this.coursList; i++) {
+      if (this.coursList[i].cours_id === this.coursNames[i].id) {
+        console.log(this.coursNames.titre);
+      }
+    }
   }
 });
 
