@@ -90,14 +90,34 @@
         <tbody>
             
         @foreach ($users as $user)
-           <tr>
+        <tr>
+               
             <td>{{$user->name}}</td>
             <td>{{$user->prenom}}</td>
             <td>{{$user->pseudo}}</td>
             <td>{{$user->email}}</td>
             <td><input type="checkbox" id="admin" name="admin" value="admin"></td>
-            <td><a href="#">Modifer</a>
-                <a href="#">Supprimer</a>
+            <td>
+                <a>
+                    <form action="/admin/users/{{ $user->id }}" method="post">
+                    @csrf
+                    @method('put')
+                    <input type="text" name="name" value="{{ $user->name }}">
+                    <input type="text" name="prenom" value="{{ $user->prenom }}">
+                    <input type="text" name="pseudo" value="{{ $user->pseudo }}">
+                    <input type="text" name="email" value="{{ $user->email }}">
+                    <input type="text" name="admin" value="{{ $user->admin }}">
+                    <input type="submit" value='modifier'>
+                    </form>
+                </a>
+
+                <a>
+                    <form action='/admin/users/{{ $user->id }}' method="post">
+                    @csrf
+                    @method('delete')
+                    <input type='submit' value='Supprimer'>
+                    </form>
+                </a>
             </td>
         </tr> 
         @endforeach

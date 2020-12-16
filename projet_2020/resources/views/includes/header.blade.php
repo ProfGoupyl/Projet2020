@@ -9,7 +9,8 @@
             <li><a href="/user">User</a></li>
             <li><a href="/session">Session</a></li>
             @if (Auth::user() && Auth::user()->admin === 1)
-            <li>
+            <li></li>
+                
                <a href="{{ url('/admin') }}">Dashboard</a>
             </li>
             @endif

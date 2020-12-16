@@ -76,7 +76,13 @@ class UserAdminController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        
+        $user->name = $request->has('name') && strlen($request->name) ? $request->name : $user->name;
+        $user->prenom = $request->has('prenom') && strlen($request->prenom) ? $request->prenom : $user->prenom;
+        $user->pseudo = $request->has('pseudo') && strlen($request->pseudo) ? $request->pseudo : $user->pseudo;
+        $user->email = $request->has('email') && strlen($request->email) ? $request->email : $user->email;
+        $user->admin = $request->has('admin') && strlen($request->admin) ? $request->admin : $user->admin;
+        $user->save();
+        return redirect('/admin/users');
     }
 
     /**
@@ -87,6 +93,7 @@ class UserAdminController extends Controller
      */
     public function destroy(User $user)
     {
-        
+        $user->delete();
+        return redirect('/admin/users');
     }
 }
