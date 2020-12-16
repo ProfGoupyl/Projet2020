@@ -10,7 +10,15 @@
             <li><a href="/session">Session</a></li>
             @if (Auth::user() && Auth::user()->admin === 1)
             <li>
+                <p>Vous êtes connecté(e) en tant que {{ Auth::user()->name }} {{ Auth::user()->prenom }} (Admin)</p>
                <a href="{{ url('/admin') }}">Dashboard</a>
+               <a href="{{ url('/logout') }}">Logout</a>
+            </li>
+            @endif
+            @if (Auth::user() && Auth::user()->admin === 0)
+            <li>
+                <p>Vous êtes connecté(e) en tant que <span>{{ Auth::user()->name }} {{ Auth::user()->prenom }}</span></p>
+                <a href="{{ url('/logout') }}">Logout</a>
             </li>
             @endif
         </ul>

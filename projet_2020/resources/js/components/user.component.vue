@@ -2,25 +2,27 @@
     <div>
         <h1>Page utilisateur</h1>
         <h2>Liste des cours</h2>
+        <h3>User ID: {{ userId }}</h3>
         <p>Ici on ne récupère que l'id des cours, malheureusement pour le moment</p>
-        <ol>
+        <ul>
             <li v-for="cours in coursList" :key="cours.id">
                 Cours ID: <a href='/cours'> {{ cours.cours_id }} </a> |
                 Débute le: {{ cours.start_at }} |
                 Termine le: {{ cours.end_at }}
             </li>
-        </ol>
+        </ul>
     </div>
 </template>
 
 <script>
     export default {
         name: 'user',
-        props: ['message'],
+        props: ['userid'],
         data() {
             return {
                 coursList: [],
-                coursNames: []
+                coursNames: [],
+                userId: this.userid
             }
         },
         beforeMount() {
@@ -34,9 +36,11 @@
                 .catch(error => console.log(error))
         },
         mounted() {
-            for(let i = 0; i < this.coursList; i++) {
-                if(this.coursList[i].cours_id === this.coursNames[i].id) {
-                    console.log(this.coursNames.titre)
+            for(let i = 0; i < this.coursList.length; i++) {
+                for(let x = 0; x < this.coursNames.length; i++) {
+                    if(this.coursList[i].cours_id === this.coursNames[x].id) {
+                        console.log(this.coursNames[x].titre)
+                    }
                 }
             }
         }
