@@ -32,5 +32,6 @@ const router = new VueRouter({
 
 new Vue({
     router,
-    el: '#app'
+    el: '#app',
+    data: { message: 'Hello World' }
 })

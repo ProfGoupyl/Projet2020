@@ -15,6 +15,8 @@
 
 <script>
     export default {
+        name: 'user',
+        props: ['message'],
         data() {
             return {
                 coursList: [],
@@ -31,7 +33,7 @@
                 .then(response => (this.coursNames = response.data))
                 .catch(error => console.log(error))
         },
-        updated() {
+        mounted() {
             for(let i = 0; i < this.coursList; i++) {
                 if(this.coursList[i].cours_id === this.coursNames[i].id) {
                     console.log(this.coursNames.titre)

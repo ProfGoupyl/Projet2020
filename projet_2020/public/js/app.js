@@ -4042,6 +4042,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'user',
+  props: ['message'],
   data: function data() {
     return {
       coursList: [],
@@ -4062,7 +4064,7 @@ __webpack_require__.r(__webpack_exports__);
       return console.log(error);
     });
   },
-  updated: function updated() {
+  mounted: function mounted() {
     for (var i = 0; i < this.coursList; i++) {
       if (this.coursList[i].cours_id === this.coursNames[i].id) {
         console.log(this.coursNames.titre);
@@ -55210,7 +55212,10 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
 });
 new Vue({
   router: router,
-  el: '#app'
+  el: '#app',
+  data: {
+    message: 'Hello World'
+  }
 });
 
 /***/ }),
