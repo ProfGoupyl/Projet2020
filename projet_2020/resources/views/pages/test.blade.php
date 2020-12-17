@@ -4,16 +4,11 @@ use Illuminate\Support\Facades\Auth;
 
 
 $user = Auth::user();
-
-
-
-
-
-var_dump($user->api_token);
-
+$user ? var_dump($user->api_token) :var_dump('pas connecté');
 
 
 ?>
+
 
 <form method="POST" action="{{ route('logout') }}">
     @csrf
