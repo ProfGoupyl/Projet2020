@@ -1,5 +1,7 @@
 @extends('layouts.default')
 
 @section('content')
-    <user v-bind:message='message'></user>
+    @if(Auth::user())
+    <user v-bind:userid='{{ Auth::user()->id }}'></user>
+    @endif
 @stop 
