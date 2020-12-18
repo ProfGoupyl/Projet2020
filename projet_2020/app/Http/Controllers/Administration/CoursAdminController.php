@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Administration;
 
 use App\Models\Cours;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CoursAdminController extends Controller
 {
@@ -14,7 +15,10 @@ class CoursAdminController extends Controller
      */
     public function index()
     {
-        //
+        $cours = Cours::all();
+        return view('administration.cours.index', [
+            'cours_list' => $cours
+        ]);
     }
 
     /**

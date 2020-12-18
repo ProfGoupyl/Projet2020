@@ -4038,28 +4038,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'user',
+  props: ['message'],
   data: function data() {
     return {
-      userId: null,
-      url: null,
       coursList: [],
-      coursUsers: []
+      coursNames: []
     };
   },
-  mounted: function mounted() {
+  beforeMount: function beforeMount() {
     var _this = this;
 
-    axios.get('http://localhost:8000/api/cours?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
+    axios.get('http://localhost:8000/api/users_cours?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
       return _this.coursList = response.data;
     })["catch"](function (error) {
       return console.log(error);
     });
-    axios.get('http://localhost:8000/api/users_cours?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
-      return _this.coursUsers = response.data;
+    axios.get('http://localhost:8000/api/cours?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
+      return _this.coursNames = response.data;
     })["catch"](function (error) {
       return console.log(error);
     });
+  },
+  mounted: function mounted() {
+    for (var i = 0; i < this.coursList; i++) {
+      if (this.coursList[i].cours_id === this.coursNames[i].id) {
+        console.log(this.coursNames.titre);
+      }
+    }
   }
 });
 
@@ -39869,13 +39879,27 @@ var render = function() {
     _vm._v(" "),
     _c("h2", [_vm._v("Liste des cours")]),
     _vm._v(" "),
+    _c("p", [
+      _vm._v(
+        "Ici on ne récupère que l'id des cours, malheureusement pour le moment"
+      )
+    ]),
+    _vm._v(" "),
     _c(
       "ol",
       _vm._l(_vm.coursList, function(cours) {
-        return _c("li", { key: cours.titre }, [
+        return _c("li", { key: cours.id }, [
+          _vm._v("\n            Cours ID: "),
           _c("a", { attrs: { href: "/cours" } }, [
-            _vm._v(" " + _vm._s(cours.titre) + " ")
-          ])
+            _vm._v(" " + _vm._s(cours.cours_id) + " ")
+          ]),
+          _vm._v(
+            " |\n            Débute le: " +
+              _vm._s(cours.start_at) +
+              " |\n            Termine le: " +
+              _vm._s(cours.end_at) +
+              "\n        "
+          )
         ])
       }),
       0
@@ -55188,7 +55212,10 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
 });
 new Vue({
   router: router,
-  el: '#app'
+  el: '#app',
+  data: {
+    message: 'Hello World'
+  }
 });
 
 /***/ }),
@@ -55590,8 +55617,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })

@@ -1,5 +1,5 @@
 @extends('layouts.default')
 
 @section('content')
-    <user></user>
+    <user v-bind:message='message'></user>
 @stop 
