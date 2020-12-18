@@ -3945,19 +3945,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['user'],
   data: function data() {
     return {
-      userId: this.user.id,
       userName: this.user.name,
       userPrenom: this.user.prenom,
       userEmail: this.user.email,
       userPseudo: this.user.pseudo
     };
+  },
+  methods: {
+    submit: function submit() {
+      axios.patch('http://localhost:8000/api/users?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9', {
+        name: this.userName,
+        prenom: this.userPrenom,
+        email: this.userEmail,
+        pseudo: this.userPseudo
+      }).then(function (response) {
+        return console.log('Formulaire envoyé');
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    }
   }
 });
 
@@ -39756,132 +39766,120 @@ var render = function() {
   return _c("div", [
     _c("h1", [_vm._v("Modifier le profil ")]),
     _vm._v(" "),
-    _c("form", { attrs: { action: "", method: "post" } }, [
-      _c("div", [
-        _c("label", { attrs: { for: "name" } }, [_vm._v("Nom")]),
+    _c(
+      "form",
+      {
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.submit($event)
+          }
+        }
+      },
+      [
+        _c("div", [
+          _c("label", { attrs: { for: "name" } }, [_vm._v("Nom")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.userName,
+                expression: "userName"
+              }
+            ],
+            attrs: { type: "text", name: "name", required: "" },
+            domProps: { value: _vm.userName },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.userName = $event.target.value
+              }
+            }
+          })
+        ]),
         _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.userName,
-              expression: "userName"
-            }
-          ],
-          attrs: { type: "text", name: "name" },
-          domProps: { value: _vm.userName },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+        _c("div", [
+          _c("label", { attrs: { for: "prenom" } }, [_vm._v("Prénom")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.userPrenom,
+                expression: "userPrenom"
               }
-              _vm.userName = $event.target.value
+            ],
+            attrs: { type: "text", name: "prenom", required: "" },
+            domProps: { value: _vm.userPrenom },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.userPrenom = $event.target.value
+              }
             }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", [
-        _c("label", { attrs: { for: "prenom" } }, [_vm._v("Prénom")]),
+          })
+        ]),
         _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.userPrenom,
-              expression: "userPrenom"
-            }
-          ],
-          attrs: { type: "text", name: "prenom" },
-          domProps: { value: _vm.userPrenom },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+        _c("div", [
+          _c("label", { attrs: { for: "email" } }, [_vm._v("E-mail")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.userEmail,
+                expression: "userEmail"
               }
-              _vm.userPrenom = $event.target.value
+            ],
+            attrs: { type: "email", name: "email", required: "" },
+            domProps: { value: _vm.userEmail },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.userEmail = $event.target.value
+              }
             }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", [
-        _c("label", { attrs: { for: "email" } }, [_vm._v("E-mail")]),
+          })
+        ]),
         _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.userEmail,
-              expression: "userEmail"
-            }
-          ],
-          attrs: { type: "email", name: "email" },
-          domProps: { value: _vm.userEmail },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+        _c("div", [
+          _c("label", { attrs: { for: "pseudo" } }, [_vm._v("Pseudo")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.userPseudo,
+                expression: "userPseudo"
               }
-              _vm.userEmail = $event.target.value
+            ],
+            attrs: { type: "text", name: "pseudo", required: "" },
+            domProps: { value: _vm.userPseudo },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.userPseudo = $event.target.value
+              }
             }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", [
-        _c("label", { attrs: { for: "pseudo" } }, [_vm._v("Pseudo")]),
+          })
+        ]),
         _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.userPseudo,
-              expression: "userPseudo"
-            }
-          ],
-          attrs: { type: "text", name: "pseudo" },
-          domProps: { value: _vm.userPseudo },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.userPseudo = $event.target.value
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.userId,
-              expression: "userId"
-            }
-          ],
-          attrs: { type: "number", hidden: "" },
-          domProps: { value: _vm.userId },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.userId = $event.target.value
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _vm._m(0)
-    ])
+        _vm._m(0)
+      ]
+    )
   ])
 }
 var staticRenderFns = [
