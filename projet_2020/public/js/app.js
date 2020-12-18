@@ -3839,10 +3839,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['userid'],
   data: function data() {
     return {
-      userId: null,
-      url: null,
+      userId: this.userid,
       moduleList: []
     };
   },
@@ -3942,33 +3942,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['user'],
   data: function data() {
     return {
-      id: 1,
-      url: null,
-      userList: []
+      userInfos: this.user,
+      userName: this.user.name,
+      userPrenom: this.user.prenom,
+      userEmail: this.user.email,
+      userPseudo: this.user.pseudo
     };
-  },
-  mounted: function mounted() {
-    var _this = this;
-
-    axios.get('http://localhost:8000/api/users?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
-      return _this.userList = response.data;
-    })["catch"](function (error) {
-      return console.log(error);
-    });
   }
 });
 
@@ -3997,10 +3980,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['userid'],
   data: function data() {
     return {
-      userId: null,
-      url: null,
+      userId: this.userid,
       moduleList: []
     };
   },
@@ -4026,7 +4009,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -39768,57 +39750,110 @@ var render = function() {
   return _c("div", [
     _c("h1", [_vm._v("Modifier le profil ")]),
     _vm._v(" "),
-    _c(
-      "table",
-      [
-        _vm._m(0),
+    _c("form", { attrs: { action: "", method: "post" } }, [
+      _c("div", [
+        _c("label", { attrs: { for: "name" } }, [_vm._v("Nom")]),
         _vm._v(" "),
-        _vm._l(_vm.userList, function(users, info) {
-          return _c("tbody", { key: info, attrs: { id: users.id } }, [
-            _c("td", [
-              _vm._v("\n            " + _vm._s(users.id) + "\n        ")
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _vm._v("\n            " + _vm._s(users.name) + "\n        ")
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _vm._v("\n            " + _vm._s(users.prenom) + "\n        ")
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _vm._v("\n            " + _vm._s(users.email) + "\n        ")
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _vm._v("\n            " + _vm._s(users.pseudo) + "\n        ")
-            ])
-          ])
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.userName,
+              expression: "userName"
+            }
+          ],
+          attrs: { type: "text", name: "name" },
+          domProps: { value: _vm.userName },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.userName = $event.target.value
+            }
+          }
         })
-      ],
-      2
-    )
+      ]),
+      _vm._v(" "),
+      _c("div", [
+        _c("label", { attrs: { for: "prenom" } }, [_vm._v("Prénom")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.userPrenom,
+              expression: "userPrenom"
+            }
+          ],
+          attrs: { type: "text", name: "prenom" },
+          domProps: { value: _vm.userPrenom },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.userPrenom = $event.target.value
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", [
+        _c("label", { attrs: { for: "email" } }, [_vm._v("E-mail")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.userEmail,
+              expression: "userEmail"
+            }
+          ],
+          attrs: { type: "email", name: "email" },
+          domProps: { value: _vm.userEmail },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.userEmail = $event.target.value
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", [
+        _c("label", { attrs: { for: "pseudo" } }, [_vm._v("Pseudo")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.userPseudo,
+              expression: "userPseudo"
+            }
+          ],
+          attrs: { type: "text", name: "pseudo" },
+          domProps: { value: _vm.userPseudo },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.userPseudo = $event.target.value
+            }
+          }
+        })
+      ])
+    ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("th", [_vm._v("ID")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Nom")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Prenom")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Email")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Pseudo")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -39884,12 +39919,6 @@ var render = function() {
     _c("h2", [_vm._v("Liste des cours")]),
     _vm._v(" "),
     _c("h3", [_vm._v("User ID: " + _vm._s(_vm.userId))]),
-    _vm._v(" "),
-    _c("p", [
-      _vm._v(
-        "Ici on ne récupère que l'id des cours, malheureusement pour le moment"
-      )
-    ]),
     _vm._v(" "),
     _c(
       "ul",

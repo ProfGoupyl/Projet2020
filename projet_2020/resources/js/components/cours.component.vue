@@ -12,10 +12,10 @@
 
 <script>
     export default {
+        props: ['userid'],
         data() {
             return {
-                userId: null,
-                url: null,
+                userId: this.userid,
                 moduleList: []
             }
         },
