@@ -3838,12 +3838,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['userid'],
   data: function data() {
     return {
       userId: this.userid,
-      moduleList: []
+      moduleList: [],
+      sessionList: []
     };
   },
   mounted: function mounted() {
@@ -3851,6 +3859,11 @@ __webpack_require__.r(__webpack_exports__);
 
     axios.get('http://localhost:8000/api/module?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
       return _this.moduleList = response.data;
+    })["catch"](function (error) {
+      return console.log(error);
+    });
+    axios.get('http://localhost:8000/api/cours?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
+      return _this.sessionList = response.data;
     })["catch"](function (error) {
       return console.log(error);
     });
@@ -39671,13 +39684,47 @@ var render = function() {
   return _c("div", [
     _c("h1", [_vm._v("page COURS")]),
     _vm._v(" "),
-    _c("h2", [_vm._v("Liste des session dispo pour le cours")]),
+    _c("h2", [_vm._v("Liste des sessions dispo pour le cours")]),
     _vm._v(" "),
     _c(
-      "ol",
-      _vm._l(_vm.moduleList, function(module) {
-        return _c("li", { key: module.titre }, [
-          _vm._v("\n           " + _vm._s(module.titre) + "\n        ")
+      "ul",
+      _vm._l(_vm.sessionList, function(session) {
+        return _c("li", { key: session.id }, [
+          _c(
+            "span",
+            [
+              _vm._v(
+                "\n            Cours : " +
+                  _vm._s(session.titre) +
+                  "\n            "
+              ),
+              _vm._l(_vm.moduleList, function(module) {
+                return _c("ul", { key: module.titre }, [
+                  _c(
+                    "li",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: session.id === module.cours_id,
+                          expression: "session.id === module.cours_id"
+                        }
+                      ]
+                    },
+                    [
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(module.titre) +
+                          "\n                "
+                      )
+                    ]
+                  )
+                ])
+              })
+            ],
+            2
+          )
         ])
       }),
       0
