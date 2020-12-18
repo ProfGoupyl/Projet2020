@@ -16,7 +16,7 @@
                 {{ users.id }}
             </td>
             <td>
-                {{ users.nom }}
+                {{ users.name }}
             </td>
             <td>
                 {{ users.prenom }}

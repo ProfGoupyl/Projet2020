@@ -106,6 +106,7 @@
 =======
             
         @foreach ($users as $user)
+<<<<<<< HEAD:projet_2020/resources/views/admin/index.blade.php
            <tr>
             <td>{{$user->name}}</td>
             <td>{{$user->prenom}}</td>
@@ -120,6 +121,40 @@
         </tr>
         @endforeach
 =======
+=======
+        <tr>
+            <form action="/admin/users/{{ $user->id }}" method="post">
+                @csrf
+                @method('put')
+                <td>
+                    <input class="input-{{$user->id}}" style="background:none;border:none;color:black;" disabled value={{$user->name}} type="text" name="name">
+                </td>
+                <td>
+                    <input class="input-{{$user->id}}" style="background:none;border:none;color:black;" disabled type="text" name="prenom" value="{{ $user->prenom }}">
+                </td>
+                <td>
+                    <input class="input-{{$user->id}}" style="background:none;border:none;color:black;" disabled type="text" name="pseudo" value="{{ $user->pseudo }}">
+                </td>
+                <td>
+                    <input class="input-{{$user->id}}" style="background:none;border:none;color:black;" disabled type="text" name="email" value="{{ $user->email }}">
+                </td>
+                <td>
+                    <input class="input-{{$user->id}}" style="background:none;border:none;color:black;" disabled type="text" name="admin" value="{{ $user->admin }}">
+                </td>
+                <td>
+                    <button type="button" data-target="{{$user->id}}" class="modify">Modifer</button>
+                    <input style="display:none;" id="save-{{$user->id}}" type="submit" value="Sauvegarder">
+                </td>
+            </form>
+                {{-- <a>
+                    <form action='/admin/users/{{ $user->id }}' method="post">
+                    @csrf
+                    @method('delete')
+                    <input type='submit' value='Supprimer'>
+                    </form>
+                </a>
+            </td> --}}
+>>>>>>> a8ac56f249bddf27cbcacc629f9af99dae49ff33:projet_2020/resources/views/administration/index.blade.php
         </tr> 
         @endforeach
         
@@ -133,3 +168,20 @@
 
 </div>
 
+<script>
+    const modifyBtnList = document.querySelectorAll('.modify');
+    modifyBtnList.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const idTarget = btn.dataset.target;
+            const inputs = document.querySelectorAll(`.input-${idTarget}`);
+            const saveBtn = document.querySelector(`#save-${idTarget}`)
+            inputs.forEach(input => {
+                input.style.border = "1px solid black";
+                input.style.backgroundColor = "#f3f3f3";
+                input.disabled = false;
+            });
+            btn.style.display = "none";
+            saveBtn.style.display = "inherit";
+        })
+    })
+</script>
