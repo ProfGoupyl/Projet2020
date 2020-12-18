@@ -3,3 +3,5 @@
 <meta name="author" content="Scotch">
 
 <title>Homepage</title>
+
+<link rel="stylesheet" href="css/default.css">
