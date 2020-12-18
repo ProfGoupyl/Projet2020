@@ -2,8 +2,6 @@
 
 @section('content')
     @if(Auth::user())
-    <modifyuser v-bind:user='{{ Auth::user() }}'></modifyuser>
-    @method('patch')
-    @csrf
+    <modifyuser v-bind:user="{{ Auth::user() }}"></modifyuser>
     @endif
 @stop

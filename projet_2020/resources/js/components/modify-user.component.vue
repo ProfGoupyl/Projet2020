@@ -1,7 +1,8 @@
 <template>
     <div>
         <h1>Modifier le profil </h1>
-        <form v-on:submit.prevent="submit">
+        <form v-on:submit.prevent="submit" method="patch">
+            <input type="hidden" name="_token" v-bind:value="token">
             <div>
                 <label for="name">Nom</label>
                 <input v-model="userName" type="text" name="name" required>
@@ -18,6 +19,9 @@
                 <label for="pseudo">Pseudo</label>
                 <input v-model="userPseudo" type="text" name="pseudo">
             </div>
+            <div>
+                <button type="submit">Modifier</button>
+            </div>
         </form>
     </div>
 </template>
@@ -27,6 +31,7 @@
         props: ['user'],
         data() {
             return {
+                token: document.querySelector('#token').getAttribute('content'),
                 userInfos: this.user,
                 userName: this.user.name,
                 userPrenom: this.user.prenom,
@@ -43,7 +48,7 @@
                     email: this.userEmail,
                     pseudo: this.userPseudo
                 })
-                .then(response => console.log('Formulaire envoyé'))
+                .then(response => console.log(response))
                 .catch(error => console.log(error))
             }
         }
