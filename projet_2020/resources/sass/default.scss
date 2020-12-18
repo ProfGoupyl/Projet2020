@@ -1,6 +1,9 @@
 @import '../sass/variables';
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500&family=Open+Sans:wght@300;400;600&display=swap%27');
 
+
+
+// GLOBAL STRUCTURE
 *{
 	box-sizing: border-box;
 }
@@ -8,58 +11,77 @@
 body{
 	margin: 2%;
 	width: 100vw;
+	min-height: 100vh;
 	background-color: $background;
     color: $main;
 }
 
 header{
-	//height: 15vh;
+	height: 15vh;
 	padding: 2%;
 }
 
 section{
 	height: auto;
 	padding: 2%;
-}
-
-input[value="submit"]{
-	text-decoration: none;
-	background-color: $btn-add;
-	color: $btn-main;
-	transition:.5s ease;
-	&:hover, &:focus{
-	background-color: $btn-add-dark
+	display: flex;
+	flex-flow: row wrap;
+	article{
+		flex-basis: auto;
 	}
-	&:active{
-	position: relative;
-	top: 1px;
+	aside{
+		flex-basis: 20%;
 	}
 }
 
-input[value="delete"]{
-	text-decoration: none;
-	background-color: $btn-delete;
-	color: $btn-main;
-	transition:.5s ease;
-	&:hover, &:focus{
-	background-color: $btn-delete-dark
-	}
-	&:active{
-	position: relative;
-	top: 1px;
-	}
-}
 
-input[value="update"]{
+
+// NAVIGATION PRINCIPALE
+nav .navPrincipale{
+	ul{
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: flex-end;
+	}
+	li{
+		padding: 1em;
+		list-style-type: none;
+	}
+	a{
+		color: $main;
+		text-decoration: none;
+	}
+} 
+
+
+
+// BOUTONS
+button{
+	padding: 1em;
+	border-radius: 10px;
 	text-decoration: none;
-	background-color: $btn-update;
 	color: $btn-main;
 	transition:.5s ease;
-	&:hover, &:focus{
-	background-color: $btn-update-dark
+	#ajouter{
+		color: $btn-main;
+		&:hover, &:focus{
+			background-color: $btn-add-dark
+		}
+	}
+	#supprimer{
+		color: $btn-delete;
+		&:hover, &:focus{
+			background-color: $btn-delete-dark
+		}
+	}
+	#modifier{
+		color: $btn-update;
+		&:hover, &:focus{
+			background-color: $btn-update-dark
+		}
 	}
 	&:active{
-	position: relative;
-	top: 1px;
+		position: relative;
+		top: 1px;
 	}
 }
