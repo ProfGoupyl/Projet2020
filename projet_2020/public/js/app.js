@@ -3958,7 +3958,6 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       token: document.querySelector('#token').getAttribute('content'),
-      userInfos: this.user,
       userId: this.user.id,
       userName: this.user.name,
       userPrenom: this.user.prenom,
@@ -39904,7 +39903,7 @@ var render = function() {
                 expression: "userPseudo"
               }
             ],
-            attrs: { type: "text", name: "pseudo" },
+            attrs: { type: "text", name: "pseudo", required: "" },
             domProps: { value: _vm.userPseudo },
             on: {
               input: function($event) {
