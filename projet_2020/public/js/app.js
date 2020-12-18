@@ -3839,10 +3839,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['userid'],
   data: function data() {
     return {
-      userId: null,
-      url: null,
+      userId: this.userid,
       moduleList: []
     };
   },
@@ -3954,11 +3954,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['userid'],
   data: function data() {
     return {
-      id: 1,
-      url: null,
-      userList: []
+      userList: [],
+      userId: this.userid
     };
   },
   mounted: function mounted() {
@@ -3997,10 +3997,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['userid'],
   data: function data() {
     return {
-      userId: null,
-      url: null,
+      userId: this.userid,
       moduleList: []
     };
   },
