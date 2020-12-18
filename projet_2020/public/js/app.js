@@ -3884,12 +3884,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -39710,7 +39704,7 @@ var render = function() {
     _c("h1", [_vm._v("Page FAQ")]),
     _vm._v(" "),
     _c("div", [
-      _c("h2", [_vm._v("Questions:")]),
+      _c("h2", [_vm._v("Questions & Réponses:")]),
       _vm._v(" "),
       _c(
         "ol",
@@ -39718,23 +39712,9 @@ var render = function() {
           return _c("li", { key: question.id }, [
             _c("a", { attrs: { href: "/faq" } }, [
               _vm._v(" " + _vm._s(question.question) + " ")
-            ])
-          ])
-        }),
-        0
-      )
-    ]),
-    _vm._v(" "),
-    _c("div", [
-      _c("h2", [_vm._v("Réponses:")]),
-      _vm._v(" "),
-      _c(
-        "ol",
-        _vm._l(_vm.faqList, function(reponse) {
-          return _c("li", { key: reponse.id }, [
-            _c("a", { attrs: { href: "/faq" } }, [
-              _vm._v(" " + _vm._s(reponse.reponse) + " ")
-            ])
+            ]),
+            _vm._v(" "),
+            _c("div", [_vm._v("  " + _vm._s(question.reponse) + "  ")])
           ])
         }),
         0
@@ -55701,8 +55681,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })
