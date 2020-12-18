@@ -95,33 +95,34 @@
                 @csrf
                 @method('put')
                 <td>
-                    <input class="input-{{$user->id}}" style="background:none;border:none;color:black;" disabled value={{$user->name}} type="text" name="name">
+                    <input class="input-{{$user->id}}" style="background:none;border:none;color:black;text-align:center;" disabled value={{$user->name}} type="text" name="name">
                 </td>
                 <td>
-                    <input class="input-{{$user->id}}" style="background:none;border:none;color:black;" disabled type="text" name="prenom" value="{{ $user->prenom }}">
+                    <input class="input-{{$user->id}}" style="background:none;border:none;color:black;text-align:center;" disabled type="text" name="prenom" value="{{ $user->prenom }}">
                 </td>
                 <td>
-                    <input class="input-{{$user->id}}" style="background:none;border:none;color:black;" disabled type="text" name="pseudo" value="{{ $user->pseudo }}">
+                    <input class="input-{{$user->id}}" style="background:none;border:none;color:black;text-align:center;" disabled type="text" name="pseudo" value="{{ $user->pseudo }}">
                 </td>
                 <td>
-                    <input class="input-{{$user->id}}" style="background:none;border:none;color:black;" disabled type="text" name="email" value="{{ $user->email }}">
+                    <input class="input-{{$user->id}}" style="background:none;border:none;color:black;text-align:center;" disabled type="text" name="email" value="{{ $user->email }}">
                 </td>
                 <td>
-                    <input class="input-{{$user->id}}" style="background:none;border:none;color:black;" disabled type="text" name="admin" value="{{ $user->admin }}">
+                    <input class="input-{{$user->id}}" style="background:none;border:none;color:black;text-align:center;" disabled type="text" name="admin" value="{{ $user->admin }}">
                 </td>
                 <td>
                     <button type="button" data-target="{{$user->id}}" class="modify">Modifer</button>
                     <input style="display:none;" id="save-{{$user->id}}" type="submit" value="Sauvegarder">
                 </td>
-            </form>
-                {{-- <a>
+
+                <td>
                     <form action='/admin/users/{{ $user->id }}' method="post">
                     @csrf
                     @method('delete')
                     <input type='submit' value='Supprimer'>
                     </form>
-                </a>
-            </td> --}}
+                </td>
+            </form>
+            </td> 
         </tr> 
         @endforeach
         
