@@ -33,6 +33,7 @@
             return {
                 token: document.querySelector('#token').getAttribute('content'),
                 userInfos: this.user,
+                userId: this.user.id,
                 userName: this.user.name,
                 userPrenom: this.user.prenom,
                 userEmail: this.user.email,
@@ -41,7 +42,7 @@
         },
         methods: {
             submit() {
-                axios.patch('http://localhost:8000/api/users?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9'
+                axios.patch(`http://localhost:8000/api/users/${this.userId}/?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9`
                 , {
                     name: this.userName,
                     prenom: this.userPrenom,
