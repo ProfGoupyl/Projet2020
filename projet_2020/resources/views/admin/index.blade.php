@@ -1,23 +1,6 @@
 <!-- Reprend le tableau des utilisateur avec le CRUD + Suppression des étudiants/cours à la fin de l'année scolaire -->
-
 <!-- Creat New user -->
 <button class="btn btn-primary addUser">+ Ajouter un utilisateur</button>
-<script>
-    const btnAddUser = document.querySelector('.addUser');
-    const addUser = document.querySelector('#addUser');
-
-    btn.addEventListener('click', () => {
-        text.classList.toggle('is-visible');
-    })
-</script>
-<style>
-#addUser{
-    display:none;
-}
-#addUser.is-visible{
-    display:block;
-}
-</style>
 <div id="addUser">
     <x-guest-layout>
         <x-auth-card>
@@ -30,12 +13,17 @@
             <!-- Validation Errors -->
             <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
+
+            <form method="POST" action="http://localhost:8000/api/users">
+
             <form method="post" action="/users">
+
                 @csrf
+                <input type="hidden" value="sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9" name="api_token">
 
                 <!-- Name -->
                 <div>
-                    <x-label for="name" type="text" />
+                    <x-label for="name" type="text" :value="_('Nom')" />
 
                     <x-input id="name" class="block mt-1 w-full" type="text" name="name"  required autofocus />
                 </div>
@@ -44,10 +32,14 @@
                 <div class="mt-4">
                     <x-label for="prenom" :value="__('Prénom')" />
 
+
+                    <x-input id="prenom" class="block mt-1 w-full" type="text" name="prenom" :value="old('prenom')" required autofocus />
+                </div>
+=======
                     <x-input id="prenom" class="block mt-1 w-full" type="text" name="prenom"  required autofocus />
                 </div>
 
-    
+
                 <!-- Email Address -->
                 <div class="mt-4">
                     <x-label for="email" :value="__('Email')" />
@@ -57,12 +49,8 @@
 
 
                 <div class="flex items-center justify-end mt-4">
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                        {{ __('Already registered?') }}
-                    </a>
-
                     <x-button class="ml-4">
-                        {{ __('Register') }}
+                        {{ __('M\'inscrire') }}
                     </x-button>
                 </div>
             </form>
@@ -73,7 +61,6 @@
 <div id="showUser">
 
 <h1>Tableau des utilisateurs</h1>
-
 
 <div class="col-12">
     <table>
@@ -88,8 +75,9 @@
         </tr>
         </thead>
         <tbody>
-            
+
         @foreach ($users as $user)
+
         <tr>
             <form action="/admin/users/{{ $user->id }}" method="post">
                 @csrf
@@ -113,21 +101,25 @@
                     <button type="button" data-target="{{$user->id}}" class="modify">Modifer</button>
                     <input style="display:none;" id="save-{{$user->id}}" type="submit" value="Sauvegarder">
                 </td>
+
+                <td>
+                    <a>
+                        <form action='/admin/users/{{ $user->id }}' method="post">
+                        @csrf
+                        @method('delete')
+                        <input type='submit' onclick="alert('Etes-vous sur de vouloir suprimer un précieux étudiant?')" value='Supprimer'>
+                        </form>
+                    </a>
+                </td>
             </form>
-                {{-- <a>
-                    <form action='/admin/users/{{ $user->id }}' method="post">
-                    @csrf
-                    @method('delete')
-                    <input type='submit' value='Supprimer'>
-                    </form>
-                </a>
-            </td> --}}
-        </tr> 
+        </tr>
         @endforeach
-        
+
+
 
         </tbody>
     </table>
+
 </div>
 
 
@@ -149,4 +141,21 @@
             saveBtn.style.display = "inherit";
         })
     })
+
+    // Ajouter un utilisateur
+    const btnAddUser = document.querySelector('.addUser');
+    const addUser = document.querySelector('#addUser');
+
+    btnAddUser.addEventListener('click', () => {
+        addUser.classList.toggle('is-visible');
+    })
+
 </script>
+<style>
+#addUser{
+    display:none;
+}
+#addUser.is-visible{
+    display:block;
+}
+</style>

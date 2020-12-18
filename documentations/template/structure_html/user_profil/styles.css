@@ -1,0 +1,47 @@
+* {
+	box-sizing: border-box;
+}
+body {
+	min-height: 100vh;
+	background: #ffdcbe;
+	margin: 1em;
+}
+
+header {
+	border-radius: 6px;
+	background:#ffc491 ;
+	width: 100%;
+}
+
+  header nav ul {
+	display: flex;
+	justify-content: flex-end; 
+	flex-flow: row wrap;
+}
+
+header nav li {
+	padding: 1em;
+	text-align: center;
+	list-style-type: none;
+}
+
+li {
+	list-style-type: none;
+}
+
+li a{
+	color: rgb(0, 0, 0);
+}
+
+
+/* 
+
+CONTENT 
+
+*/
+section {
+	margin: 1em 0;
+	border-radius: 6px;
+	background: #dddd88;
+	padding: 1em;
+}

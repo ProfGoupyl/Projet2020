@@ -3839,10 +3839,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['userid'],
   data: function data() {
     return {
-      userId: null,
-      url: null,
+      userId: this.userid,
       moduleList: []
     };
   },
@@ -3868,12 +3868,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -3946,29 +3940,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['user'],
   data: function data() {
     return {
-      id: 1,
-      url: null,
-      userList: []
+      token: document.querySelector('#token').getAttribute('content'),
+      userInfos: this.user,
+      userName: this.user.name,
+      userPrenom: this.user.prenom,
+      userEmail: this.user.email,
+      userPseudo: this.user.pseudo
     };
   },
-  mounted: function mounted() {
-    var _this = this;
-
-    axios.get('http://localhost:8000/api/users?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
-      return _this.userList = response.data;
-    })["catch"](function (error) {
-      return console.log(error);
-    });
+  methods: {
+    submit: function submit() {
+      axios.patch('http://localhost:8000/api/users?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9', {
+        name: this.userName,
+        prenom: this.userPrenom,
+        email: this.userEmail,
+        pseudo: this.userPseudo
+      }).then(function (response) {
+        return console.log(response);
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    }
   }
 });
 
@@ -3997,10 +3993,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['userid'],
   data: function data() {
     return {
-      userId: null,
-      url: null,
+      userId: this.userid,
       moduleList: []
     };
   },
@@ -4026,6 +4022,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -39711,7 +39709,7 @@ var render = function() {
     _c("h1", [_vm._v("Page FAQ")]),
     _vm._v(" "),
     _c("div", [
-      _c("h2", [_vm._v("Questions:")]),
+      _c("h2", [_vm._v("Questions & Réponses:")]),
       _vm._v(" "),
       _c(
         "ol",
@@ -39719,23 +39717,9 @@ var render = function() {
           return _c("li", { key: question.id }, [
             _c("a", { attrs: { href: "/faq" } }, [
               _vm._v(" " + _vm._s(question.question) + " ")
-            ])
-          ])
-        }),
-        0
-      )
-    ]),
-    _vm._v(" "),
-    _c("div", [
-      _c("h2", [_vm._v("Réponses:")]),
-      _vm._v(" "),
-      _c(
-        "ol",
-        _vm._l(_vm.faqList, function(reponse) {
-          return _c("li", { key: reponse.id }, [
-            _c("a", { attrs: { href: "/faq" } }, [
-              _vm._v(" " + _vm._s(reponse.reponse) + " ")
-            ])
+            ]),
+            _vm._v(" "),
+            _c("div", [_vm._v("  " + _vm._s(question.reponse) + "  ")])
           ])
         }),
         0
@@ -39769,35 +39753,124 @@ var render = function() {
     _c("h1", [_vm._v("Modifier le profil ")]),
     _vm._v(" "),
     _c(
-      "table",
+      "form",
+      {
+        attrs: { method: "patch" },
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.submit($event)
+          }
+        }
+      },
       [
-        _vm._m(0),
+        _c("input", {
+          attrs: { type: "hidden", name: "_token" },
+          domProps: { value: _vm.token }
+        }),
         _vm._v(" "),
-        _vm._l(_vm.userList, function(users, info) {
-          return _c("tbody", { key: info, attrs: { id: users.id } }, [
-            _c("td", [
-              _vm._v("\n            " + _vm._s(users.id) + "\n        ")
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _vm._v("\n            " + _vm._s(users.name) + "\n        ")
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _vm._v("\n            " + _vm._s(users.prenom) + "\n        ")
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _vm._v("\n            " + _vm._s(users.email) + "\n        ")
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _vm._v("\n            " + _vm._s(users.pseudo) + "\n        ")
-            ])
-          ])
-        })
-      ],
-      2
+        _c("div", [
+          _c("label", { attrs: { for: "name" } }, [_vm._v("Nom")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.userName,
+                expression: "userName"
+              }
+            ],
+            attrs: { type: "text", name: "name", required: "" },
+            domProps: { value: _vm.userName },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.userName = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", [
+          _c("label", { attrs: { for: "prenom" } }, [_vm._v("Prénom")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.userPrenom,
+                expression: "userPrenom"
+              }
+            ],
+            attrs: { type: "text", name: "prenom", required: "" },
+            domProps: { value: _vm.userPrenom },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.userPrenom = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", [
+          _c("label", { attrs: { for: "email" } }, [_vm._v("E-mail")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.userEmail,
+                expression: "userEmail"
+              }
+            ],
+            attrs: { type: "email", name: "email", required: "" },
+            domProps: { value: _vm.userEmail },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.userEmail = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", [
+          _c("label", { attrs: { for: "pseudo" } }, [_vm._v("Pseudo")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.userPseudo,
+                expression: "userPseudo"
+              }
+            ],
+            attrs: { type: "text", name: "pseudo" },
+            domProps: { value: _vm.userPseudo },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.userPseudo = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _vm._m(0)
+      ]
     )
   ])
 }
@@ -39806,16 +39879,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("th", [_vm._v("ID")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Nom")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Prenom")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Email")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Pseudo")])
+    return _c("div", [
+      _c("button", { attrs: { type: "submit" } }, [_vm._v("Modifier")])
     ])
   }
 ]
@@ -39885,28 +39950,46 @@ var render = function() {
     _vm._v(" "),
     _c("h3", [_vm._v("User ID: " + _vm._s(_vm.userId))]),
     _vm._v(" "),
-    _c("p", [
-      _vm._v(
-        "Ici on ne récupère que l'id des cours, malheureusement pour le moment"
-      )
-    ]),
-    _vm._v(" "),
     _c(
       "ul",
       _vm._l(_vm.coursList, function(cours) {
-        return _c("li", { key: cours.id }, [
-          _vm._v("\n            Cours ID: "),
-          _c("a", { attrs: { href: "/cours" } }, [
-            _vm._v(" " + _vm._s(cours.cours_id) + " ")
-          ]),
-          _vm._v(
-            " |\n            Débute le: " +
-              _vm._s(cours.start_at) +
-              " |\n            Termine le: " +
-              _vm._s(cours.end_at) +
-              "\n        "
-          )
-        ])
+        return _c(
+          "li",
+          { key: cours.id },
+          _vm._l(_vm.coursNames, function(names) {
+            return _c("div", { key: names.id }, [
+              _c(
+                "span",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: cours.cours_id === names.id,
+                      expression: "cours.cours_id === names.id"
+                    }
+                  ]
+                },
+                [
+                  _vm._v(" Cours ID: "),
+                  _c("a", { attrs: { href: "/cours" } }, [
+                    _vm._v(" " + _vm._s(cours.cours_id) + " ")
+                  ]),
+                  _vm._v(
+                    " |\n            Débute le: " +
+                      _vm._s(cours.start_at) +
+                      " | \n            Termine le: " +
+                      _vm._s(cours.end_at) +
+                      " | Cours : " +
+                      _vm._s(names.titre) +
+                      " "
+                  )
+                ]
+              )
+            ])
+          }),
+          0
+        )
       }),
       0
     )
@@ -55620,8 +55703,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })

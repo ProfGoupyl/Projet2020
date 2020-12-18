@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="styles.css" />
+	<title>Admin - Liste des Cours</title>
+</head>
+
+<body>
+	<header>		
+		<figure>
+			<a href="../admin_profil/admin_profil.html" class="UserName" >
+				<img class="UserImage" src="" alt="" height="80px;" width="80px;"/>
+			</a>
+		</figure>
+		<nav class="navPrnicipale">
+			<ul class="navigation">
+				<li>
+					<a href="../admin_liste_cours/admin_liste_cours.html">
+						Cours
+					</a>
+				</li>
+				<li>
+					<a href="../admin_faq/admin_faq.html">
+						FAQ
+					</a>
+				</li>
+				<li>
+					<a href="../Login/login.html"> 
+						Logout
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+
+	<section>
+		<h1>Liste des cours</h1>
+		<table class="listecours">
+			<thead>
+				<tr>
+					<th>Nom du cours</th>
+					<th>Date de début</th>
+					<th>Date de fin</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><a href="../admin_cours/admin_cours.html" class="Cours" id="cours id1">Nom du cours</a></td>
+					<td><p id="cours id1">Date de début</p></td>
+					<td><p id="cours id1">Date de fin</p></td>
+					<td>
+						<button id="modifier" class="btn btn-primary" type="submit">Modifier</button>
+						<button id="delete" class="btn btn-primary" type="submit">Supprimer</button>
+					</td>
+				</tr>
+
+				<tr>
+					<td><a href="../admin_cours/admin_cours.html" class="Cours" id="cours id2">Nom du cours</a></td>
+					<td><p id="cours id2">Date de début</p></td>
+					<td><p id="cours id2">Date de fin</p></td>
+					<td>
+						<button id="modifier" class="btn btn-primary" type="submit">Modifier</button>
+						<button id="delete" class="btn btn-primary" type="submit">Supprimer</button>
+					</td>
+				</tr>
+
+				<tr>
+					<td><a href="../admin_cours/admin_cours.html" class="Cours" id="cours id3">Nom du cours</a></td>
+					<td><p id="cours id3">Date de début</p></td>
+					<td><p id="cours id3">Date de fin</p></td>
+					<td>
+						<button id="modifier" class="btn btn-primary" type="submit">Modifier</button>
+						<button id="delete" class="btn btn-primary" type="submit">Supprimer</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<form class="addcours">
+			<input type="text" placeholder="Nom du cours" required/>
+			<input type="date" placeholder="Date de debut" required/>
+			<input type="date" placeholder="Date de fin" required/>
+			<button id="ajouter" class="btn btn-primary" type="submit">Ajouter</button>
+		</form>
+	</section>
+</body>
+
+</html>
