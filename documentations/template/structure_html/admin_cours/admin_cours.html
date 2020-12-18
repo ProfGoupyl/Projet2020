@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="styles.css" />
+	<title>Admin - Cours</title>
+</head>
+
+<body>
+	<header>		
+		<figure>
+			<a href="../admin_profil/admin_profil.html" class="UserName" >
+				<img class="UserImage" src="" alt="" height="80px;" width="80px;"/>
+			</a>
+		</figure>
+		<nav class="navPrnicipale">
+			<ul class="navigation">
+				<li>
+					<a href="../admin_liste_cours/admin_liste_cours.html">
+						Cours
+					</a>
+				</li>
+				<li>
+					<a href="../admin_faq/admin_faq.html">
+						FAQ
+					</a>
+				</li>
+				<li>
+					<a href="../Login/login.html"> 
+						Logout
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<section>
+		<aside>
+			<nav class="navSecondaire">
+				<ul>
+					<li class="nomModule">
+						<a href="#">Module 1</a>
+						<button id="modifier" class="btn btn-primary" type="submit">Modifier</button>
+						<button id="delete" class="btn btn-primary" type="submit">Supprimer</button>
+					</li>
+					<li class="nomModule">
+						<a href="#">Module 2</a>
+						<button id="modifier" class="btn btn-primary" type="submit">Modifier</button>
+						<button id="delete" class="btn btn-primary" type="submit">Supprimer</button>
+					</li>
+					<br/>
+					<li class="addmodule">
+						<form>
+							<input type="text" placeholder="nom du module" required />
+							<br/>
+							<button id="ajouter" class="btn btn-primary" type="submit">Ajouter</button>
+						</form>
+					</li>
+				</ul>
+			</nav>
+		</aside>
+		<div>
+			<article>
+				<h1>Cours</h1>
+				<div class="Module1">
+					<!-- S'affiche lorsque l'on clique sur "Module 1"  -->
+					<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus
+						quas dicta odit sapiente impedit, aliquid ducimus accusamus
+						accusantium repellendus distinctio sint voluptatem minus sequi. Nemo
+						suscipit nulla mollitia aliquam laborum?
+					</p>
+					<p>
+						Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero quod, culpa provident architecto
+						cum, quo eos itaque vel praesentium aspernatur distinctio, blanditiis voluptate debitis ipsa
+						suscipit nostrum aliquam earum delectus!
+					</p>
+					<!-- Avec éventuellement des ajouts de videos -->
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/u5Ho1trvlro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+			</article>
+			<article class="commentaires">
+				<h1>Commentaire</h1>
+					
+					<ul>
+						<li class="UserElements" id="CommentaireId1">
+							<h3>OuinOuin!!! (sujet)</h3>		
+							<a href="../user_profil/user_profil.html" class="UserName">
+								<img class="UserImage" src="" alt="" width="50px" height="50px" />
+								User Name
+							</a>
+							<p>
+								C'est scandaleux, on m'a encore volé mes crayons de couleurs et mes
+								sandwichs à la cantine. Et à la compta, André m'a mis la main aux fesses
+								et blablabla pas content! g,eug,eugneu etc.. et dans quel monde on vis!
+								Et le bio c'ests bien, et la peine de mort c'est mal et la faim dans le
+								monde c'est la faute aux illuminatis gouvernés par les reptiliens et
+								rbqebedbmescouilles. Tenez le vous pour dit!
+							</p>
+							<button id="delete" class="btn btn-primary" type="submit">Supprimer</button>
+						</li>
+							
+					<br/>
+	
+						<li class="UserElements" id="CommentaireId2">
+							<h3>sujet</h3>	
+							<a href="../user_profil/user_profil.html" class="UserName">
+								<img class="UserImage" src="" alt="" width="50px" height="50px" />
+								User Name
+							</a>
+							<p>
+								C'est scandaleux, on m'a encore volé mes crayons de couleurs et mes
+								sandwichs à la cantine. Et à la compta, André m'a mis la main aux fesses
+								et blablabla pas content! g,eug,eugneu etc.. et dans quel monde on vis!
+								Et le bio c'ests bien, et la peine de mort c'est mal et la faim dans le
+								monde c'est la faute aux illuminatis gouvernés par les reptiliens et
+								rbqebedbmescouilles. Tenez le vous pour dit!
+							</p>
+							<button id="delete" class="btn btn-primary" type="submit">Supprimer</button>
+						</li>
+					</ul>
+	
+	
+				<br/><br/>
+				<form>
+					<label for="sujet"> Sujet : </label>
+					<input type="text" placeholder="Sujet" required />
+	
+					<br/>
+					
+					<label for="commentaire"> Commentaire : </label>
+					<textarea name="Commentaire" required></textarea>
+	
+					<br/>
+	
+					<button id="ajouter" class="btn btn-primary" type="submit">Ajouter</button>
+				</form>
+			</article>
+		</div>
+	</section>
+</body>
+
+</html>

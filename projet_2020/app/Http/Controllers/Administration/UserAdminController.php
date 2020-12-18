@@ -16,7 +16,7 @@ class UserAdminController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('administration.index', [
+        return view('admin.index', [
             'users' => $users
         ]);
     }
@@ -39,10 +39,10 @@ class UserAdminController extends Controller
      */
     public function store(Request $request)
     {
-        
-        
-    
-        
+
+
+
+
     }
 
     /**
@@ -53,7 +53,7 @@ class UserAdminController extends Controller
      */
     public function show(User $user)
     {
-        
+
     }
 
     /**
@@ -64,7 +64,7 @@ class UserAdminController extends Controller
      */
     public function edit(user $user)
     {
-        
+
     }
 
     /**

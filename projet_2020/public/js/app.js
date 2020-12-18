@@ -3942,13 +3942,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['user'],
   data: function data() {
     return {
+      userInfos: this.user,
       userName: this.user.name,
       userPrenom: this.user.prenom,
       userEmail: this.user.email,
@@ -4025,6 +4023,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -39864,7 +39865,7 @@ var render = function() {
                 expression: "userPseudo"
               }
             ],
-            attrs: { type: "text", name: "pseudo", required: "" },
+            attrs: { type: "text", name: "pseudo" },
             domProps: { value: _vm.userPseudo },
             on: {
               input: function($event) {
@@ -39875,23 +39876,12 @@ var render = function() {
               }
             }
           })
-        ]),
-        _vm._v(" "),
-        _vm._m(0)
+        ])
       ]
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("button", { attrs: { type: "submit" } }, [_vm._v("Modifier")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -39961,19 +39951,43 @@ var render = function() {
     _c(
       "ul",
       _vm._l(_vm.coursList, function(cours) {
-        return _c("li", { key: cours.id }, [
-          _vm._v("\n            Cours ID: "),
-          _c("a", { attrs: { href: "/cours" } }, [
-            _vm._v(" " + _vm._s(cours.cours_id) + " ")
-          ]),
-          _vm._v(
-            " |\n            Débute le: " +
-              _vm._s(cours.start_at) +
-              " |\n            Termine le: " +
-              _vm._s(cours.end_at) +
-              "\n        "
-          )
-        ])
+        return _c(
+          "li",
+          { key: cours.id },
+          _vm._l(_vm.coursNames, function(names) {
+            return _c("div", { key: names.id }, [
+              _c(
+                "span",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: cours.cours_id === names.id,
+                      expression: "cours.cours_id === names.id"
+                    }
+                  ]
+                },
+                [
+                  _vm._v(" Cours ID: "),
+                  _c("a", { attrs: { href: "/cours" } }, [
+                    _vm._v(" " + _vm._s(cours.cours_id) + " ")
+                  ]),
+                  _vm._v(
+                    " |\n            Débute le: " +
+                      _vm._s(cours.start_at) +
+                      " | \n            Termine le: " +
+                      _vm._s(cours.end_at) +
+                      " | Cours : " +
+                      _vm._s(names.titre) +
+                      " "
+                  )
+                ]
+              )
+            ])
+          }),
+          0
+        )
       }),
       0
     )
