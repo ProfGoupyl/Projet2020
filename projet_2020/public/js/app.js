@@ -4024,6 +4024,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'user',
   props: ['userid'],
@@ -39923,19 +39926,43 @@ var render = function() {
     _c(
       "ul",
       _vm._l(_vm.coursList, function(cours) {
-        return _c("li", { key: cours.id }, [
-          _vm._v("\n            Cours ID: "),
-          _c("a", { attrs: { href: "/cours" } }, [
-            _vm._v(" " + _vm._s(cours.cours_id) + " ")
-          ]),
-          _vm._v(
-            " |\n            Débute le: " +
-              _vm._s(cours.start_at) +
-              " |\n            Termine le: " +
-              _vm._s(cours.end_at) +
-              "\n        "
-          )
-        ])
+        return _c(
+          "li",
+          { key: cours.id },
+          _vm._l(_vm.coursNames, function(names) {
+            return _c("div", { key: names.id }, [
+              _c(
+                "span",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: cours.cours_id === names.id,
+                      expression: "cours.cours_id === names.id"
+                    }
+                  ]
+                },
+                [
+                  _vm._v(" Cours ID: "),
+                  _c("a", { attrs: { href: "/cours" } }, [
+                    _vm._v(" " + _vm._s(cours.cours_id) + " ")
+                  ]),
+                  _vm._v(
+                    " |\n            Débute le: " +
+                      _vm._s(cours.start_at) +
+                      " | \n            Termine le: " +
+                      _vm._s(cours.end_at) +
+                      " | Cours : " +
+                      _vm._s(names.titre) +
+                      " "
+                  )
+                ]
+              )
+            ])
+          }),
+          0
+        )
       }),
       0
     )
@@ -55649,8 +55676,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })
