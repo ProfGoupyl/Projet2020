@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Cours;
 use App\Http\Controllers\Controller;
 
-class ModulesAdminController extends Controller
+class CoursAdminController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -16,7 +16,9 @@ class ModulesAdminController extends Controller
     public function index()
     {
         $cours = Cours::all();
-        return view('administration.modules');
+        return view('admin.coursAdmin', [
+            'cours_list'=> $cours
+        ]);
     }
 
     /**
@@ -26,7 +28,7 @@ class ModulesAdminController extends Controller
      */
     public function create()
     {
-       
+        
     }
 
     /**
@@ -37,7 +39,10 @@ class ModulesAdminController extends Controller
      */
     public function store(Request $request)
     {
-        
+
+
+
+
     }
 
     /**
@@ -48,7 +53,7 @@ class ModulesAdminController extends Controller
      */
     public function show(Cours $cours)
     {
-        
+
     }
 
     /**
@@ -59,7 +64,7 @@ class ModulesAdminController extends Controller
      */
     public function edit(cours $cours)
     {
-        
+
     }
 
     /**
@@ -71,7 +76,7 @@ class ModulesAdminController extends Controller
      */
     public function update(Request $request, Cours $cours)
     {
-      
+        $cours->titre = $request->has('titre') && strlen($request->titre) ? $request->titre : $cours->titre;
     }
 
     /**
@@ -82,6 +87,7 @@ class ModulesAdminController extends Controller
      */
     public function destroy(Cours $cours)
     {
-        
-    }
+        $cours->delete();
+        return redirect('/admin/cours');
+}
 }

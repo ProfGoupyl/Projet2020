@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="styles.css" />
+    <title>Admin - profil</title>
+</head>
+
+<body>
+	<header>		
+		<figure>
+			<a href="../admin_profil/admin_profil.html" class="UserName" >
+				<img class="UserImage" src="" alt="" height="80px;" width="80px;"/>
+			</a>
+		</figure>
+		<nav class="navPrnicipale">
+			<ul class="navigation">
+				<li>
+					<a href="../admin_liste_cours/admin_liste_cours.html">
+						Cours
+					</a>
+				</li>
+				<li>
+					<a href="../admin_faq/admin_faq.html">
+						FAQ
+					</a>
+				</li>
+				<li>
+					<a href="../Login/login.html"> 
+						Logout
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+
+	<section>
+		<h1>Votre profil:</h1>
+		<form class="adminProfil">
+			<p>
+				<label for="firstname">First Name :</label>
+				<input type="text" placeholder="Jean-Jacques">
+			</p>
+			<p>
+				<label for="lastname">Last Name :</label>
+				<input type="text" placeholder="Dupont">
+			</p>
+			<p>
+				<label for="adresse">Email address :</label>
+				<input type="text" placeholder="email@gmail.com">
+			</p>
+			<p>
+				<label for="adresse">Current picture :</label>
+				<img class="UserImage" src="" alt="" width="50px" height="50px" />
+			</p>
+			<p>
+				<label for="downloadPicture">New picture</label>
+        		<input type="text" placeholder="downlaod picture">
+			</p>
+		</form>
+
+    <button id="modifier" class="btn btn-primary" type="submit">Modifier</button>
+    <button class="btn btn-primary" type="submit">Annuler</button>
+	</section>
+</body>
+</html>

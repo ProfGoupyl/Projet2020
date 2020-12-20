@@ -4,8 +4,9 @@ use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CsvController;
 use App\Http\Controllers\Administration\UserAdminController;
-use App\Http\Controllers\Administration\ModulesAdminController;
-
+use App\Http\Controllers\Administration\ModuleAdminController;
+use App\Http\Controllers\Administration\FaqAdminController;
+use App\Http\Controllers\Administration\CoursAdminController;
 
 
 /*
@@ -74,7 +75,9 @@ Route::prefix('admin')
 
         // route pour les users
         Route::resource('users',UserAdminController::class);
-        Route::resource('modules',ModulesAdminController::class);
+        Route::resource('faq',FaqAdminController::class);
+        Route::resource('module',ModuleAdminController::class);
+        Route::resource('cours',CoursAdminController::class);
     });
 
 

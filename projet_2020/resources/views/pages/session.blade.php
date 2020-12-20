@@ -1,9 +1,7 @@
-
-
 @extends('layouts.default')
 
 @section('content')
-<session></session>
-    page de cours (suivi)
-
+    @if(Auth::user())
+    <session v-bind:userid='{{ Auth::user()->id }}'></session>
+    @endif
 @stop

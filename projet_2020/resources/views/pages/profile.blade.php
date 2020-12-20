@@ -1,5 +1,7 @@
 @extends('layouts.default')
 
 @section('content')
-    <modifyuser></modifyuser>
+    @if(Auth::user())
+    <modifyuser v-bind:user='{{ Auth::user() }}'></modifyuser>
+    @endif
 @stop

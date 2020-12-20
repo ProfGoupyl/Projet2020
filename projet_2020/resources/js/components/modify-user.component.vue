@@ -1,52 +1,38 @@
 <template>
     <div>
         <h1>Modifier le profil </h1>
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Email</th>
-                <th>Pseudo</th>
-            </tr>
-            
-            <tbody v-for="(users, info) in userList" v-bind:id="users.id" :key="info">
-            
-            <td>
-                {{ users.id }}
-            </td>
-            <td>
-                {{ users.name }}
-            </td>
-            <td>
-                {{ users.prenom }}
-            </td>
-            <td>
-                {{ users.email }}
-            </td>
-            <td>
-                {{ users.pseudo }}
-            </td>
-        
-        </tbody>
-        </table>
+        <form action="" method="post">
+            <div>
+                <label for="name">Nom</label>
+                <input v-model="userName" type="text" name="name">
+            </div>
+                        <div>
+                <label for="prenom">Prénom</label>
+                <input v-model="userPrenom" type="text" name="prenom">
+            </div>
+                        <div>
+                <label for="email">E-mail</label>
+                <input v-model="userEmail" type="email" name="email">
+            </div>
+                        <div>
+                <label for="pseudo">Pseudo</label>
+                <input v-model="userPseudo" type="text" name="pseudo">
+            </div>
+        </form>
     </div>
 </template>
 
 <script>
     export default {
+        props: ['user'],
         data() {
             return {
-                id: 1,
-                url: null,
-                userList: []
+                userInfos: this.user,
+                userName: this.user.name,
+                userPrenom: this.user.prenom,
+                userEmail: this.user.email,
+                userPseudo: this.user.pseudo
             }
-        },
-        mounted() {
-            axios
-                .get('http://localhost:8000/api/users?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9')
-                .then(response => (this.userList = response.data))
-                .catch(error => console.log(error))
         }
     }
 </script>

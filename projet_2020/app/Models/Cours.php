@@ -11,7 +11,9 @@ class Cours extends Model
     use HasFactory;
 
     protected $fillable = [
-        'titre'
+        'titre',
+        'debut du cours',
+        'fin du cours'
     ];
 
     public function notes()
