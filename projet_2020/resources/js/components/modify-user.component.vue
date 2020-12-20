@@ -16,7 +16,7 @@
                 {{ users.id }}
             </td>
             <td>
-                {{ users.nom }}
+                {{ users.name }}
             </td>
             <td>
                 {{ users.prenom }}
@@ -35,11 +35,11 @@
 
 <script>
     export default {
+        props: ['userid'],
         data() {
             return {
-                id: 1,
-                url: null,
-                userList: []
+                userList: [],
+                userId: this.userid
             }
         },
         mounted() {

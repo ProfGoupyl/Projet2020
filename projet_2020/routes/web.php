@@ -3,7 +3,9 @@
 use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Administration\CoursAdminController;
+use App\Http\Controllers\CsvController;
 use App\Http\Controllers\Administration\UserAdminController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -46,12 +48,7 @@ Route::get('faq', function()
 {
     return View('pages.faq');
 });
-// Route::get('/', function () {
-//     return view('auth/login');
-// });
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
+
 Route::get('/administrationUser', function () {
     return view('administration.UserAdmin');
 });
@@ -63,7 +60,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 });
 
-// Toutes les routes commencant par "/admin" utilisent le middleware IsAdmin (vérifie si l'user est ADMIN). 
+// Toutes les routes commencant par "/admin" utilisent le middleware IsAdmin (vérifie si l'user est ADMIN).
 Route::prefix('admin')
     ->middleware(IsAdmin::class)
     ->group(function() {
@@ -81,4 +78,17 @@ Route::prefix('admin')
     });
 
 
+
+//Test de l'ajout d'utilisateurs par fichier .csv;
+
+Route::get('/csv', [CsvController::class, 'index']);
+Route::post('/csv', [CsvController::class, 'get_csv']);
+
+
 require __DIR__.'/auth.php';
+
+
+Route::get('test', function()
+{
+    return View('pages.test');
+});

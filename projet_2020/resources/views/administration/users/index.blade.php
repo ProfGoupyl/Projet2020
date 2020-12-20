@@ -2,14 +2,7 @@
 
 <!-- Creat New user -->
 <button class="btn btn-primary addUser">+ Ajouter un utilisateur</button>
-<script>
-    const btnAddUser = document.querySelector('.addUser');
-    const addUser = document.querySelector('#addUser');
 
-    btn.addEventListener('click', () => {
-        text.classList.toggle('is-visible');
-    })
-</script>
 <style>
 #addUser{
     display:none;
@@ -18,7 +11,7 @@
     display:block;
 }
 </style>
-<div id="addUser">
+{{-- <div id="addUser">
     <x-guest-layout>
         <x-auth-card>
             <x-slot name="logo">
@@ -68,6 +61,22 @@
             </form>
         </x-auth-card>
     </x-guest-layout>
+</div> --}}
+
+<div id="addUser">
+    <form action="/admin/users" method="POST">
+    @csrf
+        <label for="email">Email de l'utilisateur</label>
+        <input id="email" type="email" name="email">
+
+        <label for="name">Nom de l'utilisateur</label>
+        <input id="name" type="name" name="name">
+
+        <label for="prenom">Prénom de l'utilisateur</label>
+        <input id="prenom" type="prenom" name="prenom">
+
+        <input type="submit" value="Envoyer l'invitation">
+    </form>
 </div>
 
 <div id="showUser">
@@ -90,15 +99,38 @@
         <tbody>
             
         @foreach ($users as $user)
-           <tr>
-            <td>{{$user->name}}</td>
-            <td>{{$user->prenom}}</td>
-            <td>{{$user->pseudo}}</td>
-            <td>{{$user->email}}</td>
-            <td><input type="checkbox" id="admin" name="admin" value="admin"></td>
-            <td><a href="#">Modifer</a>
-                <a href="#">Supprimer</a>
-            </td>
+        <tr>
+            <form action="/admin/users/{{ $user->id }}" method="post">
+                @csrf
+                @method('put')
+                <td>
+                    <input class="input-{{$user->id}}" style="background:none;border:none;color:black;" disabled value={{$user->name}} type="text" name="name">
+                </td>
+                <td>
+                    <input class="input-{{$user->id}}" style="background:none;border:none;color:black;" disabled type="text" name="prenom" value="{{ $user->prenom }}">
+                </td>
+                <td>
+                    <input class="input-{{$user->id}}" style="background:none;border:none;color:black;" disabled type="text" name="pseudo" value="{{ $user->pseudo }}">
+                </td>
+                <td>
+                    <input class="input-{{$user->id}}" style="background:none;border:none;color:black;" disabled type="text" name="email" value="{{ $user->email }}">
+                </td>
+                <td>
+                    <input class="input-{{$user->id}}" style="background:none;border:none;color:black;" disabled type="text" name="admin" value="{{ $user->admin }}">
+                </td>
+                <td>
+                    <button type="button" data-target="{{$user->id}}" class="modify">Modifer</button>
+                    <input style="display:none;" id="save-{{$user->id}}" type="submit" value="Sauvegarder">
+                </td>
+            </form>
+                {{-- <a>
+                    <form action='/admin/users/{{ $user->id }}' method="post">
+                    @csrf
+                    @method('delete')
+                    <input type='submit' value='Supprimer'>
+                    </form>
+                </a>
+            </td> --}}
         </tr> 
         @endforeach
         
@@ -110,3 +142,28 @@
 
 </div>
 
+<script>
+    const modifyBtnList = document.querySelectorAll('.modify');
+    modifyBtnList.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const idTarget = btn.dataset.target;
+            const inputs = document.querySelectorAll(`.input-${idTarget}`);
+            const saveBtn = document.querySelector(`#save-${idTarget}`)
+            inputs.forEach(input => {
+                input.style.border = "1px solid black";
+                input.style.backgroundColor = "#f3f3f3";
+                input.disabled = false;
+            });
+            btn.style.display = "none";
+            saveBtn.style.display = "inherit";
+        })
+    })
+</script>
+<script>
+    const btnAddUser = document.querySelector('.addUser');
+    const addUser = document.querySelector('#addUser');
+
+    btnAddUser.addEventListener('click', () => {
+        addUser.classList.toggle('is-visible');
+    })
+</script>

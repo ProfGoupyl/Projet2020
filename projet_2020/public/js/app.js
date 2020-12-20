@@ -3839,10 +3839,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['userid'],
   data: function data() {
     return {
-      userId: null,
-      url: null,
+      userId: this.userid,
       moduleList: []
     };
   },
@@ -3954,11 +3954,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['userid'],
   data: function data() {
     return {
-      id: 1,
-      url: null,
-      userList: []
+      userList: [],
+      userId: this.userid
     };
   },
   mounted: function mounted() {
@@ -3997,10 +3997,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['userid'],
   data: function data() {
     return {
-      userId: null,
-      url: null,
+      userId: this.userid,
       moduleList: []
     };
   },
@@ -4041,13 +4041,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'user',
-  props: ['message'],
+  props: ['userid'],
   data: function data() {
     return {
       coursList: [],
-      coursNames: []
+      coursNames: [],
+      userId: this.userid
     };
   },
   beforeMount: function beforeMount() {
@@ -4065,9 +4067,11 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   mounted: function mounted() {
-    for (var i = 0; i < this.coursList; i++) {
-      if (this.coursList[i].cours_id === this.coursNames[i].id) {
-        console.log(this.coursNames.titre);
+    for (var i = 0; i < this.coursList.length; i++) {
+      for (var x = 0; x < this.coursNames.length; i++) {
+        if (this.coursList[i].cours_id === this.coursNames[x].id) {
+          console.log(this.coursNames[x].titre);
+        }
       }
     }
   }
@@ -39776,7 +39780,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("td", [
-              _vm._v("\n            " + _vm._s(users.nom) + "\n        ")
+              _vm._v("\n            " + _vm._s(users.name) + "\n        ")
             ]),
             _vm._v(" "),
             _c("td", [
@@ -39879,6 +39883,8 @@ var render = function() {
     _vm._v(" "),
     _c("h2", [_vm._v("Liste des cours")]),
     _vm._v(" "),
+    _c("h3", [_vm._v("User ID: " + _vm._s(_vm.userId))]),
+    _vm._v(" "),
     _c("p", [
       _vm._v(
         "Ici on ne récupère que l'id des cours, malheureusement pour le moment"
@@ -39886,7 +39892,7 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c(
-      "ol",
+      "ul",
       _vm._l(_vm.coursList, function(cours) {
         return _c("li", { key: cours.id }, [
           _vm._v("\n            Cours ID: "),
@@ -55212,10 +55218,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
 });
 new Vue({
   router: router,
-  el: '#app',
-  data: {
-    message: 'Hello World'
-  }
+  el: '#app'
 });
 
 /***/ }),
