@@ -3,12 +3,14 @@
         <h1>Page utilisateur</h1>
         <h2>Liste des cours</h2>
         <h3>User ID: {{ userId }}</h3>
-        <p>Ici on ne récupère que l'id des cours, malheureusement pour le moment</p>
         <ul>
             <li v-for="cours in coursList" :key="cours.id">
-                Cours ID: <a href='/cours'> {{ cours.cours_id }} </a> |
-                Débute le: {{ cours.start_at }} |
-                Termine le: {{ cours.end_at }}
+                <div v-for="names in coursNames" :key="names.id">
+                
+                <span v-show="cours.cours_id === names.id"> Cours ID: <a href='/cours'> {{ cours.cours_id }} </a> |
+                Débute le: {{ cours.start_at }} | 
+                Termine le: {{ cours.end_at }} | Cours : {{ names.titre }} </span>
+                </div>
             </li>
         </ul>
     </div>

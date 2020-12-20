@@ -19,7 +19,8 @@ class UserAdminController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('administration.users.index', [
+
+        return view('admin.users.index', [
             'users' => $users
         ]);
     }
@@ -81,7 +82,7 @@ class UserAdminController extends Controller
      */
     public function show(User $user)
     {
-        
+
     }
 
     /**
@@ -92,7 +93,7 @@ class UserAdminController extends Controller
      */
     public function edit(user $user)
     {
-        
+
     }
 
     /**

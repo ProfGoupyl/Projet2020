@@ -16,7 +16,7 @@ class CoursAdminController extends Controller
     public function index()
     {
         $cours = Cours::all();
-        return view('administration.cours.index', [
+        return view('admin.cours.index', [
             'cours_list' => $cours
         ]);
     }
