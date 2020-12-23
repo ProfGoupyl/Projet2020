@@ -13,6 +13,6 @@ class FaqAdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        return view('admin.faqAdmin');
+        return view('admin.faq.faqAdmin');
     }
 }

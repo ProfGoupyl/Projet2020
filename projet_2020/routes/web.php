@@ -2,6 +2,7 @@
 
 use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Administration\CoursAdminController;
 use App\Http\Controllers\CsvController;
 use App\Http\Controllers\Administration\UserAdminController;
 use App\Http\Controllers\Administration\ModuleAdminController;
@@ -74,16 +75,17 @@ Route::prefix('admin')
 
         // route pour les users
         Route::resource('users',UserAdminController::class);
+
+        // route pour les cours
+        Route::resource('cours',CoursAdminController::class);
         Route::resource('faq',FaqAdminController::class);
         Route::resource('module',ModuleAdminController::class);
+
+        //Routes CSV : GET && POST
+        //Test de l'ajout d'utilisateurs par fichier .csv;
+        Route::get('/csv', [CsvController::class, 'index']);
+        Route::post('/csv', [CsvController::class, 'get_csv']);
     });
-
-
-
-//Test de l'ajout d'utilisateurs par fichier .csv;
-
-Route::get('/csv', [CsvController::class, 'index']);
-Route::post('/csv', [CsvController::class, 'get_csv']);
 
 
 require __DIR__.'/auth.php';
