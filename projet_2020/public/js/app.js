@@ -3953,6 +3953,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['user'],
   data: function data() {
@@ -3962,18 +3965,21 @@ __webpack_require__.r(__webpack_exports__);
       userName: this.user.name,
       userPrenom: this.user.prenom,
       userEmail: this.user.email,
-      userPseudo: this.user.pseudo
+      userPseudo: this.user.pseudo,
+      send: null
     };
   },
   methods: {
     submit: function submit() {
+      var _this = this;
+
       axios.patch("http://localhost:8000/api/users/".concat(this.userId, "/?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9"), {
         name: this.userName,
         prenom: this.userPrenom,
         email: this.userEmail,
         pseudo: this.userPseudo
       }).then(function (response) {
-        return console.log(response);
+        return _this.send = true;
       })["catch"](function (error) {
         return console.log(error);
       });
@@ -39916,7 +39922,11 @@ var render = function() {
           })
         ]),
         _vm._v(" "),
-        _vm._m(0)
+        _vm._m(0),
+        _vm._v(" "),
+        _vm.send
+          ? _c("div", [_c("p", [_vm._v("Modifications enregistrées")])])
+          : _vm._e()
       ]
     )
   ])
