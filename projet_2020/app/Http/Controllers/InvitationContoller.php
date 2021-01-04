@@ -25,6 +25,11 @@ class InvitationContoller extends Controller
      */
     public function store(Request $request)
     {
+        $data = request()->validate([
+            'question' => 'required|alpha_num',
+            'reponse' => 'alpha_num',
+        ]);
+        
         if (Invitation::create($request->all())) {
             return response()->json(['insert succes'], 200);
         }

@@ -48,7 +48,7 @@ class User extends Authenticatable
         'pseudo',
         'admin',
         'email',
-        //'password',
+        'password',
         'api_token',
     ];
 
