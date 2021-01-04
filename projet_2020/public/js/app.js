@@ -4060,10 +4060,10 @@ __webpack_require__.r(__webpack_exports__);
     return {
       coursList: [],
       coursNames: [],
-      userId: this.userid
+      userId: 44
     };
   },
-  beforeMount: function beforeMount() {
+  created: function created() {
     var _this = this;
 
     axios.get('http://localhost:8000/api/users_cours?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
@@ -4077,13 +4077,13 @@ __webpack_require__.r(__webpack_exports__);
       return console.log(error);
     });
   },
-  mounted: function mounted() {
-    for (var i = 0; i < this.coursList.length; i++) {
-      for (var x = 0; x < this.coursNames.length; i++) {
-        if (this.coursList[i].cours_id === this.coursNames[x].id) {
-          console.log(this.coursNames[x].titre);
-        }
-      }
+  computed: {
+    filterCours: function filterCours() {
+      var _this2 = this;
+
+      return this.coursList.filter(function (cours) {
+        return cours.user_id === _this2.userId;
+      });
     }
   }
 });
@@ -39999,7 +39999,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "ul",
-      _vm._l(_vm.coursList, function(cours) {
+      _vm._l(_vm.filterCours, function(cours) {
         return _c(
           "li",
           { key: cours.id },
