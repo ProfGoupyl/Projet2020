@@ -4,7 +4,7 @@
         <h2>Liste des cours</h2>
         <h3>User ID: {{ userId }}</h3>
         <ul>
-            <li v-for="cours in coursList" :key="cours.id">
+            <li v-for="cours in filterCours" :key="cours.id">
                 <div v-for="names in coursNames" :key="names.id">
                 
                 <span v-show="cours.cours_id === names.id"> Cours ID: <a href='/cours'> {{ cours.cours_id }} </a> |
@@ -24,10 +24,10 @@
             return {
                 coursList: [],
                 coursNames: [],
-                userId: this.userid
+                userId: 37
             }
         },
-        beforeMount() {
+        created() {
             axios
                 .get('http://localhost:8000/api/users_cours?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9')
                 .then(response => (this.coursList = response.data))
@@ -37,13 +37,9 @@
                 .then(response => (this.coursNames = response.data))
                 .catch(error => console.log(error))
         },
-        mounted() {
-            for(let i = 0; i < this.coursList.length; i++) {
-                for(let x = 0; x < this.coursNames.length; i++) {
-                    if(this.coursList[i].cours_id === this.coursNames[x].id) {
-                        console.log(this.coursNames[x].titre)
-                    }
-                }
+        computed: {
+            filterCours: function() {
+                return this.coursList.filter(cours => cours.user_id === this.userId)
             }
         }
     }

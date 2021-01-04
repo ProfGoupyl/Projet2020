@@ -3854,7 +3854,7 @@ __webpack_require__.r(__webpack_exports__);
       sessionList: []
     };
   },
-  mounted: function mounted() {
+  created: function created() {
     var _this = this;
 
     axios.get('http://localhost:8000/api/module?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
@@ -3903,7 +3903,7 @@ __webpack_require__.r(__webpack_exports__);
       faqList: []
     };
   },
-  mounted: function mounted() {
+  created: function created() {
     var _this = this;
 
     axios.get('http://localhost:8000/api/faq?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
@@ -3953,6 +3953,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['user'],
   data: function data() {
@@ -3962,18 +3965,21 @@ __webpack_require__.r(__webpack_exports__);
       userName: this.user.name,
       userPrenom: this.user.prenom,
       userEmail: this.user.email,
-      userPseudo: this.user.pseudo
+      userPseudo: this.user.pseudo,
+      send: null
     };
   },
   methods: {
     submit: function submit() {
+      var _this = this;
+
       axios.patch("http://localhost:8000/api/users/".concat(this.userId, "/?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9"), {
         name: this.userName,
         prenom: this.userPrenom,
         email: this.userEmail,
         pseudo: this.userPseudo
       }).then(function (response) {
-        return console.log(response);
+        return _this.send = true;
       })["catch"](function (error) {
         return console.log(error);
       });
@@ -4013,7 +4019,7 @@ __webpack_require__.r(__webpack_exports__);
       moduleList: []
     };
   },
-  mounted: function mounted() {
+  created: function created() {
     var _this = this;
 
     axios.get('http://localhost:8000/api/module?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
@@ -4060,10 +4066,10 @@ __webpack_require__.r(__webpack_exports__);
     return {
       coursList: [],
       coursNames: [],
-      userId: this.userid
+      userId: 37
     };
   },
-  beforeMount: function beforeMount() {
+  created: function created() {
     var _this = this;
 
     axios.get('http://localhost:8000/api/users_cours?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
@@ -4077,13 +4083,13 @@ __webpack_require__.r(__webpack_exports__);
       return console.log(error);
     });
   },
-  mounted: function mounted() {
-    for (var i = 0; i < this.coursList.length; i++) {
-      for (var x = 0; x < this.coursNames.length; i++) {
-        if (this.coursList[i].cours_id === this.coursNames[x].id) {
-          console.log(this.coursNames[x].titre);
-        }
-      }
+  computed: {
+    filterCours: function filterCours() {
+      var _this2 = this;
+
+      return this.coursList.filter(function (cours) {
+        return cours.user_id === _this2.userId;
+      });
     }
   }
 });
@@ -39916,7 +39922,11 @@ var render = function() {
           })
         ]),
         _vm._v(" "),
-        _vm._m(0)
+        _vm._m(0),
+        _vm._v(" "),
+        _vm.send
+          ? _c("div", [_c("p", [_vm._v("Modifications enregistrées")])])
+          : _vm._e()
       ]
     )
   ])
@@ -39999,7 +40009,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "ul",
-      _vm._l(_vm.coursList, function(cours) {
+      _vm._l(_vm.filterCours, function(cours) {
         return _c(
           "li",
           { key: cours.id },
