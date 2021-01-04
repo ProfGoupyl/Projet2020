@@ -25,7 +25,11 @@ class CoursController extends Controller
      */
     public function store(Request $request)
     {
-        if (Cours::create($request->all())) {
+        $data = request()->validate([
+            'titre' => 'required|alpha_num|max:255',
+        ]);
+
+        if (Cours::create($data)) {
             return response()->json(['insert succes'], 200);
         }
     }
@@ -50,7 +54,11 @@ class CoursController extends Controller
      */
     public function update(Request $request, Cours $cour)
     {
-        if ($cour->update($request->all())) {
+        $data = request()->validate([
+            'titre' => 'required|alpha_num|max:255',
+        ]);
+
+        if ($cour->update($data)) {
             return response()->json(['update succes'], 200);
         }
     }
