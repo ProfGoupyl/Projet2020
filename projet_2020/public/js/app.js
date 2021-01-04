@@ -3854,7 +3854,7 @@ __webpack_require__.r(__webpack_exports__);
       sessionList: []
     };
   },
-  mounted: function mounted() {
+  created: function created() {
     var _this = this;
 
     axios.get('http://localhost:8000/api/module?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
@@ -3903,7 +3903,7 @@ __webpack_require__.r(__webpack_exports__);
       faqList: []
     };
   },
-  mounted: function mounted() {
+  created: function created() {
     var _this = this;
 
     axios.get('http://localhost:8000/api/faq?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
@@ -4013,7 +4013,7 @@ __webpack_require__.r(__webpack_exports__);
       moduleList: []
     };
   },
-  mounted: function mounted() {
+  created: function created() {
     var _this = this;
 
     axios.get('http://localhost:8000/api/module?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
@@ -4060,7 +4060,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       coursList: [],
       coursNames: [],
-      userId: 44
+      userId: 37
     };
   },
   created: function created() {

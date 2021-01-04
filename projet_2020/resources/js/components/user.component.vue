@@ -24,7 +24,7 @@
             return {
                 coursList: [],
                 coursNames: [],
-                userId: 44
+                userId: 37
             }
         },
         created() {
