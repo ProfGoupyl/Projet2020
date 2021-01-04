@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Administration;
 
-use Illuminate\Http\Request;
 use App\Models\Cours;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class CoursAdminController extends Controller
@@ -16,8 +16,8 @@ class CoursAdminController extends Controller
     public function index()
     {
         $cours = Cours::all();
-        return view('admin.coursAdmin', [
-            'cours_list'=> $cours
+        return view('admin.cours.index', [
+            'cours_list' => $cours
         ]);
     }
 
@@ -28,7 +28,7 @@ class CoursAdminController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -39,10 +39,7 @@ class CoursAdminController extends Controller
      */
     public function store(Request $request)
     {
-
-
-
-
+        //
     }
 
     /**
@@ -53,7 +50,7 @@ class CoursAdminController extends Controller
      */
     public function show(Cours $cours)
     {
-
+        //
     }
 
     /**
@@ -62,9 +59,9 @@ class CoursAdminController extends Controller
      * @param  \App\Models\Cours  $cours
      * @return \Illuminate\Http\Response
      */
-    public function edit(cours $cours)
+    public function edit(Cours $cours)
     {
-
+        //
     }
 
     /**
@@ -76,7 +73,7 @@ class CoursAdminController extends Controller
      */
     public function update(Request $request, Cours $cours)
     {
-        $cours->titre = $request->has('titre') && strlen($request->titre) ? $request->titre : $cours->titre;
+        //
     }
 
     /**
@@ -87,7 +84,6 @@ class CoursAdminController extends Controller
      */
     public function destroy(Cours $cours)
     {
-        $cours->delete();
-        return redirect('/admin/cours');
-}
+        //
+    }
 }

@@ -2,6 +2,6 @@
 
 @section('content')
     @if(Auth::user())
-    <modifyuser v-bind:user='{{ Auth::user() }}'></modifyuser>
+    <modifyuser v-bind:user="{{ Auth::user() }}"></modifyuser>
     @endif
 @stop

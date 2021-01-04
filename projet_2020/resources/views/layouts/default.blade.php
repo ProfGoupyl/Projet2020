@@ -10,9 +10,9 @@
             @include('includes.header')
         </header>
 
-        <div id="app">
+        <section id="app">
             @yield('content')
-        </div>
+        </section>
 
         <footer>
             @include('includes.footer')

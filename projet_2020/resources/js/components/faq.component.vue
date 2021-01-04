@@ -2,21 +2,15 @@
     <div>
         <h1>Page FAQ</h1>
         <div>
-            <h2>Questions:</h2>
+            <h2>Questions & Réponses:</h2>
             <ol>
                 <li v-for="question in faqList" :key="question.id">
                     <a href='/faq'> {{ question.question }} </a>
+                   <div>  {{ question.reponse }}  </div>
                 </li>
             </ol>
         </div>
-        <div>
-            <h2>Réponses:</h2>
-            <ol>
-                <li v-for="reponse in faqList" :key="reponse.id">
-                    <a href='/faq'> {{ reponse.reponse }} </a>
-                </li>
-            </ol>
-        </div>
+        
     </div>
 </template>
 

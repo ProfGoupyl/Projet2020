@@ -1,7 +1,19 @@
 <!-- Reprend le tableau des utilisateur avec le CRUD + Suppression des étudiants/cours à la fin de l'année scolaire -->
 <!-- Creat New user -->
 <button class="btn btn-primary addUser">+ Ajouter un utilisateur</button>
+
+<style>
+#addUser{
+    display:none;
+}
+#addUser.is-visible{
+    display:block;
+}
+</style>
+{{-- <div id="addUser">
+=======
 <div id="addUser">
+>>>>>>> 3f42413e8c5cd5fd3ca8d176f7c916569aa79de3:projet_2020/resources/views/admin/index.blade.php
     <x-guest-layout>
         <x-auth-card>
             <x-slot name="logo">
@@ -56,6 +68,22 @@
             </form>
         </x-auth-card>
     </x-guest-layout>
+</div> --}}
+
+<div id="addUser">
+    <form action="/admin/users" method="POST">
+    @csrf
+        <label for="email">Email de l'utilisateur</label>
+        <input id="email" type="email" name="email">
+
+        <label for="name">Nom de l'utilisateur</label>
+        <input id="name" type="name" name="name">
+
+        <label for="prenom">Prénom de l'utilisateur</label>
+        <input id="prenom" type="prenom" name="prenom">
+
+        <input type="submit" value="Envoyer l'invitation">
+    </form>
 </div>
 
 <div id="showUser">
@@ -101,6 +129,7 @@
                     <button type="button" data-target="{{$user->id}}" class="modify">Modifer</button>
                     <input style="display:none;" id="save-{{$user->id}}" type="submit" value="Sauvegarder">
                 </td>
+                </form>
 
                 <td>
                     <form action='/admin/users/{{ $user->id }}' method="post">
@@ -109,7 +138,7 @@
                     <input type='submit' value='Supprimer'>
                     </form>
                 </td>
-            </form>
+            
             </td> 
         </tr> 
         @endforeach
@@ -140,6 +169,8 @@
             saveBtn.style.display = "inherit";
         })
     })
+</script>
+<script>
 
     // Ajouter un utilisateur
     const btnAddUser = document.querySelector('.addUser');
@@ -148,6 +179,7 @@
     btnAddUser.addEventListener('click', () => {
         addUser.classList.toggle('is-visible');
     })
+</script>
 
 </script>
 <style>

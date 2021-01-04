@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Administration;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use DateTime;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class UserAdminController extends Controller
 {
@@ -16,7 +19,8 @@ class UserAdminController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('admin.index', [
+
+        return view('admin.users.index', [
             'users' => $users
         ]);
     }
@@ -39,10 +43,35 @@ class UserAdminController extends Controller
      */
     public function store(Request $request)
     {
+        $user = new User();
+        $date = new DateTime();
+        $register_token = Str::random(40) . $date->getTimestamp();
+
+        $user->email = $request->has('email') && strlen($request->email) ? $request->email : "Pas d'email";
+        $user->name = $request->has('name') && strlen($request->name) ? $request->name : "Pas de nom";
+        $user->prenom = $request->has('prenom') && strlen($request->prenom) ? $request->prenom : "Pas de prénom";
+        $user->admin = 0;
+        $user->password = "undefined";
+        $user->register_token = $register_token;
+        $user->save();
+
+        // ENVOI EMAIL
+        $data = [
+            'subject' => "Invitation aux cours",
+            'name' => $request->name,
+            'email' => $request->email,
+            'content' => [
+                'message' => "Cliquez sur le lien suivant pour accepter l'invitation au cours de Goupyl:",
+                'link' => route('register').'?token='.$register_token
+            ] 
+        ];
+        Mail::send('administration.email.invitation-template',$data, function($message) use ($data) {
+            $message->to($data['email'])
+                    ->subject($data['subject']);
+        });
 
 
-
-
+        return redirect('/admin/users');
     }
 
     /**
