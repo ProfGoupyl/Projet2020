@@ -1,17 +1,14 @@
 <template>
-    <div>
-        <h1>Page FAQ</h1>
-        <div>
-            <h2>Questions & Réponses:</h2>
-            <ol>
+    <section class="GeneralSectionUserPageFAQ">
+        <h1>FAQ</h1>
+        <ul class="faq">
                 <li v-for="question in faqList" :key="question.id">
-                    <a href='/faq'> {{ question.question }} </a>
-                   <div>  {{ question.reponse }}  </div>
+                   <button><h3> {{ question.question }} </h3></button><!-- bouton qui permettra de faire apparaitre la class hidden -->
+                   <p class="hidden" >  {{ question.reponse }}  </p> 
                 </li>
-            </ol>
-        </div>
+        </ul>
         
-    </div>
+    </section>
 </template>
 
 <script>
