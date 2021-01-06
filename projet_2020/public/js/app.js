@@ -3845,13 +3845,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['userid'],
   data: function data() {
     return {
-      userId: this.userid,
+      userId: 37,
       moduleList: [],
-      sessionList: []
+      coursList: [],
+      coursNames: []
     };
   },
   created: function created() {
@@ -3863,10 +3868,24 @@ __webpack_require__.r(__webpack_exports__);
       return console.log(error);
     });
     axios.get('http://localhost:8000/api/cours?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
-      return _this.sessionList = response.data;
+      return _this.coursNames = response.data;
     })["catch"](function (error) {
       return console.log(error);
     });
+    axios.get('http://localhost:8000/api/users_cours?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
+      return _this.coursList = response.data;
+    })["catch"](function (error) {
+      return console.log(error);
+    });
+  },
+  computed: {
+    filterCours: function filterCours() {
+      var _this2 = this;
+
+      return this.coursList.filter(function (cours) {
+        return cours.user_id === _this2.userId;
+      });
+    }
   }
 });
 
@@ -39736,48 +39755,69 @@ var render = function() {
   return _c("div", [
     _c("h1", [_vm._v("page COURS")]),
     _vm._v(" "),
-    _c("h2", [_vm._v("Liste des sessions dispo pour le cours")]),
+    _c("h2", [_vm._v("Liste des modules dispo pour le cours")]),
     _vm._v(" "),
     _c(
       "ul",
-      _vm._l(_vm.sessionList, function(session) {
-        return _c("li", { key: session.id }, [
-          _c(
-            "span",
-            [
-              _vm._v(
-                "\n            Cours : " +
-                  _vm._s(session.titre) +
-                  "\n            "
-              ),
-              _vm._l(_vm.moduleList, function(module) {
-                return _c("ul", { key: module.titre }, [
-                  _c(
-                    "li",
+      _vm._l(_vm.filterCours, function(cours) {
+        return _c(
+          "li",
+          { key: cours.id },
+          _vm._l(_vm.coursNames, function(names) {
+            return _c("div", { key: names.id }, [
+              _c(
+                "span",
+                {
+                  directives: [
                     {
-                      directives: [
+                      name: "show",
+                      rawName: "v-show",
+                      value: cours.cours_id === names.id,
+                      expression: "cours.cours_id === names.id"
+                    }
+                  ]
+                },
+                [
+                  _vm._v(" Cours ID: "),
+                  _c("a", { attrs: { href: "/cours" } }, [
+                    _vm._v(" " + _vm._s(cours.cours_id) + " ")
+                  ]),
+                  _vm._v(
+                    "\n\n            Cours : " +
+                      _vm._s(names.titre) +
+                      "\n            "
+                  ),
+                  _vm._l(_vm.moduleList, function(module) {
+                    return _c("ul", { key: module.titre }, [
+                      _c(
+                        "li",
                         {
-                          name: "show",
-                          rawName: "v-show",
-                          value: session.id === module.cours_id,
-                          expression: "session.id === module.cours_id"
-                        }
-                      ]
-                    },
-                    [
-                      _vm._v(
-                        "\n                    " +
-                          _vm._s(module.titre) +
-                          "\n                "
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: names.id === module.cours_id,
+                              expression: "names.id === module.cours_id"
+                            }
+                          ]
+                        },
+                        [
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(module.titre) +
+                              "\n                "
+                          )
+                        ]
                       )
-                    ]
-                  )
-                ])
-              })
-            ],
-            2
-          )
-        ])
+                    ])
+                  })
+                ],
+                2
+              )
+            ])
+          }),
+          0
+        )
       }),
       0
     )
@@ -55854,9 +55894,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\sass\default.scss */"./resources/sass/default.scss");
+module.exports = __webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })
