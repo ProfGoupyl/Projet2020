@@ -26,7 +26,7 @@
                <thead>
                     <tr>
                         <th>Nom du cours</th>
-                        <th>Date de dénut</th>
+                        <th>Date de début</th>
                         <th>Date de fin</th>
                     </tr>
                </thead>
@@ -34,7 +34,7 @@
                    <tr v-for="cours in filterCours" :key="cours.id">
                        <div v-for="names in coursNames" :key="names.id">
                            <div v-if="cours.cours_id === names.id">
-                                <td><a href="" class="Cours"> {{ names.titre }} </a></td>
+                                <td><a href="/cours" class="Cours" v-on:click="save(cours.cours_id)"> {{ names.titre }} </a></td>
                                 <td><p id="cours"> {{ cours.start_at }} </p></td>
                                 <td><p id="cours"> {{ cours.end_at }} </p></td>
                            </div>
@@ -87,6 +87,11 @@
         computed: {
             filterCours: function() {
                 return this.coursList.filter(cours => cours.user_id === this.userId)
+            }
+        },
+        methods: {
+            save(coursid) {
+                sessionStorage.setItem('coursid', coursid)
             }
         }
     }

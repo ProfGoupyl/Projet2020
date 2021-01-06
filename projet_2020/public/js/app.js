@@ -3826,6 +3826,7 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _session_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./session.component */ "./resources/js/components/session.component.vue");
 //
 //
 //
@@ -3849,11 +3850,65 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    Session: _session_component__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   props: ['userid'],
   data: function data() {
     return {
       userId: 37,
+      coursId: sessionStorage.getItem('coursid'),
       moduleList: [],
       coursList: [],
       coursNames: []
@@ -4204,6 +4259,11 @@ __webpack_require__.r(__webpack_exports__);
       return this.coursList.filter(function (cours) {
         return cours.user_id === _this2.userId;
       });
+    }
+  },
+  methods: {
+    save: function save(coursid) {
+      sessionStorage.setItem('coursid', coursid);
     }
   }
 });
@@ -39801,77 +39861,111 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h1", [_vm._v("page COURS")]),
+    _vm._m(0),
     _vm._v(" "),
-    _c("h2", [_vm._v("Liste des modules dispo pour le cours")]),
-    _vm._v(" "),
-    _c(
-      "ul",
-      _vm._l(_vm.filterCours, function(cours) {
-        return _c(
-          "li",
-          { key: cours.id },
-          _vm._l(_vm.coursNames, function(names) {
-            return _c("div", { key: names.id }, [
-              _c(
-                "span",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: cours.cours_id === names.id,
-                      expression: "cours.cours_id === names.id"
-                    }
-                  ]
-                },
-                [
-                  _vm._v(" Cours ID: "),
-                  _c("a", { attrs: { href: "/cours" } }, [
-                    _vm._v(" " + _vm._s(cours.cours_id) + " ")
-                  ]),
-                  _vm._v(
-                    "\n\n            Cours : " +
-                      _vm._s(names.titre) +
-                      "\n            "
-                  ),
-                  _vm._l(_vm.moduleList, function(module) {
-                    return _c("ul", { key: module.titre }, [
-                      _c(
-                        "li",
-                        {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: names.id === module.cours_id,
-                              expression: "names.id === module.cours_id"
-                            }
-                          ]
-                        },
-                        [
-                          _vm._v(
-                            "\n                    " +
-                              _vm._s(module.titre) +
-                              "\n                "
-                          )
+    _c("section", [
+      _c("aside", [
+        _c("nav", { staticClass: "navSecondaire" }, [
+          _c(
+            "ul",
+            _vm._l(_vm.filterCours, function(cours) {
+              return _c(
+                "li",
+                { key: cours.id },
+                _vm._l(_vm.coursNames, function(names) {
+                  return _c("div", { key: names.id }, [
+                    _c(
+                      "span",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: cours.cours_id === names.id,
+                            expression: "cours.cours_id === names.id"
+                          }
                         ]
-                      )
-                    ])
-                  })
-                ],
-                2
+                      },
+                      [
+                        _vm._v(" Cours ID: "),
+                        _c("a", { attrs: { href: "/cours" } }, [
+                          _vm._v(" " + _vm._s(cours.cours_id) + " ")
+                        ]),
+                        _vm._v(
+                          "\n\n                        Cours : " +
+                            _vm._s(names.titre) +
+                            "\n                        "
+                        ),
+                        _vm._l(_vm.moduleList, function(module) {
+                          return _c("ul", { key: module.titre }, [
+                            _c(
+                              "li",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: names.id === module.cours_id,
+                                    expression: "names.id === module.cours_id"
+                                  }
+                                ]
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                " +
+                                    _vm._s(module.titre) +
+                                    "\n                            "
+                                )
+                              ]
+                            )
+                          ])
+                        })
+                      ],
+                      2
+                    )
+                  ])
+                }),
+                0
               )
-            ])
-          }),
-          0
-        )
-      }),
-      0
-    )
+            }),
+            0
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", [_c("article", [_c("Session")], 1)])
+    ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("header", [
+      _c("figure", [
+        _c("a", { staticClass: "UserName", attrs: { href: "/profile" } }, [
+          _c("img", {
+            staticClass: "UserImage",
+            attrs: { src: "", alt: "", height: "80px", width: "80px" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("nav", { staticClass: "navPrincipale" }, [
+        _c("ul", { staticClass: "navigation" }, [
+          _c("li", [_c("a", { attrs: { href: "/user" } }, [_vm._v("Cours")])]),
+          _vm._v(" "),
+          _c("li", [_c("a", { attrs: { href: "/faq" } }, [_vm._v("FAQ")])]),
+          _vm._v(" "),
+          _c("li", [
+            _c("a", { attrs: { href: "/logout" } }, [_vm._v("Logout")])
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -40199,7 +40293,15 @@ var render = function() {
                         _c("td", [
                           _c(
                             "a",
-                            { staticClass: "Cours", attrs: { href: "" } },
+                            {
+                              staticClass: "Cours",
+                              attrs: { href: "/cours" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.save(cours.cours_id)
+                                }
+                              }
+                            },
                             [_vm._v(" " + _vm._s(names.titre) + " ")]
                           )
                         ]),
@@ -40264,7 +40366,7 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("Nom du cours")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Date de dénut")]),
+        _c("th", [_vm._v("Date de début")]),
         _vm._v(" "),
         _c("th", [_vm._v("Date de fin")])
       ])
