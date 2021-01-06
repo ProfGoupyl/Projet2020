@@ -40090,41 +40090,51 @@ var render = function() {
   return _c("div", [
     _vm._m(0),
     _vm._v(" "),
-    _c("section", { staticClass: "GeneralSectionUserPageListeDesCours" }, [
+    _c("section", [
       _c("h1", [_vm._v("Liste des cours")]),
       _vm._v(" "),
-      _c(
-        "ul",
-        _vm._l(_vm.filterCours, function(cours) {
-          return _c(
-            "li",
-            { key: cours.id },
-            _vm._l(_vm.coursNames, function(names) {
-              return _c("div", { key: names.id }, [
-                cours.cours_id === names.id
-                  ? _c("span", [
-                      _c(
-                        "a",
-                        { staticClass: "CourInputClass", attrs: { href: "" } },
-                        [_vm._v(" " + _vm._s(names.titre) + " ")]
-                      ),
-                      _vm._v(" "),
-                      _c("a", { staticClass: "DebutCourIdClass" }, [
-                        _vm._v("Début: " + _vm._s(cours.start_at) + " ")
-                      ]),
-                      _vm._v(" "),
-                      _c("a", { staticClass: "FinCourIdClass" }, [
-                        _vm._v("Fin: " + _vm._s(cours.end_at) + " ")
+      _c("table", { staticClass: "listecours" }, [
+        _vm._m(1),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          _vm._l(_vm.filterCours, function(cours) {
+            return _c(
+              "tr",
+              { key: cours.id },
+              _vm._l(_vm.coursNames, function(names) {
+                return _c("div", { key: names.id }, [
+                  cours.cours_id === names.id
+                    ? _c("div", [
+                        _c("td", [
+                          _c(
+                            "a",
+                            { staticClass: "Cours", attrs: { href: "" } },
+                            [_vm._v(" " + _vm._s(names.titre) + " ")]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c("p", { attrs: { id: "cours" } }, [
+                            _vm._v(" " + _vm._s(cours.start_at) + " ")
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c("p", { attrs: { id: "cours" } }, [
+                            _vm._v(" " + _vm._s(cours.end_at) + " ")
+                          ])
+                        ])
                       ])
-                    ])
-                  : _vm._e()
-              ])
-            }),
-            0
-          )
-        }),
-        0
-      )
+                    : _vm._e()
+                ])
+              }),
+              0
+            )
+          }),
+          0
+        )
+      ])
     ])
   ])
 }
@@ -40135,43 +40145,38 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("header", [
       _c("figure", [
-        _c("nav", [
-          _c("ul", { staticClass: "UserElements" }, [
-            _c("li", [
-              _c("a", { staticClass: "UserName", attrs: { href: "" } }, [
-                _c("img", {
-                  staticClass: "UserName",
-                  attrs: { src: "", alt: "" }
-                }),
-                _vm._v(
-                  "\n                            User Name\n                        "
-                )
-              ])
-            ])
-          ]),
+        _c("a", { staticClass: "UserName", attrs: { href: "/profile" } }, [
+          _c("img", {
+            staticClass: "UserImage",
+            attrs: { src: "", alt: "", height: "80px", width: "80px" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("nav", { staticClass: "navPrincipale" }, [
+        _c("ul", { staticClass: "navigation" }, [
+          _c("li", [_c("a", { attrs: { href: "/cours" } }, [_vm._v("Cours")])]),
           _vm._v(" "),
-          _c("ul", { staticClass: "ButtonElements" }, [
-            _c("li", [
-              _c("a", { attrs: { href: "" } }, [
-                _vm._v(
-                  "\n                            Retour aux modules\n                        "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("a", { attrs: { href: "/faq" } }, [
-                _vm._v(
-                  "\n                            FAQ\n                        "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("a", { attrs: { href: "/logout" } }, [_vm._v("Logout")])
-            ])
+          _c("li", [_c("a", { attrs: { href: "/faq" } }, [_vm._v("FAQ")])]),
+          _vm._v(" "),
+          _c("li", [
+            _c("a", { attrs: { href: "/logout" } }, [_vm._v("Logout")])
           ])
         ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Nom du cours")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Date de dénut")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Date de fin")])
       ])
     ])
   }
@@ -55894,9 +55899,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\sass\default.scss */"./resources/sass/default.scss");
-module.exports = __webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })

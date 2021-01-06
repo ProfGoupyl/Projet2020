@@ -1,48 +1,48 @@
 <template>
     <div>
-        <header>
-            <figure>
-                <nav>
-                    <ul class="UserElements">
-                        <li>
-                            <a href="" class="UserName">
-                                <img src="" alt="" class="UserName">
-                                User Name
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="ButtonElements">
-                        <li>
-                            <a href="">
-                                Retour aux modules
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/faq">
-                                FAQ
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/logout">Logout</a>
-                        </li>
-                    </ul>
-                </nav>
-            </figure>
-        </header>
-        <section class="GeneralSectionUserPageListeDesCours">
-            <h1>Liste des cours</h1>
-            <ul>
-                <li v-for="cours in filterCours" :key="cours.id">
-                    <div v-for="names in coursNames" :key="names.id">
-                        <span v-if="cours.cours_id === names.id">
-                            <a href="" class="CourInputClass"> {{ names.titre }} </a>
-                            <a class="DebutCourIdClass">Début: {{ cours.start_at }} </a>
-                            <a class="FinCourIdClass">Fin: {{ cours.end_at }} </a>
-                        </span>
-                    </div>
-                </li>
-            </ul>
-        </section>
+       <header>
+           <figure>
+               <a href="/profile" class="UserName">
+                    <img src="" alt="" class="UserImage" height="80px" width="80px">
+               </a>
+           </figure>
+           <nav class="navPrincipale">
+               <ul class="navigation">
+                   <li>
+                       <a href="/cours">Cours</a>
+                   </li>
+                   <li>
+                       <a href="/faq">FAQ</a>
+                   </li>
+                   <li>
+                       <a href="/logout">Logout</a>
+                   </li>
+               </ul>
+           </nav>
+       </header>
+       <section>
+           <h1>Liste des cours</h1>
+           <table class="listecours">
+               <thead>
+                    <tr>
+                        <th>Nom du cours</th>
+                        <th>Date de dénut</th>
+                        <th>Date de fin</th>
+                    </tr>
+               </thead>
+               <tbody>
+                   <tr v-for="cours in filterCours" :key="cours.id">
+                       <div v-for="names in coursNames" :key="names.id">
+                           <div v-if="cours.cours_id === names.id">
+                                <td><a href="" class="Cours"> {{ names.titre }} </a></td>
+                                <td><p id="cours"> {{ cours.start_at }} </p></td>
+                                <td><p id="cours"> {{ cours.end_at }} </p></td>
+                           </div>
+                       </div>
+                   </tr>
+               </tbody>
+           </table>
+       </section>
         <!--
         <h1>Page utilisateur</h1>
         <h2>Liste des cours</h2>
