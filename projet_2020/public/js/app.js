@@ -3913,9 +3913,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3944,6 +3941,57 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -39845,26 +39893,25 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("h1", [_vm._v("Page FAQ")]),
+  return _c("section", { staticClass: "GeneralSectionUserPageFAQ" }, [
+    _c("h1", [_vm._v("FAQ")]),
     _vm._v(" "),
-    _c("div", [
-      _c("h2", [_vm._v("Questions & Réponses:")]),
-      _vm._v(" "),
-      _c(
-        "ol",
-        _vm._l(_vm.faqList, function(question) {
-          return _c("li", { key: question.id }, [
-            _c("a", { attrs: { href: "/faq" } }, [
-              _vm._v(" " + _vm._s(question.question) + " ")
-            ]),
-            _vm._v(" "),
-            _c("div", [_vm._v("  " + _vm._s(question.reponse) + "  ")])
+    _c(
+      "ul",
+      { staticClass: "faq" },
+      _vm._l(_vm.faqList, function(question) {
+        return _c("li", { key: question.id }, [
+          _c("button", [
+            _c("h3", [_vm._v(" " + _vm._s(question.question) + " ")])
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "hidden" }, [
+            _vm._v("  " + _vm._s(question.reponse) + "  ")
           ])
-        }),
-        0
-      )
-    ])
+        ])
+      }),
+      0
+    )
   ])
 }
 var staticRenderFns = []
@@ -39890,132 +39937,129 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h1", [_vm._v("Modifier le profil ")]),
+    _vm._m(0),
     _vm._v(" "),
-    _c(
-      "form",
-      {
-        attrs: { method: "patch" },
-        on: {
-          submit: function($event) {
-            $event.preventDefault()
-            return _vm.submit($event)
+    _c("section", [
+      _c("h1", [_vm._v("Votre profil:")]),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          staticClass: "userProfil",
+          attrs: { method: "patch" },
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.submit($event)
+            }
           }
-        }
-      },
-      [
-        _c("input", {
-          attrs: { type: "hidden", name: "_token" },
-          domProps: { value: _vm.token }
-        }),
-        _vm._v(" "),
-        _c("div", [
-          _c("label", { attrs: { for: "name" } }, [_vm._v("Nom")]),
-          _vm._v(" "),
+        },
+        [
           _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.userName,
-                expression: "userName"
-              }
-            ],
-            attrs: { type: "text", name: "name", required: "" },
-            domProps: { value: _vm.userName },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.userName = $event.target.value
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c("label", { attrs: { for: "prenom" } }, [_vm._v("Prénom")]),
+            attrs: { type: "hidden", name: "_token" },
+            domProps: { value: _vm.token }
+          }),
           _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.userPrenom,
-                expression: "userPrenom"
-              }
-            ],
-            attrs: { type: "text", name: "prenom", required: "" },
-            domProps: { value: _vm.userPrenom },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+          _c("p", [
+            _c("label", { attrs: { for: "firstname" } }, [
+              _vm._v("First Name:")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.userPrenom,
+                  expression: "userPrenom"
                 }
-                _vm.userPrenom = $event.target.value
+              ],
+              attrs: { type: "text", name: "firstname" },
+              domProps: { value: _vm.userPrenom },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.userPrenom = $event.target.value
+                }
               }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c("label", { attrs: { for: "email" } }, [_vm._v("E-mail")]),
+            })
+          ]),
           _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.userEmail,
-                expression: "userEmail"
-              }
-            ],
-            attrs: { type: "email", name: "email", required: "" },
-            domProps: { value: _vm.userEmail },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+          _c("p", [
+            _c("label", { attrs: { for: "lastname" } }, [_vm._v("Last Name:")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.userName,
+                  expression: "userName"
                 }
-                _vm.userEmail = $event.target.value
+              ],
+              attrs: { type: "text", name: "lastname" },
+              domProps: { value: _vm.userName },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.userName = $event.target.value
+                }
               }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c("label", { attrs: { for: "pseudo" } }, [_vm._v("Pseudo")]),
+            })
+          ]),
           _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.userPseudo,
-                expression: "userPseudo"
-              }
-            ],
-            attrs: { type: "text", name: "pseudo", required: "" },
-            domProps: { value: _vm.userPseudo },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+          _c("p", [
+            _c("label", { attrs: { for: "email" } }, [
+              _vm._v("Email address:")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.userEmail,
+                  expression: "userEmail"
                 }
-                _vm.userPseudo = $event.target.value
+              ],
+              attrs: { type: "email", name: "email" },
+              domProps: { value: _vm.userEmail },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.userEmail = $event.target.value
+                }
               }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _vm._m(0),
-        _vm._v(" "),
-        _vm.send
-          ? _c("div", [_c("p", [_vm._v("Modifications enregistrées")])])
-          : _vm._e()
-      ]
-    )
+            })
+          ]),
+          _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
+          _vm._m(2)
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary",
+          attrs: { id: "modifier", type: "submit" }
+        },
+        [_vm._v("Modifier")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Annuler")]
+      )
+    ])
   ])
 }
 var staticRenderFns = [
@@ -40023,8 +40067,54 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("button", { attrs: { type: "submit" } }, [_vm._v("Modifier")])
+    return _c("header", [
+      _c("figure", [
+        _c("a", { staticClass: "UserName", attrs: { href: "" } }, [
+          _c("img", {
+            staticClass: "UserImage",
+            attrs: { src: "", alt: "", height: "80px", width: "80px" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("nav", { staticClass: "navPrincipale" }, [
+        _c("ul", { staticClass: "navigation" }, [
+          _c("li", [_c("a", { attrs: { href: "/user" } }, [_vm._v("Cours")])]),
+          _vm._v(" "),
+          _c("li", [_c("a", { attrs: { href: "/faq" } }, [_vm._v("FAQ")])]),
+          _vm._v(" "),
+          _c("li", [
+            _c("a", { attrs: { href: "/logout" } }, [_vm._v("Logout")])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _c("label", { attrs: { for: "currentPicture" } }, [
+        _vm._v("Current picture:")
+      ]),
+      _vm._v(" "),
+      _c("img", {
+        staticClass: "UserImage",
+        attrs: { src: "", alt: "", width: "50px", height: "50px" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _c("label", { attrs: { for: "downloadPicture" } }, [
+        _vm._v("New Picture")
+      ]),
+      _vm._v(" "),
+      _c("input", { attrs: { type: "text", placeholder: "Download picture" } })
     ])
   }
 ]
