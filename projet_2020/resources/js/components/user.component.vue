@@ -1,18 +1,65 @@
 <template>
     <div>
+        <header>
+            <figure>
+                <nav>
+                    <ul class="UserElements">
+                        <li>
+                            <a href="" class="UserName">
+                                <img src="" alt="" class="UserName">
+                                User Name
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="ButtonElements">
+                        <li>
+                            <a href="">
+                                Retour aux modules
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/faq">
+                                FAQ
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/logout">Logout</a>
+                        </li>
+                    </ul>
+                </nav>
+            </figure>
+        </header>
+        <section class="GeneralSectionUserPageListeDesCours">
+            <h1>Liste des cours</h1>
+            <ul>
+                <li v-for="cours in filterCours" :key="cours.id">
+                    <div v-for="names in coursNames" :key="names.id">
+                        <span v-if="cours.cours_id === names.id">
+                            <a href="" class="CourInputClass"> {{ names.titre }} </a>
+                            <a class="DebutCourIdClass">Début: {{ cours.start_at }} </a>
+                            <a class="FinCourIdClass">Fin: {{ cours.end_at }} </a>
+                        </span>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <!--
         <h1>Page utilisateur</h1>
         <h2>Liste des cours</h2>
         <h3>User ID: {{ userId }}</h3>
         <ul>
             <li v-for="cours in filterCours" :key="cours.id">
                 <div v-for="names in coursNames" :key="names.id">
-                
-                <span v-show="cours.cours_id === names.id"> Cours ID: <a href='/cours'> {{ cours.cours_id }} </a> |
-                Débute le: {{ cours.start_at }} | 
-                Termine le: {{ cours.end_at }} | Cours : {{ names.titre }} </span>
+                    <span v-if="cours.cours_id === names.id">
+                        Cours ID: <a href='/cours'> {{ cours.cours_id }} </a> | 
+                        Cours : {{ names.titre }} |
+                        Début: {{ cours.start_at }} | 
+                        Fin: {{ cours.end_at }} | 
+                    </span>
                 </div>
             </li>
         </ul>
+        -->
     </div>
 </template>
 

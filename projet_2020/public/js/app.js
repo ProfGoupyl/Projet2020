@@ -4059,6 +4059,53 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'user',
   props: ['userid'],
@@ -40001,58 +40048,94 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h1", [_vm._v("Page utilisateur")]),
+    _vm._m(0),
     _vm._v(" "),
-    _c("h2", [_vm._v("Liste des cours")]),
-    _vm._v(" "),
-    _c("h3", [_vm._v("User ID: " + _vm._s(_vm.userId))]),
-    _vm._v(" "),
-    _c(
-      "ul",
-      _vm._l(_vm.filterCours, function(cours) {
-        return _c(
-          "li",
-          { key: cours.id },
-          _vm._l(_vm.coursNames, function(names) {
-            return _c("div", { key: names.id }, [
-              _c(
-                "span",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: cours.cours_id === names.id,
-                      expression: "cours.cours_id === names.id"
-                    }
-                  ]
-                },
-                [
-                  _vm._v(" Cours ID: "),
-                  _c("a", { attrs: { href: "/cours" } }, [
-                    _vm._v(" " + _vm._s(cours.cours_id) + " ")
-                  ]),
-                  _vm._v(
-                    " |\n            Débute le: " +
-                      _vm._s(cours.start_at) +
-                      " | \n            Termine le: " +
-                      _vm._s(cours.end_at) +
-                      " | Cours : " +
-                      _vm._s(names.titre) +
-                      " "
-                  )
-                ]
-              )
-            ])
-          }),
-          0
-        )
-      }),
-      0
-    )
+    _c("section", { staticClass: "GeneralSectionUserPageListeDesCours" }, [
+      _c("h1", [_vm._v("Liste des cours")]),
+      _vm._v(" "),
+      _c(
+        "ul",
+        _vm._l(_vm.filterCours, function(cours) {
+          return _c(
+            "li",
+            { key: cours.id },
+            _vm._l(_vm.coursNames, function(names) {
+              return _c("div", { key: names.id }, [
+                cours.cours_id === names.id
+                  ? _c("span", [
+                      _c(
+                        "a",
+                        { staticClass: "CourInputClass", attrs: { href: "" } },
+                        [_vm._v(" " + _vm._s(names.titre) + " ")]
+                      ),
+                      _vm._v(" "),
+                      _c("a", { staticClass: "DebutCourIdClass" }, [
+                        _vm._v("Début: " + _vm._s(cours.start_at) + " ")
+                      ]),
+                      _vm._v(" "),
+                      _c("a", { staticClass: "FinCourIdClass" }, [
+                        _vm._v("Fin: " + _vm._s(cours.end_at) + " ")
+                      ])
+                    ])
+                  : _vm._e()
+              ])
+            }),
+            0
+          )
+        }),
+        0
+      )
+    ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("header", [
+      _c("figure", [
+        _c("nav", [
+          _c("ul", { staticClass: "UserElements" }, [
+            _c("li", [
+              _c("a", { staticClass: "UserName", attrs: { href: "" } }, [
+                _c("img", {
+                  staticClass: "UserName",
+                  attrs: { src: "", alt: "" }
+                }),
+                _vm._v(
+                  "\n                            User Name\n                        "
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("ul", { staticClass: "ButtonElements" }, [
+            _c("li", [
+              _c("a", { attrs: { href: "" } }, [
+                _vm._v(
+                  "\n                            Retour aux modules\n                        "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c("a", { attrs: { href: "/faq" } }, [
+                _vm._v(
+                  "\n                            FAQ\n                        "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c("a", { attrs: { href: "/logout" } }, [_vm._v("Logout")])
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -55771,9 +55854,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })
