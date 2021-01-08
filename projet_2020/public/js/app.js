@@ -3932,6 +3932,11 @@ __webpack_require__.r(__webpack_exports__);
     })["catch"](function (error) {
       return console.log(error);
     });
+  },
+  methods: {
+    save: function save(moduleid) {
+      sessionStorage.setItem('moduleid', moduleid);
+    }
   }
 });
 
@@ -4163,12 +4168,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['userid'],
   data: function data() {
     return {
       userId: this.userid,
-      moduleList: []
+      moduleList: [],
+      moduleId: JSON.parse(sessionStorage.getItem('moduleid'))
     };
   },
   created: function created() {
@@ -39938,10 +39949,18 @@ var render = function() {
                               ]
                             },
                             [
-                              _vm._v(
-                                "\n                                " +
-                                  _vm._s(module.titre) +
-                                  "\n                            "
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "Modules",
+                                  attrs: { href: "/cours" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.save(module.id)
+                                    }
+                                  }
+                                },
+                                [_vm._v(" " + _vm._s(module.titre) + " ")]
                               )
                             ]
                           )
@@ -40296,19 +40315,39 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("h2", [_vm._v("Liste des sessions")]),
-    _vm._v(" "),
-    _c(
-      "ol",
+  return _c(
+    "div",
+    [
+      _c("h2", [_vm._v("Liste des sessions")]),
+      _vm._v(" "),
       _vm._l(_vm.moduleList, function(module) {
-        return _c("li", { key: module.titre }, [
-          _vm._v("\n           " + _vm._s(module.titre) + "\n        ")
+        return _c("ul", { key: module.id }, [
+          _c(
+            "li",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.moduleId === module.id,
+                  expression: "moduleId === module.id"
+                }
+              ]
+            },
+            [
+              _c("p", [_vm._v(_vm._s(module.titre))]),
+              _vm._v(
+                "\n           " +
+                  _vm._s(module.description) +
+                  "\n\n            \n        "
+              )
+            ]
+          )
         ])
-      }),
-      0
-    )
-  ])
+      })
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
