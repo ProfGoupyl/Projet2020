@@ -17,7 +17,8 @@ class CoursAdminController extends Controller
     {
         $cours = Cours::all();
         return view('admin.cours.index', [
-            'cours_list' => $cours
+            'cours_list' => $cours,
+            'date' => "2020-01-31"
         ]);
     }
 
@@ -50,7 +51,6 @@ class CoursAdminController extends Controller
      */
     public function show(Cours $cours)
     {
-        //
     }
 
     /**
@@ -59,9 +59,10 @@ class CoursAdminController extends Controller
      * @param  \App\Models\Cours  $cours
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cours $cours)
+    public function edit($id)
     {
-        //
+        $cours = Cours::find($id);
+        return view('admin.cours.edit', ['cours' => $cours]);
     }
 
     /**
@@ -71,9 +72,13 @@ class CoursAdminController extends Controller
      * @param  \App\Models\Cours  $cours
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cours $cours)
+    public function update(Request $request, $id)
     {
-        //
+        $cours = Cours::find($id);
+        $cours->titre = $request->has('titre') && strlen($request->titre) ? $request->titre : $cours->titre;
+
+        $cours->save();
+        return redirect('/admin/cours');
     }
 
     /**

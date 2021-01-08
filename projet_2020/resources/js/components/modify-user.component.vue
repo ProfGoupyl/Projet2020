@@ -22,6 +22,9 @@
             <div>
                 <button type="submit">Modifier</button>
             </div>
+            <div v-if="send">
+                <p>Modifications enregistrées</p>
+            </div>
         </form>
     </div>
 </template>
@@ -36,7 +39,8 @@
                 userName: this.user.name,
                 userPrenom: this.user.prenom,
                 userEmail: this.user.email,
-                userPseudo: this.user.pseudo
+                userPseudo: this.user.pseudo,
+                send: null,
             }
         },
         methods: {
@@ -48,7 +52,7 @@
                     email: this.userEmail,
                     pseudo: this.userPseudo
                 })
-                .then(response => console.log(response))
+                .then(response => this.send = true)
                 .catch(error => console.log(error))
             }
         }
