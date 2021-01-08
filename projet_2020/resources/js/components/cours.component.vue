@@ -80,7 +80,7 @@
         data() {
             return {
                 userId: 37,
-                coursId: sessionStorage.getItem('coursid'),
+                coursId: JSON.parse(sessionStorage.getItem('coursid')),
                 moduleList: [],
                 coursList: [],
                 coursNames: []
