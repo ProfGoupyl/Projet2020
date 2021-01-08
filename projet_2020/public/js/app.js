@@ -3932,15 +3932,6 @@ __webpack_require__.r(__webpack_exports__);
     })["catch"](function (error) {
       return console.log(error);
     });
-  },
-  computed: {
-    filterCours: function filterCours() {
-      var _this2 = this;
-
-      return this.coursList.filter(function (cours) {
-        return cours.user_id === _this2.userId;
-      });
-    }
   }
 });
 
@@ -39866,70 +39857,65 @@ var render = function() {
     _c("section", [
       _c("aside", [
         _c("nav", { staticClass: "navSecondaire" }, [
-          _c(
-            "ul",
-            _vm._l(_vm.filterCours, function(cours) {
-              return _c(
-                "li",
-                { key: cours.id },
-                _vm._l(_vm.coursNames, function(names) {
-                  return _c("div", { key: names.id }, [
-                    _c(
-                      "span",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: cours.cours_id === names.id,
-                            expression: "cours.cours_id === names.id"
-                          }
-                        ]
-                      },
-                      [
-                        _vm._v(" Cours ID: "),
-                        _c("a", { attrs: { href: "/cours" } }, [
-                          _vm._v(" " + _vm._s(cours.cours_id) + " ")
-                        ]),
-                        _vm._v(
-                          "\n\n                        Cours : " +
-                            _vm._s(names.titre) +
-                            "\n                        "
-                        ),
-                        _vm._l(_vm.moduleList, function(module) {
-                          return _c("ul", { key: module.titre }, [
-                            _c(
-                              "li",
-                              {
-                                directives: [
-                                  {
-                                    name: "show",
-                                    rawName: "v-show",
-                                    value: names.id === module.cours_id,
-                                    expression: "names.id === module.cours_id"
-                                  }
-                                ]
-                              },
-                              [
-                                _vm._v(
-                                  "\n                                " +
-                                    _vm._s(module.titre) +
-                                    "\n                            "
-                                )
+          _c("ul", [
+            _c(
+              "li",
+              _vm._l(_vm.coursNames, function(names) {
+                return _c("div", { key: names.id }, [
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.coursId === names.id,
+                          expression: "coursId === names.id"
+                        }
+                      ]
+                    },
+                    [
+                      _vm._v(" Cours ID: "),
+                      _c("a", { attrs: { href: "/cours" } }, [
+                        _vm._v(" " + _vm._s(_vm.coursId) + " ")
+                      ]),
+                      _vm._v(
+                        "\n\n                        Cours : " +
+                          _vm._s(names.titre) +
+                          "\n                        "
+                      ),
+                      _vm._l(_vm.moduleList, function(module) {
+                        return _c("ul", { key: module.titre }, [
+                          _c(
+                            "li",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: names.id === module.cours_id,
+                                  expression: "names.id === module.cours_id"
+                                }
                               ]
-                            )
-                          ])
-                        })
-                      ],
-                      2
-                    )
-                  ])
-                }),
-                0
-              )
-            }),
-            0
-          )
+                            },
+                            [
+                              _vm._v(
+                                "\n                                " +
+                                  _vm._s(module.titre) +
+                                  "\n                            "
+                              )
+                            ]
+                          )
+                        ])
+                      })
+                    ],
+                    2
+                  )
+                ])
+              }),
+              0
+            )
+          ])
         ])
       ]),
       _vm._v(" "),
@@ -40234,8 +40220,6 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h1", [_vm._v("coucou")]),
-    _vm._v(" "),
     _c("h2", [_vm._v("Liste des sessions")]),
     _vm._v(" "),
     _c(
@@ -53002,9 +52986,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\sass\default.scss */"./resources/sass/default.scss");
+module.exports = __webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })

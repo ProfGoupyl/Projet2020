@@ -24,10 +24,10 @@
             <aside>
                 <nav class="navSecondaire">
                     <ul>
-                        <li v-for="cours in filterCours" :key="cours.id"> 
+                        <li> 
                             <div v-for="names in coursNames" :key="names.id">
 
-                            <span v-show="cours.cours_id === names.id"> Cours ID: <a href='/cours'> {{ cours.cours_id }} </a>
+                            <span v-show="coursId === names.id"> Cours ID: <a href='/cours'> {{ coursId }} </a>
 
                             Cours : {{ names.titre }}
                             <ul v-for="module in moduleList" :key="module.titre">
@@ -100,11 +100,7 @@
                 .get('http://localhost:8000/api/users_cours?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9')
                 .then(response => (this.coursList = response.data))
                 .catch(error => console.log(error))
-        },
-        computed: {
-            filterCours: function() {
-                return this.coursList.filter(cours => cours.user_id === this.userId)
-            }
         }
+        
     }
 </script>
