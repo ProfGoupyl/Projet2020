@@ -44,10 +44,17 @@
                     <label for="downloadPicture">New Picture</label>
                     <input type="text" placeholder="Download picture">
                 </p>
+                <button id="modifier" class="btn btn-primary" type="submit">Modifier</button>
             </form>
 
-            <button id="modifier" class="btn btn-primary" type="submit">Modifier</button>
             <button class="btn btn-primary" type="submit">Annuler</button>
+
+            <div v-if="send === true">
+                <p>Modifications enregistrées</p>
+            </div>
+            <div v-if="send === false">
+                <p>Erreur</p>
+            </div>
         </section>
         <!--
         <h1>Modifier le profil </h1>
@@ -104,7 +111,7 @@
                     pseudo: this.userPseudo
                 })
                 .then(response => this.send = true)
-                .catch(error => console.log(error))
+                .catch(error => this.send = false)
             }
         }
     }

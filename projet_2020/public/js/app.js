@@ -4101,6 +4101,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['user'],
   data: function data() {
@@ -4126,7 +4133,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         return _this.send = true;
       })["catch"](function (error) {
-        return console.log(error);
+        return _this.send = false;
       });
     }
   }
@@ -40185,24 +40192,30 @@ var render = function() {
           _vm._v(" "),
           _vm._m(1),
           _vm._v(" "),
-          _vm._m(2)
+          _vm._m(2),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary",
+              attrs: { id: "modifier", type: "submit" }
+            },
+            [_vm._v("Modifier")]
+          )
         ]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary",
-          attrs: { id: "modifier", type: "submit" }
-        },
-        [_vm._v("Modifier")]
       ),
       _vm._v(" "),
       _c(
         "button",
         { staticClass: "btn btn-primary", attrs: { type: "submit" } },
         [_vm._v("Annuler")]
-      )
+      ),
+      _vm._v(" "),
+      _vm.send === true
+        ? _c("div", [_c("p", [_vm._v("Modifications enregistrées")])])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.send === false ? _c("div", [_c("p", [_vm._v("Erreur")])]) : _vm._e()
     ])
   ])
 }
