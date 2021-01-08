@@ -44,10 +44,8 @@
                 <div class="mt-4">
                     <x-label for="prenom" :value="__('Prénom')" />
 
-                    <x-input id="prenom" class="block mt-1 w-full" type="text" name="prenom"  required autofocus />
+                    <x-input id="prenom" class="block mt-1 w-full" type="text" name="prenom" :value="old('prenom')" required autofocus />
                 </div>
-
-    
                 <!-- Email Address -->
                 <div class="mt-4">
                     <x-label for="email" :value="__('Email')" />

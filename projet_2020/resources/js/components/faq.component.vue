@@ -1,17 +1,14 @@
 <template>
-    <div>
-        <h1>Page FAQ</h1>
-        <div>
-            <h2>Questions & Réponses:</h2>
-            <ol>
+    <section class="GeneralSectionUserPageFAQ">
+        <h1>FAQ</h1>
+        <ul class="faq">
                 <li v-for="question in faqList" :key="question.id">
-                    <a href='/faq'> {{ question.question }} </a>
-                   <div>  {{ question.reponse }}  </div>
+                   <button><h3> {{ question.question }} </h3></button><!-- bouton qui permettra de faire apparaitre la class hidden -->
+                   <p class="hidden" >  {{ question.reponse }}  </p> 
                 </li>
-            </ol>
-        </div>
+        </ul>
         
-    </div>
+    </section>
 </template>
 
 <script>
@@ -21,7 +18,7 @@
                 faqList: [],
             }
         },
-        mounted() {
+        created() {
             axios
                 .get('http://localhost:8000/api/faq?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9')
                 .then(response => (this.faqList = response.data))

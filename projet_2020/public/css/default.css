@@ -1,9 +1,10 @@
-/*
+@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;
+
+500&family=Open+Sans:wght@300;400;600&display=swap%27);/*
 $font-family-sans-serif: 'Nunito', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 */
-@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500&family=Open+Sans:wght@300;400;600&display=swap%27");
 * {
   box-sizing: border-box;
 }
@@ -11,59 +12,98 @@ $line-height-base: 1.6;
 body {
   margin: 2%;
   width: 100vw;
-  background-color: #faf9f9;
+  min-height: 100vh;
+  background-color: #f3f4f6;
   color: #000000;
 }
 
 header {
+  height: 15vh;
   padding: 2%;
 }
 
 section {
   height: auto;
   padding: 2%;
+  display: flex;
+  flex-flow: row wrap;
 }
 
-input[value=submit] {
+section article {
+  flex-basis: auto;
+}
+
+section aside {
+  flex-basis: 20%;
+}
+
+p {
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.9rem;
+  font-weight: normal;
+  line-height: 1.6;
+}
+
+h1 {
+  font-family: "Fira Sans", sans-serif;
+  font-size: 1.1rem;
+  font-weight: normal;
+  line-height: 1.8;
+}
+
+nav .navPrincipale ul {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+}
+
+nav .navPrincipale li {
+  padding: 1em;
+  list-style-type: none;
+}
+
+nav .navPrincipale a {
+  color: #000000;
   text-decoration: none;
-  background-color: #82e922;
+}
+
+button {
+  padding: 1em;
+  border-radius: 10px;
+  text-decoration: none;
   color: white;
   transition: 0.5s ease;
 }
-input[value=submit]:hover, input[value=submit]:focus {
+
+button #ajouter {
+  color: white;
+}
+
+button #ajouter:hover,
+button #ajouter:focus {
   background-color: #75dc16;
 }
-input[value=submit]:active {
-  position: relative;
-  top: 1px;
+
+button #supprimer {
+  color: #e92222;
 }
 
-input[value=delete] {
-  text-decoration: none;
-  background-color: #e92222;
-  color: white;
-  transition: 0.5s ease;
-}
-input[value=delete]:hover, input[value=delete]:focus {
+button #supprimer:hover,
+button #supprimer:focus {
   background-color: #dc1616;
 }
-input[value=delete]:active {
-  position: relative;
-  top: 1px;
+
+button #modifier {
+  color: #ffae18;
 }
 
-input[value=update] {
-  text-decoration: none;
-  background-color: #ffae18;
-  color: white;
-  transition: 0.5s ease;
-}
-input[value=update]:hover, input[value=update]:focus {
+button #modifier:hover,
+button #modifier:focus {
   background-color: #fea500;
 }
-input[value=update]:active {
+
+button:active {
   position: relative;
   top: 1px;
 }
 
-/*# sourceMappingURL=default.css.map */
