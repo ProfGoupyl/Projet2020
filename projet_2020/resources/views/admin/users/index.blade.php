@@ -12,9 +12,10 @@
 </style>
 
 {{-- <div id="addUser">
-=======
 <div id="addUser">
->>>>>>> 3f42413e8c5cd5fd3ca8d176f7c916569aa79de3:projet_2020/resources/views/admin/index.blade.php
+
+<div id="addUser">
+
     <x-guest-layout>
         <x-auth-card>
             <x-slot name="logo">
@@ -48,7 +49,7 @@
 
                     <x-input id="prenom" class="block mt-1 w-full" type="text" name="prenom" :value="old('prenom')" required autofocus />
                 </div>
-=======
+
                     <x-input id="prenom" class="block mt-1 w-full" type="text" name="prenom"  required autofocus />
                 </div>
 
@@ -112,35 +113,35 @@
                 @csrf
                 @method('put')
                 <td>
-                    <input class="input-{{$user->id}}" style="background:none;border:none;color:black;" disabled value={{$user->name}} type="text" name="name">
+                    <input class="input-{{$user->id}}" style="background:none;border:none;color:black;text-align:center;" disabled value={{$user->name}} type="text" name="name">
                 </td>
                 <td>
-                    <input class="input-{{$user->id}}" style="background:none;border:none;color:black;" disabled type="text" name="prenom" value="{{ $user->prenom }}">
+                    <input class="input-{{$user->id}}" style="background:none;border:none;color:black;text-align:center;" disabled type="text" name="prenom" value="{{ $user->prenom }}">
                 </td>
                 <td>
-                    <input class="input-{{$user->id}}" style="background:none;border:none;color:black;" disabled type="text" name="pseudo" value="{{ $user->pseudo }}">
+                    <input class="input-{{$user->id}}" style="background:none;border:none;color:black;text-align:center;" disabled type="text" name="pseudo" value="{{ $user->pseudo }}">
                 </td>
                 <td>
-                    <input class="input-{{$user->id}}" style="background:none;border:none;color:black;" disabled type="text" name="email" value="{{ $user->email }}">
+                    <input class="input-{{$user->id}}" style="background:none;border:none;color:black;text-align:center;" disabled type="text" name="email" value="{{ $user->email }}">
                 </td>
                 <td>
-                    <input class="input-{{$user->id}}" style="background:none;border:none;color:black;" disabled type="text" name="admin" value="{{ $user->admin }}">
+                    <input class="input-{{$user->id}}" style="background:none;border:none;color:black;text-align:center;" disabled type="text" name="admin" value="{{ $user->admin }}">
                 </td>
                 <td>
                     <button type="button" data-target="{{$user->id}}" class="modify">Modifer</button>
                     <input style="display:none;" id="save-{{$user->id}}" type="submit" value="Sauvegarder">
                 </td>
+                </form>
 
                 <td>
-                    <a>
-                        <form action='/admin/users/{{ $user->id }}' method="post">
-                        @csrf
-                        @method('delete')
-                        <input type='submit' onclick="alert('Etes-vous sur de vouloir suprimer un précieux étudiant?')" value='Supprimer'>
-                        </form>
-                    </a>
+                    <form action='/admin/users/{{ $user->id }}' method="post">
+                    @csrf
+                    @method('delete')
+                    <input type='submit' value='Supprimer'>
+                    </form>
                 </td>
-            </form>
+
+            </td>
         </tr>
         @endforeach
 

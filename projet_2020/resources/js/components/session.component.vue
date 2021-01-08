@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>coucou</h1>
+        
         <h2>Liste des sessions</h2>
     
             <ol>
