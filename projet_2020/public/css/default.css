@@ -1,6 +1,10 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);
-@import url(https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500&family=Open+Sans:wght@300;400;600&display=swap%27);
+@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;
 
+500&family=Open+Sans:wght@300;400;600&display=swap%27);/*
+$font-family-sans-serif: 'Nunito', sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+*/
 * {
   box-sizing: border-box;
 }
@@ -68,7 +72,7 @@ button {
   border-radius: 10px;
   text-decoration: none;
   color: white;
-  transition: .5s ease;
+  transition: 0.5s ease;
 }
 
 button #ajouter {

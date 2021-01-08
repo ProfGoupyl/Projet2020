@@ -5,12 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Cours extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'titre'
+        'titre',
+        'debut du cours',
+        'fin du cours'
     ];
 
     public function notes()

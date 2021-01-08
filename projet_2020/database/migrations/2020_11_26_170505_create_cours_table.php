@@ -18,6 +18,8 @@ class CreateCoursTable extends Migration
             $table->string('titre');
             $table->timestamps();
         });
+
+      
     }
 
     /**
