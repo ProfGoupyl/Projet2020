@@ -3,11 +3,16 @@
         
         <h2>Liste des sessions</h2>
     
-            <ol>
-            <li v-for="module in moduleList" :key="module.titre">
-               {{ module.titre }}
+            <ul v-for="module in moduleList" :key="module.id">
+            <li v-show="moduleId === module.id">
+                 
+               <p>{{ module.titre }}</p>
+               {{ module.description}}
+
+                
             </li>
-        </ol>
+            </ul>
+        
         
     </div>
 </template>
@@ -17,7 +22,8 @@
         data() {
             return {
                 userId: this.userid,
-                moduleList: []
+                moduleList: [],
+                moduleId: JSON.parse(sessionStorage.getItem('moduleid')),
             }
         },
         created() {
