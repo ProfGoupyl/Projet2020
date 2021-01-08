@@ -13,6 +13,14 @@ class ModuleAdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        return view('admin.moduleAdmin');
+        // return view('admin.moduleAdmin'['modules' => $modules]);
     }
+
+    public function update(Request $request,$id)
+    {
+       
+       
+    }
+
+
 }

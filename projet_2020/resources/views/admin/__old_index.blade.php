@@ -13,7 +13,7 @@
 {{-- <div id="addUser">
 =======
 <div id="addUser">
->>>>>>> 3f42413e8c5cd5fd3ca8d176f7c916569aa79de3:projet_2020/resources/views/admin/index.blade.php
+
     <x-guest-layout>
         <x-auth-card>
             <x-slot name="logo">

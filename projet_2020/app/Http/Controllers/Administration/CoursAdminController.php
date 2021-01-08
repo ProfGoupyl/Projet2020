@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Administration;
 
 use App\Models\Cours;
+use App\Models\Module;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -39,7 +40,14 @@ class CoursAdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cours = new Cours();
+        
+        $cours->titre = $request->has('titre') && strlen($request->titre) ? $request->titre : "Pas de titre";
+        $cours->debut_du_cours = $request->has('debut_du_cours') && strlen($request->debut_du_cours) ? $request->debut_du_cours : "Pas de debut du cours";
+        $cours->fin_du_cours = $request->has('fin_du_cours') && strlen($request->fin_du_cours) ? $request->fin_du_cours : "Pas de fin du cours";
+
+        $cours->save();
+        return redirect('/admin/cours');
     }
 
     /**
@@ -48,10 +56,18 @@ class CoursAdminController extends Controller
      * @param  \App\Models\Cours  $cours
      * @return \Illuminate\Http\Response
      */
-    public function show(Cours $cours)
+    public function show(Cours $cours,$id)
     {
-        //
+        $cours = Cours::find($id);
+        $modules = $cours->modules->sortBy('ordre');
+        
+        
+      
+        return view('admin.cours.show', ['cours' => $cours,'modules'=>$modules]);
+
     }
+
+  
 
     /**
      * Show the form for editing the specified resource.
@@ -61,7 +77,7 @@ class CoursAdminController extends Controller
      */
     public function edit(Cours $cours)
     {
-        //
+        
     }
 
     /**
@@ -71,9 +87,20 @@ class CoursAdminController extends Controller
      * @param  \App\Models\Cours  $cours
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cours $cours)
+    public function update(Request $request,$id)
     {
-        //
+       $cours = Cours::find($id);
+        
+
+
+
+       $cours->titre = $request->has('titre') && strlen($request->titre) ? $request->titre : $cours->titre;
+       $cours->debut_du_cours = $request->has('debut_du_cours') && strlen($request->debut_du_cours) ? $request->debut_du_cours : $cours->debut_du_cours;
+       $cours->fin_du_cours = $request->has('fin_du_cours') && strlen($request->fin_du_cours) ? $request->fin_du_cours : $cours->fin_du_cours;
+       $cours->save();
+       return redirect('/admin/cours');
+
+       
     }
 
     /**
@@ -82,8 +109,10 @@ class CoursAdminController extends Controller
      * @param  \App\Models\Cours  $cours
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cours $cours)
+    public function destroy(Cours $cours, $id)
     {
-        //
+        $cours = Cours::find($id);
+        $cours->delete();
+        return redirect('/admin/cours');
     }
 }

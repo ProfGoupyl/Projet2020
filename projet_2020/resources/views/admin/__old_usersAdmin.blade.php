@@ -29,7 +29,7 @@
             <!-- Validation Errors -->
             <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-            <form method="POST" action="http://localhost:8000/api/users">
+            <form method="post" action="/users">
                 @csrf
                 <input type="hidden" value="sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9" name="api_token">
 
@@ -52,6 +52,8 @@
 
                     <x-input id="email" class="block mt-1 w-full" type="email" name="email"  required />
                 </div>
+
+
                 <div class="flex items-center justify-end mt-4">
                     <x-button class="ml-4">
                         {{ __('M\'inscrire') }}
@@ -80,18 +82,21 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($users as $user)
-        <tr>
-            <td>{{user.name}}</td>
-            <td>{{user.prenom}}</td>
-            <td>{{user.pseudo}}</td>
-            <td>{{user.email}}</td>
+            
+        @foreach ($users as $user)
+           <tr>
+            <td>{{$user->name}}</td>
+            <td>{{$user->prenom}}</td>
+            <td>{{$user->pseudo}}</td>
+            <td>{{$user->email}}</td>
             <td><input type="checkbox" id="admin" name="admin" value="admin"></td>
             <td><a href="#">Modifer</a>
                 <a href="#">Supprimer</a>
             </td>
-        </tr>
+        </tr> 
         @endforeach
+        
+
         </tbody>
     </table>
 

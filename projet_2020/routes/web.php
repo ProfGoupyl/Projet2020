@@ -9,6 +9,7 @@ use App\Http\Controllers\Administration\ModuleAdminController;
 use App\Http\Controllers\Administration\FaqAdminController;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
