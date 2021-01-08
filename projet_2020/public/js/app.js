@@ -4165,14 +4165,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['userid'],
   data: function data() {
@@ -4182,14 +4174,27 @@ __webpack_require__.r(__webpack_exports__);
       moduleId: JSON.parse(sessionStorage.getItem('moduleid'))
     };
   },
+  computed: {
+    filterModules: function filterModules() {
+      var _this = this;
+
+      return this.moduleList.filter(function (modules) {
+        return modules.id === _this.moduleId;
+      });
+    }
+  },
   created: function created() {
-    var _this = this;
+    var _this2 = this;
 
     axios.get('http://localhost:8000/api/module?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
-      return _this.moduleList = response.data;
+      return _this2.moduleList = response.data;
     })["catch"](function (error) {
       return console.log(error);
     });
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.moduleId = null;
+    sessionStorage.removeItem('moduleid');
   }
 });
 
@@ -40317,36 +40322,16 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    [
-      _c("h2", [_vm._v("Liste des sessions")]),
-      _vm._v(" "),
-      _vm._l(_vm.moduleList, function(module) {
-        return _c("ul", { key: module.id }, [
-          _c(
-            "li",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.moduleId === module.id,
-                  expression: "moduleId === module.id"
-                }
-              ]
-            },
-            [
-              _c("p", [_vm._v(_vm._s(module.titre))]),
-              _vm._v(
-                "\n           " +
-                  _vm._s(module.description) +
-                  "\n\n            \n        "
-              )
-            ]
-          )
+    _vm._l(_vm.filterModules, function(modules) {
+      return _c("div", { key: modules.id }, [
+        _c("div", [
+          _c("h2", [_vm._v(" " + _vm._s(modules.titre) + " ")]),
+          _vm._v(" "),
+          _c("p", [_vm._v(" " + _vm._s(modules.description) + " ")])
         ])
-      })
-    ],
-    2
+      ])
+    }),
+    0
   )
 }
 var staticRenderFns = []
