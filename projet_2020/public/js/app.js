@@ -3932,6 +3932,11 @@ __webpack_require__.r(__webpack_exports__);
     })["catch"](function (error) {
       return console.log(error);
     });
+  },
+  methods: {
+    save: function save(moduleid) {
+      sessionStorage.setItem('moduleid', moduleid);
+    }
   }
 });
 
@@ -3946,6 +3951,38 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4069,6 +4106,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['user'],
   data: function data() {
@@ -4094,7 +4138,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         return _this.send = true;
       })["catch"](function (error) {
-        return console.log(error);
+        return _this.send = false;
       });
     }
   }
@@ -4121,25 +4165,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['userid'],
   data: function data() {
     return {
-      userId: this.userid,
-      moduleList: []
+      moduleList: [],
+      moduleId: JSON.parse(sessionStorage.getItem('moduleid'))
     };
   },
+  computed: {
+    filterModules: function filterModules() {
+      var _this = this;
+
+      return this.moduleList.filter(function (modules) {
+        return modules.id === _this.moduleId;
+      });
+    }
+  },
   created: function created() {
-    var _this = this;
+    var _this2 = this;
 
     axios.get('http://localhost:8000/api/module?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
-      return _this.moduleList = response.data;
+      return _this2.moduleList = response.data;
     })["catch"](function (error) {
       return console.log(error);
     });
+  },
+  // beforeDestroy ne fonctionne pas
+  beforeDestroy: function beforeDestroy() {
+    this.moduleId = null;
+    sessionStorage.removeItem('moduleid');
   }
 });
 
@@ -39899,10 +39953,18 @@ var render = function() {
                               ]
                             },
                             [
-                              _vm._v(
-                                "\n                                " +
-                                  _vm._s(module.titre) +
-                                  "\n                            "
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "Modules",
+                                  attrs: { href: "/cours" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.save(module.id)
+                                    }
+                                  }
+                                },
+                                [_vm._v(" " + _vm._s(module.titre) + " ")]
                               )
                             ]
                           )
@@ -39973,28 +40035,60 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("section", { staticClass: "GeneralSectionUserPageFAQ" }, [
-    _c("h1", [_vm._v("FAQ")]),
+  return _c("div", [
+    _vm._m(0),
     _vm._v(" "),
-    _c(
-      "ul",
-      { staticClass: "faq" },
-      _vm._l(_vm.faqList, function(question) {
-        return _c("li", { key: question.id }, [
-          _c("button", [
-            _c("h3", [_vm._v(" " + _vm._s(question.question) + " ")])
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "hidden" }, [
-            _vm._v("  " + _vm._s(question.reponse) + "  ")
+    _c("section", [
+      _c("h1", [_vm._v("FAQ")]),
+      _vm._v(" "),
+      _c(
+        "ul",
+        { staticClass: "faq" },
+        _vm._l(_vm.faqList, function(question) {
+          return _c("li", { key: question.id }, [
+            _c("button", [
+              _c("h3", [_vm._v(" " + _vm._s(question.question) + " ")])
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "hidden" }, [
+              _vm._v(" " + _vm._s(question.reponse) + " ")
+            ])
           ])
-        ])
-      }),
-      0
-    )
+        }),
+        0
+      )
+    ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("header", [
+      _c("figure", [
+        _c("a", { staticClass: "UserName", attrs: { href: "/profile" } }, [
+          _c("img", {
+            staticClass: "UserImage",
+            attrs: { src: "", alt: "", height: "80px", width: "80px" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("nav", { staticClass: "navPrincipale" }, [
+        _c("ul", { staticClass: "navigation" }, [
+          _c("li", [_c("a", { attrs: { href: "/user" } }, [_vm._v("Cours")])]),
+          _vm._v(" "),
+          _c("li", [_c("a", { attrs: { href: "/faq" } }, [_vm._v("FAQ")])]),
+          _vm._v(" "),
+          _c("li", [
+            _c("a", { attrs: { href: "/logout" } }, [_vm._v("Logout")])
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -40121,24 +40215,30 @@ var render = function() {
           _vm._v(" "),
           _vm._m(1),
           _vm._v(" "),
-          _vm._m(2)
+          _vm._m(2),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary",
+              attrs: { id: "modifier", type: "submit" }
+            },
+            [_vm._v("Modifier")]
+          )
         ]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary",
-          attrs: { id: "modifier", type: "submit" }
-        },
-        [_vm._v("Modifier")]
       ),
       _vm._v(" "),
       _c(
         "button",
         { staticClass: "btn btn-primary", attrs: { type: "submit" } },
         [_vm._v("Annuler")]
-      )
+      ),
+      _vm._v(" "),
+      _vm.send === true
+        ? _c("div", [_c("p", [_vm._v("Modifications enregistrées")])])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.send === false ? _c("div", [_c("p", [_vm._v("Erreur")])]) : _vm._e()
     ])
   ])
 }
@@ -40219,19 +40319,19 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("h2", [_vm._v("Liste des sessions")]),
-    _vm._v(" "),
-    _c(
-      "ol",
-      _vm._l(_vm.moduleList, function(module) {
-        return _c("li", { key: module.titre }, [
-          _vm._v("\n           " + _vm._s(module.titre) + "\n        ")
+  return _c(
+    "div",
+    _vm._l(_vm.filterModules, function(modules) {
+      return _c("div", { key: modules.id }, [
+        _c("div", [
+          _c("h2", [_vm._v(" " + _vm._s(modules.titre) + " ")]),
+          _vm._v(" "),
+          _c("p", [_vm._v(" " + _vm._s(modules.description) + " ")])
         ])
-      }),
-      0
-    )
-  ])
+      ])
+    }),
+    0
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -52986,9 +53086,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\sass\default.scss */"./resources/sass/default.scss");
-module.exports = __webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })
