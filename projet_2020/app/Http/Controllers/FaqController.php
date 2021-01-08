@@ -25,7 +25,12 @@ class FaqController extends Controller
      */
     public function store(Request $request)
     {
-        if (Faqs::create($request->all())) {
+        $data = request()->validate([
+            'question' => 'required|alpha_num',
+            'reponse' => 'alpha_num',
+        ]);
+
+        if (Faqs::create($data)) {
             return response()->json(['insert succes'], 200);
         }
     }
@@ -51,7 +56,12 @@ class FaqController extends Controller
      */
     public function update(Request $request, Faqs $faq)
     {
-        if ($faq->update($request->all())) {
+        $data = request()->validate([
+            'question' => 'required|alpha_num',
+            'reponse' => 'alpha_num',
+        ]);
+
+        if ($faq->update($data)) {
             return response()->json(['update succes'], 200);
         }
     }

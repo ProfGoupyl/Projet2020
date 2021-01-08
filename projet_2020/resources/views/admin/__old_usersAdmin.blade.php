@@ -29,11 +29,7 @@
             <!-- Validation Errors -->
             <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-<<<<<<< HEAD:projet_2020/resources/views/admin/usersAdmin.blade.php
             <form method="POST" action="http://localhost:8000/api/users">
-=======
-            <form method="post" action="/users">
->>>>>>> cfafae8dbc4cf7db16531a3a80d14a664bf35f30:projet_2020/resources/views/admin/index.blade.php
                 @csrf
                 <input type="hidden" value="sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9" name="api_token">
 
@@ -48,26 +44,14 @@
                 <div class="mt-4">
                     <x-label for="prenom" :value="__('Prénom')" />
 
-<<<<<<< HEAD:projet_2020/resources/views/admin/usersAdmin.blade.php
                     <x-input id="prenom" class="block mt-1 w-full" type="text" name="prenom" :value="old('prenom')" required autofocus />
                 </div>
-=======
-                    <x-input id="prenom" class="block mt-1 w-full" type="text" name="prenom"  required autofocus />
-                </div>
-
-    
->>>>>>> cfafae8dbc4cf7db16531a3a80d14a664bf35f30:projet_2020/resources/views/admin/index.blade.php
                 <!-- Email Address -->
                 <div class="mt-4">
                     <x-label for="email" :value="__('Email')" />
 
                     <x-input id="email" class="block mt-1 w-full" type="email" name="email"  required />
                 </div>
-<<<<<<< HEAD:projet_2020/resources/views/admin/usersAdmin.blade.php
-=======
-
-
->>>>>>> cfafae8dbc4cf7db16531a3a80d14a664bf35f30:projet_2020/resources/views/admin/index.blade.php
                 <div class="flex items-center justify-end mt-4">
                     <x-button class="ml-4">
                         {{ __('M\'inscrire') }}
@@ -96,35 +80,18 @@
         </tr>
         </thead>
         <tbody>
-<<<<<<< HEAD:projet_2020/resources/views/admin/usersAdmin.blade.php
         @foreach($users as $user)
         <tr>
             <td>{{user.name}}</td>
             <td>{{user.prenom}}</td>
             <td>{{user.pseudo}}</td>
             <td>{{user.email}}</td>
-=======
-            
-        @foreach ($users as $user)
-           <tr>
-            <td>{{$user->name}}</td>
-            <td>{{$user->prenom}}</td>
-            <td>{{$user->pseudo}}</td>
-            <td>{{$user->email}}</td>
->>>>>>> cfafae8dbc4cf7db16531a3a80d14a664bf35f30:projet_2020/resources/views/admin/index.blade.php
             <td><input type="checkbox" id="admin" name="admin" value="admin"></td>
             <td><a href="#">Modifer</a>
                 <a href="#">Supprimer</a>
             </td>
-<<<<<<< HEAD:projet_2020/resources/views/admin/usersAdmin.blade.php
         </tr>
         @endforeach
-=======
-        </tr> 
-        @endforeach
-        
-
->>>>>>> cfafae8dbc4cf7db16531a3a80d14a664bf35f30:projet_2020/resources/views/admin/index.blade.php
         </tbody>
     </table>
 

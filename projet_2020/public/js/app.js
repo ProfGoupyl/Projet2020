@@ -3826,6 +3826,7 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _session_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./session.component */ "./resources/js/components/session.component.vue");
 //
 //
 //
@@ -3845,16 +3846,75 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    Session: _session_component__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   props: ['userid'],
   data: function data() {
     return {
-      userId: this.userid,
+      userId: 37,
+      coursId: sessionStorage.getItem('coursid'),
       moduleList: [],
-      sessionList: []
+      coursList: [],
+      coursNames: []
     };
   },
-  mounted: function mounted() {
+  created: function created() {
     var _this = this;
 
     axios.get('http://localhost:8000/api/module?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
@@ -3863,10 +3923,24 @@ __webpack_require__.r(__webpack_exports__);
       return console.log(error);
     });
     axios.get('http://localhost:8000/api/cours?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
-      return _this.sessionList = response.data;
+      return _this.coursNames = response.data;
     })["catch"](function (error) {
       return console.log(error);
     });
+    axios.get('http://localhost:8000/api/users_cours?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
+      return _this.coursList = response.data;
+    })["catch"](function (error) {
+      return console.log(error);
+    });
+  },
+  computed: {
+    filterCours: function filterCours() {
+      var _this2 = this;
+
+      return this.coursList.filter(function (cours) {
+        return cours.user_id === _this2.userId;
+      });
+    }
   }
 });
 
@@ -3894,16 +3968,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       faqList: []
     };
   },
-  mounted: function mounted() {
+  created: function created() {
     var _this = this;
 
     axios.get('http://localhost:8000/api/faq?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
@@ -3953,6 +4024,60 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['user'],
   data: function data() {
@@ -3962,18 +4087,21 @@ __webpack_require__.r(__webpack_exports__);
       userName: this.user.name,
       userPrenom: this.user.prenom,
       userEmail: this.user.email,
-      userPseudo: this.user.pseudo
+      userPseudo: this.user.pseudo,
+      send: null
     };
   },
   methods: {
     submit: function submit() {
+      var _this = this;
+
       axios.patch("http://localhost:8000/api/users/".concat(this.userId, "/?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9"), {
         name: this.userName,
         prenom: this.userPrenom,
         email: this.userEmail,
         pseudo: this.userPseudo
       }).then(function (response) {
-        return console.log(response);
+        return _this.send = true;
       })["catch"](function (error) {
         return console.log(error);
       });
@@ -4013,7 +4141,7 @@ __webpack_require__.r(__webpack_exports__);
       moduleList: []
     };
   },
-  mounted: function mounted() {
+  created: function created() {
     var _this = this;
 
     axios.get('http://localhost:8000/api/module?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
@@ -4053,6 +4181,53 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'user',
   props: ['userid'],
@@ -4060,10 +4235,10 @@ __webpack_require__.r(__webpack_exports__);
     return {
       coursList: [],
       coursNames: [],
-      userId: this.userid
+      userId: 37
     };
   },
-  beforeMount: function beforeMount() {
+  created: function created() {
     var _this = this;
 
     axios.get('http://localhost:8000/api/users_cours?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
@@ -4077,13 +4252,18 @@ __webpack_require__.r(__webpack_exports__);
       return console.log(error);
     });
   },
-  mounted: function mounted() {
-    for (var i = 0; i < this.coursList.length; i++) {
-      for (var x = 0; x < this.coursNames.length; i++) {
-        if (this.coursList[i].cours_id === this.coursNames[x].id) {
-          console.log(this.coursNames[x].titre);
-        }
-      }
+  computed: {
+    filterCours: function filterCours() {
+      var _this2 = this;
+
+      return this.coursList.filter(function (cours) {
+        return cours.user_id === _this2.userId;
+      });
+    }
+  },
+  methods: {
+    save: function save(coursid) {
+      sessionStorage.setItem('coursid', coursid);
     }
   }
 });
@@ -39681,56 +39861,111 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h1", [_vm._v("page COURS")]),
+    _vm._m(0),
     _vm._v(" "),
-    _c("h2", [_vm._v("Liste des sessions dispo pour le cours")]),
-    _vm._v(" "),
-    _c(
-      "ul",
-      _vm._l(_vm.sessionList, function(session) {
-        return _c("li", { key: session.id }, [
+    _c("section", [
+      _c("aside", [
+        _c("nav", { staticClass: "navSecondaire" }, [
           _c(
-            "span",
-            [
-              _vm._v(
-                "\n            Cours : " +
-                  _vm._s(session.titre) +
-                  "\n            "
-              ),
-              _vm._l(_vm.moduleList, function(module) {
-                return _c("ul", { key: module.titre }, [
-                  _c(
-                    "li",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: session.id === module.cours_id,
-                          expression: "session.id === module.cours_id"
-                        }
-                      ]
-                    },
-                    [
-                      _vm._v(
-                        "\n                    " +
-                          _vm._s(module.titre) +
-                          "\n                "
-                      )
-                    ]
-                  )
-                ])
-              })
-            ],
-            2
+            "ul",
+            _vm._l(_vm.filterCours, function(cours) {
+              return _c(
+                "li",
+                { key: cours.id },
+                _vm._l(_vm.coursNames, function(names) {
+                  return _c("div", { key: names.id }, [
+                    _c(
+                      "span",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: cours.cours_id === names.id,
+                            expression: "cours.cours_id === names.id"
+                          }
+                        ]
+                      },
+                      [
+                        _vm._v(" Cours ID: "),
+                        _c("a", { attrs: { href: "/cours" } }, [
+                          _vm._v(" " + _vm._s(cours.cours_id) + " ")
+                        ]),
+                        _vm._v(
+                          "\n\n                        Cours : " +
+                            _vm._s(names.titre) +
+                            "\n                        "
+                        ),
+                        _vm._l(_vm.moduleList, function(module) {
+                          return _c("ul", { key: module.titre }, [
+                            _c(
+                              "li",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: names.id === module.cours_id,
+                                    expression: "names.id === module.cours_id"
+                                  }
+                                ]
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                " +
+                                    _vm._s(module.titre) +
+                                    "\n                            "
+                                )
+                              ]
+                            )
+                          ])
+                        })
+                      ],
+                      2
+                    )
+                  ])
+                }),
+                0
+              )
+            }),
+            0
           )
         ])
-      }),
-      0
-    )
+      ]),
+      _vm._v(" "),
+      _c("div", [_c("article", [_c("Session")], 1)])
+    ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("header", [
+      _c("figure", [
+        _c("a", { staticClass: "UserName", attrs: { href: "/profile" } }, [
+          _c("img", {
+            staticClass: "UserImage",
+            attrs: { src: "", alt: "", height: "80px", width: "80px" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("nav", { staticClass: "navPrincipale" }, [
+        _c("ul", { staticClass: "navigation" }, [
+          _c("li", [_c("a", { attrs: { href: "/user" } }, [_vm._v("Cours")])]),
+          _vm._v(" "),
+          _c("li", [_c("a", { attrs: { href: "/faq" } }, [_vm._v("FAQ")])]),
+          _vm._v(" "),
+          _c("li", [
+            _c("a", { attrs: { href: "/logout" } }, [_vm._v("Logout")])
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -39752,26 +39987,25 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("h1", [_vm._v("Page FAQ")]),
+  return _c("section", { staticClass: "GeneralSectionUserPageFAQ" }, [
+    _c("h1", [_vm._v("FAQ")]),
     _vm._v(" "),
-    _c("div", [
-      _c("h2", [_vm._v("Questions & Réponses:")]),
-      _vm._v(" "),
-      _c(
-        "ol",
-        _vm._l(_vm.faqList, function(question) {
-          return _c("li", { key: question.id }, [
-            _c("a", { attrs: { href: "/faq" } }, [
-              _vm._v(" " + _vm._s(question.question) + " ")
-            ]),
-            _vm._v(" "),
-            _c("div", [_vm._v("  " + _vm._s(question.reponse) + "  ")])
+    _c(
+      "ul",
+      { staticClass: "faq" },
+      _vm._l(_vm.faqList, function(question) {
+        return _c("li", { key: question.id }, [
+          _c("button", [
+            _c("h3", [_vm._v(" " + _vm._s(question.question) + " ")])
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "hidden" }, [
+            _vm._v("  " + _vm._s(question.reponse) + "  ")
           ])
-        }),
-        0
-      )
-    ])
+        ])
+      }),
+      0
+    )
   ])
 }
 var staticRenderFns = []
@@ -39797,128 +40031,129 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h1", [_vm._v("Modifier le profil ")]),
+    _vm._m(0),
     _vm._v(" "),
-    _c(
-      "form",
-      {
-        attrs: { method: "patch" },
-        on: {
-          submit: function($event) {
-            $event.preventDefault()
-            return _vm.submit($event)
+    _c("section", [
+      _c("h1", [_vm._v("Votre profil:")]),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          staticClass: "userProfil",
+          attrs: { method: "patch" },
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.submit($event)
+            }
           }
-        }
-      },
-      [
-        _c("input", {
-          attrs: { type: "hidden", name: "_token" },
-          domProps: { value: _vm.token }
-        }),
-        _vm._v(" "),
-        _c("div", [
-          _c("label", { attrs: { for: "name" } }, [_vm._v("Nom")]),
-          _vm._v(" "),
+        },
+        [
           _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.userName,
-                expression: "userName"
-              }
-            ],
-            attrs: { type: "text", name: "name", required: "" },
-            domProps: { value: _vm.userName },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.userName = $event.target.value
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c("label", { attrs: { for: "prenom" } }, [_vm._v("Prénom")]),
+            attrs: { type: "hidden", name: "_token" },
+            domProps: { value: _vm.token }
+          }),
           _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.userPrenom,
-                expression: "userPrenom"
-              }
-            ],
-            attrs: { type: "text", name: "prenom", required: "" },
-            domProps: { value: _vm.userPrenom },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+          _c("p", [
+            _c("label", { attrs: { for: "firstname" } }, [
+              _vm._v("First Name:")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.userPrenom,
+                  expression: "userPrenom"
                 }
-                _vm.userPrenom = $event.target.value
+              ],
+              attrs: { type: "text", name: "firstname" },
+              domProps: { value: _vm.userPrenom },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.userPrenom = $event.target.value
+                }
               }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c("label", { attrs: { for: "email" } }, [_vm._v("E-mail")]),
+            })
+          ]),
           _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.userEmail,
-                expression: "userEmail"
-              }
-            ],
-            attrs: { type: "email", name: "email", required: "" },
-            domProps: { value: _vm.userEmail },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+          _c("p", [
+            _c("label", { attrs: { for: "lastname" } }, [_vm._v("Last Name:")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.userName,
+                  expression: "userName"
                 }
-                _vm.userEmail = $event.target.value
+              ],
+              attrs: { type: "text", name: "lastname" },
+              domProps: { value: _vm.userName },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.userName = $event.target.value
+                }
               }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c("label", { attrs: { for: "pseudo" } }, [_vm._v("Pseudo")]),
+            })
+          ]),
           _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.userPseudo,
-                expression: "userPseudo"
-              }
-            ],
-            attrs: { type: "text", name: "pseudo", required: "" },
-            domProps: { value: _vm.userPseudo },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+          _c("p", [
+            _c("label", { attrs: { for: "email" } }, [
+              _vm._v("Email address:")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.userEmail,
+                  expression: "userEmail"
                 }
-                _vm.userPseudo = $event.target.value
+              ],
+              attrs: { type: "email", name: "email" },
+              domProps: { value: _vm.userEmail },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.userEmail = $event.target.value
+                }
               }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _vm._m(0)
-      ]
-    )
+            })
+          ]),
+          _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
+          _vm._m(2)
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary",
+          attrs: { id: "modifier", type: "submit" }
+        },
+        [_vm._v("Modifier")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Annuler")]
+      )
+    ])
   ])
 }
 var staticRenderFns = [
@@ -39926,8 +40161,54 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("button", { attrs: { type: "submit" } }, [_vm._v("Modifier")])
+    return _c("header", [
+      _c("figure", [
+        _c("a", { staticClass: "UserName", attrs: { href: "" } }, [
+          _c("img", {
+            staticClass: "UserImage",
+            attrs: { src: "", alt: "", height: "80px", width: "80px" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("nav", { staticClass: "navPrincipale" }, [
+        _c("ul", { staticClass: "navigation" }, [
+          _c("li", [_c("a", { attrs: { href: "/user" } }, [_vm._v("Cours")])]),
+          _vm._v(" "),
+          _c("li", [_c("a", { attrs: { href: "/faq" } }, [_vm._v("FAQ")])]),
+          _vm._v(" "),
+          _c("li", [
+            _c("a", { attrs: { href: "/logout" } }, [_vm._v("Logout")])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _c("label", { attrs: { for: "currentPicture" } }, [
+        _vm._v("Current picture:")
+      ]),
+      _vm._v(" "),
+      _c("img", {
+        staticClass: "UserImage",
+        attrs: { src: "", alt: "", width: "50px", height: "50px" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _c("label", { attrs: { for: "downloadPicture" } }, [
+        _vm._v("New Picture")
+      ]),
+      _vm._v(" "),
+      _c("input", { attrs: { type: "text", placeholder: "Download picture" } })
     ])
   }
 ]
@@ -39991,58 +40272,107 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h1", [_vm._v("Page utilisateur")]),
+    _vm._m(0),
     _vm._v(" "),
-    _c("h2", [_vm._v("Liste des cours")]),
-    _vm._v(" "),
-    _c("h3", [_vm._v("User ID: " + _vm._s(_vm.userId))]),
-    _vm._v(" "),
-    _c(
-      "ul",
-      _vm._l(_vm.coursList, function(cours) {
-        return _c(
-          "li",
-          { key: cours.id },
-          _vm._l(_vm.coursNames, function(names) {
-            return _c("div", { key: names.id }, [
-              _c(
-                "span",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: cours.cours_id === names.id,
-                      expression: "cours.cours_id === names.id"
-                    }
-                  ]
-                },
-                [
-                  _vm._v(" Cours ID: "),
-                  _c("a", { attrs: { href: "/cours" } }, [
-                    _vm._v(" " + _vm._s(cours.cours_id) + " ")
-                  ]),
-                  _vm._v(
-                    " |\n            Débute le: " +
-                      _vm._s(cours.start_at) +
-                      " | \n            Termine le: " +
-                      _vm._s(cours.end_at) +
-                      " | Cours : " +
-                      _vm._s(names.titre) +
-                      " "
-                  )
-                ]
-              )
-            ])
+    _c("section", [
+      _c("h1", [_vm._v("Liste des cours")]),
+      _vm._v(" "),
+      _c("table", { staticClass: "listecours" }, [
+        _vm._m(1),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          _vm._l(_vm.filterCours, function(cours) {
+            return _c(
+              "tr",
+              { key: cours.id },
+              _vm._l(_vm.coursNames, function(names) {
+                return _c("div", { key: names.id }, [
+                  cours.cours_id === names.id
+                    ? _c("div", [
+                        _c("td", [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "Cours",
+                              attrs: { href: "/cours" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.save(cours.cours_id)
+                                }
+                              }
+                            },
+                            [_vm._v(" " + _vm._s(names.titre) + " ")]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c("p", { attrs: { id: "cours" } }, [
+                            _vm._v(" " + _vm._s(cours.start_at) + " ")
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c("p", { attrs: { id: "cours" } }, [
+                            _vm._v(" " + _vm._s(cours.end_at) + " ")
+                          ])
+                        ])
+                      ])
+                    : _vm._e()
+                ])
+              }),
+              0
+            )
           }),
           0
         )
-      }),
-      0
-    )
+      ])
+    ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("header", [
+      _c("figure", [
+        _c("a", { staticClass: "UserName", attrs: { href: "/profile" } }, [
+          _c("img", {
+            staticClass: "UserImage",
+            attrs: { src: "", alt: "", height: "80px", width: "80px" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("nav", { staticClass: "navPrincipale" }, [
+        _c("ul", { staticClass: "navigation" }, [
+          _c("li", [_c("a", { attrs: { href: "/cours" } }, [_vm._v("Cours")])]),
+          _vm._v(" "),
+          _c("li", [_c("a", { attrs: { href: "/faq" } }, [_vm._v("FAQ")])]),
+          _vm._v(" "),
+          _c("li", [
+            _c("a", { attrs: { href: "/logout" } }, [_vm._v("Logout")])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Nom du cours")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Date de début")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Date de fin")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -55743,14 +56073,26 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/sass/default.scss":
+/*!*************************************!*\
+  !*** ./resources/sass/default.scss ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ 0:
-/*!***********************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/css/app.css ***!
-  \***********************************************************/
+/*!*****************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/default.scss ./resources/css/app.css ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
 module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
 
 
