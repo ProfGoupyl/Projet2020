@@ -10,10 +10,8 @@
 </template>
 <script>
     export default {
-        props: ['userid'],
         data() {
             return {
-                userId: this.userid,
                 moduleList: [],
                 moduleId: JSON.parse(sessionStorage.getItem('moduleid')),
             }
@@ -29,6 +27,7 @@
                 .then(response => (this.moduleList = response.data))
                 .catch(error => console.log(error))
         },
+        // beforeDestroy ne fonctionne pas
         beforeDestroy() {
             this.moduleId = null
             sessionStorage.removeItem('moduleid')

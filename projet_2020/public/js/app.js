@@ -4166,10 +4166,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['userid'],
   data: function data() {
     return {
-      userId: this.userid,
       moduleList: [],
       moduleId: JSON.parse(sessionStorage.getItem('moduleid'))
     };
@@ -4192,6 +4190,7 @@ __webpack_require__.r(__webpack_exports__);
       return console.log(error);
     });
   },
+  // beforeDestroy ne fonctionne pas
   beforeDestroy: function beforeDestroy() {
     this.moduleId = null;
     sessionStorage.removeItem('moduleid');
