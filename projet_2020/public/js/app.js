@@ -3959,6 +3959,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -39973,28 +40005,60 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("section", { staticClass: "GeneralSectionUserPageFAQ" }, [
-    _c("h1", [_vm._v("FAQ")]),
+  return _c("div", [
+    _vm._m(0),
     _vm._v(" "),
-    _c(
-      "ul",
-      { staticClass: "faq" },
-      _vm._l(_vm.faqList, function(question) {
-        return _c("li", { key: question.id }, [
-          _c("button", [
-            _c("h3", [_vm._v(" " + _vm._s(question.question) + " ")])
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "hidden" }, [
-            _vm._v("  " + _vm._s(question.reponse) + "  ")
+    _c("section", [
+      _c("h1", [_vm._v("FAQ")]),
+      _vm._v(" "),
+      _c(
+        "ul",
+        { staticClass: "faq" },
+        _vm._l(_vm.faqList, function(question) {
+          return _c("li", { key: question.id }, [
+            _c("button", [
+              _c("h3", [_vm._v(" " + _vm._s(question.question) + " ")])
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "hidden" }, [
+              _vm._v(" " + _vm._s(question.reponse) + " ")
+            ])
           ])
-        ])
-      }),
-      0
-    )
+        }),
+        0
+      )
+    ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("header", [
+      _c("figure", [
+        _c("a", { staticClass: "UserName", attrs: { href: "/profile" } }, [
+          _c("img", {
+            staticClass: "UserImage",
+            attrs: { src: "", alt: "", height: "80px", width: "80px" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("nav", { staticClass: "navPrincipale" }, [
+        _c("ul", { staticClass: "navigation" }, [
+          _c("li", [_c("a", { attrs: { href: "/user" } }, [_vm._v("Cours")])]),
+          _vm._v(" "),
+          _c("li", [_c("a", { attrs: { href: "/faq" } }, [_vm._v("FAQ")])]),
+          _vm._v(" "),
+          _c("li", [
+            _c("a", { attrs: { href: "/logout" } }, [_vm._v("Logout")])
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -52986,9 +53050,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\sass\default.scss */"./resources/sass/default.scss");
-module.exports = __webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })
