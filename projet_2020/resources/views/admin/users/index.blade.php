@@ -10,10 +10,10 @@
     display:block;
 }
 </style>
-{{-- <div id="addUser">
-=======
 <div id="addUser">
->>>>>>> 3f42413e8c5cd5fd3ca8d176f7c916569aa79de3:projet_2020/resources/views/admin/index.blade.php
+
+<div id="addUser">
+
     <x-guest-layout>
         <x-auth-card>
             <x-slot name="logo">
@@ -47,7 +47,7 @@
 
                     <x-input id="prenom" class="block mt-1 w-full" type="text" name="prenom" :value="old('prenom')" required autofocus />
                 </div>
-=======
+
                     <x-input id="prenom" class="block mt-1 w-full" type="text" name="prenom"  required autofocus />
                 </div>
 
