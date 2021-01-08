@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 @import url(https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;
+=======
+@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;
+>>>>>>> cf5e3b9421cebd3b68429d61ca36981486e70c82
 
 500&family=Open+Sans:wght@300;400;600&display=swap%27);/*
 $font-family-sans-serif: 'Nunito', sans-serif;
@@ -35,6 +39,64 @@ section article {
 
 section aside {
   flex-basis: 20%;
+}
+
+<<<<<<< HEAD
+nav .navPrincipale ul {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+}
+
+nav .navPrincipale li {
+  padding: 1em;
+  list-style-type: none;
+}
+
+nav .navPrincipale a {
+  color: #000000;
+  text-decoration: none;
+}
+
+button {
+  padding: 1em;
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+  transition: 0.5s ease;
+}
+
+button #ajouter {
+  color: white;
+}
+
+button #ajouter:hover,
+button #ajouter:focus {
+  background-color: #75dc16;
+}
+
+button #supprimer {
+  color: #e92222;
+}
+
+button #supprimer:hover,
+button #supprimer:focus {
+  background-color: #dc1616;
+}
+
+=======
+p {
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.9rem;
+  font-weight: normal;
+  line-height: 1.6;
+}
+
+h1 {
+  font-family: "Fira Sans", sans-serif;
+  font-size: 1.1rem;
+  font-weight: normal;
+  line-height: 1.8;
 }
 
 nav .navPrincipale ul {
@@ -79,6 +141,7 @@ button #supprimer:focus {
   background-color: #dc1616;
 }
 
+>>>>>>> cf5e3b9421cebd3b68429d61ca36981486e70c82
 button #modifier {
   color: #ffae18;
 }

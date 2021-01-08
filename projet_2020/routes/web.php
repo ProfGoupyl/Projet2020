@@ -9,6 +9,7 @@ use App\Http\Controllers\Administration\ModuleAdminController;
 use App\Http\Controllers\Administration\FaqAdminController;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -78,7 +79,7 @@ Route::prefix('admin')
 
         // route pour les cours
         Route::resource('cours',CoursAdminController::class);
-        Route::resource('faq',FaqAdminController::class);
+        Route::resource('faqs',FaqAdminController::class);
         Route::resource('module',ModuleAdminController::class);
 
         //Routes CSV : GET && POST

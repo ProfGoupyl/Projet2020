@@ -1,5 +1,62 @@
 <template>
     <div>
+        <header>
+            <figure>
+                <a href="" class="UserName">
+                    <img src="" alt="" class="UserImage" height="80px" width="80px">
+                </a>
+            </figure>
+            <nav class="navPrincipale">
+                <ul class="navigation">
+                    <li>
+                        <a href="/user">Cours</a>
+                    </li>
+                    <li>
+                        <a href="/faq">FAQ</a>
+                    </li>
+                    <li>
+                        <a href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <section>
+            <h1>Votre profil:</h1>
+            <form v-on:submit.prevent="submit" method="patch" class="userProfil">
+                <input type="hidden" name="_token" v-bind:value="token">
+                <p>
+                    <label for="firstname">First Name:</label>
+                    <input type="text" name="firstname" v-model="userPrenom">
+                </p>
+                <p>
+                    <label for="lastname">Last Name:</label>
+                    <input type="text" name="lastname" v-model="userName">
+                </p>
+                <p>
+                    <label for="email">Email address:</label>
+                    <input type="email" name="email" v-model="userEmail">
+                </p>
+                <p>
+                    <label for="currentPicture">Current picture:</label>
+                    <img src="" alt="" class="UserImage" width="50px" height="50px">
+                </p>
+                <p>
+                    <label for="downloadPicture">New Picture</label>
+                    <input type="text" placeholder="Download picture">
+                </p>
+                <button id="modifier" class="btn btn-primary" type="submit">Modifier</button>
+            </form>
+
+            <button class="btn btn-primary" type="submit">Annuler</button>
+
+            <div v-if="send === true">
+                <p>Modifications enregistrées</p>
+            </div>
+            <div v-if="send === false">
+                <p>Erreur</p>
+            </div>
+        </section>
+        <!--
         <h1>Modifier le profil </h1>
         <form v-on:submit.prevent="submit" method="patch">
             <input type="hidden" name="_token" v-bind:value="token">
@@ -22,7 +79,11 @@
             <div>
                 <button type="submit">Modifier</button>
             </div>
+            <div v-if="send">
+                <p>Modifications enregistrées</p>
+            </div>
         </form>
+        -->
     </div>
 </template>
 
@@ -36,7 +97,8 @@
                 userName: this.user.name,
                 userPrenom: this.user.prenom,
                 userEmail: this.user.email,
-                userPseudo: this.user.pseudo
+                userPseudo: this.user.pseudo,
+                send: null,
             }
         },
         methods: {
@@ -48,8 +110,8 @@
                     email: this.userEmail,
                     pseudo: this.userPseudo
                 })
-                .then(response => console.log(response))
-                .catch(error => console.log(error))
+                .then(response => this.send = true)
+                .catch(error => this.send = false)
             }
         }
     }

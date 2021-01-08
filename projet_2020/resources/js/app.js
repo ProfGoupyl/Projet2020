@@ -6,8 +6,8 @@ require('alpinejs');
 // Vue.js
 
 window.Vue = require('vue');
-import VueRouter from 'vue-router'
-Vue.use(VueRouter)
+//import VueRouter from 'vue-router'
+//Vue.use(VueRouter)
 
 Vue.component('cours', require('./components/cours.component').default)
 Vue.component('faq', require('./components/faq.component').default)
@@ -15,7 +15,7 @@ Vue.component('modifyuser', require('./components/modify-user.component').defaul
 Vue.component('user', require('./components/user.component').default)
 Vue.component('session', require('./components/session.component').default)
 
-// Vue router
+/* Vue router
 
 const routes = [
     { path: '/user', component: require('./components/user.component.vue') },
@@ -28,9 +28,9 @@ const routes = [
 const router = new VueRouter({
     mode: 'history',
     routes // raccourci pour `routes: routes`
-})
+}) */
 
 new Vue({
-    router,
+    //router,
     el: '#app'
 })
