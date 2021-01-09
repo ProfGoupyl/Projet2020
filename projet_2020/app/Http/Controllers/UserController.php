@@ -72,14 +72,13 @@ class UserController extends Controller
 
 
         /**
-     * Display the specified resource and his relations.
+     * Display the specified resource and relations.
      *
      * @param  \App\Models\user  $user
      * @return \Illuminate\Http\Response
      */
     public function formations(user $user)
     {
-
         return DB::table('users')
         ->join('users_cours', 'users.id', '=', 'users_cours.user_id')
         ->join('cours', 'cours.id', '=', 'users_cours.cours_id')

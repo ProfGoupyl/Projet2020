@@ -32,7 +32,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::middleware('auth:api')->group(function () {
-    // Route::get('users/formations/{user}', 'App\Http\Controllers\UserFormationsController@show');
     Route::get('users/formations/{user}', 'App\Http\Controllers\UserController@formations');
     Route::apiResource('users', UserController::class);
     Route::apiResource('commentaires', CommentaireController::class);
