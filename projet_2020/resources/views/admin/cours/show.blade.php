@@ -36,12 +36,21 @@
         <div data-neworder="" data-element="{{$m->id}}" data-order="{{$m->ordre}}" class="draggable" draggable="true">
             <input type="hidden" name="modules[]" value="{{$m->id}}-{{$m->ordre}}">
             <p>{{$m->titre}}</p>
+            <button data-action="{{$m->id}}" data-titre="{{$m->titre}}" data-desc="{{$m->description}}" class="edit-module" type="button">Modifier</button>
         </div>
-
         @endforeach
     </div>
-
 </section>
+
+<form id="form-module" method="POST">
+    @csrf
+    @method('put')
+    <input type="hidden" name="general-data" value="true">
+    <input type="hidden" name="cours" value="{{$cours->id}}">
+    <input type="text" name="titre">
+    <textarea name="description" cols="30" rows="10"></textarea>
+    <input type="submit" value="Modifier">
+</form>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
@@ -103,4 +112,18 @@
             offset: Number.NEGATIVE_INFINITY
         }).element
     }
+</script>
+
+<script>
+    const editBtns = document.querySelectorAll('.edit-module')
+    const titre = document.querySelector('input[name=titre]')
+    const desc = document.querySelector('textarea[name=description]')
+    const form = document.querySelector('#form-module')
+    editBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            titre.value = btn.dataset.titre;
+            desc.value = btn.dataset.desc;
+            form.action = `/admin/module/${btn.dataset.action}`
+        })
+    })
 </script>

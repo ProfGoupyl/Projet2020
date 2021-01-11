@@ -1,25 +1,5 @@
 <template>
     <div>
-        <header>
-            <figure>
-                <a href="/profile" class="UserName">
-                    <img src="" alt="" class="UserImage" height="80px" width="80px">
-                </a>
-            </figure>
-            <nav class="navPrincipale">
-                <ul class="navigation">
-                    <li>
-                        <a href="/user">Cours</a>
-                    </li>
-                    <li>
-                        <a href="/faq">FAQ</a>
-                    </li>
-                    <li>
-                        <a href="/logout">Logout</a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
         <section>
             <h1>FAQ</h1>
                 <ul class="faq">

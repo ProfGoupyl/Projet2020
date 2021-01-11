@@ -3879,26 +3879,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -3976,26 +3956,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4024,26 +3984,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -4249,62 +4189,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'user',
   props: ['userid'],
   data: function data() {
     return {
-      coursList: [],
       coursNames: [],
-      userId: 37
+      userId: 99
     };
   },
   created: function created() {
     var _this = this;
 
-    axios.get('http://localhost:8000/api/users_cours?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
-      return _this.coursList = response.data;
-    })["catch"](function (error) {
-      return console.log(error);
-    });
-    axios.get('http://localhost:8000/api/cours?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
+    axios.get("http://localhost:8000/api/users/formations/".concat(this.userId, "?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9")).then(function (response) {
       return _this.coursNames = response.data;
     })["catch"](function (error) {
       return console.log(error);
     });
-  },
-  computed: {
-    filterCours: function filterCours() {
-      var _this2 = this;
-
-      return this.coursList.filter(function (cours) {
-        return cours.user_id === _this2.userId;
-      });
-    }
   },
   methods: {
     save: function save(coursid) {
@@ -39906,8 +39807,6 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
-    _vm._v(" "),
     _c("section", [
       _c("aside", [
         _c("nav", { staticClass: "navSecondaire" }, [
@@ -39985,35 +39884,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("header", [
-      _c("figure", [
-        _c("a", { staticClass: "UserName", attrs: { href: "/profile" } }, [
-          _c("img", {
-            staticClass: "UserImage",
-            attrs: { src: "", alt: "", height: "80px", width: "80px" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("nav", { staticClass: "navPrincipale" }, [
-        _c("ul", { staticClass: "navigation" }, [
-          _c("li", [_c("a", { attrs: { href: "/user" } }, [_vm._v("Cours")])]),
-          _vm._v(" "),
-          _c("li", [_c("a", { attrs: { href: "/faq" } }, [_vm._v("FAQ")])]),
-          _vm._v(" "),
-          _c("li", [
-            _c("a", { attrs: { href: "/logout" } }, [_vm._v("Logout")])
-          ])
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -40036,8 +39907,6 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
-    _vm._v(" "),
     _c("section", [
       _c("h1", [_vm._v("FAQ")]),
       _vm._v(" "),
@@ -40060,35 +39929,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("header", [
-      _c("figure", [
-        _c("a", { staticClass: "UserName", attrs: { href: "/profile" } }, [
-          _c("img", {
-            staticClass: "UserImage",
-            attrs: { src: "", alt: "", height: "80px", width: "80px" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("nav", { staticClass: "navPrincipale" }, [
-        _c("ul", { staticClass: "navigation" }, [
-          _c("li", [_c("a", { attrs: { href: "/user" } }, [_vm._v("Cours")])]),
-          _vm._v(" "),
-          _c("li", [_c("a", { attrs: { href: "/faq" } }, [_vm._v("FAQ")])]),
-          _vm._v(" "),
-          _c("li", [
-            _c("a", { attrs: { href: "/logout" } }, [_vm._v("Logout")])
-          ])
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -40111,8 +39952,6 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
-    _vm._v(" "),
     _c("section", [
       _c("h1", [_vm._v("Votre profil:")]),
       _vm._v(" "),
@@ -40213,9 +40052,9 @@ var render = function() {
             })
           ]),
           _vm._v(" "),
-          _vm._m(1),
+          _vm._m(0),
           _vm._v(" "),
-          _vm._m(2),
+          _vm._m(1),
           _vm._v(" "),
           _c(
             "button",
@@ -40243,33 +40082,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("header", [
-      _c("figure", [
-        _c("a", { staticClass: "UserName", attrs: { href: "" } }, [
-          _c("img", {
-            staticClass: "UserImage",
-            attrs: { src: "", alt: "", height: "80px", width: "80px" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("nav", { staticClass: "navPrincipale" }, [
-        _c("ul", { staticClass: "navigation" }, [
-          _c("li", [_c("a", { attrs: { href: "/user" } }, [_vm._v("Cours")])]),
-          _vm._v(" "),
-          _c("li", [_c("a", { attrs: { href: "/faq" } }, [_vm._v("FAQ")])]),
-          _vm._v(" "),
-          _c("li", [
-            _c("a", { attrs: { href: "/logout" } }, [_vm._v("Logout")])
-          ])
-        ])
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -40356,57 +40168,44 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
-    _vm._v(" "),
     _c("section", [
       _c("h1", [_vm._v("Liste des cours")]),
       _vm._v(" "),
       _c("table", { staticClass: "listecours" }, [
-        _vm._m(1),
+        _vm._m(0),
         _vm._v(" "),
         _c(
           "tbody",
-          _vm._l(_vm.filterCours, function(cours) {
-            return _c(
-              "tr",
-              { key: cours.id },
-              _vm._l(_vm.coursNames, function(names) {
-                return _c("div", { key: names.id }, [
-                  cours.cours_id === names.id
-                    ? _c("div", [
-                        _c("td", [
-                          _c(
-                            "a",
-                            {
-                              staticClass: "Cours",
-                              attrs: { href: "/cours" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.save(cours.cours_id)
-                                }
-                              }
-                            },
-                            [_vm._v(" " + _vm._s(names.titre) + " ")]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _c("p", { attrs: { id: "cours" } }, [
-                            _vm._v(" " + _vm._s(cours.start_at) + " ")
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _c("p", { attrs: { id: "cours" } }, [
-                            _vm._v(" " + _vm._s(cours.end_at) + " ")
-                          ])
-                        ])
-                      ])
-                    : _vm._e()
+          _vm._l(_vm.coursNames, function(names) {
+            return _c("tr", { key: names.id }, [
+              _c("td", [
+                _c(
+                  "a",
+                  {
+                    staticClass: "Cours",
+                    attrs: { href: "/cours" },
+                    on: {
+                      click: function($event) {
+                        return _vm.save(names.coursId)
+                      }
+                    }
+                  },
+                  [_vm._v(" " + _vm._s(names.titre) + " ")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c("p", { attrs: { id: "cours" } }, [
+                  _vm._v(" " + _vm._s(names.start_at) + " ")
                 ])
-              }),
-              0
-            )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c("p", { attrs: { id: "cours" } }, [
+                  _vm._v(" " + _vm._s(names.end_at) + " ")
+                ])
+              ])
+            ])
           }),
           0
         )
@@ -40415,33 +40214,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("header", [
-      _c("figure", [
-        _c("a", { staticClass: "UserName", attrs: { href: "/profile" } }, [
-          _c("img", {
-            staticClass: "UserImage",
-            attrs: { src: "", alt: "", height: "80px", width: "80px" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("nav", { staticClass: "navPrincipale" }, [
-        _c("ul", { staticClass: "navigation" }, [
-          _c("li", [_c("a", { attrs: { href: "/cours" } }, [_vm._v("Cours")])]),
-          _vm._v(" "),
-          _c("li", [_c("a", { attrs: { href: "/faq" } }, [_vm._v("FAQ")])]),
-          _vm._v(" "),
-          _c("li", [
-            _c("a", { attrs: { href: "/logout" } }, [_vm._v("Logout")])
-          ])
-        ])
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -53068,17 +52840,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/sass/app.scss":
-/*!*********************************!*\
-  !*** ./resources/sass/app.scss ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ "./resources/sass/default.scss":
 /*!*************************************!*\
   !*** ./resources/sass/default.scss ***!
@@ -53091,16 +52852,15 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ 0:
-/*!*******************************************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/default.scss ./resources/css/app.css ***!
-  \*******************************************************************************************************************/
+/*!*****************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/default.scss ./resources/css/app.css ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\www\projetDyn\Projet2020\projet_2020\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\wamp64\www\projetDyn\Projet2020\projet_2020\resources\sass\app.scss */"./resources/sass/app.scss");
-__webpack_require__(/*! C:\wamp64\www\projetDyn\Projet2020\projet_2020\resources\sass\default.scss */"./resources/sass/default.scss");
-module.exports = __webpack_require__(/*! C:\wamp64\www\projetDyn\Projet2020\projet_2020\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })
