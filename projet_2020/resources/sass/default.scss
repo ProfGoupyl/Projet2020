@@ -57,31 +57,69 @@ h1{
 
 // BOUTONS
 button{
-	padding: 1em;
-	border-radius: 10px;
+	padding: 0.8em;
+	border-radius: 4px;
 	text-decoration: none;
-	color: $btn-main;
-	transition:.5s ease;
+	text-align: center;
+	background-color: $white;
+	cursor: pointer;
+	outline: none;
+	transition:.2s ease;
 	#ajouter{
-		color: $btn-main;
+		color: $btn-add;
+		border: 2px solid $btn-add;
 		&:hover, &:focus{
-			background-color: $btn-add-dark
+			background-color: $btn-add;
+		}
+		&:active{
+		  background-color: $btn-add-dark;
 		}
 	}
 	#supprimer{
 		color: $btn-delete;
 		&:hover, &:focus{
-			background-color: $btn-delete-dark
+			background-color: $btn-delete;
 		}
+		&:active{
+		  background-color: $btn-delete-dark;
+	   }
 	}
 	#modifier{
 		color: $btn-update;
 		&:hover, &:focus{
-			background-color: $btn-update-dark
+			background-color: $btn-update;
 		}
+	   &:active{
+		   background-color: $btn-update-dark;
+	   }
+	}
+	&:focus{
+		color: $white;
 	}
 	&:active{
-		position: relative;
-		top: 1px;
+		transform: scale(0.95);
+	}
+}
+	
+form .profil button{
+	width: auto;
+	margin: 0;
+}
+	
+
+
+
+
+// INPUT
+form{
+	p{height: 50px;}
+	label{display: none;}
+	input{
+   	 width: 300px;
+   	 padding: 10px 10px 10px 0;
+   	 border: none;
+   	 border-bottom: 2px solid light gray;
+   	 outline: none;
+		&:focus{border-bottom: 2px solid $indigo;}
 	}
 }
