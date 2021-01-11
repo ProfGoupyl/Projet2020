@@ -4296,6 +4296,11 @@ __webpack_require__.r(__webpack_exports__);
     })["catch"](function (error) {
       return console.log(error);
     });
+    axios.get("http://localhost:8000/api/users/formations/".concat(this.userId, "?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9")).then(function (response) {
+      return console.log(response.data);
+    })["catch"](function (error) {
+      return console.log(error);
+    });
   },
   computed: {
     filterCours: function filterCours() {
@@ -53068,17 +53073,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/sass/app.scss":
-/*!*********************************!*\
-  !*** ./resources/sass/app.scss ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ "./resources/sass/default.scss":
 /*!*************************************!*\
   !*** ./resources/sass/default.scss ***!
@@ -53091,16 +53085,15 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ 0:
-/*!*******************************************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/default.scss ./resources/css/app.css ***!
-  \*******************************************************************************************************************/
+/*!*****************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/default.scss ./resources/css/app.css ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\www\projetDyn\Projet2020\projet_2020\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\wamp64\www\projetDyn\Projet2020\projet_2020\resources\sass\app.scss */"./resources/sass/app.scss");
-__webpack_require__(/*! C:\wamp64\www\projetDyn\Projet2020\projet_2020\resources\sass\default.scss */"./resources/sass/default.scss");
-module.exports = __webpack_require__(/*! C:\wamp64\www\projetDyn\Projet2020\projet_2020\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })
