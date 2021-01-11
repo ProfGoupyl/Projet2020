@@ -1,0 +1,16 @@
+header .navPrnicipale  ul {
+    list-style:none;
+    display: flex; /*1*/
+    flex-direction : row; /*2*/
+    justify-content: flex-end; /*3*/
+    li a{
+        padding: 1em;
+        margin: 1em;
+        display: flex;
+        text-decoration: none;
+        border-style: solid;
+    }
+}
+ header figure{
+    display: flex;
+}
