@@ -17,11 +17,19 @@
     .draggable.dragging {
         opacity: .5;
     }
+    .form-modules{
+        display: none;
+    }
+    .form-modules.show{
+        display: block;
+    }
+
 </style>
 
 
 <h1>salut {{$cours->titre}}</h1>
 <section>
+    <div>
     <!-- Formulaire réceptionnant les nouvelles valeurs "ordre" du module dragged et l'envoyant au ModuleController->update() -->
     <form id="myForm" action="" method="POST">
         @csrf
@@ -36,14 +44,46 @@
         <div data-neworder="" data-element="{{$m->id}}" data-order="{{$m->ordre}}" class="draggable" draggable="true">
             <input type="hidden" name="modules[]" value="{{$m->id}}-{{$m->ordre}}">
             <p>{{$m->titre}}</p>
+            <button class="show_module" data-target="{{$m->id}}">+</button>
         </div>
         @endforeach
     </div>
+    </div>
+    <div>
+    @foreach($modules as $m)
+    <form class="form-modules" action="/admin/modules/{{$m->id}}" id="form-{{$m->id}}">
+    @csrf
+    @method('put')
+    <input type="text"  style="background:none;border:none;color:black;text-align:center;width:auto;" value="{{$m->titre}}">
+    <input type="text"  style="background:none;border:none;color:black;text-align:center;width:auto;" value="{{$m->description}}">
+    <input type="text"  style="background:none;border:none;color:black;text-align:center;width:auto;" value="{{$m->url_video}}">
+    </form>
+    @endforeach
+</div>
 
 </section>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+
+const showBtns = document.querySelectorAll('.show_module');
+const formAll = document.querySelectorAll('.form-modules');
+    showBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            formAll.forEach((form) => {
+                form.classList.remove('show')
+            })
+            const target = btn.dataset.target
+            const form = document.querySelector(`#form-${target}`)
+            form.classList.add('show')
+
+        } )
+    })
+
+
+
+
+
     const draggables = document.querySelectorAll('.draggable');
     const container = document.querySelector('.drag-container');
 
@@ -102,4 +142,8 @@
             offset: Number.NEGATIVE_INFINITY
         }).element
     }
+
+
+
+
 </script>
