@@ -31,14 +31,10 @@
                     </tr>
                </thead>
                <tbody>
-                   <tr v-for="cours in filterCours" :key="cours.id">
-                       <div v-for="names in coursNames" :key="names.id">
-                           <div v-if="cours.cours_id === names.id">
+                    <tr v-for="names in coursNames" :key="names.id">
                                 <td><a href="/cours" class="Cours" v-on:click="save(cours.cours_id)"> {{ names.titre }} </a></td>
-                                <td><p id="cours"> {{ cours.start_at }} </p></td>
-                                <td><p id="cours"> {{ cours.end_at }} </p></td>
-                           </div>
-                       </div>
+                                <td><p id="cours"> {{ names.start_at }} </p></td>
+                                <td><p id="cours"> {{ names.end_at }} </p></td>
                    </tr>
                </tbody>
            </table>
@@ -69,30 +65,19 @@
         props: ['userid'],
         data() {
             return {
-                coursList: [],
+                
                 coursNames: [],
                 userId: 37
             }
         },
         created() {
-            axios
-                .get('http://localhost:8000/api/users_cours?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9')
-                .then(response => (this.coursList = response.data))
-                .catch(error => console.log(error))
-            axios
-                .get('http://localhost:8000/api/cours?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9')
-                .then(response => (this.coursNames = response.data))
-                .catch(error => console.log(error))
+            
             axios
                 .get(`http://localhost:8000/api/users/formations/${this.userId}?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9`)
-                .then(response => console.log(response.data))
+                .then(response => (this.coursNames = response.data))
                 .catch(error => console.log(error))
         },
-        computed: {
-            filterCours: function() {
-                return this.coursList.filter(cours => cours.user_id === this.userId)
-            }
-        },
+        
         methods: {
             save(coursid) {
                 sessionStorage.setItem('coursid', coursid)
