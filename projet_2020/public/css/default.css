@@ -75,22 +75,6 @@ h1 {
   line-height: 1.8;
 }
 
-nav .navPrincipale ul {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-end;
-}
-
-nav .navPrincipale li {
-  padding: 1em;
-  list-style-type: none;
-}
-
-nav .navPrincipale a {
-  color: #000000;
-  text-decoration: none;
-}
-
 button {
   padding: 1em;
   border-radius: 10px;

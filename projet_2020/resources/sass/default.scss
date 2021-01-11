@@ -55,25 +55,6 @@ h1{
 
 
 
-// NAVIGATION PRINCIPALE
-nav .navPrincipale{
-	ul{
-		display: flex;
-		flex-flow: row wrap;
-		justify-content: flex-end;
-	}
-	li{
-		padding: 1em;
-		list-style-type: none;
-	}
-	a{
-		color: $main;
-		text-decoration: none;
-	}
-} 
-
-
-
 // BOUTONS
 button{
 	padding: 1em;
