@@ -5,7 +5,7 @@ $font-family-sans-serif: 'Nunito', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 */
-header .navPrnicipale ul {
+header .navPrincipale ul {
   list-style: none;
   display: flex;
   /*1*/
@@ -15,7 +15,7 @@ header .navPrnicipale ul {
   /*3*/
 }
 
-header .navPrnicipale ul li a {
+header .navPrincipale ul li a {
   padding: 1em;
   margin: 1em;
   display: flex;
@@ -80,7 +80,7 @@ button {
   border-radius: 10px;
   text-decoration: none;
   color: white;
-  transition: 0.5s ease;
+  transition: .5s ease;
 }
 
 button #ajouter {
