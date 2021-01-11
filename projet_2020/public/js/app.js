@@ -3879,26 +3879,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -39827,8 +39807,6 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
-    _vm._v(" "),
     _c("section", [
       _c("aside", [
         _c("nav", { staticClass: "navSecondaire" }, [
@@ -39906,35 +39884,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("header", [
-      _c("figure", [
-        _c("a", { staticClass: "UserName", attrs: { href: "/profile" } }, [
-          _c("img", {
-            staticClass: "UserImage",
-            attrs: { src: "", alt: "", height: "80px", width: "80px" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("nav", { staticClass: "navPrincipale" }, [
-        _c("ul", { staticClass: "navigation" }, [
-          _c("li", [_c("a", { attrs: { href: "/user" } }, [_vm._v("Cours")])]),
-          _vm._v(" "),
-          _c("li", [_c("a", { attrs: { href: "/faq" } }, [_vm._v("FAQ")])]),
-          _vm._v(" "),
-          _c("li", [
-            _c("a", { attrs: { href: "/logout" } }, [_vm._v("Logout")])
-          ])
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -52890,17 +52840,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/sass/app.scss":
-/*!*********************************!*\
-  !*** ./resources/sass/app.scss ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ "./resources/sass/default.scss":
 /*!*************************************!*\
   !*** ./resources/sass/default.scss ***!
@@ -52913,16 +52852,15 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ 0:
-/*!*******************************************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/default.scss ./resources/css/app.css ***!
-  \*******************************************************************************************************************/
+/*!*****************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/default.scss ./resources/css/app.css ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\sass\app.scss */"./resources/sass/app.scss");
-__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\sass\default.scss */"./resources/sass/default.scss");
-module.exports = __webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })
