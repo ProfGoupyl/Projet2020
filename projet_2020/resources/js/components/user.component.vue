@@ -1,25 +1,5 @@
 <template>
     <div>
-       <header>
-           <figure>
-               <a href="/profile" class="UserName">
-                    <img src="" alt="" class="UserImage" height="80px" width="80px">
-               </a>
-           </figure>
-           <nav class="navPrincipale">
-               <ul class="navigation">
-                   <li>
-                       <a href="/cours">Cours</a>
-                   </li>
-                   <li>
-                       <a href="/faq">FAQ</a>
-                   </li>
-                   <li>
-                       <a href="/logout">Logout</a>
-                   </li>
-               </ul>
-           </nav>
-       </header>
        <section>
            <h1>Liste des cours</h1>
            <table class="listecours">
@@ -32,7 +12,7 @@
                </thead>
                <tbody>
                     <tr v-for="names in coursNames" :key="names.id">
-                                <td><a href="/cours" class="Cours" v-on:click="save(cours.cours_id)"> {{ names.titre }} </a></td>
+                                <td><a href="/cours" class="Cours" v-on:click="save(names.coursId)"> {{ names.titre }} </a></td>
                                 <td><p id="cours"> {{ names.start_at }} </p></td>
                                 <td><p id="cours"> {{ names.end_at }} </p></td>
                    </tr>
