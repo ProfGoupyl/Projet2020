@@ -37,7 +37,6 @@
             <input type="hidden" name="modules[]" value="{{$m->id}}-{{$m->ordre}}">
             <p>{{$m->titre}}</p>
         </div>
-
         @endforeach
     </div>
 
