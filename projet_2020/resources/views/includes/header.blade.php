@@ -11,7 +11,7 @@
                 <img src="" alt="" class="UserImage" height="80px" width="80px">
                 <ul class="sous">
                     <li>
-                        <a href="/profil" class="UserName">Profil</a>
+                        <a href="/profile" class="UserName">Profil</a>
                     </li>
                     @if (Auth::user() && Auth::user()->admin === 1)
                     <li>
