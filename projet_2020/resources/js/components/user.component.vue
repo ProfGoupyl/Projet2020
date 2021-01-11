@@ -32,7 +32,7 @@
                </thead>
                <tbody>
                     <tr v-for="names in coursNames" :key="names.id">
-                                <td><a href="/cours" class="Cours" v-on:click="save(cours.cours_id)"> {{ names.titre }} </a></td>
+                                <td><a href="/cours" class="Cours" v-on:click="save(names.coursId)"> {{ names.titre }} </a></td>
                                 <td><p id="cours"> {{ names.start_at }} </p></td>
                                 <td><p id="cours"> {{ names.end_at }} </p></td>
                    </tr>

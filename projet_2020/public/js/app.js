@@ -40357,7 +40357,7 @@ var render = function() {
                     attrs: { href: "/cours" },
                     on: {
                       click: function($event) {
-                        return _vm.save(_vm.cours.cours_id)
+                        return _vm.save(names.coursId)
                       }
                     }
                   },
