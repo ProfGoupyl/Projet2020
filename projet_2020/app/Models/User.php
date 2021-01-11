@@ -33,7 +33,7 @@ class User extends Authenticatable
 
     public function cours()
     {
-        return $this->belongsTo(Cours::class);
+        return $this->belongsToMany(Cours::class);
     }
 
 
