@@ -59,7 +59,7 @@
         props: ['userid'],
         data() {
             return {
-                userId: 37,
+                userId: 99,
                 coursId: JSON.parse(sessionStorage.getItem('coursid')),
                 moduleList: [],
                 coursList: [],
@@ -83,7 +83,8 @@
         },
         methods: {
             save(moduleid) {
-                sessionStorage.setItem('moduleid', moduleid)
+                sessionStorage.setItem('moduleid', moduleid);
+                
             }
         }
         

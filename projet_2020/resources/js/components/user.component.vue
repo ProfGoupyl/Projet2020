@@ -60,7 +60,8 @@
         
         methods: {
             save(coursid) {
-                sessionStorage.setItem('coursid', coursid)
+                sessionStorage.setItem('coursid', coursid);
+                
             }
         }
     }
