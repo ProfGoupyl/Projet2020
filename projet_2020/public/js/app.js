@@ -39863,9 +39863,7 @@ var render = function() {
         { staticClass: "faq" },
         _vm._l(_vm.filterFaq, function(module) {
           return _c("li", { key: module.id }, [
-            _c("button", [
-              _c("h3", [_vm._v(" " + _vm._s(module.question) + " ")])
-            ]),
+            _c("h3", [_vm._v(" " + _vm._s(module.question) + " ")]),
             _vm._v(" "),
             _c("p", { staticClass: "hidden" }, [
               _vm._v(" " + _vm._s(module.reponse) + " ")
@@ -40028,11 +40026,7 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Annuler")]
-      ),
+      _vm._m(1),
       _vm._v(" "),
       _vm.send === true
         ? _c("div", [_c("p", [_vm._v("Modifications enregistrées")])])
@@ -40056,6 +40050,14 @@ var staticRenderFns = [
         staticClass: "UserImage",
         attrs: { src: "", alt: "", width: "50px", height: "50px" }
       })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("button", [
+      _c("a", { attrs: { href: "/user" } }, [_vm._v("Annuler")])
     ])
   }
 ]

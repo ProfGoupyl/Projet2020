@@ -27,7 +27,7 @@
                 <button id="modifier" class="btn btn-primary" type="submit">Modifier</button>
             </form>
 
-            <button class="btn btn-primary" type="submit">Annuler</button>
+            <button><a href="/user">Annuler</a></button>
 
             <div v-if="send === true">
                 <p>Modifications enregistrées</p>
