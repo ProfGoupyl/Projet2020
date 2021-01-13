@@ -4,7 +4,7 @@
             <h1>FAQ</h1>
                 <ul class="faq">
                     <li v-for="module in filterFaq" :key="module.id">
-                        <button><h3> {{ module.question }} </h3></button>
+                        <h3> {{ module.question }} </h3>
                         <p class="hidden"> {{ module.reponse }} </p>
                     </li>
                 </ul>
