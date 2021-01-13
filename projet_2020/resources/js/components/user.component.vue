@@ -29,7 +29,7 @@
         data() {
             return {
                 coursNames: [],
-                userId: 99
+                userId: 37
             }
         },
         created() {

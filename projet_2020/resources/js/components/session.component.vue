@@ -6,10 +6,17 @@
                 <p> {{ modules.description }} </p>
             </div>
         </div>
+        <article>
+            <Faq></Faq>
+        </article>
     </div>
 </template>
 <script>
+    import Faq from './faq.component'
     export default {
+        components: {
+            Faq
+        },
         data() {
             return {
                 moduleList: [],

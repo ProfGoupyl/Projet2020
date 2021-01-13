@@ -3929,21 +3929,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      faqList: []
+      faqList: [],
+      moduleId: JSON.parse(sessionStorage.getItem('moduleid'))
     };
   },
   created: function created() {
@@ -3954,6 +3944,15 @@ __webpack_require__.r(__webpack_exports__);
     })["catch"](function (error) {
       return console.log(error);
     });
+  },
+  computed: {
+    filterFaq: function filterFaq() {
+      var _this2 = this;
+
+      return this.faqList.filter(function (modules) {
+        return modules.id === _this2.moduleId;
+      });
+    }
   }
 });
 
@@ -4079,6 +4078,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _faq_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./faq.component */ "./resources/js/components/faq.component.vue");
 //
 //
 //
@@ -4089,7 +4089,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    Faq: _faq_component__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   data: function data() {
     return {
       moduleList: [],
@@ -4161,7 +4168,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       coursNames: [],
-      userId: 99
+      userId: 37
     };
   },
   created: function created() {
@@ -39880,7 +39887,7 @@ var render = function() {
       _c(
         "ul",
         { staticClass: "faq" },
-        _vm._l(_vm.faqList, function(question) {
+        _vm._l(_vm.filterFaq, function(question) {
           return _c("li", { key: question.id }, [
             _c("button", [
               _c("h3", [_vm._v(" " + _vm._s(question.question) + " ")])
@@ -40100,16 +40107,20 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    _vm._l(_vm.filterModules, function(modules) {
-      return _c("div", { key: modules.id }, [
-        _c("div", [
-          _c("h2", [_vm._v(" " + _vm._s(modules.titre) + " ")]),
-          _vm._v(" "),
-          _c("p", [_vm._v(" " + _vm._s(modules.description) + " ")])
+    [
+      _vm._l(_vm.filterModules, function(modules) {
+        return _c("div", { key: modules.id }, [
+          _c("div", [
+            _c("h2", [_vm._v(" " + _vm._s(modules.titre) + " ")]),
+            _vm._v(" "),
+            _c("p", [_vm._v(" " + _vm._s(modules.description) + " ")])
+          ])
         ])
-      ])
-    }),
-    0
+      }),
+      _vm._v(" "),
+      _c("article", [_c("Faq")], 1)
+    ],
+    2
   )
 }
 var staticRenderFns = []
