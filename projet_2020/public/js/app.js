@@ -3857,28 +3857,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -3888,10 +3866,12 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       userId: 99,
+      moduleId: false,
       coursId: JSON.parse(sessionStorage.getItem('coursid')),
       moduleList: [],
       coursList: [],
-      coursNames: []
+      coursNames: [],
+      componentKey: 0
     };
   },
   created: function created() {
@@ -3916,6 +3896,10 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     save: function save(moduleid) {
       sessionStorage.setItem('moduleid', moduleid);
+      this.moduleId = moduleid;
+    },
+    forceRerender: function forceRerender() {
+      this.componentKey += 1;
     }
   }
 });
@@ -4147,23 +4131,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -39827,14 +39794,10 @@ var render = function() {
                       ]
                     },
                     [
-                      _vm._v(" Cours ID: "),
-                      _c("a", { attrs: { href: "/cours" } }, [
-                        _vm._v(" " + _vm._s(_vm.coursId) + " ")
-                      ]),
                       _vm._v(
-                        "\n\n                        Cours : " +
+                        "\n                                Cours : " +
                           _vm._s(names.titre) +
-                          "\n                        "
+                          "\n                                "
                       ),
                       _vm._l(_vm.moduleList, function(module) {
                         return _c("ul", { key: module.titre }, [
@@ -39858,7 +39821,8 @@ var render = function() {
                                   attrs: { href: "/cours" },
                                   on: {
                                     click: function($event) {
-                                      return _vm.save(module.id)
+                                      $event.preventDefault()
+                                      _vm.save(module.id), _vm.forceRerender()
                                     }
                                   }
                                 },
@@ -39879,7 +39843,11 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", [_c("article", [_c("Session")], 1)])
+      _c("div", [
+        _vm.moduleId
+          ? _c("article", [_c("Session", { key: _vm.componentKey })], 1)
+          : _vm._e()
+      ])
     ])
   ])
 }
@@ -52868,10 +52836,10 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/sass/app.scss */"./resources/sass/app.scss");
-__webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })

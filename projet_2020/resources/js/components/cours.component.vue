@@ -6,47 +6,25 @@
                     <ul>
                         <li> 
                             <div v-for="names in coursNames" :key="names.id">
-
-                            <span v-show="coursId === names.id"> Cours ID: <a href='/cours'> {{ coursId }} </a>
-
-                            Cours : {{ names.titre }}
-                            <ul v-for="module in moduleList" :key="module.titre">
-                                <li v-show="names.id === module.cours_id">
-                                   <a href="/cours" class="Modules" v-on:click="save(module.id)"> {{ module.titre }} </a>
-                                </li>
-                            </ul>
-                            </span>
+                                <span v-show="coursId === names.id">
+                                    Cours : {{ names.titre }}
+                                    <ul v-for="module in moduleList" :key="module.titre">
+                                        <li v-show="names.id === module.cours_id">
+                                            <a href="/cours" class="Modules" v-on:click.prevent="save(module.id), forceRerender()"> {{ module.titre }} </a>
+                                        </li>
+                                    </ul>
+                                </span>
                             </div>
                         </li>
                     </ul>
                 </nav>
             </aside>
             <div>
-                <article>
-                    <Session></Session>
+                <article v-if="moduleId">
+                    <Session :key="componentKey"></Session>
                 </article>
             </div>
         </section>
-        <!--
-        <h1>page COURS</h1>
-        <h2>Liste des modules dispo pour le cours</h2>
-        <ul>
-            <li v-for="cours in filterCours" :key="cours.id"> 
-                <div v-for="names in coursNames" :key="names.id">
-
-                <span v-show="cours.cours_id === names.id"> Cours ID: <a href='/cours'> {{ cours.cours_id }} </a>
-
-                Cours : {{ names.titre }}
-                <ul v-for="module in moduleList" :key="module.titre">
-                    <li v-show="names.id === module.cours_id">
-                        {{ module.titre }}
-                    </li>
-                </ul>
-                </span>
-                </div>
-            </li>
-        </ul>
-        -->
     </div>
 </template>
 
@@ -60,10 +38,12 @@
         data() {
             return {
                 userId: 99,
+                moduleId: false,
                 coursId: JSON.parse(sessionStorage.getItem('coursid')),
                 moduleList: [],
                 coursList: [],
-                coursNames: []
+                coursNames: [],
+                componentKey: 0,
             }
         },
         created() {
@@ -83,9 +63,12 @@
         },
         methods: {
             save(moduleid) {
-                sessionStorage.setItem('moduleid', moduleid);
-                
-            }
+                sessionStorage.setItem('moduleid', moduleid)
+                this.moduleId = moduleid
+            },
+            forceRerender() {
+                this.componentKey += 1
+            },
         }
         
     }
