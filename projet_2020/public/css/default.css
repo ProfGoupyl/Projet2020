@@ -5,7 +5,7 @@ $font-family-sans-serif: 'Nunito', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 */
-header .navPrnicipale ul {
+header .navPrincipale ul {
   list-style: none;
   display: flex;
   /*1*/
@@ -15,7 +15,7 @@ header .navPrnicipale ul {
   /*3*/
 }
 
-header .navPrnicipale ul li a {
+header .navPrincipale ul li a {
   padding: 1em;
   margin: 1em;
   display: flex;
@@ -76,19 +76,27 @@ h1 {
 }
 
 button {
-  padding: 1em;
-  border-radius: 10px;
+  padding: 0.8em;
+  border-radius: 4px;
   text-decoration: none;
-  color: white;
-  transition: 0.5s ease;
+  text-align: center;
+  background-color: #ffffff;
+  cursor: pointer;
+  outline: none;
+  transition: .2s ease;
 }
 
 button #ajouter {
-  color: white;
+  color: #82e922;
+  border: 2px solid #82e922;
 }
 
 button #ajouter:hover,
 button #ajouter:focus {
+  background-color: #82e922;
+}
+
+button #ajouter:active {
   background-color: #75dc16;
 }
 
@@ -98,6 +106,10 @@ button #supprimer {
 
 button #supprimer:hover,
 button #supprimer:focus {
+  background-color: #e92222;
+}
+
+button #supprimer:active {
   background-color: #dc1616;
 }
 
@@ -107,11 +119,43 @@ button #modifier {
 
 button #modifier:hover,
 button #modifier:focus {
+  background-color: #ffae18;
+}
+
+button #modifier:active {
   background-color: #fea500;
 }
 
+button:focus {
+  color: #ffffff;
+}
+
 button:active {
-  position: relative;
-  top: 1px;
+  transform: scale(0.95);
+}
+
+form .profil button {
+  width: auto;
+  margin: 0;
+}
+
+form p {
+  height: 50px;
+}
+
+form label {
+  display: none;
+}
+
+form input {
+  width: 300px;
+  padding: 10px 10px 10px 0;
+  border: none;
+  border-bottom: 2px solid light gray;
+  outline: none;
+}
+
+form input:focus {
+  border-bottom: 2px solid #6574cd;
 }
 

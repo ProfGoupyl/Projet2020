@@ -27,10 +27,9 @@
                 .then(response => (this.moduleList = response.data))
                 .catch(error => console.log(error))
         },
-        // beforeDestroy ne fonctionne pas
-        beforeDestroy() {
-            this.moduleId = null
-            sessionStorage.removeItem('moduleid')
+        // permet de clear l'id du module
+        updated() {
+            sessionStorage.removeItem('moduleid');
         }
     }
 </script>
