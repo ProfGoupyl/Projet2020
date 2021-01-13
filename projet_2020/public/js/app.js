@@ -3878,7 +3878,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.get('http://localhost:8000/api/module?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
-      return _this.moduleList = response.data;
+      return _this.moduleList = _.orderBy(response.data, 'ordre', 'asc');
     })["catch"](function (error) {
       return console.log(error);
     });
@@ -3900,9 +3900,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     forceRerender: function forceRerender() {
       this.componentKey += 1;
-    },
-    orderList: function orderList() {
-      this.moduleList = _.orderBy(this.moduleList, 'ordre', 'asc');
     }
   }
 });
@@ -39801,12 +39798,7 @@ var render = function() {
                           value: _vm.coursId === names.id,
                           expression: "coursId === names.id"
                         }
-                      ],
-                      on: {
-                        click: function($event) {
-                          return _vm.orderList()
-                        }
-                      }
+                      ]
                     },
                     [
                       _vm._v(
@@ -52855,10 +52847,10 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\sass\app.scss */"./resources/sass/app.scss");
-__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\sass\default.scss */"./resources/sass/default.scss");
-module.exports = __webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })

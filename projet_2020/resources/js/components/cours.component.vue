@@ -6,7 +6,7 @@
                     <ul>
                         <li> 
                             <div v-for="names in coursNames" :key="names.id">
-                                <span v-show="coursId === names.id" @click="orderList()">
+                                <span v-show="coursId === names.id">
                                     Cours : {{ names.titre }}
                                     <ul v-for="module in moduleList" :key="module.titre">
                                         <li v-show="names.id === module.cours_id">
@@ -49,7 +49,7 @@
         created() {
             axios
                 .get('http://localhost:8000/api/module?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9')
-                .then(response => (this.moduleList = response.data))
+                .then(response => (this.moduleList = _.orderBy(response.data, 'ordre', 'asc')))
                 .catch(error => console.log(error))
         
             axios
@@ -69,10 +69,6 @@
             forceRerender() {
                 this.componentKey += 1
             },
-            orderList: function () {
-                this.moduleList = _.orderBy(this.moduleList, 'ordre', 'asc')
-}
         }
-        
     }
 </script>
