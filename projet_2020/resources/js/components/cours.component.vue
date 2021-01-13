@@ -6,7 +6,7 @@
                     <ul>
                         <li> 
                             <div v-for="names in coursNames" :key="names.id">
-                                <span v-show="coursId === names.id">
+                                <span v-show="coursId === names.id" @click="orderList()">
                                     Cours : {{ names.titre }}
                                     <ul v-for="module in moduleList" :key="module.titre">
                                         <li v-show="names.id === module.cours_id">
@@ -17,7 +17,7 @@
                             </div>
                         </li>
                     </ul>
-                </nav>
+                </nav> 
             </aside>
             <div>
                 <article v-if="moduleId">
@@ -69,6 +69,9 @@
             forceRerender() {
                 this.componentKey += 1
             },
+            orderList: function () {
+                this.moduleList = _.orderBy(this.moduleList, 'ordre', 'asc')
+}
         }
         
     }
