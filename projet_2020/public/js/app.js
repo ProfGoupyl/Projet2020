@@ -4008,34 +4008,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['user'],
   data: function data() {
@@ -4063,6 +4035,8 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         return _this.send = false;
       });
+    },
+    uploadImage: function uploadImage(event) {//
     }
   }
 });
@@ -40028,7 +40002,20 @@ var render = function() {
           _vm._v(" "),
           _vm._m(0),
           _vm._v(" "),
-          _vm._m(1),
+          _c("p", [
+            _c("label", { attrs: { for: "downloadPicture" } }, [
+              _vm._v("New Picture")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { type: "file", accept: "image/*" },
+              on: {
+                change: function($event) {
+                  return _vm.uploadImage($event)
+                }
+              }
+            })
+          ]),
           _vm._v(" "),
           _c(
             "button",
@@ -40069,18 +40056,6 @@ var staticRenderFns = [
         staticClass: "UserImage",
         attrs: { src: "", alt: "", width: "50px", height: "50px" }
       })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", [
-      _c("label", { attrs: { for: "downloadPicture" } }, [
-        _vm._v("New Picture")
-      ]),
-      _vm._v(" "),
-      _c("input", { attrs: { type: "text", placeholder: "Download picture" } })
     ])
   }
 ]

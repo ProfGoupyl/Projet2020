@@ -22,7 +22,7 @@
                 </p>
                 <p>
                     <label for="downloadPicture">New Picture</label>
-                    <input type="text" placeholder="Download picture">
+                    <input type="file" accept="image/*" @change="uploadImage($event)">
                 </p>
                 <button id="modifier" class="btn btn-primary" type="submit">Modifier</button>
             </form>
@@ -36,34 +36,6 @@
                 <p>Erreur</p>
             </div>
         </section>
-        <!--
-        <h1>Modifier le profil </h1>
-        <form v-on:submit.prevent="submit" method="patch">
-            <input type="hidden" name="_token" v-bind:value="token">
-            <div>
-                <label for="name">Nom</label>
-                <input v-model="userName" type="text" name="name" required>
-            </div>
-            <div>
-                <label for="prenom">Prénom</label>
-                <input v-model="userPrenom" type="text" name="prenom" required>
-            </div>
-            <div>
-                <label for="email">E-mail</label>
-                <input v-model="userEmail" type="email" name="email" required>
-            </div>
-            <div>
-                <label for="pseudo">Pseudo</label>
-                <input v-model="userPseudo" type="text" name="pseudo" required>
-            </div>
-            <div>
-                <button type="submit">Modifier</button>
-            </div>
-            <div v-if="send">
-                <p>Modifications enregistrées</p>
-            </div>
-        </form>
-        -->
     </div>
 </template>
 
@@ -92,6 +64,9 @@
                 })
                 .then(response => this.send = true)
                 .catch(error => this.send = false)
+            },
+            uploadImage(event) {
+                //
             }
         }
     }
