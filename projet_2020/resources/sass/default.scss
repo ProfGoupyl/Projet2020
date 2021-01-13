@@ -1,4 +1,5 @@
 @import 'variables';
+@import 'nav';
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500&family=Open+Sans:wght@300;400;600&display=swap%27');
 
@@ -19,6 +20,8 @@ body{
 header{
 	height: 15vh;
 	padding: 2%;
+	justify-content:space-between;
+	display: flex;
 }
 
 section{
@@ -49,25 +52,6 @@ h1{
 	font-weight: normal;
 	line-height: $line-height-title;
 }
-
-
-
-// NAVIGATION PRINCIPALE
-nav .navPrincipale{
-	ul{
-		display: flex;
-		flex-flow: row wrap;
-		justify-content: flex-end;
-	}
-	li{
-		padding: 1em;
-		list-style-type: none;
-	}
-	a{
-		color: $main;
-		text-decoration: none;
-	}
-} 
 
 
 
