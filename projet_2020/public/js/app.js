@@ -3949,8 +3949,8 @@ __webpack_require__.r(__webpack_exports__);
     filterFaq: function filterFaq() {
       var _this2 = this;
 
-      return this.faqList.filter(function (modules) {
-        return modules.id === _this2.moduleId;
+      return this.faqList.filter(function (module) {
+        return module.module_id === _this2.moduleId;
       });
     }
   }
@@ -39887,14 +39887,14 @@ var render = function() {
       _c(
         "ul",
         { staticClass: "faq" },
-        _vm._l(_vm.filterFaq, function(question) {
-          return _c("li", { key: question.id }, [
+        _vm._l(_vm.filterFaq, function(module) {
+          return _c("li", { key: module.id }, [
             _c("button", [
-              _c("h3", [_vm._v(" " + _vm._s(question.question) + " ")])
+              _c("h3", [_vm._v(" " + _vm._s(module.question) + " ")])
             ]),
             _vm._v(" "),
             _c("p", { staticClass: "hidden" }, [
-              _vm._v(" " + _vm._s(question.reponse) + " ")
+              _vm._v(" " + _vm._s(module.reponse) + " ")
             ])
           ])
         }),
