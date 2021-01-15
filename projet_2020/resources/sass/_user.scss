@@ -1,18 +1,32 @@
 
 /*--------------- Fichier _user.scss ---------------*/
-table{
+.listecours{
+	width: 100%;
+    padding: 2%;
 	thead{
 		background-color: $lightgray;
 		tr th{
 			padding: 1%;
+			&:nth-of-type(1){
+				text-align: left;
+				font-weight: bolder;
+			}
+			&:nth-of-type(2 + 1n){
+				text-align: center;
+				width: 12%;
+			}
 		}
 	}
 	tbody tr{
 		td{
 			padding: 0 1%;
+			border-bottom: 1px solid $lightgray;
 			a {
 				text-decoration: none;
 				color: $main;
+			}
+			p {
+				text-align: center;
 			}
 		}
 		&:hover {
@@ -20,31 +34,6 @@ table{
 		}
 	}
 }
-
-
-
-th:nth-of-type(1),
-td:nth-of-type(1) {
-	text-align: left;
-}
-
-th:nth-of-type(2),
-th:nth-of-type(3) {
-	width: 12%;
-	text-align: center;
-}
-
-tbody p {
-	color: rgb(167, 167, 167);
-	text-align: center;
-}
-
-.listecours {
-	width: 100%;
-    padding: 2%;
-}
-// Tout s'affiche "perfect" quand on vire le "display: flex;" de la partie "section" et qu'on active les deux parties du bas.
-
 
 /*--------------- Fichier _user.scss - FIN ----------*/
 
