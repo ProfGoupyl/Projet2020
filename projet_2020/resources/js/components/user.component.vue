@@ -30,6 +30,7 @@
         data() {
             return {
                 coursNames: [],
+                coursList: [],
                 userId: this.userid
             }
         },
@@ -41,7 +42,10 @@
         },
         updated() {
             for(let i = 0; i < this.coursNames.length; i++) {
-                console.log(moment().isBetween(moment(this.coursNames[i].start_at)._i, moment(this.coursNames[i].end_at)._i))
+                let correct = moment().isBetween(moment(this.coursNames[i].start_at)._i, moment(this.coursNames[i].end_at)._i)
+                if(correct) {
+                    this.coursList.push(this.coursNames[i])
+                }
             }
         },
         methods: {
