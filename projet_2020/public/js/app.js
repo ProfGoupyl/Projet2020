@@ -4140,6 +4140,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'user',
   props: ['userid'],
@@ -4157,6 +4159,9 @@ __webpack_require__.r(__webpack_exports__);
     })["catch"](function (error) {
       return console.log(error);
     });
+  },
+  updated: function updated() {
+    console.log(moment().format());
   },
   methods: {
     save: function save(coursid) {
@@ -73973,10 +73978,7 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-__webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js"); // Moment.js
-
-
-var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"); // Vue.js
+__webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js"); // Vue.js
 
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js"); //import VueRouter from 'vue-router'
@@ -74432,10 +74434,6 @@ __webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Pr
 __webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/app.scss */"./resources/sass/app.scss");
 __webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
 module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
-__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\sass\app.scss */"./resources/sass/app.scss");
-__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\sass\default.scss */"./resources/sass/default.scss");
-module.exports = __webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })
