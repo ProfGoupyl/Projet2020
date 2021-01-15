@@ -37,7 +37,7 @@
         props: ['userid'],
         data() {
             return {
-                userId: 99,
+                userId: this.userid,
                 moduleId: false,
                 coursId: JSON.parse(sessionStorage.getItem('coursid')),
                 moduleList: [],

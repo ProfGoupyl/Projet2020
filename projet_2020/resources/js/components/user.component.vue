@@ -29,7 +29,7 @@
         data() {
             return {
                 coursNames: [],
-                userId: 37
+                userId: this.userid
             }
         },
         created() {
