@@ -72,6 +72,38 @@ header figure {
 
 /*--------------- Fichier _user.scss - FIN ----------*/
 
+/*--------------- Fichier _faq.scss ---------------*/
+
+.faq {
+  margin: 10px 5px 10px 5px;
+  padding: 10px 5px 10px 5px;
+}
+
+.faq li {
+  list-style-type: none;
+}
+
+.faq li details .faq_question {
+  font-weight: 700;
+  margin: 10px 5px 10px 5px;
+  padding: 10px 5px 10px 5px;
+  cursor: pointer;
+}
+
+.faq li details .faq_question_hidden {
+  padding: 0px 30px;
+}
+
+.faq li details summary {
+  list-style: none;
+}
+
+.faq li details summary::-webkit-details-marker {
+  display: none;
+}
+
+/*--------------- Fichier _faq.scss - FIN ----------*/
+
 .userProfil {
   width: 100%;
 }

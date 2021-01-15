@@ -4009,7 +4009,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['user'],
   data: function data() {
@@ -4147,7 +4146,8 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
   props: ['userid'],
   data: function data() {
     return {
-      coursNames: [],
+      cours: [],
+      coursList: [],
       userId: this.userid
     };
   },
@@ -4155,14 +4155,18 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
     var _this = this;
 
     axios.get("http://localhost:8000/api/users/formations/".concat(this.userId, "?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9")).then(function (response) {
-      return _this.coursNames = response.data;
+      return _this.cours = response.data;
     })["catch"](function (error) {
       return console.log(error);
     });
   },
   updated: function updated() {
-    for (var i = 0; i < this.coursNames.length; i++) {
-      console.log(moment().isBetween(moment(this.coursNames[i].start_at)._i, moment(this.coursNames[i].end_at)._i));
+    for (var i = 0; i < this.cours.length; i++) {
+      var correct = moment().isBetween(moment(this.cours[i].start_at)._i, moment(this.cours[i].end_at)._i);
+
+      if (correct) {
+        this.coursList.push(this.cours[i]);
+      }
     }
   },
   methods: {
@@ -61608,11 +61612,11 @@ var render = function() {
               attrs: { id: "modifier", type: "submit" }
             },
             [_vm._v("Modifier")]
-          )
+          ),
+          _vm._v(" "),
+          _vm._m(1)
         ]
       ),
-      _vm._v(" "),
-      _vm._m(1),
       _vm._v(" "),
       _vm.send === true
         ? _c("div", [_c("p", [_vm._v("Modifications enregistrées")])])
@@ -61739,8 +61743,8 @@ var render = function() {
         _vm._v(" "),
         _c(
           "tbody",
-          _vm._l(_vm.coursNames, function(names) {
-            return _c("tr", { key: names.id }, [
+          _vm._l(_vm.cours, function(value) {
+            return _c("tr", { key: value.id }, [
               _c("td", [
                 _c(
                   "a",
@@ -61749,23 +61753,23 @@ var render = function() {
                     attrs: { href: "/cours" },
                     on: {
                       click: function($event) {
-                        return _vm.save(names.coursId)
+                        return _vm.save(value.coursId)
                       }
                     }
                   },
-                  [_vm._v(" " + _vm._s(names.titre) + " ")]
+                  [_vm._v(" " + _vm._s(value.titre) + " ")]
                 )
               ]),
               _vm._v(" "),
               _c("td", [
                 _c("p", { attrs: { id: "cours" } }, [
-                  _vm._v(" " + _vm._s(names.start_at) + " ")
+                  _vm._v(" " + _vm._s(value.start_at) + " ")
                 ])
               ]),
               _vm._v(" "),
               _c("td", [
                 _c("p", { attrs: { id: "cours" } }, [
-                  _vm._v(" " + _vm._s(names.end_at) + " ")
+                  _vm._v(" " + _vm._s(value.end_at) + " ")
                 ])
               ])
             ])
@@ -74432,10 +74436,10 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/sass/app.scss */"./resources/sass/app.scss");
-__webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! D:\Download\Projet2020\projet_2020\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! D:\Download\Projet2020\projet_2020\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Download\Projet2020\projet_2020\resources\sass\default.scss */"./resources/sass/default.scss");
+module.exports = __webpack_require__(/*! D:\Download\Projet2020\projet_2020\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })
