@@ -47,10 +47,6 @@ Route::get('profile', function()
 {
     return View('pages.profile');
 });
-Route::get('faq', function()
-{
-    return View('pages.faq');
-});
 
 Route::get('/administrationUser', function () {
     return view('administration.UserAdmin');

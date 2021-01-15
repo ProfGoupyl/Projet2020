@@ -5,7 +5,6 @@
     <ul class="navigation">
         <li><a href="/">Home</a></li>
         <li><a href="/user">Cours</a></li>
-        <li><a href="/faq">FAQ</a></li>
         <li>
             <figure>
                 <img src="" alt="" class="UserImage" height="80px" width="80px">
