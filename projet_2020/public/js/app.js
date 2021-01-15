@@ -4147,7 +4147,6 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
   data: function data() {
     return {
       cours: [],
-      coursList: [],
       userId: this.userid
     };
   },
@@ -4155,19 +4154,16 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
     var _this = this;
 
     axios.get("http://localhost:8000/api/users/formations/".concat(this.userId, "?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9")).then(function (response) {
-      return _this.cours = response.data;
+      var data = response.data;
+
+      for (var i = 0; i < data.length; i++) {
+        if (moment().isBetween(moment(data[i].start_at), moment(data[i].end_at))) {
+          _this.cours.push(data[i]);
+        }
+      }
     })["catch"](function (error) {
       return console.log(error);
     });
-  },
-  updated: function updated() {
-    for (var i = 0; i < this.cours.length; i++) {
-      var correct = moment().isBetween(moment(this.cours[i].start_at)._i, moment(this.cours[i].end_at)._i);
-
-      if (correct) {
-        this.coursList.push(this.cours[i]);
-      }
-    }
   },
   methods: {
     save: function save(coursid) {
@@ -74436,10 +74432,10 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Download\Projet2020\projet_2020\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! D:\Download\Projet2020\projet_2020\resources\sass\app.scss */"./resources/sass/app.scss");
-__webpack_require__(/*! D:\Download\Projet2020\projet_2020\resources\sass\default.scss */"./resources/sass/default.scss");
-module.exports = __webpack_require__(/*! D:\Download\Projet2020\projet_2020\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })

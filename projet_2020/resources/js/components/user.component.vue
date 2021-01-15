@@ -23,30 +23,28 @@
 </template>
 
 <script>
-    let moment = require('moment')
+    const moment = require('moment')
     export default {
         name: 'user',
         props: ['userid'],
         data() {
             return {
                 cours: [],
-                coursList: [],
                 userId: this.userid
             }
         },
         created() {
             axios
                 .get(`http://localhost:8000/api/users/formations/${this.userId}?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9`)
-                .then(response => (this.cours = response.data))
+                .then(response => {
+                    let data = response.data
+                    for(let i = 0; i < data.length; i++) {
+                        if(moment().isBetween(moment(data[i].start_at), moment(data[i].end_at))) {
+                            this.cours.push(data[i])
+                        }
+                    }
+                })
                 .catch(error => console.log(error))
-        },
-        updated() {
-            for(let i = 0; i < this.cours.length; i++) {
-                let correct = moment().isBetween(moment(this.cours[i].start_at)._i, moment(this.cours[i].end_at)._i)
-                if(correct) {
-                    this.coursList.push(this.cours[i])
-                }
-            }
         },
         methods: {
             save(coursid) {
