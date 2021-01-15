@@ -1,6 +1,8 @@
 require('./bootstrap');
 require('alpinejs');
 
+// Moment.js
+let moment = require('moment')
 
 
 // Vue.js
