@@ -72,6 +72,10 @@ header figure {
 
 /*--------------- Fichier _user.scss - FIN ----------*/
 
+.userProfil {
+  width: 100%;
+}
+
 * {
   box-sizing: border-box;
 }
