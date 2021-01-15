@@ -40,7 +40,9 @@
                 .catch(error => console.log(error))
         },
         updated() {
-            console.log(moment().format());
+            for(let i = 0; i < this.coursNames.length; i++) {
+                console.log(moment().isBetween(moment(this.coursNames[i].start_at)._i, moment(this.coursNames[i].end_at)._i))
+            }
         },
         methods: {
             save(coursid) {
