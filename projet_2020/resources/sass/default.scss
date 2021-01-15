@@ -25,11 +25,12 @@ header{
 	display: flex;
 }
 
+
 section{
 	height: auto;
 	padding: 2%;
-	display: flex;
-	flex-flow: row wrap;
+	/*display: flex;
+	flex-flow: row wrap;*/
 	article{
 		flex-basis: auto;
 	}

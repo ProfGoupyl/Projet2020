@@ -89,8 +89,8 @@ header {
 section {
   height: auto;
   padding: 2%;
-  display: flex;
-  flex-flow: row wrap;
+  /*display: flex;
+	flex-flow: row wrap;*/
 }
 
 section article {
