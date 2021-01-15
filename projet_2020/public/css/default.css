@@ -72,6 +72,10 @@ header figure {
 
 /*--------------- Fichier _user.scss - FIN ----------*/
 
+section {
+  width: 70%;
+}
+
 * {
   box-sizing: border-box;
 }

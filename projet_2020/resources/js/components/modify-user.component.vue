@@ -25,9 +25,8 @@
                     <input type="file" accept="image/*" @change="uploadImage($event)">
                 </p>
                 <button id="modifier" class="btn btn-primary" type="submit">Modifier</button>
+                <button><a href="/user">Annuler</a></button>
             </form>
-
-            <button><a href="/user">Annuler</a></button>
 
             <div v-if="send === true">
                 <p>Modifications enregistrées</p>
