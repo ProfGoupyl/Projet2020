@@ -27,6 +27,46 @@ header figure {
   display: flex;
 }
 
+/*--------------- Fichier _user.scss ---------------*/
+
+tbody a {
+  text-decoration: none;
+  color: black;
+  padding: 0px 0px 8px 0;
+}
+
+tbody a:hover {
+  border-bottom: 2px solid #a7a7a7;
+  color: #a7a7a7;
+}
+
+th:nth-of-type(1),
+td:nth-of-type(1) {
+  text-align: left;
+}
+
+th:nth-of-type(2),
+th:nth-of-type(3) {
+  width: 12%;
+  text-align: center;
+}
+
+tbody p {
+  color: #a7a7a7;
+  text-align: center;
+}
+
+.listecours {
+  width: 100%;
+  padding: 2%;
+}
+
+section h1 {
+  text-align: center;
+}
+
+/*--------------- Fichier _user.scss - FIN ----------*/
+
 * {
   box-sizing: border-box;
 }
@@ -83,7 +123,7 @@ button {
   background-color: #ffffff;
   cursor: pointer;
   outline: none;
-  transition: 0.2s ease;
+  transition: .2s ease;
 }
 
 button #ajouter {

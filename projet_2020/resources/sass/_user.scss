@@ -1,0 +1,45 @@
+
+/*--------------- Fichier _user.scss ---------------*/
+
+tbody a {
+	text-decoration: none;
+	color: rgb(0, 0, 0);
+	padding: 0px 0px 8px 0;
+}
+
+tbody a:hover {
+	border-bottom: 2px solid rgb(167, 167, 167);
+    color: rgb(167, 167, 167);
+}
+
+th:nth-of-type(1),
+td:nth-of-type(1) {
+	text-align: left;
+}
+
+th:nth-of-type(2),
+th:nth-of-type(3) {
+	width: 12%;
+	text-align: center;
+   
+}
+
+tbody p {
+	color: rgb(167, 167, 167);
+	text-align: center;
+}
+
+.listecours {
+	width: 100%;
+    padding: 2%;
+}
+// Tout s'affiche "perfect" quand on vire le "display: flex;" de la partie "section" et qu'on active les deux parties du bas.
+
+
+section h1 {
+	text-align: center;
+}
+
+
+/*--------------- Fichier _user.scss - FIN ----------*/
+
