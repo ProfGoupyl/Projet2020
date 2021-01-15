@@ -3929,6 +3929,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -39865,10 +39867,14 @@ var render = function() {
         { staticClass: "faq" },
         _vm._l(_vm.filterFaq, function(module) {
           return _c("li", { key: module.id }, [
-            _c("h3", [_vm._v(" " + _vm._s(module.question) + " ")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "hidden" }, [
-              _vm._v(" " + _vm._s(module.reponse) + " ")
+            _c("details", [
+              _c("summary", { staticClass: "faq_question" }, [
+                _vm._v(" " + _vm._s(module.question) + " ")
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "faq_question_hidden" }, [
+                _vm._v(" " + _vm._s(module.reponse) + " ")
+              ])
             ])
           ])
         }),
@@ -52848,10 +52854,10 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/sass/app.scss */"./resources/sass/app.scss");
-__webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\sass\default.scss */"./resources/sass/default.scss");
+module.exports = __webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })

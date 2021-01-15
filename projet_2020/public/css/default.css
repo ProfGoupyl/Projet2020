@@ -96,7 +96,7 @@ section {
   height: auto;
   padding: 2%;
   /*display: flex;
-	flex-flow: row wrap;*/
+  flex-flow: row wrap;*/
 }
 
 section article {
@@ -130,7 +130,7 @@ button {
   background-color: #ffffff;
   cursor: pointer;
   outline: none;
-  transition: .2s ease;
+  transition: 0.2s ease;
 }
 
 button #ajouter {
