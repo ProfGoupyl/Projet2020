@@ -20,7 +20,7 @@ class CsvController extends Controller{
       $usr->name=$tabLigne[0];
       $usr->prenom=$tabLigne[1];
       $usr->email=$tabLigne[2];
-      $usr->password='1234aaaa'; //Str::random(40);
+      $usr->password= Str::random(40);
       $usr->register_token = Str::random(40) . $date->getTimestamp();
       $usr->save();
     }

@@ -45,6 +45,9 @@ class RegisteredUserController extends Controller
         $user = User::where('register_token', '=', $request->token)
             ->first();
 
+            //  dump($request->token);
+            //  dd($user->cours[1]->titre);
+
         $now = new DateTime();
 
         if ($request->has('pseudo') && $request->filled('pseudo')) {
