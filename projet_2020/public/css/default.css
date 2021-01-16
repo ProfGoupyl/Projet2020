@@ -72,6 +72,10 @@ header figure {
 
 /*--------------- Fichier _user.scss - FIN ----------*/
 
+.userProfil {
+  width: 100%;
+}
+
 /*--------------- Fichier _faq.scss ---------------*/
 
 .faq {
@@ -103,10 +107,6 @@ header figure {
 }
 
 /*--------------- Fichier _faq.scss - FIN ----------*/
-
-.userProfil {
-  width: 100%;
-}
 
 * {
   box-sizing: border-box;
