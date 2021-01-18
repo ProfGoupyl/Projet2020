@@ -5,15 +5,14 @@ $font-family-sans-serif: 'Nunito', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 */
-header .navPrincipale {
-  width: 100%;
-}
-
 header .navPrincipale ul {
-  list-style: none;
+  margin: none;
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   align-items: center;
+  padding: 0;
+  list-style-type: none;
   justify-content: space-between;
 }
 
@@ -21,9 +20,24 @@ header .navPrincipale ul li {
   cursor: pointer;
 }
 
+header .navPrincipale ul li img.logo {
+  text-align: left;
+  width: 210px;
+}
+
+header .navPrincipale ul li:first-of-type {
+  flex-basis: 60%;
+}
+
+header .navPrincipale ul li .btn {
+  display: none;
+}
+
+header .navPrincipale ul li .btn .hide i:before {
+  content: '\F00D';
+}
+
 header .navPrincipale ul li a {
-  padding: 1em;
-  margin: 1em;
   display: flex;
   text-decoration: none;
   text-transform: uppercase;
@@ -57,16 +71,9 @@ header .navPrincipale ul li .sous li:hover {
   transition: 1s;
 }
 
-header .navPrincipale ul .logo {
-  float: left;
-  display: flex;
-  width: 50%;
-}
-
 header .navPrincipale ul .items {
   position: relative;
   text-align: center;
-  flex-basis: 4%;
 }
 
 header .navPrincipale ul .items:after {
@@ -83,6 +90,36 @@ header .navPrincipale ul .items:after {
 header .navPrincipale ul .items:hover:after {
   opacity: 5;
   bottom: 1px;
+}
+
+/* VERSION MOBILE */
+
+@media all and (max-width: 900px) {
+  nav ul li.items {
+    width: 100%;
+    display: none;
+  }
+
+  nav ul li.items figure {
+    display: block;
+  }
+
+  nav ul li.items i {
+    color: #000000;
+  }
+
+  nav ul li.items .show {
+    display: block;
+  }
+
+  nav ul li.items .btn {
+    display: block;
+  }
+
+  .sous {
+    margin-top: 5px;
+    margin-left: 150px;
+  }
 }
 
 /*--------------- Fichier _user.scss ---------------*/
@@ -172,7 +209,6 @@ header .navPrincipale ul .items:hover:after {
 }
 
 body {
-  padding: 2%;
   max-width: 100%;
   min-height: 100vh;
   background-color: #f3f4f6;
