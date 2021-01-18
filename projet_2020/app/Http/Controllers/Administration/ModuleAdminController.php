@@ -20,6 +20,22 @@ class ModuleAdminController extends Controller
         // return view('admin.moduleAdmin'['modules' => $modules]);
     }
 
+    public function destroy(Module $module)
+    {
+        $modules = Cours::find($modules->cours->id)->modules;
+
+        $order_old= $module->ordre;
+
+        foreach($modules as $m){
+            if($m->ordre > $module->ordre ){
+                $m->ordre--;
+                $m->save();
+            }
+        }
+
+
+    }
+
     public function update(Request $request, $id)
     {
         if (!$request->request->get('general-data')) {
