@@ -3862,14 +3862,12 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     Session: _session_component__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  props: ['userid'],
+  props: ['userInfos'],
   data: function data() {
     return {
-      userId: this.userid,
       moduleId: false,
       coursId: JSON.parse(sessionStorage.getItem('coursid')),
       moduleList: [],
-      coursList: [],
       coursNames: [],
       componentKey: 0
     };
@@ -3877,12 +3875,12 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get('http://localhost:8000/api/module?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
+    axios.get("http://localhost:8000/api/module?api_token=".concat(this.userInfos.api_token)).then(function (response) {
       return _this.moduleList = _.orderBy(response.data, 'ordre', 'asc');
     })["catch"](function (error) {
       return console.log(error);
     });
-    axios.get('http://localhost:8000/api/cours?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
+    axios.get("http://localhost:8000/api/cours?api_token=".concat(this.userInfos.api_token)).then(function (response) {
       return _this.coursNames = response.data;
     })["catch"](function (error) {
       return console.log(error);
@@ -3927,6 +3925,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['userInfos'],
   data: function data() {
     return {
       faqList: [],
@@ -3936,7 +3935,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get('http://localhost:8000/api/faq?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
+    axios.get("http://localhost:8000/api/faq?api_token=".concat(this.userInfos.api_token)).then(function (response) {
       return _this.faqList = response.data;
     })["catch"](function (error) {
       return console.log(error);
@@ -4005,15 +4004,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['user'],
+  props: ['userInfos'],
   data: function data() {
     return {
       token: document.querySelector('#token').getAttribute('content'),
-      userId: this.user.id,
-      userName: this.user.name,
-      userPrenom: this.user.prenom,
-      userEmail: this.user.email,
-      userPseudo: this.user.pseudo,
+      userName: this.userInfos.name,
+      userPrenom: this.userInfos.prenom,
+      userEmail: this.userInfos.email,
+      userPseudo: this.userInfos.pseudo,
       send: null
     };
   },
@@ -4021,7 +4019,7 @@ __webpack_require__.r(__webpack_exports__);
     submit: function submit() {
       var _this = this;
 
-      axios.patch("http://localhost:8000/api/users/".concat(this.userId, "/?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9"), {
+      axios.patch("http://localhost:8000/api/users/".concat(this.userInfos.id, "/?api_token=").concat(this.userInfos.api_token), {
         name: this.userName,
         prenom: this.userPrenom,
         email: this.userEmail,
@@ -4069,6 +4067,7 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     Faq: _faq_component__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
+  props: ['userInfos'],
   data: function data() {
     return {
       moduleList: [],
@@ -4087,7 +4086,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this2 = this;
 
-    axios.get('http://localhost:8000/api/module?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
+    axios.get("http://localhost:8000/api/module?api_token=".concat(this.userInfos.api_token)).then(function (response) {
       return _this2.moduleList = response.data;
     })["catch"](function (error) {
       return console.log(error);
@@ -4138,17 +4137,16 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'user',
-  props: ['userid'],
+  props: ['userInfos'],
   data: function data() {
     return {
-      cours: [],
-      userId: this.userid
+      cours: []
     };
   },
   created: function created() {
     var _this = this;
 
-    axios.get("http://localhost:8000/api/users/formations/".concat(this.userId, "?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9")).then(function (response) {
+    axios.get("http://localhost:8000/api/users/formations/".concat(this.userInfos.id, "?api_token=").concat(this.userInfos.api_token)).then(function (response) {
       var data = response.data;
 
       for (var i = 0; i < data.length; i++) {
@@ -61403,7 +61401,16 @@ var render = function() {
       _vm._v(" "),
       _c("div", [
         _vm.moduleId
-          ? _c("article", [_c("Session", { key: _vm.componentKey })], 1)
+          ? _c(
+              "article",
+              [
+                _c("Session", {
+                  key: _vm.componentKey,
+                  attrs: { "user-infos": this.userInfos }
+                })
+              ],
+              1
+            )
           : _vm._e()
       ])
     ])
@@ -61684,7 +61691,7 @@ var render = function() {
         ])
       }),
       _vm._v(" "),
-      _c("article", [_c("Faq")], 1)
+      _c("article", [_c("Faq", { attrs: { "user-infos": this.userInfos } })], 1)
     ],
     2
   )

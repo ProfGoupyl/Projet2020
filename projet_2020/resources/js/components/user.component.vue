@@ -26,16 +26,15 @@
     const moment = require('moment')
     export default {
         name: 'user',
-        props: ['userid'],
+        props: ['userInfos'],
         data() {
             return {
                 cours: [],
-                userId: this.userid
             }
         },
         created() {
             axios
-                .get(`http://localhost:8000/api/users/formations/${this.userId}?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9`)
+                .get(`http://localhost:8000/api/users/formations/${this.userInfos.id}?api_token=${this.userInfos.api_token}`)
                 .then(response => {
                     let data = response.data
                     for(let i = 0; i < data.length; i++) {

@@ -40,21 +40,20 @@
 
 <script>
     export default {
-        props: ['user'],
+        props: ['userInfos'],
         data() {
             return {
                 token: document.querySelector('#token').getAttribute('content'),
-                userId: this.user.id,
-                userName: this.user.name,
-                userPrenom: this.user.prenom,
-                userEmail: this.user.email,
-                userPseudo: this.user.pseudo,
+                userName: this.userInfos.name,
+                userPrenom: this.userInfos.prenom,
+                userEmail: this.userInfos.email,
+                userPseudo: this.userInfos.pseudo,
                 send: null,
             }
         },
         methods: {
             submit() {
-                axios.patch(`http://localhost:8000/api/users/${this.userId}/?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9`
+                axios.patch(`http://localhost:8000/api/users/${this.userInfos.id}/?api_token=${this.userInfos.api_token}`
                 , {
                     name: this.userName,
                     prenom: this.userPrenom,
