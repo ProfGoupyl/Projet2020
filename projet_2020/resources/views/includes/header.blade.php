@@ -1,13 +1,23 @@
-<figure>
-    <img src="images/logo.svg" alt="" class="UserImage" height="80px" width="80px">
-</figure>
 <nav class="navPrincipale">
+
     <ul class="navigation">
-        <li><a href="/">Home</a></li>
-        <li><a href="/user">Cours</a></li>
+
         <li>
+            <img src="images/logo.svg" alt="" class="logo" height="80px" width="80px">
+        </li>
+
+        <li class="items">
+            <a href="/">Home</a>
+        </li>
+
+        <li class="items">
+            <a href="/user">Cours</a>
+        </li>
+
+        <li class="items">
             <figure>
                 <img src="" alt="" class="UserImage" height="80px" width="80px">
+                
                 <ul class="sous">
                     <li>
                         <a href="/profile" class="UserName">Profil</a>
