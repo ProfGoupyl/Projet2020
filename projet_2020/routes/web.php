@@ -23,32 +23,25 @@ use App\Http\Controllers\Administration\FaqAdminController;
 
 
 
-Route::get('/', function()
-{
+Route::get('/', function () {
     return View('welcome');
 });
-Route::get('home', function()
-{
+Route::get('home', function () {
     return View('pages.home');
 });
-Route::get('user', function()
-{
+Route::get('user', function () {
     return View('pages.user');
 });
-Route::get('cours', function()
-{
+Route::get('cours', function () {
     return View('pages.cours');
 });
-Route::get('session', function()
-{
+Route::get('session', function () {
     return View('pages.session');
 });
-Route::get('profile', function()
-{
+Route::get('profile', function () {
     return View('pages.profile');
 });
-Route::get('faq', function()
-{
+Route::get('faq', function () {
     return View('pages.faq');
 });
 
@@ -60,39 +53,38 @@ Route::get('/administrationModule', function () {
 });
 
 Route::group(['middleware' => ['auth']], function () {
-
 });
 
 // Toutes les routes commencant par "/admin" utilisent le middleware IsAdmin (vérifie si l'user est ADMIN).
 Route::prefix('admin')
     ->middleware(IsAdmin::class)
-    ->group(function() {
+    ->group(function () {
 
         // Mettez vos routes en dessous de la première
         // Route de base renvoyant au dashboard de l'administration
-        Route::get('/', function() {
+        Route::get('/', function () {
             return view('dashboard');
         })->name('dashboard');
 
         // route pour les users
-        Route::resource('users',UserAdminController::class);
+        Route::resource('users', UserAdminController::class);
 
         // route pour les cours
-        Route::resource('cours',CoursAdminController::class);
-        Route::resource('faqs',FaqAdminController::class);
-        Route::resource('module',ModuleAdminController::class);
+        Route::resource('cours', CoursAdminController::class);
+        Route::resource('faqs', FaqAdminController::class);
+        Route::resource('module', ModuleAdminController::class);
 
         //Routes CSV : GET && POST
         //Test de l'ajout d'utilisateurs par fichier .csv;
         Route::get('/csv', [CsvController::class, 'index']);
         Route::post('/csv', [CsvController::class, 'get_csv']);
+        Route::post('/csv/cours', [CsvController::class, 'add_to_cours']);
     });
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 
-Route::get('test', function()
-{
+Route::get('test', function () {
     return View('pages.test');
 });

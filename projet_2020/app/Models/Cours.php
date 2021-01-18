@@ -40,6 +40,4 @@ class Cours extends Model
     {
         return $this->belongsToMany(User::class);
     }
-
-
 }

@@ -27,7 +27,11 @@
             <th>Titre</th>
             <th>Debut du cours</th>
             <th>Fin du cours</th>
-            <th>Actions</th>
+            <th>Modifier</th>
+            <th>Delete</th>
+            <th>Détails du cours</th>
+            <th>liste des users pour le cours</th>
+            <th>Ajouter des utilisateurs par csv</th>
         </tr>
     </thead>
     <tbody>
@@ -66,6 +70,17 @@
             </td>
             <td>
                 <a href='/admin/cours/{{$cours->id}}'>show</a>
+            </td>
+            <td>
+                @dump($cours->user)
+            </td>
+            <td>
+                <form enctype="multipart/form-data" action="/admin/csv/cours" method="post">
+                    @csrf
+                    <input type="hidden" name="cours" value="{{$cours->id}}">
+                    <input required type="file" name="file" value="Choisir un fichier .csv" accept=".csv">
+                    <input type="submit" name="submit" value="Transférer" title="Submit">
+                </form>
             </td>
 
 

@@ -62,12 +62,12 @@ class UserAdminController extends Controller
             'email' => $request->email,
             'content' => [
                 'message' => "Cliquez sur le lien suivant pour accepter l'invitation au cours de Goupyl:",
-                'link' => route('register').'?token='.$register_token
-            ] 
+                'link' => route('register') . '?token=' . $register_token
+            ]
         ];
-        Mail::send('administration.email.invitation-template',$data, function($message) use ($data) {
+        Mail::send('admin.email.invitation-template', $data, function ($message) use ($data) {
             $message->to($data['email'])
-                    ->subject($data['subject']);
+                ->subject($data['subject']);
         });
 
 
@@ -82,7 +82,6 @@ class UserAdminController extends Controller
      */
     public function show(User $user)
     {
-
     }
 
     /**
@@ -93,7 +92,6 @@ class UserAdminController extends Controller
      */
     public function edit(user $user)
     {
-
     }
 
     /**

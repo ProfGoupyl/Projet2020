@@ -5,10 +5,6 @@
                 <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
             </a>
         </x-slot>
-<<<<<<< HEAD
-
-=======
->>>>>>> cf5e3b9421cebd3b68429d61ca36981486e70c82
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
