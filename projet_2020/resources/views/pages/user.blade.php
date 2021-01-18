@@ -2,6 +2,6 @@
 
 @section('content')
     @if(Auth::user())
-    <user v-bind:userid='{{ Auth::user()->id }}'></user>
+    <user v-bind:user-infos="{{ Auth::user() }}"></user>
     @endif
 @stop 

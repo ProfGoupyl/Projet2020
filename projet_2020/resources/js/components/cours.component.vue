@@ -21,7 +21,7 @@
             </aside>
             <div>
                 <article v-if="moduleId">
-                    <Session :key="componentKey"></Session>
+                    <Session :key="componentKey" v-bind:user-infos="this.userInfos"></Session>
                 </article>
             </div>
         </section>
@@ -34,26 +34,24 @@
         components: {
             Session
         },
-        props: ['userid'],
+        props: ['userInfos'],
         data() {
             return {
-                userId: this.userid,
                 moduleId: false,
                 coursId: JSON.parse(sessionStorage.getItem('coursid')),
                 moduleList: [],
-                coursList: [],
                 coursNames: [],
                 componentKey: 0,
             }
         },
         created() {
             axios
-                .get('http://localhost:8000/api/module?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9')
+                .get(`http://localhost:8000/api/module?api_token=${this.userInfos.api_token}`)
                 .then(response => (this.moduleList = _.orderBy(response.data, 'ordre', 'asc')))
                 .catch(error => console.log(error))
         
             axios
-                .get('http://localhost:8000/api/cours?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9')
+                .get(`http://localhost:8000/api/cours?api_token=${this.userInfos.api_token}`)
                 .then(response => (this.coursNames = response.data))
                 .catch(error => console.log(error))
         },
