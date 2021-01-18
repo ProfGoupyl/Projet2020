@@ -17,7 +17,7 @@
 body{
 	max-width: 100%;
 	min-height: 100vh;
-	background-color: $background;
+	background-color: $white;
 	color: $main;
 }
 
@@ -36,16 +36,17 @@ section{
 
 
 // TYPO
-p{
+p, td, li, a{
 	font-family: $font-family-base;
 	font-size: $font-size-base;
 	font-weight: normal;
 	line-height: $line-height-base;
+	text-align: left;
 }
-h1{
+h1, h2, h3, tr, .navPrincipale a{
 	font-family: $font-family-title;
 	font-size: $font-size-title;
-	font-weight: normal;
+	font-weight: bold;
 	line-height: $line-height-title;
 	text-align: center;
 }
@@ -55,48 +56,49 @@ h1{
 // BOUTONS
 button{
 	padding: 0.8em;
+	margin: 1%;
 	border-radius: 4px;
 	text-decoration: none;
 	text-align: center;
 	background-color: $white;
 	cursor: pointer;
 	outline: none;
-	transition:.2s ease;
-	#ajouter{
-		color: $btn-add;
-		border: 2px solid $btn-add;
-		&:hover, &:focus{
-			background-color: $btn-add;
-		}
-		&:active{
-		  background-color: $btn-add-dark;
-		}
-	}
-	#supprimer{
-		color: $btn-delete;
-		&:hover, &:focus{
-			background-color: $btn-delete;
-		}
-		&:active{
-		  background-color: $btn-delete-dark;
-	   }
-	}
-	#modifier{
-		color: $btn-update;
-		&:hover, &:focus{
-			background-color: $btn-update;
-		}
-	   &:active{
-		   background-color: $btn-update-dark;
-	   }
-	}
-	&:focus{
+}
+#ajouter{
+	color: $btn-add;
+	border: 2px solid $btn-add;
+	&:hover, &:focus{
+		background-color: $btn-add;
 		color: $white;
 	}
 	&:active{
-		transform: scale(0.95);
+	  background-color: $btn-add-dark;
 	}
 }
+#supprimer{
+	color: $btn-delete;
+	border: 2px solid $btn-delete;
+	&:hover, &:focus{
+		background-color: $btn-delete;
+		color: $white;
+	}
+	&:active{
+	  background-color: $btn-delete-dark;
+	}
+}
+#modifier{
+	color: $btn-update;
+	border: 2px solid $btn-update;
+	&:hover, &:focus{
+		background-color: $btn-update;
+		color: $white;
+	}
+   &:active{
+	   background-color: $btn-update-dark;
+   }
+}
+
+
 
 
 
@@ -109,7 +111,7 @@ form{
    	 width: 300px;
    	 padding: 10px 10px 10px 0;
    	 border: none;
-   	 border-bottom: 2px solid light gray;
+   	 border-bottom: 2px solid $lightgray;
    	 outline: none;
 		&:focus{border-bottom: 2px solid $indigo;}
 	}
