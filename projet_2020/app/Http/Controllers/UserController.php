@@ -80,14 +80,14 @@ class UserController extends Controller
     public function formations(user $user)
     {
         return DB::table('users')
-        ->join('users_cours', 'users.id', '=', 'users_cours.user_id')
-        ->join('cours', 'cours.id', '=', 'users_cours.cours_id')
+        ->join('cours_user', 'users.id', '=', 'cours_user.user_id')
+        ->join('cours', 'cours.id', '=', 'cours_user.cours_id')
         ->select('cours.id as coursId',
                 'cours.titre as titre',
-                'users_cours.start_at as start_at',
-                'users_cours.end_at as end_at')
-        ->where('users_cours.user_id', '=', $user->id)
-        ->orderBy('users_cours.start_at', 'asc')
+                'cours_user.start_at as start_at',
+                'cours_user.end_at as end_at')
+        ->where('cours_user.user_id', '=', $user->id)
+        ->orderBy('cours_user.start_at', 'asc')
         ->get();  
     }
 
