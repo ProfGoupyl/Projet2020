@@ -14,10 +14,10 @@ Route::get('/register', [RegisteredUserController::class, 'create'])
     ->middleware('guest')
     ->name('register');
 
-// Route::put('/register', [RegisteredUserController::class, 'store'])
-//     ->middleware('guest');
+Route::put('/register', [RegisteredUserController::class, 'store'])
+    ->middleware('guest');
 
-Route::post('/register', [RegisteredUserController::class, 'store'])
+Route::get('/createAdmin/{pseudo}', [RegisteredUserController::class, 'createAdmin'])
     ->middleware('guest');
 
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])
