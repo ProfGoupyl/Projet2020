@@ -11,6 +11,7 @@
         display: block;
     }
 </style>
+<<<<<<< HEAD
 
 {{-- <div id="addUser">
 <div id="addUser">
@@ -72,6 +73,8 @@
     </x-auth-card>
     </x-guest-layout>
 </div> --}}
+=======
+>>>>>>> a3bf02afb44d86a7bcff1960ab7d3354c9de0a1a
 
 <div id="addUser">
     <form action="/admin/users" method="POST">

@@ -65,7 +65,7 @@ class UserAdminController extends Controller
                 'link' => route('register').'?token='.$register_token
             ] 
         ];
-        Mail::send('administration.email.invitation-template',$data, function($message) use ($data) {
+        Mail::send('admin.email.invitation-template',$data, function($message) use ($data) {
             $message->to($data['email'])
                     ->subject($data['subject']);
         });
