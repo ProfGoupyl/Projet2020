@@ -17,7 +17,7 @@
         <li class="items">
             <figure>
                 <img src="" alt="" class="UserImage" height="80px" width="80px">
-                
+            </figure>
                 <ul class="sous">
                     <li>
                         <a href="/profile" class="UserName">Profil</a>
@@ -56,7 +56,7 @@
                         </li>
                     @endif
                 </ul>
-            </figure>
+            
         </li>
     </ul>
 </nav>
