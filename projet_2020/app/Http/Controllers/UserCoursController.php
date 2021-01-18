@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Users_cours;
+use App\Models\Cours_user;
 use Illuminate\Http\Request;
 
 class UserCoursController extends Controller
@@ -14,7 +14,7 @@ class UserCoursController extends Controller
      */
     public function index()
     {
-        return Users_cours::all();
+        return Cours_user::all();
     }
 
     /**
@@ -25,7 +25,7 @@ class UserCoursController extends Controller
      */
     public function store(Request $request)
     {
-        if (Users_cours::create($request->all())) {
+        if (Cours_user::create($request->all())) {
             return response()->json(['insert succes'], 200);
         }
     }
@@ -36,7 +36,7 @@ class UserCoursController extends Controller
      * @param  \App\Models\Users_cours  $users_cours
      * @return \Illuminate\Http\Response
      */
-    public function show(Users_cours $users_cour)
+    public function show(Cours_user $users_cour)
     {
         return $users_cour;
     }
@@ -48,7 +48,7 @@ class UserCoursController extends Controller
      * @param  \App\Models\Users_cours  $users_cours
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Users_cours $users_cour)
+    public function update(Request $request, Cours_user $users_cour)
     {
         if ($users_cour->update($request->all())) {
             return response()->json(['update succes'], 200);
@@ -61,7 +61,7 @@ class UserCoursController extends Controller
      * @param  \App\Models\Users_cours  $users_cours
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Users_cours $users_cour)
+    public function destroy(Cours_user $users_cour)
     {
         if ($users_cour->delete()) {
             return response()->json(['delete succes'], 200);
