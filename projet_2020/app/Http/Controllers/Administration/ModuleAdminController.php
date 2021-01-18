@@ -20,12 +20,50 @@ class ModuleAdminController extends Controller
         // return view('admin.moduleAdmin'['modules' => $modules]);
     }
 
+    // function qui ne sert à rien mais que laisse là
+    public function create()
+    {
+
+    }
+
+    public function store(Request $request)
+    {
+        $cours = Cours::find($request->request->get('cours'));
+
+        $module = new Module;
+
+        $module->titre = $request->has('titre') && strlen($request->titre) ? $request->titre : 'Pas de titre';
+        $module->description = $request->has('description') && strlen($request->description) ? $request->description : 'Pas de description';
+        $module->url_video = $request->has('url_video')  && strlen($request->url_video) ? $request->url_video : 'Pas d\'url video';
+        $module->ordre = count($cours->modules)+1;
+        $module->cours_id = $cours->id;
+        $module->save();
+        return redirect('/admin/cours/' . $request->request->get('cours'));
+
+    }
+
+    public function destroy(Module $module)
+    {
+        $modules = Cours::find($module->cours->id)->modules;
+        foreach($modules as $m){
+            if($m->ordre > $module->ordre){
+                $m->ordre--;
+                $m->save();
+            }
+         }
+        $module->delete();
+        return redirect('/admin/cours/' . $module->cours->id);
+    }
+
+
     public function update(Request $request, $id)
     {
+            $module = Module::find($id);
         if (!$request->request->get('general-data')) {
             // Récupération du module dont l'odre a été modifié ainsi que du cours d'où l'on vient
-            $module = Module::find($request->request->get('data')[0]);
+
             $modules = Cours::find($request->request->get('cours'))->modules;
+
             // Stockage de l'ancien ordre et du nouvel ordre du cours
             $order_old = $module->ordre;
             $order_new = +$request->request->get('data')[1];
@@ -56,14 +94,9 @@ class ModuleAdminController extends Controller
 
         } else {
             // Modification des données d'un module
-
-            $modules->titre = $request->has('titre') && strlen($request->titre) ? $request->titre : $module->titre;
-            $modules->description = $request->has('description') && strlen($request->description) ? $request->description : $module->descripm;
-
+            $module->titre = $request->has('titre') && strlen($request->titre) ? $request->titre : $module->titre;
+            $module->description = $request->has('description') && strlen($request->description) ? $request->description : $module->description;
             $module->save();
-        return redirect('/admin/cours');
-
-
         }
         // Redirection vers la page du cours concerné
         return redirect('/admin/cours/' . $request->request->get('cours'));

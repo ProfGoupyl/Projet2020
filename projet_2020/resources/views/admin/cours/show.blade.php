@@ -45,7 +45,13 @@
             <input type="hidden" name="modules[]" value="{{$m->id}}-{{$m->ordre}}">
             <p>{{$m->titre}}</p>
             <button data-action="{{$m->id}}" data-titre="{{$m->titre}}" data-desc="{{$m->description}}" class="edit-module" type="button">Modifier</button>
+            <form action="/admin/module/{{$m->id}}" method="POST">
+            @csrf
+            @method('delete')
+            <button> Supprimer </button>
+            </form>
         </div>
+
         @endforeach
     </div>
 </section>
@@ -60,6 +66,30 @@
     <input type="submit" value="Modifier">
 </form>
 
+<div id='addModule'>
+    <form action='/admin/module' method='POST'>
+        @csrf
+        <input type="hidden" name="cours" value="{{$cours->id}}">
+        <div>
+            <label for="name">Entrer le titre </label>
+            <input type="text" name="titre" id="name" required>
+        </div>
+        <div>
+            <label>Description du module</label>
+            <textarea name="description" cols="30" rows="10"></textarea>
+        </div>
+        <div>
+            <label>Url du module</label>
+            <input type="text" name='url_video' required>
+        </div>
+
+        <div>
+            <input type="submit" value="Ajouter!">
+        </div>
+    </form>
+
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 
@@ -73,8 +103,7 @@ const formAll = document.querySelectorAll('.form-modules');
             const target = btn.dataset.target
             const form = document.querySelector(`#form-${target}`)
             form.classList.add('show')
-
-        } )
+        })
     })
 
 
