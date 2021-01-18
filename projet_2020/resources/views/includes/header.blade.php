@@ -1,5 +1,5 @@
 <figure>
-    <img src="" alt="" class="UserImage" height="80px" width="80px">
+    <img src="images/logo.svg" alt="" class="UserImage" height="80px" width="80px">
 </figure>
 <nav class="navPrincipale">
     <ul class="navigation">
