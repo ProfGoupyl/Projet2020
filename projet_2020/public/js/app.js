@@ -61596,16 +61596,9 @@ var render = function() {
             })
           ]),
           _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-primary",
-              attrs: { id: "modifier", type: "submit" }
-            },
-            [_vm._v("Modifier")]
-          ),
+          _vm._m(1),
           _vm._v(" "),
-          _vm._m(1)
+          _vm._m(2)
         ]
       ),
       _vm._v(" "),
@@ -61632,6 +61625,19 @@ var staticRenderFns = [
         attrs: { src: "", alt: "", width: "50px", height: "50px" }
       })
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "btn btn-primary",
+        attrs: { id: "modifier", type: "submit" }
+      },
+      [_c("i", { staticClass: "fas fa-pen fa-lg" })]
+    )
   },
   function() {
     var _vm = this
