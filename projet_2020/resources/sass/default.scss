@@ -10,6 +10,8 @@
 // GLOBAL STRUCTURE
 *{
 	box-sizing: border-box;
+	margin: 0px;
+   	padding: 0px;
 }
 
 body{
@@ -21,6 +23,8 @@ body{
 
 section{
 	height: auto;
+	//width: 100%;
+	//margin: 0 auto;
 	article{
 		flex-basis: auto;
 	}

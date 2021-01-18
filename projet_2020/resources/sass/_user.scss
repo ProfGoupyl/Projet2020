@@ -18,15 +18,19 @@
 		}
 	}
 	tbody tr{
+		&:hover td a, &:hover td p{
+			color: $main;
+		}
 		td{
-			padding: 0 1%;
+			padding: 1%;
 			border-bottom: 1px solid $lightgray;
 			a {
 				text-decoration: none;
-				color: $main;
+				color: $gray;
 			}
 			p {
 				text-align: center;
+				color: $gray;
 			}
 		}
 		&:hover {

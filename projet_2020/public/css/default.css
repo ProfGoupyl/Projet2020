@@ -6,8 +6,7 @@ $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 */
 header .navPrincipale ul {
-  margin: none;
-  width: 100%;
+  margin: 1% 2% 1% auto;
   display: flex;
   flex-flow: row wrap;
   align-items: center;
@@ -23,6 +22,8 @@ header .navPrincipale ul li {
 header .navPrincipale ul li img.logo {
   text-align: left;
   width: 210px;
+  position: relative;
+  left: -27px;
 }
 
 header .navPrincipale ul li:first-of-type {
@@ -147,18 +148,24 @@ header .navPrincipale ul .items:hover:after {
   width: 12%;
 }
 
+.listecours tbody tr:hover td a,
+.listecours tbody tr:hover td p {
+  color: #000000;
+}
+
 .listecours tbody tr td {
-  padding: 0 1%;
+  padding: 1%;
   border-bottom: 1px solid #d4d4d4;
 }
 
 .listecours tbody tr td a {
   text-decoration: none;
-  color: #000000;
+  color: #808080;
 }
 
 .listecours tbody tr td p {
   text-align: center;
+  color: #808080;
 }
 
 .listecours tbody tr:hover {
@@ -168,7 +175,8 @@ header .navPrincipale ul .items:hover:after {
 /*--------------- Fichier _user.scss - FIN ----------*/
 
 .userProfil {
-  width: 100%;
+  width: 80%;
+  margin: 0 auto;
 }
 
 /*--------------- Fichier _faq.scss ---------------*/
@@ -206,12 +214,14 @@ header .navPrincipale ul .items:hover:after {
 
 * {
   box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
 }
 
 body {
   max-width: 100%;
   min-height: 100vh;
-  background-color: #f3f4f6;
+  background-color: #f8f8f8;
   color: #000000;
 }
 
