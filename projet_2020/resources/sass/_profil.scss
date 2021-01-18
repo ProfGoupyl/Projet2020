@@ -1,4 +1,37 @@
-.userProfil {
-    width: 80%;
+form.userProfil {
+    width: 70%;
     margin: 0 auto;
+    display: flex;
+    flex-flow: row wrap;
+    //justify-content: space-between;
+    div{
+        flex-basis: 49%;
+        p{
+            height: auto;
+            padding: 10px;
+            label{
+                width: 100%;
+                height: 100px;
+                line-height: 3;
+            }
+            input{
+                width: 100%;
+            }
+            img{
+                width: 150px;
+                height: 150px;
+                clear: both;
+            }
+        }
+    }
 }
+
+@media all and (max-width: 900px){
+    form.userProfil {
+        display: inline-block;
+        div{
+            width: 100%;
+        }
+    }
+}
+

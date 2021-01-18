@@ -4,6 +4,7 @@
             <h1>Votre profil:</h1>
             <form v-on:submit.prevent="submit" method="patch" class="userProfil">
                 <input type="hidden" name="_token" v-bind:value="token">
+                <div>
                 <p>
                     <label for="firstname">First Name:</label>
                     <input type="text" name="firstname" v-model="userPrenom">
@@ -16,6 +17,8 @@
                     <label for="email">Email address:</label>
                     <input type="email" name="email" v-model="userEmail">
                 </p>
+                </div>
+                <div>
                 <p>
                     <label for="currentPicture">Current picture:</label>
                     <img src="" alt="" class="UserImage" width="50px" height="50px">
@@ -24,6 +27,7 @@
                     <label for="downloadPicture">New Picture</label>
                     <input type="file" accept="image/*" @change="uploadImage($event)">
                 </p>
+                </div>
                 <button id="modifier" class="btn btn-primary" type="submit"><i class="fas fa-pen fa-lg"></i></button>
                 <button><a href="/user">Annuler</a></button>
             </form>

@@ -174,9 +174,46 @@ header .navPrincipale ul .items:hover:after {
 
 /*--------------- Fichier _user.scss - FIN ----------*/
 
-.userProfil {
-  width: 80%;
+form.userProfil {
+  width: 70%;
   margin: 0 auto;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+form.userProfil div {
+  flex-basis: 49%;
+}
+
+form.userProfil div p {
+  height: auto;
+  padding: 10px;
+}
+
+form.userProfil div p label {
+  width: 100%;
+  height: 100px;
+  line-height: 3;
+}
+
+form.userProfil div p input {
+  width: 100%;
+}
+
+form.userProfil div p img {
+  width: 150px;
+  height: 150px;
+  clear: both;
+}
+
+@media all and (max-width: 900px) {
+  form.userProfil {
+    display: inline-block;
+  }
+
+  form.userProfil div {
+    width: 100%;
+  }
 }
 
 /*--------------- Fichier _faq.scss ---------------*/
@@ -311,17 +348,8 @@ button:active {
   transform: scale(0.95);
 }
 
-form .profil button {
-  width: auto;
-  margin: 0;
-}
-
 form p {
   height: 50px;
-}
-
-form label {
-  display: none;
 }
 
 form input {
