@@ -1,8 +1,6 @@
 require('./bootstrap');
 require('alpinejs');
 
-
-
 // Vue.js
 
 window.Vue = require('vue');

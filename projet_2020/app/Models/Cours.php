@@ -36,7 +36,7 @@ class Cours extends Model
         return $this->hasMany(Module::class);
     }
 
-    public function user()
+    public function users()
     {
         return $this->belongsToMany(User::class);
     }

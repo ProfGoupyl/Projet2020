@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(FaqTableSeeder::class);
         $this->call(InvitationTableSeeder::class);
         $this->call(NoteTableSeeder::class);
-        $this->call(Users_coursTableSeeder::class);
+        $this->call(Cours_userTableSeeder::class);
         
         
         
