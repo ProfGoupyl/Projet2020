@@ -5,14 +5,20 @@ $font-family-sans-serif: 'Nunito', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 */
+header .navPrincipale {
+  width: 100%;
+}
+
 header .navPrincipale ul {
   list-style: none;
   display: flex;
-  /*1*/
-  flex-direction: row;
-  /*2*/
-  justify-content: flex-end;
-  /*3*/
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header .navPrincipale ul li {
+  cursor: pointer;
 }
 
 header .navPrincipale ul li a {
@@ -20,11 +26,63 @@ header .navPrincipale ul li a {
   margin: 1em;
   display: flex;
   text-decoration: none;
-  border-style: solid;
+  text-transform: uppercase;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  color: #000000;
 }
 
-header figure {
+header .navPrincipale ul li a:hover {
+  color: #808080;
+}
+
+header .navPrincipale ul li figure {
   display: flex;
+  width: auto;
+}
+
+header .navPrincipale ul li .sous {
+  display: none;
+  position: absolute;
+  min-width: 100px;
+  width: 80px;
+  margin-top: 30px;
+  margin-left: 30px;
+  padding: 5px 7px;
+}
+
+header .navPrincipale ul li .sous li:hover {
+  display: block;
+  max-height: 50em;
+  transition: 1s;
+}
+
+header .navPrincipale ul .logo {
+  float: left;
+  display: flex;
+  width: 50%;
+}
+
+header .navPrincipale ul .items {
+  position: relative;
+  text-align: center;
+  flex-basis: 4%;
+}
+
+header .navPrincipale ul .items:after {
+  position: absolute;
+  content: '';
+  left: 0;
+  bottom: 5px;
+  height: 2px;
+  width: 100%;
+  opacity: 0;
+  transition: all 0.2s linear;
+}
+
+header .navPrincipale ul .items:hover:after {
+  opacity: 5;
+  bottom: 1px;
 }
 
 /*--------------- Fichier _user.scss ---------------*/
@@ -121,18 +179,8 @@ body {
   color: #000000;
 }
 
-header {
-  height: 15vh;
-  padding: 2%;
-  justify-content: space-between;
-  display: flex;
-}
-
 section {
   height: auto;
-  padding: 2%;
-  /*display: flex;
-	flex-flow: row wrap;*/
 }
 
 section article {
