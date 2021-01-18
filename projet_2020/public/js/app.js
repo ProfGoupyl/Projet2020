@@ -3887,11 +3887,6 @@ __webpack_require__.r(__webpack_exports__);
     })["catch"](function (error) {
       return console.log(error);
     });
-    axios.get('http://localhost:8000/api/users_cours?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
-      return _this.coursList = response.data;
-    })["catch"](function (error) {
-      return console.log(error);
-    });
   },
   methods: {
     save: function save(moduleid) {
@@ -61601,16 +61596,9 @@ var render = function() {
             })
           ]),
           _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-primary",
-              attrs: { id: "modifier", type: "submit" }
-            },
-            [_vm._v("Modifier")]
-          ),
+          _vm._m(1),
           _vm._v(" "),
-          _vm._m(1)
+          _vm._m(2)
         ]
       ),
       _vm._v(" "),
@@ -61637,6 +61625,19 @@ var staticRenderFns = [
         attrs: { src: "", alt: "", width: "50px", height: "50px" }
       })
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "btn btn-primary",
+        attrs: { id: "modifier", type: "submit" }
+      },
+      [_c("i", { staticClass: "fas fa-pen fa-lg" })]
+    )
   },
   function() {
     var _vm = this

@@ -24,7 +24,7 @@
                     <label for="downloadPicture">New Picture</label>
                     <input type="file" accept="image/*" @change="uploadImage($event)">
                 </p>
-                <button id="modifier" class="btn btn-primary" type="submit">Modifier</button>
+                <button id="modifier" class="btn btn-primary" type="submit"><i class="fas fa-pen fa-lg"></i></button>
                 <button><a href="/user">Annuler</a></button>
             </form>
 
