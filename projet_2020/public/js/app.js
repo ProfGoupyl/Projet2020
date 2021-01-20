@@ -4048,6 +4048,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['userInfos'],
   data: function data() {
@@ -61711,25 +61718,38 @@ var render = function() {
           _c("div", [
             _vm._m(0),
             _vm._v(" "),
-            _c("p", [
-              _c("label", { attrs: { for: "downloadPicture" } }, [
-                _vm._v("Nouvelle photo de profil:")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                attrs: { type: "file", accept: "image/jpeg, image/png" },
-                on: {
-                  change: function($event) {
-                    return _vm.uploadImage($event)
+            _vm._m(1),
+            _vm._v(" "),
+            _c("div", [
+              _c(
+                "form",
+                {
+                  attrs: {
+                    method: "post",
+                    id: "formImg",
+                    action: "",
+                    enctype: "multipart/form-data"
                   }
-                }
-              })
+                },
+                [
+                  _c("input", {
+                    attrs: { type: "hidden", name: "_token" },
+                    domProps: { value: _vm.token }
+                  }),
+                  _vm._v(" "),
+                  _c("input", {
+                    attrs: { type: "file", name: "image", id: "image" }
+                  }),
+                  _vm._v(" "),
+                  _c("input", { attrs: { type: "submit" } })
+                ]
+              )
             ])
           ]),
           _vm._v(" "),
-          _vm._m(1),
+          _vm._m(2),
           _vm._v(" "),
-          _vm._m(2)
+          _vm._m(3)
         ]
       ),
       _vm._v(" "),
@@ -61755,6 +61775,16 @@ var staticRenderFns = [
         staticClass: "UserImage",
         attrs: { src: "", alt: "", width: "50px", height: "50px" }
       })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _c("label", { attrs: { for: "downloadPicture" } }, [
+        _vm._v("Nouvelle photo de profil:")
+      ])
     ])
   },
   function() {
@@ -74643,10 +74673,10 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\sass\app.scss */"./resources/sass/app.scss");
-__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\sass\default.scss */"./resources/sass/default.scss");
-module.exports = __webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })
