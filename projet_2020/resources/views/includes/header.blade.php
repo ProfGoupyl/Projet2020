@@ -56,7 +56,17 @@
                         </li>
                     @endif
                 </ul>
-            
+                
         </li>
+        <li class="btn"><a href="#"><i class="fas fa-bars"></i></a></li>
     </ul>
 </nav>
+
+<script>
+    $(document).ready(function(){
+        $('.btn').click(function(){
+        $('.items').toggleClass("show");
+        $('ul li').toggleClass("hide");
+        });
+    });
+</script>
