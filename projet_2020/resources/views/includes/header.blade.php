@@ -58,15 +58,17 @@
                 </ul>
                 
         </li>
-        <li class="btn"><a href="#"><i class="fas fa-bars"></i></a></li>
+        <li class="burger"><a href="#"><i class="fas fa-bars"></i></a></li>
     </ul>
 </nav>
 
 <script>
-    $(document).ready(function(){
-        $('.btn').click(function(){
-        $('.items').toggleClass("show");
-        $('ul li').toggleClass("hide");
+    $(document).ready(function() {
+        $(document).ready(function() {
+            $('.burger').click(function() {
+                $('.items').toggleClass("show");
+                $('ul li').toggleClass("hide");
+            });
         });
     });
 </script>
