@@ -3,9 +3,9 @@ form.userProfil {
     margin: 0 auto;
     display: flex;
     flex-flow: row wrap;
-    //justify-content: space-between;
+    justify-content: space-evenly;
     div{
-        flex-basis: 49%;
+        flex-basis: 40%;
         p{
             height: auto;
             padding: 10px;
@@ -30,9 +30,9 @@ form.userProfil {
             }
         }
     }
-    button:first-of-type::after{
-        content: ' Modifier';
-    }
+}
+button:first-of-type::after{
+    content: ' Modifier';
 }
 
 @media all and (max-width: 900px){
