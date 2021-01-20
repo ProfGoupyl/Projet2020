@@ -1,7 +1,7 @@
 <template>
     <div>
         <section class="section_page_cours" >
-            <aside class="asie_page_cours">
+            <aside class="aside_page_cours">
                 <nav class="navSecondaire">
                     <ul>
                         <li> 
