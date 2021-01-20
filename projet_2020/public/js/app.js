@@ -4061,6 +4061,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['userInfos'],
   data: function data() {
@@ -4090,15 +4092,17 @@ __webpack_require__.r(__webpack_exports__);
         return _this.send = false;
       });
     },
-    uploadImage: function uploadImage(event) {
-      if (event.target.files[0]) {
-        console.log('ok');
-      }
-
+    selectImage: function selectImage(event) {
       this.userPhoto = event.target.files[0];
-      console.log(this.userPhoto);
+    },
+    imageUpload: function imageUpload() {
       var data = new FormData();
-      data.append("user".concat(this.userId), this.userPhoto);
+      data.append('image', this.userPhoto, "user".concat(this.userId));
+      axios.post('', data).then(function (response) {
+        return console.log(response);
+      })["catch"](function (error) {
+        return console.log(error);
+      });
     }
   }
 });
@@ -61724,38 +61728,23 @@ var render = function() {
           _c("div", [
             _vm._m(0),
             _vm._v(" "),
-            _vm._m(1),
-            _vm._v(" "),
-            _c("div", [
-              _c(
-                "form",
-                {
-                  attrs: {
-                    method: "post",
-                    id: "formImg",
-                    action: "",
-                    enctype: "multipart/form-data"
-                  }
-                },
-                [
-                  _c("input", {
-                    attrs: { type: "hidden", name: "_token" },
-                    domProps: { value: _vm.token }
-                  }),
-                  _vm._v(" "),
-                  _vm._m(2),
-                  _vm._v(" "),
-                  _vm._m(3)
-                ]
-              )
+            _c("p", [
+              _c("label", { attrs: { for: "downloadPicture" } }, [
+                _vm._v("Nouvelle photo de profil:")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                attrs: { type: "file", accept: "image/jpeg, image/png" },
+                on: { change: _vm.selectImage }
+              })
             ])
           ])
         ]
       ),
       _vm._v(" "),
-      _vm._m(4),
+      _vm._m(1),
       _vm._v(" "),
-      _vm._m(5),
+      _vm._m(2),
       _vm._v(" "),
       _vm.send === true
         ? _c("div", [_c("p", [_vm._v("Modifications enregistrées")])])
@@ -61779,36 +61768,6 @@ var staticRenderFns = [
         staticClass: "UserImage",
         attrs: { src: "", alt: "", width: "50px", height: "50px" }
       })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", [
-      _c("label", { attrs: { for: "downloadPicture" } }, [
-        _vm._v("Nouvelle photo de profil:")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("label", { attrs: { for: "image" } }, [
-        _vm._v("Sélectionner votre image:")
-      ]),
-      _vm._v(" "),
-      _c("input", { attrs: { type: "file", name: "image", id: "image" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("input", { attrs: { type: "submit", value: "Envoyer votre image" } })
     ])
   },
   function() {
