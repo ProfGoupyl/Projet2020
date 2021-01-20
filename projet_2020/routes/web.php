@@ -26,27 +26,30 @@ use App\Http\Controllers\Administration\FaqAdminController;
 Route::get('/', function()
 {
     return View('welcome');
-});
+})->middleware(['auth'])->name('login');
 Route::get('home', function()
 {
     return View('pages.home');
-});
+})->middleware(['auth'])->name('login');
 Route::get('user', function()
 {
     return View('pages.user');
-});
+})->middleware(['auth'])->name('login');
+
 Route::get('cours', function()
 {
     return View('pages.cours');
-});
+})->middleware(['auth'])->name('login');
+
 Route::get('session', function()
 {
     return View('pages.session');
-});
+})->middleware(['auth'])->name('login');
+
 Route::get('profile', function()
 {
     return View('pages.profile');
-});
+})->middleware(['auth'])->name('login');
 
 Route::get('/administrationUser', function () {
     return view('administration.UserAdmin');
