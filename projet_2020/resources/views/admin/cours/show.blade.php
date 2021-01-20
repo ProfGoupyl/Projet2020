@@ -26,6 +26,8 @@
 
 </style>
 
+<!-- styles -->
+<link rel="stylesheet" href="/css/default.css">
 
 <h1>salut {{$cours->titre}}</h1>
 <section>
@@ -44,11 +46,11 @@
         <div data-neworder="" data-element="{{$m->id}}" data-order="{{$m->ordre}}" class="draggable" draggable="true">
             <input type="hidden" name="modules[]" value="{{$m->id}}-{{$m->ordre}}">
             <p>{{$m->titre}}</p>
-            <button data-action="{{$m->id}}" data-titre="{{$m->titre}}" data-desc="{{$m->description}}" data-url="{{$m->url_video}}" class="edit-module" type="button">Modifier</button>
+            <button data-action="{{$m->id}}" data-titre="{{$m->titre}}" data-desc="{{$m->description}}" data-url="{{$m->url_video}}" class="edit-module" id="modifier" type="button">Modifier</button>
             <form action="/admin/module/{{$m->id}}" method="POST">
             @csrf
             @method('delete')
-            <button> Supprimer </button>
+            <button id="supprimer"> Supprimer </button>
             </form>
         </div>
 
@@ -85,7 +87,7 @@
         </div>
 
         <div>
-            <input type="submit" value="Ajouter!">
+            <input type="submit" id="ajouter" value="Ajouter!">
         </div>
     </form>
 
