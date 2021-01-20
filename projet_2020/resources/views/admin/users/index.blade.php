@@ -12,6 +12,67 @@
     }
 </style>
 
+{{-- <div id="addUser">
+<div id="addUser">
+
+    <div id="addUser">
+
+        <x-guest-layout>
+            <x-auth-card>
+                <x-slot name="logo">
+                    <a href="/">
+                        <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                    </a>
+                </x-slot>
+
+                <!-- Validation Errors -->
+                <x-auth-validation-errors class="mb-4" :errors="$errors" />
+
+
+                <form method="POST" action="http://localhost:8000/api/users">
+
+                    <form method="post" action="/users">
+
+                        @csrf
+                        <input type="hidden" value="sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9" name="api_token">
+
+                        <!-- Name -->
+                        <div>
+                            <x-label for="name" type="text" :value="_('Nom')" />
+
+                            <x-input id="name" class="block mt-1 w-full" type="text" name="name" required autofocus />
+                        </div>
+
+                        <!-- Prénom -->
+                        <div class="mt-4">
+                            <x-label for="prenom" :value="__('Prénom')" />
+
+
+                            <x-input id="prenom" class="block mt-1 w-full" type="text" name="prenom" :value="old('prenom')" required autofocus />
+                        </div>
+
+                        <x-input id="prenom" class="block mt-1 w-full" type="text" name="prenom" required autofocus />
+    </div>
+
+
+    <!-- Email Address -->
+    <div class="mt-4">
+        <x-label for="email" :value="__('Email')" />
+
+        <x-input id="email" class="block mt-1 w-full" type="email" name="email" required />
+    </div>
+
+
+    <div class="flex items-center justify-end mt-4">
+        <x-button class="ml-4">
+            {{ __('M\'inscrire') }}
+        </x-button>
+    </div>
+    </form>
+    </x-auth-card>
+    </x-guest-layout>
+</div> --}}
+
 <div id="addUser">
     <form action="/admin/users" method="POST">
         @csrf
@@ -31,6 +92,11 @@
 <div id="showUser">
 
     <h1>Tableau des utilisateurs</h1>
+    <form enctype="multipart/form-data" action="csv" method="post">
+        @csrf
+        <input required type="file" name="file" value="Choisir un fichier .csv" accept=".csv">
+        <input type="submit" name="submit" value="Transférer" title="Submit">
+    </form>
 
     <div class="col-12">
         <table>
@@ -44,6 +110,7 @@
                     <th>action</th>
                 </tr>
             </thead>
+
             <tbody>
 
                 @foreach ($users as $user)
@@ -72,6 +139,11 @@
                             <input style="display:none;" id="save-{{$user->id}}" type="submit" value="Sauvegarder">
                         </td>
                     </form>
+                </td>
+
+            </td>
+        
+
 
                     <td>
                         <form action='/admin/users/{{ $user->id }}' method="post">

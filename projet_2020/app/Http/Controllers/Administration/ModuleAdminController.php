@@ -12,7 +12,7 @@ class ModuleAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     * @param  \App\Models\Cours  $cours
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -38,10 +38,12 @@ class ModuleAdminController extends Controller
 
     public function update(Request $request, $id)
     {
+            $module = Module::find($id);
         if (!$request->request->get('general-data')) {
             // Récupération du module dont l'odre a été modifié ainsi que du cours d'où l'on vient
-            $module = Module::find($request->request->get('data')[0]);
+
             $modules = Cours::find($request->request->get('cours'))->modules;
+
             // Stockage de l'ancien ordre et du nouvel ordre du cours
             $order_old = $module->ordre;
             $order_new = +$request->request->get('data')[1];
@@ -69,12 +71,40 @@ class ModuleAdminController extends Controller
             // Change l'odre du module choisis pour sa nouvelle valeur
             $module->ordre = $order_new;
             $module->save();
-            // Redirection vers la page du cours concerné
-            return redirect('/admin/cours/' . $request->request->get('cours'));
+
         } else {
             // Modification des données d'un module
-
-            return redirect('/admin/cours/' . $request->request->get('cours'));
+            $module->titre = $request->has('titre') && strlen($request->titre) ? $request->titre : $module->titre;
+            $module->description = $request->has('description') && strlen($request->description) ? $request->description : $module->description;
+            $module->save();
         }
+        // Redirection vers la page du cours concerné
+        return redirect('/admin/cours/' . $request->request->get('cours'));
+
     }
+
+    public function store(Request $request,$id){
+        $module = new Module;
+        $cours = Cours::find($id)->module;
+        $module->cours_id = $cours;
+
+        $module->titre = $request->has('titre') && strlen($request->titre) ? $request->titre : $module->titre;
+        $module->description = $request->has('description') && strlen($request->description) ? $request->description : $module->description;
+        $module->url_video = $request->has('url_video') && strlen($request->url_video) ? $request->url_video : $module->url_video;
+        $module->ordre = $request->has('ordre') && strlen($request->ordre) ? $request->ordre : $module->ordre;
+        $module->save();
+
+        return redirect('/admin/cours');
+
+        
+
+
+
+
+
+
+    }
+
+
+
 }

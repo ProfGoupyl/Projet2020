@@ -4,7 +4,8 @@ use DateTime;
 use resources\csv;
 use App\Models\User;
 use Illuminate\Support\Str;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+
 
 class CsvController extends Controller{
   public function index(Request $request){
@@ -16,15 +17,39 @@ class CsvController extends Controller{
     while(!feof($res)){
       $tabLigne=explode(';', fgets($res));
       if(!$tabLigne[0]) break;
-      $usr=new User;
+      $usr=new User();
+      $date = new DateTime();
+      $register_token = Str::random(40) . $date->getTimestamp();
+        // insert users
       $usr->name=$tabLigne[0];
       $usr->prenom=$tabLigne[1];
       $usr->email=$tabLigne[2];
-      $usr->password= Str::random(40);
-      $usr->register_token = Str::random(40) . $date->getTimestamp();
+      $usr->admin =$tabLigne[3];
+      $usr->password=$tabLigne[4];
+      $usr->api_token = $register_token;
       $usr->save();
+
+         // ENVOI EMAIL
+       $data = [
+        'subject' => "Invitation aux cours",
+        'name' => $usr->name=$tabLigne[0],
+        'email' => $usr->email=$tabLigne[2],
+        'content' => [
+            'message' => "Cliquez sur le lien suivant pour accepter l'invitation au cours de Goupyl:",
+            'link' => route('register').'?token='.$register_token
+        ]
+    ];
+    Mail::send('admin.email.invitation-template',$data, function($message) use ($data) {
+        $message->to($data['email'])
+                ->subject($data['subject']);
+    });
+
     }
     fclose($res);
-    return redirect('admin/users');
+    return redirect('/admin/users');
   }
 }
+
+
+
+
