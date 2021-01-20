@@ -75,25 +75,6 @@
     </tbody>
 </table>
 
-<div id='addCours'>
-    <form action='/admin/cours' method='POST'>
-        @csrf
-        <div>
-            <label for="name">Entrer le titre </label>
-            <input type="text" name="titre" id="name" required>
-        </div>
-        <div>
-            <label>debut du cours: </label>
-            <input type="date" name='debut_du_cours' required>
-        </div>
-        <div>
-            <label>fin du cours: </label>
-            <input type="date" name='fin_du_cours' required>
-        </div>
-        <div>
-            <input type="submit" value="Ajouter!">
-        </div>
-    </form>
 
 </div>
 
