@@ -89,10 +89,6 @@ class CoursAdminController extends Controller
     public function update(Request $request, $id)
     {
         $cours = Cours::find($id);
-
-
-
-
         $cours->titre = $request->has('titre') && strlen($request->titre) ? $request->titre : $cours->titre;
         $cours->debut_du_cours = $request->has('debut_du_cours') && strlen($request->debut_du_cours) ? $request->debut_du_cours : $cours->debut_du_cours;
         $cours->fin_du_cours = $request->has('fin_du_cours') && strlen($request->fin_du_cours) ? $request->fin_du_cours : $cours->fin_du_cours;

@@ -72,9 +72,6 @@
                 <a href='/admin/cours/{{$cours->id}}'>show</a>
             </td>
             <td>
-                @dump($cours->user)
-            </td>
-            <td>
                 <form enctype="multipart/form-data" action="/admin/csv/cours" method="post">
                     @csrf
                     <input type="hidden" name="cours" value="{{$cours->id}}">

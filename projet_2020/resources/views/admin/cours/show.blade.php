@@ -17,11 +17,19 @@
     .draggable.dragging {
         opacity: .5;
     }
+    .form-modules{
+        display: none;
+    }
+    .form-modules.show{
+        display: block;
+    }
+
 </style>
 
 
 <h1>salut {{$cours->titre}}</h1>
 <section>
+    <div>
     <!-- Formulaire réceptionnant les nouvelles valeurs "ordre" du module dragged et l'envoyant au ModuleController->update() -->
     <form id="myForm" action="" method="POST">
         @csrf
@@ -37,12 +45,18 @@
             <input type="hidden" name="modules[]" value="{{$m->id}}-{{$m->ordre}}">
             <p>{{$m->titre}}</p>
             <button data-action="{{$m->id}}" data-titre="{{$m->titre}}" data-desc="{{$m->description}}" class="edit-module" type="button">Modifier</button>
+            <form action="/admin/module/{{$m->id}}" method="POST">
+            @csrf
+            @method('delete')
+            <button> Supprimer </button>
+            </form>
         </div>
+
         @endforeach
     </div>
 </section>
 
-<form id="form-module" method="POST">
+<form id="form-module" action="/admin/cours/{{$cours->id}}" method="POST">
     @csrf
     @method('put')
     <input type="hidden" name="general-data" value="true">
@@ -52,8 +66,50 @@
     <input type="submit" value="Modifier">
 </form>
 
+<div id='addModule'>
+    <form action='/admin/module' method='POST'>
+        @csrf
+        <input type="hidden" name="cours" value="{{$cours->id}}">
+        <div>
+            <label for="name">Entrer le titre </label>
+            <input type="text" name="titre" id="name" required>
+        </div>
+        <div>
+            <label>Description du module</label>
+            <textarea name="description" cols="30" rows="10"></textarea>
+        </div>
+        <div>
+            <label>Url du module</label>
+            <input type="text" name='url_video' required>
+        </div>
+
+        <div>
+            <input type="submit" value="Ajouter!">
+        </div>
+    </form>
+
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+
+const showBtns = document.querySelectorAll('.show_module');
+const formAll = document.querySelectorAll('.form-modules');
+    showBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            formAll.forEach((form) => {
+                form.classList.remove('show')
+            })
+            const target = btn.dataset.target
+            const form = document.querySelector(`#form-${target}`)
+            form.classList.add('show')
+        })
+    })
+
+
+
+
+
     const draggables = document.querySelectorAll('.draggable');
     const container = document.querySelector('.drag-container');
 

@@ -20,3 +20,13 @@ N'oubliez pas de bien configurer le ficher .env
 
 Les commandes GIT que vous devez absolument connaître !
 https://www.hostinger.fr/tutoriels/commandes-git/
+
+FRONT-END
+
+Pour tester les fonctionnalités en tant qu'étudiant vous devez tout d'abord vous créez un compte via la page /register.
+Ensuite, rendez-vous dans la db dans la table users_cours, là vous pouvez éditer la/les ligne(s) que vous souhaitez en remplaçant
+le contenu du champs user_id par l'id du compte que vous avez créé précédement.
+Après avoir fait ça, vous pouvez vous connecter sur votre compte fraichement créé via la page /login, si tout marche bien
+vous devriez voir une liste de cours en fonction du nombres de lignes que vous avez édité dans la db.
+
+Lancé la commande "npm install" dans le projet afin de récupérer les paquets de Moment.js, une librairie JavaScript que nous avons intégré au projet.

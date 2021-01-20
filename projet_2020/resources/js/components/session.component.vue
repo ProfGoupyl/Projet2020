@@ -4,12 +4,21 @@
             <div>
                 <h2> {{ modules.titre }} </h2>
                 <p> {{ modules.description }} </p>
+                <p> ex de video : <iframe width="560" height="315" src="https://www.youtube.com/embed/nhBVL41-_Cw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  </p>
+                 <!-- {{ modules.url_video }} -->
             </div>
         </div>
+        <article>
+            <Faq></Faq>
+        </article>
     </div>
 </template>
 <script>
+    import Faq from './faq.component'
     export default {
+        components: {
+            Faq
+        },
         data() {
             return {
                 moduleList: [],

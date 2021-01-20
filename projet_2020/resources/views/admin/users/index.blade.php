@@ -32,6 +32,11 @@
 <div id="showUser">
 
     <h1>Tableau des utilisateurs</h1>
+    <form enctype="multipart/form-data" action="csv" method="post">
+        @csrf
+        <input required type="file" name="file" value="Choisir un fichier .csv" accept=".csv">
+        <input type="submit" name="submit" value="Transférer" title="Submit">
+    </form>
 
     <div class="col-12">
         <table>
@@ -45,6 +50,7 @@
                     <th>action</th>
                 </tr>
             </thead>
+
             <tbody>
 
                 @foreach ($users as $user)
@@ -80,8 +86,6 @@
                             @method('delete')
                             <input type='submit' value='Supprimer'>
                         </form>
-                    </td>
-
                     </td>
                 </tr>
                 @endforeach

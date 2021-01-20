@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersCoursTable extends Migration
+class CreateCoursUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateUsersCoursTable extends Migration
      */
     public function up()
     {
-        Schema::create('users_cours', function (Blueprint $table) {
+        Schema::create('cours_user', function (Blueprint $table) {
             $table->id();
             $table->date('start_at');
             $table->date('end_at');
@@ -27,6 +27,7 @@ class CreateUsersCoursTable extends Migration
         Schema::enableForeignKeyConstraints();
     }
 
+
     /**
      * Reverse the migrations.
      *
@@ -34,13 +35,6 @@ class CreateUsersCoursTable extends Migration
      */
     public function down()
     {
-
-        // Schema::table('users_cours', function (Blueprint $table) {
-        //     Schema::disableForeignKeyConstraints();
-        //     $table->dropForeign(['user_id', 'cours_id']);
-        //     $table->dropColumn(['user_id', 'cours_id']);
-        // });
-
-        Schema::dropIfExists('users_cours');
+        Schema::dropIfExists('cours_user');
     }
 }

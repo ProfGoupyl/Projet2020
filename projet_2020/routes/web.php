@@ -41,9 +41,6 @@ Route::get('session', function () {
 Route::get('profile', function () {
     return View('pages.profile');
 });
-Route::get('faq', function () {
-    return View('pages.faq');
-});
 
 Route::get('/administrationUser', function () {
     return view('administration.UserAdmin');
@@ -59,7 +56,6 @@ Route::group(['middleware' => ['auth']], function () {
 Route::prefix('admin')
     ->middleware(IsAdmin::class)
     ->group(function () {
-
         // Mettez vos routes en dessous de la première
         // Route de base renvoyant au dashboard de l'administration
         Route::get('/', function () {
