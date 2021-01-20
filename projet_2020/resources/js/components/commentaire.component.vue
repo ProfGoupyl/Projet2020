@@ -13,10 +13,13 @@
     
     export default {
         name: "CommentaireComponent",
+        props: ['userInfos'],
         
         data() {
             return {
-                posts: { text: null}
+                posts: { text: null},
+                userId: this.userInfos.id,
+                apiToken: this.userInfos.api_token,
             }
         },
         
