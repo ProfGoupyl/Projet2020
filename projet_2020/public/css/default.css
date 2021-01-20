@@ -5,71 +5,62 @@ $font-family-sans-serif: 'Nunito', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 */
-header .navPrincipale ul {
+header nav.navPrincipale ul {
   margin: 1% 4% 1% auto;
   display: flex;
   flex-flow: row wrap;
   align-items: center;
-  padding: 0;
   list-style-type: none;
   justify-content: space-between;
 }
 
-header .navPrincipale ul li {
+header nav.navPrincipale ul li {
   cursor: pointer;
 }
 
-header .navPrincipale ul li img.logo {
+header nav.navPrincipale ul li img.logo {
   text-align: left;
   width: 210px;
   position: relative;
   left: -27px;
 }
 
-header .navPrincipale ul li:first-of-type {
+header nav.navPrincipale ul li:first-of-type {
   flex-basis: 60%;
   cursor: default;
 }
 
-header .navPrincipale ul li i {
+header nav.navPrincipale ul li i {
   font-size: 23px;
   color: #000000;
 }
 
-header .navPrincipale ul li .btn {
-  display: none;
-}
-
-header .navPrincipale ul li .btn .hide i:before {
-  content: '\F00D';
-}
-
-header .navPrincipale ul li a {
+header nav.navPrincipale ul li a {
   display: flex;
   text-decoration: none;
   text-transform: uppercase;
   color: #000000;
 }
 
-header .navPrincipale ul li a:hover {
+header nav.navPrincipale ul li a:hover {
   color: #808080;
 }
 
-header .navPrincipale ul li figure {
+header nav.navPrincipale ul li figure {
   display: flex;
   width: auto;
 }
 
-header .navPrincipale ul li figure img {
+header nav.navPrincipale ul li figure img {
   width: 120px;
 }
 
-header .navPrincipale ul li:hover .sous {
+header nav.navPrincipale ul li:hover ul.sous {
   display: block;
   max-height: 50em;
 }
 
-header .navPrincipale ul li .sous {
+header nav.navPrincipale ul li ul.sous {
   display: none;
   position: absolute;
   width: 120px;
@@ -78,16 +69,18 @@ header .navPrincipale ul li .sous {
   background-color: #ffffff;
 }
 
-header .navPrincipale ul li .sous li p {
+header nav.navPrincipale ul li ul.sous li p {
   font-size: 0.7em;
 }
 
-header .navPrincipale ul li .items {
+.items {
   position: relative;
+  width: auto;
   text-align: center;
+  order: 3;
 }
 
-header .navPrincipale ul li .items::after {
+.items::after {
   position: absolute;
   content: '';
   left: 0;
@@ -98,32 +91,40 @@ header .navPrincipale ul li .items::after {
   transition: all 0.2s linear;
 }
 
-header .navPrincipale ul li .items:hover::after {
+.items:hover::after {
   opacity: 5;
   bottom: 1px;
+}
+
+.burger {
+  display: none;
+}
+
+.hide i:before {
+  content: '\F00D';
 }
 
 /* VERSION MOBILE */
 
 @media all and (max-width: 900px) {
-  nav ul li figure {
-    display: none;
-  }
-
-  nav ul li .items {
+  nav ul li.items {
     width: 100%;
     display: none;
   }
 
-  nav ul li .items .show {
+  nav ul li.items.show {
     display: block;
   }
 
-  nav ul li .btn {
+  nav ul li.burger {
     display: block;
   }
 
-  nav ul li .sous {
+  nav ul li figure {
+    display: block;
+  }
+
+  .sous {
     margin-top: 5px;
     margin-left: 150px;
   }
@@ -133,7 +134,6 @@ header .navPrincipale ul li .items:hover::after {
 
 .listecours {
   width: 100%;
-  padding: 4%;
 }
 
 .listecours thead {
@@ -185,10 +185,11 @@ form.userProfil {
   margin: 0 auto;
   display: flex;
   flex-flow: row wrap;
+  justify-content: space-evenly;
 }
 
 form.userProfil div {
-  flex-basis: 49%;
+  flex-basis: 40%;
 }
 
 form.userProfil div p {
@@ -221,7 +222,7 @@ form.userProfil div p img {
   clear: both;
 }
 
-form.userProfil button:first-of-type::after {
+button:first-of-type::after {
   content: ' Modifier';
 }
 
@@ -335,6 +336,7 @@ body {
 
 section {
   height: auto;
+  padding: 0 4%;
 }
 
 section article {

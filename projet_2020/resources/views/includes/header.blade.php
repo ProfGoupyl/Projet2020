@@ -3,7 +3,7 @@
     <ul class="navigation">
 
         <li>
-            <img src="images/logo.svg" alt="" class="logo" height="80px" width="80px">
+            <img src="{{ asset('images/logo.svg') }}" alt="" class="logo" height="80px" width="80px">
         </li>
 
         <li class="items">
@@ -56,7 +56,8 @@
                         </li>
                     @endif
                 </ul>
-            
+                
         </li>
+        <li class="burger"><a href="#"><i class="fas fa-bars"></i></a></li>
     </ul>
 </nav>

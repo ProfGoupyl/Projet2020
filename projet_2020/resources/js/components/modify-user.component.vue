@@ -20,17 +20,30 @@
                 </div>
                 <div>
                 <p>
-                    <label for="currentPicture">Current picture:</label>
+                    <label for="currentPicture">Photo de profil actuelle:</label>
                     <img src="" alt="" class="UserImage" width="50px" height="50px">
                 </p>
                 <p>
-                    <label for="downloadPicture">New Picture</label>
-                    <input type="file" accept="image/*" @change="uploadImage($event)">
+                    <label for="downloadPicture">Nouvelle photo de profil:</label>
                 </p>
+                <div>
+                    <form method="post" id="formImg" action="" enctype="multipart/form-data" >
+                        <!--<input type="file" accept="image/*" @change="uploadImage($event)"> -->
+                        <input type="hidden" name="_token" v-bind:value="token">
+                        <div>
+                            <label for="image">Sélectionner votre image:</label>
+                            <input type="file" name="image" id="image">
+                        </div>
+                        <div>
+                            <input type="submit" value="Envoyer votre image">
+                        </div>
+                    </form> 
+                </div>                
                 </div>
-                <button id="modifier" class="btn btn-primary" type="submit"><i class="fas fa-pen fa-lg"></i></button>
-                <button><a href="/user">Annuler</a></button>
             </form>
+
+            <button id="modifier" class="btn btn-primary" type="submit"><i class="fas fa-pen fa-lg"></i></button>
+            <button><a href="/user">Annuler</a></button>
 
             <div v-if="send === true">
                 <p>Modifications enregistrées</p>
@@ -48,10 +61,12 @@
         data() {
             return {
                 token: document.querySelector('#token').getAttribute('content'),
+                userId: this.userInfos.id,
                 userName: this.userInfos.name,
                 userPrenom: this.userInfos.prenom,
                 userEmail: this.userInfos.email,
                 userPseudo: this.userInfos.pseudo,
+                userPhoto: null,
                 send: null,
             }
         },
@@ -68,7 +83,14 @@
                 .catch(error => this.send = false)
             },
             uploadImage(event) {
-                //
+                if(event.target.files[0]) {
+                    console.log('ok')
+                }
+                this.userPhoto = event.target.files[0]
+                console.log(this.userPhoto)
+
+                const data = new FormData()
+                data.append(`user${this.userId}`, this.userPhoto)
             }
         }
     }
