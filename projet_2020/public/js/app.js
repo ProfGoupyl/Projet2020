@@ -4055,6 +4055,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['userInfos'],
   data: function data() {
@@ -61737,21 +61743,19 @@ var render = function() {
                     domProps: { value: _vm.token }
                   }),
                   _vm._v(" "),
-                  _c("input", {
-                    attrs: { type: "file", name: "image", id: "image" }
-                  }),
+                  _vm._m(2),
                   _vm._v(" "),
-                  _c("input", { attrs: { type: "submit" } })
+                  _vm._m(3)
                 ]
               )
             ])
-          ]),
-          _vm._v(" "),
-          _vm._m(2),
-          _vm._v(" "),
-          _vm._m(3)
+          ])
         ]
       ),
+      _vm._v(" "),
+      _vm._m(4),
+      _vm._v(" "),
+      _vm._m(5),
       _vm._v(" "),
       _vm.send === true
         ? _c("div", [_c("p", [_vm._v("Modifications enregistrées")])])
@@ -61785,6 +61789,26 @@ var staticRenderFns = [
       _c("label", { attrs: { for: "downloadPicture" } }, [
         _vm._v("Nouvelle photo de profil:")
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("label", { attrs: { for: "image" } }, [
+        _vm._v("Sélectionner votre image:")
+      ]),
+      _vm._v(" "),
+      _c("input", { attrs: { type: "file", name: "image", id: "image" } })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("input", { attrs: { type: "submit", value: "Envoyer votre image" } })
     ])
   },
   function() {

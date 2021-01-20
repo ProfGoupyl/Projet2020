@@ -29,15 +29,21 @@
                 <div>
                     <form method="post" id="formImg" action="" enctype="multipart/form-data" >
                         <!--<input type="file" accept="image/*" @change="uploadImage($event)"> -->
-                            <input type="hidden" name="_token" v-bind:value="token">
+                        <input type="hidden" name="_token" v-bind:value="token">
+                        <div>
+                            <label for="image">Sélectionner votre image:</label>
                             <input type="file" name="image" id="image">
-                            <input type="submit">
+                        </div>
+                        <div>
+                            <input type="submit" value="Envoyer votre image">
+                        </div>
                     </form> 
                 </div>                
                 </div>
-                <button id="modifier" class="btn btn-primary" type="submit"><i class="fas fa-pen fa-lg"></i></button>
-                <button><a href="/user">Annuler</a></button>
             </form>
+
+            <button id="modifier" class="btn btn-primary" type="submit"><i class="fas fa-pen fa-lg"></i></button>
+            <button><a href="/user">Annuler</a></button>
 
             <div v-if="send === true">
                 <p>Modifications enregistrées</p>
