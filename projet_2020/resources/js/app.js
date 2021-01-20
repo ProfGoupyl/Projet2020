@@ -30,5 +30,5 @@ const router = new VueRouter({
 
 new Vue({
     //router,
-    el: '#app'
+    el: '#app',
 })

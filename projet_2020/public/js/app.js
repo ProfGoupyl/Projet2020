@@ -3862,14 +3862,12 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     Session: _session_component__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  props: ['userid'],
+  props: ['userInfos'],
   data: function data() {
     return {
-      userId: this.userid,
       moduleId: false,
       coursId: JSON.parse(sessionStorage.getItem('coursid')),
       moduleList: [],
-      coursList: [],
       coursNames: [],
       componentKey: 0
     };
@@ -3877,18 +3875,13 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get('http://localhost:8000/api/module?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
+    axios.get("http://localhost:8000/api/module?api_token=".concat(this.userInfos.api_token)).then(function (response) {
       return _this.moduleList = _.orderBy(response.data, 'ordre', 'asc');
     })["catch"](function (error) {
       return console.log(error);
     });
-    axios.get('http://localhost:8000/api/cours?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
+    axios.get("http://localhost:8000/api/cours?api_token=".concat(this.userInfos.api_token)).then(function (response) {
       return _this.coursNames = response.data;
-    })["catch"](function (error) {
-      return console.log(error);
-    });
-    axios.get('http://localhost:8000/api/users_cours?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
-      return _this.coursList = response.data;
     })["catch"](function (error) {
       return console.log(error);
     });
@@ -3932,6 +3925,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['userInfos'],
   data: function data() {
     return {
       faqList: [],
@@ -3941,7 +3935,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get('http://localhost:8000/api/faq?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
+    axios.get("http://localhost:8000/api/faq?api_token=".concat(this.userInfos.api_token)).then(function (response) {
       return _this.faqList = response.data;
     })["catch"](function (error) {
       return console.log(error);
@@ -4009,16 +4003,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['user'],
+  props: ['userInfos'],
   data: function data() {
     return {
       token: document.querySelector('#token').getAttribute('content'),
-      userId: this.user.id,
-      userName: this.user.name,
-      userPrenom: this.user.prenom,
-      userEmail: this.user.email,
-      userPseudo: this.user.pseudo,
+      userName: this.userInfos.name,
+      userPrenom: this.userInfos.prenom,
+      userEmail: this.userInfos.email,
+      userPseudo: this.userInfos.pseudo,
       send: null
     };
   },
@@ -4026,7 +4023,7 @@ __webpack_require__.r(__webpack_exports__);
     submit: function submit() {
       var _this = this;
 
-      axios.patch("http://localhost:8000/api/users/".concat(this.userId, "/?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9"), {
+      axios.patch("http://localhost:8000/api/users/".concat(this.userInfos.id, "/?api_token=").concat(this.userInfos.api_token), {
         name: this.userName,
         prenom: this.userPrenom,
         email: this.userEmail,
@@ -4074,6 +4071,7 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     Faq: _faq_component__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
+  props: ['userInfos'],
   data: function data() {
     return {
       moduleList: [],
@@ -4092,7 +4090,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this2 = this;
 
-    axios.get('http://localhost:8000/api/module?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9').then(function (response) {
+    axios.get("http://localhost:8000/api/module?api_token=".concat(this.userInfos.api_token)).then(function (response) {
       return _this2.moduleList = response.data;
     })["catch"](function (error) {
       return console.log(error);
@@ -4143,17 +4141,16 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'user',
-  props: ['userid'],
+  props: ['userInfos'],
   data: function data() {
     return {
-      cours: [],
-      userId: this.userid
+      cours: []
     };
   },
   created: function created() {
     var _this = this;
 
-    axios.get("http://localhost:8000/api/users/formations/".concat(this.userId, "?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9")).then(function (response) {
+    axios.get("http://localhost:8000/api/users/formations/".concat(this.userInfos.id, "?api_token=").concat(this.userInfos.api_token)).then(function (response) {
       var data = response.data;
 
       for (var i = 0; i < data.length; i++) {
@@ -61408,7 +61405,16 @@ var render = function() {
       _vm._v(" "),
       _c("div", [
         _vm.moduleId
-          ? _c("article", [_c("Session", { key: _vm.componentKey })], 1)
+          ? _c(
+              "article",
+              [
+                _c("Session", {
+                  key: _vm.componentKey,
+                  attrs: { "user-infos": this.userInfos }
+                })
+              ],
+              1
+            )
           : _vm._e()
       ])
     ])
@@ -61505,112 +61511,111 @@ var render = function() {
             domProps: { value: _vm.token }
           }),
           _vm._v(" "),
-          _c("p", [
-            _c("label", { attrs: { for: "firstname" } }, [
-              _vm._v("First Name:")
+          _c("div", [
+            _c("p", [
+              _c("label", { attrs: { for: "firstname" } }, [
+                _vm._v("First Name:")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.userPrenom,
+                    expression: "userPrenom"
+                  }
+                ],
+                attrs: { type: "text", name: "firstname" },
+                domProps: { value: _vm.userPrenom },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.userPrenom = $event.target.value
+                  }
+                }
+              })
             ]),
             _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.userPrenom,
-                  expression: "userPrenom"
-                }
-              ],
-              attrs: { type: "text", name: "firstname" },
-              domProps: { value: _vm.userPrenom },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+            _c("p", [
+              _c("label", { attrs: { for: "lastname" } }, [
+                _vm._v("Last Name:")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.userName,
+                    expression: "userName"
                   }
-                  _vm.userPrenom = $event.target.value
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _c("label", { attrs: { for: "lastname" } }, [_vm._v("Last Name:")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.userName,
-                  expression: "userName"
-                }
-              ],
-              attrs: { type: "text", name: "lastname" },
-              domProps: { value: _vm.userName },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+                ],
+                attrs: { type: "text", name: "lastname" },
+                domProps: { value: _vm.userName },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.userName = $event.target.value
                   }
-                  _vm.userName = $event.target.value
                 }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _c("label", { attrs: { for: "email" } }, [
-              _vm._v("Email address:")
+              })
             ]),
             _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.userEmail,
-                  expression: "userEmail"
-                }
-              ],
-              attrs: { type: "email", name: "email" },
-              domProps: { value: _vm.userEmail },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+            _c("p", [
+              _c("label", { attrs: { for: "email" } }, [
+                _vm._v("Email address:")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.userEmail,
+                    expression: "userEmail"
                   }
-                  _vm.userEmail = $event.target.value
+                ],
+                attrs: { type: "email", name: "email" },
+                domProps: { value: _vm.userEmail },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.userEmail = $event.target.value
+                  }
                 }
-              }
-            })
+              })
+            ])
           ]),
           _vm._v(" "),
-          _vm._m(0),
-          _vm._v(" "),
-          _c("p", [
-            _c("label", { attrs: { for: "downloadPicture" } }, [
-              _vm._v("New Picture")
-            ]),
+          _c("div", [
+            _vm._m(0),
             _vm._v(" "),
-            _c("input", {
-              attrs: { type: "file", accept: "image/*" },
-              on: {
-                change: function($event) {
-                  return _vm.uploadImage($event)
+            _c("p", [
+              _c("label", { attrs: { for: "downloadPicture" } }, [
+                _vm._v("New Picture")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                attrs: { type: "file", accept: "image/*" },
+                on: {
+                  change: function($event) {
+                    return _vm.uploadImage($event)
+                  }
                 }
-              }
-            })
+              })
+            ])
           ]),
           _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-primary",
-              attrs: { id: "modifier", type: "submit" }
-            },
-            [_vm._v("Modifier")]
-          ),
+          _vm._m(1),
           _vm._v(" "),
-          _vm._m(1)
+          _vm._m(2)
         ]
       ),
       _vm._v(" "),
@@ -61637,6 +61642,19 @@ var staticRenderFns = [
         attrs: { src: "", alt: "", width: "50px", height: "50px" }
       })
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "btn btn-primary",
+        attrs: { id: "modifier", type: "submit" }
+      },
+      [_c("i", { staticClass: "fas fa-pen fa-lg" })]
+    )
   },
   function() {
     var _vm = this
@@ -61683,7 +61701,7 @@ var render = function() {
         ])
       }),
       _vm._v(" "),
-      _c("article", [_c("Faq")], 1)
+      _c("article", [_c("Faq", { attrs: { "user-infos": this.userInfos } })], 1)
     ],
     2
   )
@@ -74432,10 +74450,10 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/app.scss */"./resources/sass/app.scss");
-__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })

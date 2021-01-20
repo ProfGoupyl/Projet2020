@@ -1,6 +1,6 @@
 @extends('layouts.default')
 @section('content')
     @if(Auth::user())
-    <cours :userid='{{ Auth::user()->id }}'></cours>
+    <cours v-bind:user-infos="{{ Auth::user() }}"></cours>
     @endif
 @stop
