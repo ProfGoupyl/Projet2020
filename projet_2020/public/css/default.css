@@ -279,6 +279,47 @@ form.userProfil button:first-of-type::after {
 
 /*--------------- Fichier _faq.scss - FIN ----------*/
 
+/*--------------- Fichier _cours.scss ---------------*/
+
+.section_page_cours {
+  display: flex;
+  flex: 1;
+  margin: 0.5em 1em;
+}
+
+.section_page_cours .aside_page_cours {
+  height: auto;
+  flex-basis: 25%;
+  background: #d4d4d4;
+  margin: 0 1em 0 0;
+}
+
+.section_page_cours .navSecondaire_coursName {
+  flex-basis: 75%;
+}
+
+.section_page_cours .navSecondaire_coursName article:first-of-type {
+  margin: 0 0 1em 0;
+}
+
+.section_page_cours .navSecondaire li {
+  list-style-type: none;
+}
+
+.navSecondaire_coursName {
+  padding: 1em;
+}
+
+.navSecondaire_coursName li {
+  list-style-type: none;
+}
+
+.module_page_cours {
+  width: 450px;
+}
+
+/*--------------- Fichier _cours.scss - FIN ----------*/
+
 * {
   box-sizing: border-box;
   margin: 0px;
