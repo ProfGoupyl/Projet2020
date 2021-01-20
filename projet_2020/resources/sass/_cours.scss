@@ -1,39 +1,52 @@
-
 /*--------------- Fichier _cours.scss ---------------*/
 .section_page_cours {
-	display: flex;
-	flex: 1;
-	margin: 0.5em 1em;
-	.aside_page_cours {
-		height: auto;
-		flex-basis: 25%;
-		background: #d4d4d4;
-		margin: 0 1em 0 0;
-	}
-	.navSecondaire_coursName {
-		flex-basis: 75%;
-		article {
-			&:first-of-type {
-				margin: 0 0 1em 0;
-			}
-		}
-	}
-	.navSecondaire {
-		li {
-			list-style-type: none;
-		}
-	}
+    display: flex;
+    flex: 1;
+    margin: 0.5em 1em;
+    .aside_page_cours {
+        height: auto;
+        flex-basis: 25%;
+        background: #d4d4d4;
+        margin: 0 1em 0 0;
+    }
+    .navSecondaire_coursName {
+        flex-basis: 75%;
+        article {
+            &:first-of-type {
+                margin: 0 0 1em 0;
+            }
+        }
+    }
+    .navSecondaire {
+        li {
+            list-style-type: none;
+        }
+    }
 }
 
 .navSecondaire_coursName {
-	padding: 1em;
-	li {
-		list-style-type: none;
-	}
+    padding: 1em;
+    li {
+        list-style-type: none;
+    }
 }
 
 .module_page_cours {
-	width: 450px;
+    width: 450px;
+}
+
+@media all and (max-width: 900px) {
+    .section_page_cours {
+        display: block;
+        .aside_page_cours {
+            height: auto;
+            width: 100%;
+            background: #d4d4d4;
+        }
+        .navSecondaire_coursName {
+            width: 100%;
+        }
+    }
 }
 
 /*--------------- Fichier _cours.scss - FIN ----------*/

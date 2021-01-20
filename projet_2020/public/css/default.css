@@ -319,6 +319,22 @@ button:first-of-type::after {
   width: 450px;
 }
 
+@media all and (max-width: 900px) {
+  .section_page_cours {
+    display: block;
+  }
+
+  .section_page_cours .aside_page_cours {
+    height: auto;
+    width: 100%;
+    background: #d4d4d4;
+  }
+
+  .section_page_cours .navSecondaire_coursName {
+    width: 100%;
+  }
+}
+
 /*--------------- Fichier _cours.scss - FIN ----------*/
 
 * {
