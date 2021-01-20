@@ -44,8 +44,6 @@
         <div data-neworder="" data-element="{{$m->id}}" data-order="{{$m->ordre}}" class="draggable" draggable="true">
             <input type="hidden" name="modules[]" value="{{$m->id}}-{{$m->ordre}}">
             <p>{{$m->titre}}</p>
-            <p>{{$m->description}}</p>
-            <p>{{$m->url_video}}</p>
             <button data-action="{{$m->id}}" data-titre="{{$m->titre}}" data-desc="{{$m->description}}" data-url="{{$m->url_video}}" class="edit-module" type="button">Modifier</button>
             <form action="/admin/module/{{$m->id}}" method="POST">
             @csrf
