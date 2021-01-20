@@ -1,10 +1,9 @@
-header .navPrincipale  {
+header nav.navPrincipale  {
     ul{
     margin: 1% 4% 1% auto;
     display: flex;
     flex-flow: row wrap;
     align-items: center;
-    padding: 0;
     list-style-type: none;
     justify-content: space-between;
         li{
@@ -23,12 +22,6 @@ header .navPrincipale  {
                 font-size: 23px;
                 color: $main;
             }
-            .btn{
-                display: none;
-                .hide i:before{
-                    content: '\f00d';
-                }
-            }
             a{
                 display: flex;
                 text-decoration: none;
@@ -45,11 +38,11 @@ header .navPrincipale  {
                     width: 120px;
                 }
             }
-            &:hover .sous{
+            &:hover ul.sous{
                 display:block;
                 max-height: 50em;  
             }
-            .sous{
+            ul.sous{
                 display: none;
                 position: absolute;
                 width: 120px;
@@ -60,51 +53,62 @@ header .navPrincipale  {
                     font-size: 0.7em;
                 }    
             }
-            .items {
-                position: relative;
-                text-align: center;
-                &::after{
-                    position: absolute;
-                    content: '';
-                    left: 0;
-                    bottom: 5px;
-                    height: 2px;
-                    width: 100%;
-                    opacity: 0;
-                    transition: all 0.2s linear;
-                }
-                &:hover::after{
-                    opacity: 5;
-                    bottom: 1px;
-                }
-            }
         }
     }
 }
 
+.items {
+    position: relative;
+    width: auto;
+    text-align: center;
+    order: 3;
+    &::after{
+        position: absolute;
+        content: '';
+        left: 0;
+        bottom: 5px;
+        height: 2px;
+        width: 100%;
+        opacity: 0;
+        transition: all 0.2s linear;
+    }
+    &:hover::after{
+        opacity: 5;
+        bottom: 1px;
+    }
+}
+.burger{
+    display: none;
+}
+.hide i:before{
+    content: '\f00d';
+}
 
 
 
 /* VERSION MOBILE */
-
-@media all and (max-width: 900px){
-    nav ul li{
-        figure{
-            display: none;
-        }
-        .items{
-            width: 100%;
-            display: none;
-            .show{
-                display: block;
-            }
-        }
-        .btn{
-            display: block;
-        }
-        .sous {
-            margin-top: 5px;
-            margin-left: 150px;
-        }
-    }
+@media all and (max-width: 900px) {
+	nav {
+		ul {
+			li.items {
+				width: 100%;
+				display: none;
+			}
+			li.items.show {
+				display: block;
+			}
+			li.burger {
+				display: block;
+			}
+			li {
+				figure {
+					display: block;
+				}
+			}
+		}
+	}
+	.sous {
+		margin-top: 5px;
+		margin-left: 150px;
+	}
 }

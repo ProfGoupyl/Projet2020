@@ -3,7 +3,7 @@
     <ul class="navigation">
 
         <li>
-            <img src="images/logo.svg" alt="" class="logo" height="80px" width="80px">
+            <img src="{{ asset('images/logo.svg') }}" alt="" class="logo" height="80px" width="80px">
         </li>
 
         <li class="items">
@@ -58,15 +58,6 @@
                 </ul>
                 
         </li>
-        <li class="btn"><a href="#"><i class="fas fa-bars"></i></a></li>
+        <li class="burger"><a href="#"><i class="fas fa-bars"></i></a></li>
     </ul>
 </nav>
-
-<script>
-    $(document).ready(function(){
-        $('.btn').click(function(){
-        $('.items').toggleClass("show");
-        $('ul li').toggleClass("hide");
-        });
-    });
-</script>
