@@ -5,30 +5,31 @@
             <form v-on:submit.prevent="submit" method="patch" class="userProfil">
                 <input type="hidden" name="_token" v-bind:value="token">
                 <div>
-                <p>
-                    <label for="firstname">First Name:</label>
-                    <input type="text" name="firstname" v-model="userPrenom">
-                </p>
-                <p>
-                    <label for="lastname">Last Name:</label>
-                    <input type="text" name="lastname" v-model="userName">
-                </p>
-                <p>
-                    <label for="email">Email address:</label>
-                    <input type="email" name="email" v-model="userEmail">
-                </p>
+                    <p>
+                        <label for="firstname">First Name:</label>
+                        <input type="text" name="firstname" v-model="userPrenom">
+                    </p>
+                    <p>
+                        <label for="lastname">Last Name:</label>
+                        <input type="text" name="lastname" v-model="userName">
+                    </p>
+                    <p>
+                        <label for="email">Email address:</label>
+                        <input type="email" name="email" v-model="userEmail">
+                    </p>
                 </div>
                 <div>
-                <p>
-                    <label for="currentPicture">Photo de profil actuelle:</label>
-                    <img src="" alt="" class="UserImage" width="50px" height="50px">
-                </p>
-                <p>
-                    <label for="downloadPicture">Nouvelle photo de profil:</label>
-                </p>
+                    <p>
+                        <label for="currentPicture">Photo de profil actuelle:</label>
+                        <img src="" alt="" class="UserImage" width="50px" height="50px">
+                    </p>
+                    <p>
+                        <label for="downloadPicture">Nouvelle photo de profil:</label>
+                        <input type="file" accept="image/jpeg, image/png" @change="selectImage">
+                    </p>
+                <!--
                 <div>
                     <form method="post" id="formImg" action="" enctype="multipart/form-data" >
-                        <!--<input type="file" accept="image/*" @change="uploadImage($event)"> -->
                         <input type="hidden" name="_token" v-bind:value="token">
                         <div>
                             <label for="image">Sélectionner votre image:</label>
@@ -38,7 +39,8 @@
                             <input type="submit" value="Envoyer votre image">
                         </div>
                     </form> 
-                </div>                
+                </div>
+                -->              
                 </div>
             </form>
 
@@ -82,15 +84,15 @@
                 .then(response => this.send = true)
                 .catch(error => this.send = false)
             },
-            uploadImage(event) {
-                if(event.target.files[0]) {
-                    console.log('ok')
-                }
+            selectImage(event) {
                 this.userPhoto = event.target.files[0]
-                console.log(this.userPhoto)
-
+            },
+            imageUpload() {
                 const data = new FormData()
-                data.append(`user${this.userId}`, this.userPhoto)
+                data.append('image', this.userPhoto, `user${this.userId}`)
+                axios.post('', data)
+                    .then(response => console.log(response))
+                    .catch(error => console.log(error))
             }
         }
     }
