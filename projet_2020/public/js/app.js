@@ -3839,11 +3839,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CommentaireComponent",
+  props: ['userInfos'],
   data: function data() {
     return {
       posts: {
         text: null
-      }
+      },
+      userId: this.userInfos.id,
+      apiToken: this.userInfos.api_token
     };
   },
   methods: {
@@ -61464,69 +61467,73 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("section", [
-      _c("aside", [
+    _c("section", { staticClass: "section_page_cours" }, [
+      _c("aside", { staticClass: "aside_page_cours" }, [
         _c("nav", { staticClass: "navSecondaire" }, [
           _c("ul", [
             _c(
               "li",
               _vm._l(_vm.coursNames, function(names) {
-                return _c("div", { key: names.id }, [
-                  _c(
-                    "span",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.coursId === names.id,
-                          expression: "coursId === names.id"
-                        }
-                      ]
-                    },
-                    [
-                      _vm._v(
-                        "\n                                Cours : " +
-                          _vm._s(names.titre) +
-                          "\n                                "
-                      ),
-                      _vm._l(_vm.moduleList, function(module) {
-                        return _c("ul", { key: module.titre }, [
-                          _c(
-                            "li",
-                            {
-                              directives: [
-                                {
-                                  name: "show",
-                                  rawName: "v-show",
-                                  value: names.id === module.cours_id,
-                                  expression: "names.id === module.cours_id"
-                                }
-                              ]
-                            },
-                            [
-                              _c(
-                                "a",
-                                {
-                                  staticClass: "Modules",
-                                  attrs: { href: "/cours" },
-                                  on: {
-                                    click: function($event) {
-                                      $event.preventDefault()
-                                      _vm.save(module.id), _vm.forceRerender()
-                                    }
+                return _c(
+                  "div",
+                  { key: names.id, staticClass: "navSecondaire_coursName" },
+                  [
+                    _c(
+                      "span",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.coursId === names.id,
+                            expression: "coursId === names.id"
+                          }
+                        ]
+                      },
+                      [
+                        _vm._v(
+                          "\n                                Cours : " +
+                            _vm._s(names.titre) +
+                            "\n                                "
+                        ),
+                        _vm._l(_vm.moduleList, function(module) {
+                          return _c("ul", { key: module.titre }, [
+                            _c(
+                              "li",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: names.id === module.cours_id,
+                                    expression: "names.id === module.cours_id"
                                   }
-                                },
-                                [_vm._v(" " + _vm._s(module.titre) + " ")]
-                              )
-                            ]
-                          )
-                        ])
-                      })
-                    ],
-                    2
-                  )
-                ])
+                                ]
+                              },
+                              [
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass: "Modules",
+                                    attrs: { href: "/cours" },
+                                    on: {
+                                      click: function($event) {
+                                        $event.preventDefault()
+                                        _vm.save(module.id), _vm.forceRerender()
+                                      }
+                                    }
+                                  },
+                                  [_vm._v(" " + _vm._s(module.titre) + " ")]
+                                )
+                              ]
+                            )
+                          ])
+                        })
+                      ],
+                      2
+                    )
+                  ]
+                )
               }),
               0
             )
