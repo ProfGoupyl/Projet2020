@@ -13,7 +13,7 @@ class DropUsersCours extends Migration
      */
     public function up()
     {
-        Schema::drop('users_cours');
+        Schema::dropIfExists('users_cours');
     }
 
     /**
