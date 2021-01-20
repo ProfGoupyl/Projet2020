@@ -18,6 +18,9 @@
             @include('includes.footer')
         </footer>
     </div>
+
+    <script src="https://kit.fontawesome.com/3ccbb8d23f.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
