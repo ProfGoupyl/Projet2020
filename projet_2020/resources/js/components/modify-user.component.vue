@@ -25,8 +25,15 @@
                 </p>
                 <p>
                     <label for="downloadPicture">Nouvelle photo de profil:</label>
-                    <input type="file" accept="image/jpeg, image/png" @change="uploadImage($event)">
                 </p>
+                <div>
+                    <form method="post" id="formImg" action="" enctype="multipart/form-data" >
+                        <!--<input type="file" accept="image/*" @change="uploadImage($event)"> -->
+                            <input type="hidden" name="_token" v-bind:value="token">
+                            <input type="file" name="image" id="image">
+                            <input type="submit">
+                    </form> 
+                </div>                
                 </div>
                 <button id="modifier" class="btn btn-primary" type="submit"><i class="fas fa-pen fa-lg"></i></button>
                 <button><a href="/user">Annuler</a></button>

@@ -3,7 +3,7 @@
     <ul class="navigation">
 
         <li>
-            <img src="images/logo.svg" alt="" class="logo" height="80px" width="80px">
+            <img src="{{ asset('images/logo.svg') }}" alt="" class="logo" height="80px" width="80px">
         </li>
 
         <li class="items">
