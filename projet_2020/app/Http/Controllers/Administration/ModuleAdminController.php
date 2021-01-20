@@ -96,6 +96,7 @@ class ModuleAdminController extends Controller
             // Modification des données d'un module
             $module->titre = $request->has('titre') && strlen($request->titre) ? $request->titre : $module->titre;
             $module->description = $request->has('description') && strlen($request->description) ? $request->description : $module->description;
+            $module->url_video = $request->has('url_video') && strlen($request->url_video) ? $request->url_video : $module->url_video;
             $module->save();
         }
         // Redirection vers la page du cours concerné
