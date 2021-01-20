@@ -1,11 +1,11 @@
 <template>
     <div>
-        <section>
-            <aside>
+        <section class="section_page_cours" >
+            <aside class="asie_page_cours">
                 <nav class="navSecondaire">
                     <ul>
                         <li> 
-                            <div v-for="names in coursNames" :key="names.id">
+                            <div v-for="names in coursNames" :key="names.id" class="navSecondaire_coursName">
                                 <span v-show="coursId === names.id">
                                     Cours : {{ names.titre }}
                                     <ul v-for="module in moduleList" :key="module.titre">

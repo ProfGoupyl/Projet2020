@@ -1,5 +1,6 @@
 require('./bootstrap');
 require('alpinejs');
+require('jquery')
 
 // Vue.js
 
