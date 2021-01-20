@@ -6,3 +6,5 @@
 <title>Homepage</title>
 
 <link rel="stylesheet" href="css/default.css">
+
+<script src="https://kit.fontawesome.com/3ccbb8d23f.js" crossorigin="anonymous"></script>

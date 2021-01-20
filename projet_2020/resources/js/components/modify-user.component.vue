@@ -4,6 +4,7 @@
             <h1>Votre profil:</h1>
             <form v-on:submit.prevent="submit" method="patch" class="userProfil">
                 <input type="hidden" name="_token" v-bind:value="token">
+                <div>
                 <p>
                     <label for="firstname">First Name:</label>
                     <input type="text" name="firstname" v-model="userPrenom">
@@ -16,6 +17,8 @@
                     <label for="email">Email address:</label>
                     <input type="email" name="email" v-model="userEmail">
                 </p>
+                </div>
+                <div>
                 <p>
                     <label for="currentPicture">Current picture:</label>
                     <img src="" alt="" class="UserImage" width="50px" height="50px">
@@ -24,7 +27,8 @@
                     <label for="downloadPicture">New Picture</label>
                     <input type="file" accept="image/*" @change="uploadImage($event)">
                 </p>
-                <button id="modifier" class="btn btn-primary" type="submit">Modifier</button>
+                </div>
+                <button id="modifier" class="btn btn-primary" type="submit"><i class="fas fa-pen fa-lg"></i></button>
                 <button><a href="/user">Annuler</a></button>
             </form>
 
@@ -40,26 +44,25 @@
 
 <script>
     export default {
-        props: ['user'],
+        props: ['userInfos'],
         data() {
             return {
                 token: document.querySelector('#token').getAttribute('content'),
-                userId: this.user.id,
-                userName: this.user.name,
-                userPrenom: this.user.prenom,
-                userEmail: this.user.email,
-                userPseudo: this.user.pseudo,
+                userName: this.userInfos.name,
+                userPrenom: this.userInfos.prenom,
+                userEmail: this.userInfos.email,
+                userPseudo: this.userInfos.pseudo,
                 send: null,
             }
         },
         methods: {
             submit() {
-                axios.patch(`http://localhost:8000/api/users/${this.userId}/?api_token=sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9`
+                axios.patch(`http://localhost:8000/api/users/${this.userInfos.id}/?api_token=${this.userInfos.api_token}`
                 , {
                     name: this.userName,
                     prenom: this.userPrenom,
                     email: this.userEmail,
-                    pseudo: this.userPseudo
+                    pseudo: this.userPseudo,
                 })
                 .then(response => this.send = true)
                 .catch(error => this.send = false)

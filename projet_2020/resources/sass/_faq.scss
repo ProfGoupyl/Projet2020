@@ -1,28 +1,29 @@
 /*--------------- Fichier _faq.scss ---------------*/
 
 .faq {
-	margin: 10px 5px 10px 5px;
-	padding: 10px 5px 10px 5px;
-	li {
-		list-style-type: none;
-		details {
-			.faq_question {
-				font-weight: 700;
-				margin: 10px 5px 10px 5px;
-				padding: 10px 5px 10px 5px;
-				cursor: pointer;
-				}
-			.faq_question_hidden {
-				padding: 0px 30px;
-			}
-			summary {
-				list-style: none;
-			}
-			summary::-webkit-details-marker {
-				display: none;
-			}
-		}
-	}
+    margin: 10px 5px 10px 5px;
+    padding: 10px 5px 10px 5px;
+    li {
+        list-style-type: none;
+        details {
+            .faq_question {
+                font-weight: 700;
+                margin: 10px 5px 10px 5px;
+                padding: 10px 5px 10px 5px;
+                cursor: pointer;
+            }
+            .faq_question_hidden {
+                padding: 0px 30px;
+            }
+            summary {
+                list-style: none;
+                outline: none;
+            }
+            summary::-webkit-details-marker {
+                display: none;
+            }
+        }
+    }
 }
 
 /*--------------- Fichier _faq.scss - FIN ----------*/
