@@ -4003,6 +4003,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['userInfos'],
   data: function data() {
@@ -61507,100 +61511,106 @@ var render = function() {
             domProps: { value: _vm.token }
           }),
           _vm._v(" "),
-          _c("p", [
-            _c("label", { attrs: { for: "firstname" } }, [
-              _vm._v("First Name:")
+          _c("div", [
+            _c("p", [
+              _c("label", { attrs: { for: "firstname" } }, [
+                _vm._v("First Name:")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.userPrenom,
+                    expression: "userPrenom"
+                  }
+                ],
+                attrs: { type: "text", name: "firstname" },
+                domProps: { value: _vm.userPrenom },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.userPrenom = $event.target.value
+                  }
+                }
+              })
             ]),
             _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.userPrenom,
-                  expression: "userPrenom"
-                }
-              ],
-              attrs: { type: "text", name: "firstname" },
-              domProps: { value: _vm.userPrenom },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+            _c("p", [
+              _c("label", { attrs: { for: "lastname" } }, [
+                _vm._v("Last Name:")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.userName,
+                    expression: "userName"
                   }
-                  _vm.userPrenom = $event.target.value
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _c("label", { attrs: { for: "lastname" } }, [_vm._v("Last Name:")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.userName,
-                  expression: "userName"
-                }
-              ],
-              attrs: { type: "text", name: "lastname" },
-              domProps: { value: _vm.userName },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+                ],
+                attrs: { type: "text", name: "lastname" },
+                domProps: { value: _vm.userName },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.userName = $event.target.value
                   }
-                  _vm.userName = $event.target.value
                 }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _c("label", { attrs: { for: "email" } }, [
-              _vm._v("Email address:")
+              })
             ]),
             _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.userEmail,
-                  expression: "userEmail"
-                }
-              ],
-              attrs: { type: "email", name: "email" },
-              domProps: { value: _vm.userEmail },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+            _c("p", [
+              _c("label", { attrs: { for: "email" } }, [
+                _vm._v("Email address:")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.userEmail,
+                    expression: "userEmail"
                   }
-                  _vm.userEmail = $event.target.value
+                ],
+                attrs: { type: "email", name: "email" },
+                domProps: { value: _vm.userEmail },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.userEmail = $event.target.value
+                  }
                 }
-              }
-            })
+              })
+            ])
           ]),
           _vm._v(" "),
-          _vm._m(0),
-          _vm._v(" "),
-          _c("p", [
-            _c("label", { attrs: { for: "downloadPicture" } }, [
-              _vm._v("New Picture")
-            ]),
+          _c("div", [
+            _vm._m(0),
             _vm._v(" "),
-            _c("input", {
-              attrs: { type: "file", accept: "image/*" },
-              on: {
-                change: function($event) {
-                  return _vm.uploadImage($event)
+            _c("p", [
+              _c("label", { attrs: { for: "downloadPicture" } }, [
+                _vm._v("New Picture")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                attrs: { type: "file", accept: "image/*" },
+                on: {
+                  change: function($event) {
+                    return _vm.uploadImage($event)
+                  }
                 }
-              }
-            })
+              })
+            ])
           ]),
           _vm._v(" "),
           _vm._m(1),

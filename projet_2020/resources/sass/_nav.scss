@@ -1,7 +1,6 @@
 header .navPrincipale  {
     ul{
-    margin: none;
-    width: 100%;
+    margin: 1% 4% 1% auto;
     display: flex;
     flex-flow: row wrap;
     align-items: center;
@@ -13,9 +12,16 @@ header .navPrincipale  {
             img.logo{
                 text-align: left;
                 width: 210px;
+                position: relative;
+                left: -27px;
             }
             &:first-of-type{
                 flex-basis: 60%;
+                cursor: default;
+            }
+            i{
+                font-size: 23px;
+                color: $main;
             }
             .btn{
                 display: none;
@@ -27,8 +33,6 @@ header .navPrincipale  {
                 display: flex;
                 text-decoration: none;
                 text-transform: uppercase;
-                font-family: $font-family-base;
-                font-weight: $bold;
                 color: $main;
                 &:hover{
                     color: $gray;
@@ -37,41 +41,42 @@ header .navPrincipale  {
             figure {
                 display: flex;
                 width: auto;
+                img{
+                    width: 120px;
+                }
+            }
+            &:hover .sous{
+                display:block;
+                max-height: 50em;  
             }
             .sous{
                 display: none;
                 position: absolute;
-                min-width: 100px;
-                width: 80px;
-                margin-top: 30px;
-                margin-left: 30px;
-                padding: 5px 7px;
-                li{
-                    &:hover{
-                        display:block;
-                        max-height: 50em;
-                        transition: 1s;    
-                    }
+                width: 120px;
+                margin-top: 0px;
+                padding: 10px;  
+                background-color: $white; 
+                li p{
+                    font-size: 0.7em;
+                }    
+            }
+            .items {
+                position: relative;
+                text-align: center;
+                &::after{
+                    position: absolute;
+                    content: '';
+                    left: 0;
+                    bottom: 5px;
+                    height: 2px;
+                    width: 100%;
+                    opacity: 0;
+                    transition: all 0.2s linear;
                 }
-                
-            }
-        }
-        .items {
-            position: relative;
-            text-align: center;
-            &:after{
-                position: absolute;
-                content: '';
-                left: 0;
-                bottom: 5px;
-                height: 2px;
-                width: 100%;
-                opacity: 0;
-                transition: all 0.2s linear;
-            }
-            &:hover:after{
-                opacity: 5;
-                bottom: 1px;
+                &:hover::after{
+                    opacity: 5;
+                    bottom: 1px;
+                }
             }
         }
     }
@@ -81,26 +86,25 @@ header .navPrincipale  {
 
 
 /* VERSION MOBILE */
+
 @media all and (max-width: 900px){
-    nav ul li.items{
-      width: 100%;
-      display: none;
+    nav ul li{
         figure{
-            display: block;
+            display: none;
         }
-        i{
-            color: $main;
-        }
-        .show{
-            display: block;
+        .items{
+            width: 100%;
+            display: none;
+            .show{
+                display: block;
+            }
         }
         .btn{
             display: block;
         }
+        .sous {
+            margin-top: 5px;
+            margin-left: 150px;
+        }
     }
-    .sous {
-        margin-top: 5px;
-        margin-left: 150px;
-    }
-
 }

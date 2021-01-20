@@ -6,8 +6,7 @@ $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 */
 header .navPrincipale ul {
-  margin: none;
-  width: 100%;
+  margin: 1% 4% 1% auto;
   display: flex;
   flex-flow: row wrap;
   align-items: center;
@@ -23,10 +22,18 @@ header .navPrincipale ul li {
 header .navPrincipale ul li img.logo {
   text-align: left;
   width: 210px;
+  position: relative;
+  left: -27px;
 }
 
 header .navPrincipale ul li:first-of-type {
   flex-basis: 60%;
+  cursor: default;
+}
+
+header .navPrincipale ul li i {
+  font-size: 23px;
+  color: #000000;
 }
 
 header .navPrincipale ul li .btn {
@@ -41,8 +48,6 @@ header .navPrincipale ul li a {
   display: flex;
   text-decoration: none;
   text-transform: uppercase;
-  font-family: "Open Sans", sans-serif;
-  font-weight: bold;
   color: #000000;
 }
 
@@ -55,28 +60,34 @@ header .navPrincipale ul li figure {
   width: auto;
 }
 
+header .navPrincipale ul li figure img {
+  width: 120px;
+}
+
+header .navPrincipale ul li:hover .sous {
+  display: block;
+  max-height: 50em;
+}
+
 header .navPrincipale ul li .sous {
   display: none;
   position: absolute;
-  min-width: 100px;
-  width: 80px;
-  margin-top: 30px;
-  margin-left: 30px;
-  padding: 5px 7px;
+  width: 120px;
+  margin-top: 0px;
+  padding: 10px;
+  background-color: #ffffff;
 }
 
-header .navPrincipale ul li .sous li:hover {
-  display: block;
-  max-height: 50em;
-  transition: 1s;
+header .navPrincipale ul li .sous li p {
+  font-size: 0.7em;
 }
 
-header .navPrincipale ul .items {
+header .navPrincipale ul li .items {
   position: relative;
   text-align: center;
 }
 
-header .navPrincipale ul .items:after {
+header .navPrincipale ul li .items::after {
   position: absolute;
   content: '';
   left: 0;
@@ -87,7 +98,7 @@ header .navPrincipale ul .items:after {
   transition: all 0.2s linear;
 }
 
-header .navPrincipale ul .items:hover:after {
+header .navPrincipale ul li .items:hover::after {
   opacity: 5;
   bottom: 1px;
 }
@@ -95,28 +106,24 @@ header .navPrincipale ul .items:hover:after {
 /* VERSION MOBILE */
 
 @media all and (max-width: 900px) {
-  nav ul li.items {
+  nav ul li figure {
+    display: none;
+  }
+
+  nav ul li .items {
     width: 100%;
     display: none;
   }
 
-  nav ul li.items figure {
+  nav ul li .items .show {
     display: block;
   }
 
-  nav ul li.items i {
-    color: #000000;
-  }
-
-  nav ul li.items .show {
+  nav ul li .btn {
     display: block;
   }
 
-  nav ul li.items .btn {
-    display: block;
-  }
-
-  .sous {
+  nav ul li .sous {
     margin-top: 5px;
     margin-left: 150px;
   }
@@ -126,7 +133,7 @@ header .navPrincipale ul .items:hover:after {
 
 .listecours {
   width: 100%;
-  padding: 2%;
+  padding: 4%;
 }
 
 .listecours thead {
@@ -147,18 +154,24 @@ header .navPrincipale ul .items:hover:after {
   width: 12%;
 }
 
+.listecours tbody tr:hover td a,
+.listecours tbody tr:hover td p {
+  color: #000000;
+}
+
 .listecours tbody tr td {
-  padding: 0 1%;
+  padding: 1%;
   border-bottom: 1px solid #d4d4d4;
 }
 
 .listecours tbody tr td a {
   text-decoration: none;
-  color: #000000;
+  color: #808080;
 }
 
 .listecours tbody tr td p {
   text-align: center;
+  color: #808080;
 }
 
 .listecours tbody tr:hover {
@@ -167,8 +180,70 @@ header .navPrincipale ul .items:hover:after {
 
 /*--------------- Fichier _user.scss - FIN ----------*/
 
-.userProfil {
+form.userProfil {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+form.userProfil div {
+  flex-basis: 49%;
+}
+
+form.userProfil div p {
+  height: auto;
+  padding: 10px;
+}
+
+form.userProfil div p label {
   width: 100%;
+  height: 100px;
+  line-height: 2;
+}
+
+form.userProfil div p label[for=currentPicture],
+form.userProfil div p label[for=downloadPicture] {
+  display: none;
+}
+
+form.userProfil div p input {
+  width: 100%;
+}
+
+form.userProfil div p input[type=file] {
+  border: none;
+}
+
+form.userProfil div p img {
+  width: 180px;
+  height: 180px;
+  clear: both;
+}
+
+form.userProfil button:first-of-type::after {
+  content: ' Modifier';
+}
+
+@media all and (max-width: 900px) {
+  form.userProfil {
+    width: 90%;
+    justify-content: space-around;
+    display: flex;
+  }
+
+  form.userProfil:not(button) {
+    justify-content: flex-start;
+  }
+
+  form.userProfil div {
+    flex-basis: 100%;
+  }
+
+  form.userProfil div:last-of-type {
+    margin: 0;
+    text-align: left;
+  }
 }
 
 /*--------------- Fichier _faq.scss ---------------*/
@@ -206,12 +281,14 @@ header .navPrincipale ul .items:hover:after {
 
 * {
   box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
 }
 
 body {
   max-width: 100%;
   min-height: 100vh;
-  background-color: #f3f4f6;
+  background-color: #ffffff;
   color: #000000;
 }
 
@@ -227,98 +304,94 @@ section aside {
   flex-basis: 20%;
 }
 
-p {
+p,
+td,
+li,
+a {
   font-family: "Open Sans", sans-serif;
   font-size: 0.9rem;
   font-weight: normal;
   line-height: 1.6;
+  text-align: left;
 }
 
-h1 {
+h1,
+h2,
+h3,
+tr,
+.navPrincipale a {
   font-family: "Fira Sans", sans-serif;
-  font-size: 1.1rem;
-  font-weight: normal;
+  font-size: 1rem;
+  font-weight: bold;
   line-height: 1.8;
   text-align: center;
 }
 
 button {
   padding: 0.8em;
+  margin: 1%;
   border-radius: 4px;
   text-decoration: none;
   text-align: center;
   background-color: #ffffff;
   cursor: pointer;
   outline: none;
-  transition: .2s ease;
 }
 
-button #ajouter {
+#ajouter {
   color: #82e922;
   border: 2px solid #82e922;
 }
 
-button #ajouter:hover,
-button #ajouter:focus {
+#ajouter:hover,
+#ajouter:focus {
   background-color: #82e922;
-}
-
-button #ajouter:active {
-  background-color: #75dc16;
-}
-
-button #supprimer {
-  color: #e92222;
-}
-
-button #supprimer:hover,
-button #supprimer:focus {
-  background-color: #e92222;
-}
-
-button #supprimer:active {
-  background-color: #dc1616;
-}
-
-button #modifier {
-  color: #ffae18;
-}
-
-button #modifier:hover,
-button #modifier:focus {
-  background-color: #ffae18;
-}
-
-button #modifier:active {
-  background-color: #fea500;
-}
-
-button:focus {
   color: #ffffff;
 }
 
-button:active {
-  transform: scale(0.95);
+#ajouter:active {
+  background-color: #75dc16;
 }
 
-form .profil button {
-  width: auto;
-  margin: 0;
+#supprimer {
+  color: #e92222;
+  border: 2px solid #e92222;
+}
+
+#supprimer:hover,
+#supprimer:focus {
+  background-color: #e92222;
+  color: #ffffff;
+}
+
+#supprimer:active {
+  background-color: #dc1616;
+}
+
+#modifier {
+  color: #ffae18;
+  border: 2px solid #ffae18;
+}
+
+#modifier:hover,
+#modifier:focus {
+  background-color: #ffae18;
+  color: #ffffff;
+}
+
+#modifier:active {
+  background-color: #fea500;
 }
 
 form p {
   height: 50px;
 }
 
-form label {
-  display: none;
-}
-
 form input {
   width: 300px;
   padding: 10px 10px 10px 0;
   border: none;
-  border-bottom: 2px solid light gray;
+  border-bottom: 2px solid #d4d4d4;
   outline: none;
 }
 
