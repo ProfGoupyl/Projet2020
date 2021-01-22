@@ -19,9 +19,17 @@
                     </ul>
                 </nav> 
             </aside>
+<<<<<<< HEAD
             <article v-if="moduleId">
                 <Session :key="componentKey" v-bind:user-infos="this.userInfos"></Session>
             </article>
+=======
+            <div>
+                <article v-show="moduleId">
+                    <Session :key="componentKey" v-bind:user-infos="this.userInfos"></Session>
+                </article>
+            </div>
+>>>>>>> e8073e2c87f51ca5f580c7cab20a629797b9adef
         </section>
     </div>
 </template>

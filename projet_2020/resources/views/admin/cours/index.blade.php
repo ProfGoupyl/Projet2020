@@ -1,30 +1,10 @@
-
-
-<style>
-    #addCours {
-        display: none;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: lightgrey;
-        padding: 25px;
-        border-radius: 5px;
-
-    }
-
-    #addCours.is-visible {
-        display: block;
-    }
-</style>
-
-<!-- styles -->
-<link rel="stylesheet" href="/css/default.css">
-
+@extends('layouts.default')
+@section('content')
 <section>
     <h1>Liste des cours</h1>
-    <button class='addCours'>Add</button>
-    <div id='addCours'>
+    <button id='modal-open'>Add</button>
+    <div id='modal' style="display:none;">
+        <i id="modal-close" class="fas fa-times"></i>
         <form action='/admin/cours' method='POST'>
             @csrf
             <div>
@@ -61,20 +41,20 @@
                     @csrf
                     @method('put')
                     <td>
-                        <input class="input-{{$cours->id}}" style="background:none;border:none;color:black;" disabled value="{{$cours->titre}}" type="text" name="titre">
+                        <input class="input-{{$cours->id}} line-input" style="background:none;border:none;color:black;" disabled value="{{$cours->titre}}" type="text" name="titre">
                     </td>
                     <td>
 
-                        <input class="input-{{$cours->id}}" style="background:none;border:none;color:black;" disabled value="{{$cours->debut_du_cours }}" type="date" name="debut_du_cours">
+                        <input class="input-{{$cours->id}} line-input" style="background:none;border:none;color:black;" disabled value="{{$cours->debut_du_cours }}" type="date" name="debut_du_cours">
                     </td>
 
                     <td>
-                        <input class="input-{{$cours->id}}" style="background:none;border:none;color:black;" disabled value="{{$cours->fin_du_cours}}" type="date" name="fin_du_cours">
+                        <input class="input-{{$cours->id}} line-input" style="background:none;border:none;color:black;" disabled value="{{$cours->fin_du_cours}}" type="date" name="fin_du_cours">
                     </td>
 
                     <td>
-                        <button type="button" data-target="{{$cours->id}}" class="modify">Modifer</button>
-                        <input style="display:none;" id="save-{{$cours->id}}" type="submit" value="Sauvegarder">
+                        <button type="button" data-target="{{$cours->id}}" class="modify-btn">Modifer</button>
+                        <input class="save-btn" style="display:none;" id="save-{{$cours->id}}" type="submit" value="Sauvegarder">
                     </td>
                 </form>
                 <td>
@@ -96,30 +76,6 @@
     </table>
 
 
+
 </section>
-
-<script>
-    const btnAddUser = document.querySelector('.addCours');
-    const addUser = document.querySelector('#addCours');
-    btnAddUser.addEventListener('click', () => {
-        addUser.classList.toggle('is-visible');
-    })
-</script>
-
-<script>
-    const modifyBtnList = document.querySelectorAll('.modify');
-    modifyBtnList.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const idTarget = btn.dataset.target;
-            const inputs = document.querySelectorAll(`.input-${idTarget}`);
-            const saveBtn = document.querySelector(`#save-${idTarget}`)
-            inputs.forEach(input => {
-                input.style.border = "1px solid black";
-                input.style.backgroundColor = "#f3f3f3";
-                input.disabled = false;
-            });
-            btn.style.display = "none";
-            saveBtn.style.display = "inherit";
-        })
-    })
-</script>
+@stop

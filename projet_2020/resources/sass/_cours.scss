@@ -4,35 +4,36 @@
     flex: 1;
     margin: 0.5em 1em;
     .aside_page_cours {
+        border-radius: 7px;
         height: auto;
         flex-basis: 25%;
-        background: #d4d4d4;
+        background-color: $lightgray;
         margin: 0 1em 0 0;
-    }
-    .navSecondaire_coursName {
-        flex-basis: 75%;
-        article {
-            &:first-of-type {
-                margin: 0 0 1em 0;
-            }
-        }
     }
     .navSecondaire {
         li {
             list-style-type: none;
+            a {
+                color: $gray;
+                text-decoration: none;
+                &:hover {
+                    color: $main;
+                }
+            }
         }
     }
-}
-
-.navSecondaire_coursName {
-    padding: 1em;
-    li {
-        list-style-type: none;
+    .navSecondaire_coursName {
+        padding: 1em;
+        li {
+            list-style-type: none;
+        }
     }
-}
-
-.module_page_cours {
-    width: 450px;
+    article {
+        flex-basis: 75%;
+        p {
+            padding: 5%;
+        }
+    }
 }
 
 @media all and (max-width: 900px) {

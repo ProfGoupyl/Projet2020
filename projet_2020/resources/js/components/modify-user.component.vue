@@ -1,6 +1,6 @@
 <template>
     <div>
-        <section>
+        <section class="prof">
             <h1>Votre profil:</h1>
             <form v-on:submit.prevent="submit" method="patch" class="userProfil">
                 <input type="hidden" name="_token" v-bind:value="token">

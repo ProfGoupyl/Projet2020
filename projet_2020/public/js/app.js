@@ -3899,6 +3899,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -61482,9 +61490,9 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n                                Cours : " +
+                          "\n                                    Cours : " +
                             _vm._s(names.titre) +
-                            "\n                                "
+                            "\n                                    "
                         ),
                         _vm._l(_vm.moduleList, function(module) {
                           return _c("ul", { key: module.titre }, [
@@ -61530,7 +61538,7 @@ var render = function() {
           ])
         ])
       ]),
-      _vm._v(" "),
+      _vm._v("\n<<<<<<< HEAD\n            "),
       _vm.moduleId
         ? _c(
             "article",
@@ -61542,7 +61550,31 @@ var render = function() {
             ],
             1
           )
-        : _vm._e()
+        : _vm._e(),
+      _vm._v("\n=======\n            "),
+      _c("div", [
+        _c(
+          "article",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.moduleId,
+                expression: "moduleId"
+              }
+            ]
+          },
+          [
+            _c("Session", {
+              key: _vm.componentKey,
+              attrs: { "user-infos": this.userInfos }
+            })
+          ],
+          1
+        )
+      ]),
+      _vm._v("\n>>>>>>> e8073e2c87f51ca5f580c7cab20a629797b9adef\n        ")
     ])
   ])
 }
@@ -61616,7 +61648,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("section", [
+    _c("section", { staticClass: "prof" }, [
       _c("h1", [_vm._v("Votre profil:")]),
       _vm._v(" "),
       _c(
