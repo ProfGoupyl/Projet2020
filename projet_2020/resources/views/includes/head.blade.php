@@ -6,3 +6,5 @@
 <title>Homepage</title>
 
 <link rel="stylesheet" href="{{ asset('css/default.css') }}">
+<!-- Ajout temporaire pour visualiser le Drag & Drop sur la page show cours -->
+<link rel="stylesheet" href="{{ asset('css/_temp_admin.css') }}">

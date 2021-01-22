@@ -1,5 +1,5 @@
 // Général
-$background: #f8f8f8;
+$background: #f5f6f8;
 $main: #000000;
 $white: #ffffff;
 
@@ -11,7 +11,7 @@ $line-height-base: 1.6;
 $font-family-title: 'Fira Sans', sans-serif;
 $font-size-title: 1rem;
 $line-height-title: 1.8;
-
+$line-height-button: 1.4;
 $bold: bold;
 /*
 $font-family-sans-serif: 'Nunito', sans-serif;
@@ -39,7 +39,8 @@ $btn-update-dark: darken($btn-update,5%);
 // Colors
 $blue: #3490dc;
 $indigo: #6574cd;
-$purple: #9561e2;
+$purple: #4A3DC3;
+//$purple: #9561e2;
 $pink: #f66d9b;
 $red: #e3342f;
 $orange: #f6993f;

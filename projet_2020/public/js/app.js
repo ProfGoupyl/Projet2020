@@ -61542,18 +61542,26 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", [
-        _vm.moduleId
-          ? _c(
-              "article",
-              [
-                _c("Session", {
-                  key: _vm.componentKey,
-                  attrs: { "user-infos": this.userInfos }
-                })
-              ],
-              1
-            )
-          : _vm._e()
+        _c(
+          "article",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.moduleId,
+                expression: "moduleId"
+              }
+            ]
+          },
+          [
+            _c("Session", {
+              key: _vm.componentKey,
+              attrs: { "user-infos": this.userInfos }
+            })
+          ],
+          1
+        )
       ])
     ])
   ])
@@ -61628,7 +61636,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("section", [
+    _c("section", { staticClass: "prof" }, [
       _c("h1", [_vm._v("Votre profil:")]),
       _vm._v(" "),
       _c(
@@ -74144,34 +74152,15 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js");
 
-__webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"); // Vue.js
+__webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
-
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js"); //import VueRouter from 'vue-router'
-//Vue.use(VueRouter)
-
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 Vue.component('cours', __webpack_require__(/*! ./components/cours.component */ "./resources/js/components/cours.component.vue")["default"]);
 Vue.component('faq', __webpack_require__(/*! ./components/faq.component */ "./resources/js/components/faq.component.vue")["default"]);
 Vue.component('modifyuser', __webpack_require__(/*! ./components/modify-user.component */ "./resources/js/components/modify-user.component.vue")["default"]);
 Vue.component('user', __webpack_require__(/*! ./components/user.component */ "./resources/js/components/user.component.vue")["default"]);
 Vue.component('session', __webpack_require__(/*! ./components/session.component */ "./resources/js/components/session.component.vue")["default"]);
-/* Vue router
-
-const routes = [
-    { path: '/user', component: require('./components/user.component.vue') },
-    { path: '/cours', component: require('./components/cours.component.vue') },
-    { path: '/faq', component: require('./components/faq.component.vue') },
-    { path: '/profile', component: require('./components/modify-user.component.vue') },
-    { path: '/session', component: require('./components/session.component.vue') }
-]
-
-const router = new VueRouter({
-    mode: 'history',
-    routes // raccourci pour `routes: routes`
-}) */
-
 new Vue({
-  //router,
   el: '#app'
 });
 
@@ -74665,10 +74654,10 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/app.scss */"./resources/sass/app.scss");
-__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })

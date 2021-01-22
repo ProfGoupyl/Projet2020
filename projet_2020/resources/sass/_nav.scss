@@ -1,11 +1,14 @@
 header nav.navPrincipale  {
     ul{
-    margin: 1% 4% 1% auto;
+    margin:0 auto 2%;
+    padding: 1%;
+    border-radius: 5px;
     display: flex;
     flex-flow: row wrap;
     align-items: center;
     list-style-type: none;
     justify-content: space-between;
+    background-color: $white;
         li{
             cursor:pointer;
             img.logo{
@@ -28,7 +31,7 @@ header nav.navPrincipale  {
                 text-transform: uppercase;
                 color: $main;
                 &:hover{
-                    color: $gray;
+                    color: $purple;
                 }
             }
             figure {
@@ -47,8 +50,7 @@ header nav.navPrincipale  {
                 position: absolute;
                 width: 120px;
                 margin-top: 0px;
-                padding: 10px;  
-                background-color: $white; 
+                padding: 10px;
                 li p{
                     font-size: 0.7em;
                 }    

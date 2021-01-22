@@ -25,9 +25,28 @@ class CommentaireController extends Controller
      */
     public function store(Request $request)
     {
-        if (Commentaire::create($request->all())) {
-            return response()->json(['insert succes'], 200);
+        $data = request()->validate([
+            'text' => 'required|max:300|alpha_num',
+        ]);
+
+        $commentaire = new Commentaire;
+
+        $commentaire->text = $request->has('text');
+        $user_id = User::find($request->user_id);
+        $module_id = Module::find($request->module_id);
+        $cours_id = Cours::find($request->cours_id);
+        
+        if($user_id) {
+            $commentaire->user()->associate($cours_id);
         }
+        if($module_id) {
+            $commentaire->modules()->associate($module_id);
+        }
+        if($cours_id) {
+            $commentaire->cours()->associate($cours_id);
+        }
+
+        $commentaire->save();
     }
 
     /**
@@ -50,9 +69,7 @@ class CommentaireController extends Controller
      */
     public function update(Request $request, Commentaire $commentaire)
     {
-        if ($commentaire->update($request->all())) {
-            return response()->json(['update succes'], 200);
-        }
+        // Pas besoin d'update pour le commentaire
     }
 
     /**
@@ -63,8 +80,6 @@ class CommentaireController extends Controller
      */
     public function destroy(Commentaire $commentaire)
     {
-        if ($commentaire->delete()) {
-            return response()->json(['delete succes'], 200);
-        }
+        $commentaire->delete();
     }
 }
