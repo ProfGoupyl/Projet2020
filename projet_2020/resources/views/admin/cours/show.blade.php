@@ -1,36 +1,7 @@
 @extends('layouts.default')
 @section('content')
-<style>
-    .drag-container {
-        width: 25%;
-        overflow-x: hidden;
-        background-color: lightgrey;
-        padding: 5px;
-    }
 
-    .draggable {
-        background-color: #333;
-        color: white;
-        padding: 1px;
-        cursor: move;
-        margin-bottom: 15px;
-    }
 
-    .draggable.dragging {
-        opacity: .5;
-    }
-
-    .form-modules {
-        display: none;
-    }
-
-    .form-modules.show {
-        display: block;
-    }
-</style>
-
-<!-- styles -->
-<link rel="stylesheet" href="/css/default.css">
 
 <h1>salut {{$cours->titre}}</h1>
 <section>
@@ -84,7 +55,7 @@
             <label>Description du module</label>
             <textarea name="description" cols="30" rows="10"></textarea>
         </div>
-       
+
 
         <div>
             <input type="submit" id="ajouter" value="Ajouter!">
@@ -93,7 +64,7 @@
 
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     const showBtns = document.querySelectorAll('.show_module');
     const formAll = document.querySelectorAll('.form-modules');
@@ -107,84 +78,9 @@
             form.classList.add('show')
         })
     })
-
-
-
-
-
-    const draggables = document.querySelectorAll('.draggable');
-    const container = document.querySelector('.drag-container');
-
-    // Script de fonctionnement du "drag&drop" (attraper et lacher):
-    draggables.forEach(draggable => {
-        // on drag l'élément
-        draggable.addEventListener('dragstart', () => {
-            draggable.classList.add('dragging')
-        })
-        // on lache l'élément et on modifie la valeur des inputs + envoit du formulaire
-        draggable.addEventListener('dragend', () => {
-            draggable.classList.remove('dragging');
-            document.querySelector('#module_id').value = draggable.dataset.element
-            document.querySelector('#module_order').value = draggable.dataset.neworder
-            const form = document.querySelector('#myForm')
-            form.action = `/admin/module/${draggable.dataset.element}`;
-            form.submit();
-
-        })
-        // quand on survole la zone des modules, on vérifie ou se trouve notre souris par rapport à chaque module pour ensuite changer savoir quelle sera la nouvelle position du module dragged
-        container.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            const afterElement = getDragAfterElement(container, e.clientY);
-            const draggable = document.querySelector('.dragging');
-            let position = draggable.dataset.order;
-            if (afterElement == null) {
-                container.appendChild(draggable);
-                position = draggables[draggables.length - 1].dataset.order;
-            } else {
-                container.insertBefore(draggable, afterElement);
-                if (position > afterElement.dataset.order) {
-                    position = afterElement.dataset.order
-                } else {
-                    position = afterElement.dataset.order - 1
-                }
-            }
-            draggable.dataset.neworder = position;
-        })
-    })
-
-    // Détécte par rapport à la position de la souris qui est l'élément qui vient just après
-    function getDragAfterElement(container, y) {
-        const draggableElements = [...container.querySelectorAll('.draggable:not(.dragging)')];
-        return draggableElements.reduce((closest, child) => {
-            const box = child.getBoundingClientRect();
-            const offset = y - box.top - box.height / 2;
-            if (offset < 0 && offset > closest.offset) {
-                return {
-                    offset: offset,
-                    element: child
-                }
-            } else {
-                return closest;
-            }
-        }, {
-            offset: Number.NEGATIVE_INFINITY
-        }).element
-    }
 </script>
 
 <script>
-    const editBtns = document.querySelectorAll('.edit-module')
-    const titre = document.querySelector('input[name=titre]')
-    const desc = document.querySelector('textarea[name=description]')
-    const url = document.querySelector('input[name=url_video]')
-    const form = document.querySelector('#form-module')
-    editBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            titre.value = btn.dataset.titre;
-            desc.value = btn.dataset.desc;
-            url.value = btn.dataset.url;
-            form.action = `/admin/module/${btn.dataset.action}`
-        })
-    })
-</script>
+   
+</script> -->
 @stop
