@@ -46,10 +46,7 @@ class CoursAdminController extends Controller
 
         $date = date('y-m-d');
         $new = strtotime($date);
-        
-        
-         
-        
+    
         
         $cours->titre = $request->has('titre') && strlen($request->titre) ? $request->titre : "Pas de titre";
 

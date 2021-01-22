@@ -120,23 +120,23 @@
                         @csrf
                         @method('put')
                         <td>
-                            <input class="input-{{$user->id}}" style="background:none;border:none;color:black;text-align:center;" disabled value={{$user->name}} type="text" name="name">
+                            <input class="input-{{$user->id}} users-input" style="background:none;border:none;color:black;text-align:center;" disabled value={{$user->name}} type="text" name="name">
                         </td>
                         <td>
-                            <input class="input-{{$user->id}}" style="background:none;border:none;color:black;text-align:center;" disabled type="text" name="prenom" value="{{ $user->prenom }}">
+                            <input class="input-{{$user->id}} users-input" style="background:none;border:none;color:black;text-align:center;" disabled type="text" name="prenom" value="{{ $user->prenom }}">
                         </td>
                         <td>
-                            <input class="input-{{$user->id}}" style="background:none;border:none;color:black;text-align:center;" disabled type="text" name="pseudo" value="{{ $user->pseudo }}">
+                            <input class="input-{{$user->id}} users-input" style="background:none;border:none;color:black;text-align:center;" disabled type="text" name="pseudo" value="{{ $user->pseudo }}">
                         </td>
                         <td>
-                            <input class="input-{{$user->id}}" style="background:none;border:none;color:black;text-align:center;" disabled type="text" name="email" value="{{ $user->email }}">
+                            <input class="input-{{$user->id}} users-input" style="background:none;border:none;color:black;text-align:center;" disabled type="text" name="email" value="{{ $user->email }}">
                         </td>
                         <td>
-                            <input class="input-{{$user->id}}" style="background:none;border:none;color:black;text-align:center;" disabled type="text" name="admin" value="{{ $user->admin }}">
+                            <input class="input-{{$user->id}} users-input" style="background:none;border:none;color:black;text-align:center;" disabled type="text" name="admin" value="{{ $user->admin }}">
                         </td>
                         <td>
                             <button type="button" data-target="{{$user->id}}" class="modify">Modifer</button>
-                            <input style="display:none;" id="save-{{$user->id}}" type="submit" value="Sauvegarder">
+                            <input style="display:none;" class='save' id="save-{{$user->id}}" type="submit" value="Sauvegarder">
                         </td>
                     </form>
                 </td>
@@ -168,9 +168,21 @@
 </div>
 
 <script>
+    const resetBtn = document.querySelectorAll('.save');
+    const inputList = document.querySelectorAll('.users-input');
     const modifyBtnList = document.querySelectorAll('.modify');
+
     modifyBtnList.forEach(btn => {
         btn.addEventListener('click', () => {
+            modifyBtnList.forEach(btn => btn.style.display = 'block')
+            resetBtn.forEach(btn => btn.style.display = 'none')
+            inputList.forEach((input) => {
+                if (input.disabled == false) {
+                    input.style.border = "none";
+                    input.style.backgroundColor = "white";
+                    input.disabled = true;
+                }
+            });
             const idTarget = btn.dataset.target;
             const inputs = document.querySelectorAll(`.input-${idTarget}`);
             const saveBtn = document.querySelector(`#save-${idTarget}`)
@@ -181,9 +193,13 @@
             });
             btn.style.display = "none";
             saveBtn.style.display = "inherit";
+            
         })
+    
+        
     })
 </script>
+
 <script>
     // Ajouter un utilisateur
     const btnAddUser = document.querySelector('.addUser');

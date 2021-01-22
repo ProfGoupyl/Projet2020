@@ -78,14 +78,7 @@
             <label>Description du module</label>
             <textarea name="description" cols="30" rows="10"></textarea>
         </div>
-        <div>
-            <label>Url du module</label>
-            <input type="text" name='url_video' required>
-        </div>
-        <div>
-            <label>Ordre du module</label>
-            <input type="text" name='ordre' required>
-        </div>
+       
 
         <div>
             <input type="submit" value="Ajouter!">
