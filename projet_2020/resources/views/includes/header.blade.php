@@ -2,12 +2,8 @@
 
     <ul class="navigation">
 
-        <li>
-            <img src="{{ asset('images/logo.svg') }}" alt="" class="logo" height="80px" width="80px">
-        </li>
-
         <li class="items">
-            <a href="/">Home</a>
+            <a href="/"><img src="{{ asset('images/logo.svg') }}" alt="" class="logo" height="80px" width="80px"></a>
         </li>
 
         <li class="items">
