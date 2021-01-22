@@ -2,14 +2,14 @@
 
     <ul class="navigation">
 
-        <li>
-            <img src="{{ asset('images/logo.svg') }}" alt="" class="logo" height="80px" width="80px">
+        <li class="items">
+            <a href="/"><img src="{{ asset('images/logo.svg') }}" alt="" class="logo" height="80px" width="80px"></a>
         </li>
 
         @if(\Request::is('admin/*'))
         <li class="items">
             <a href="/admin/cours">Dashboard</a>
-        </li>
+
         <li class="items">
             <a href="/admin/users">Utilisateurs</a>
         </li>
