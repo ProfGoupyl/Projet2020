@@ -6,12 +6,15 @@ $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 */
 header nav.navPrincipale ul {
-  margin: 1% 4% 1% auto;
+  margin: 0 auto 2%;
+  padding: 1%;
+  border-radius: 5px;
   display: flex;
   flex-flow: row wrap;
   align-items: center;
   list-style-type: none;
   justify-content: space-between;
+  background-color: #ffffff;
 }
 
 header nav.navPrincipale ul li {
@@ -43,7 +46,7 @@ header nav.navPrincipale ul li a {
 }
 
 header nav.navPrincipale ul li a:hover {
-  color: #808080;
+  color: #4A3DC3;
 }
 
 header nav.navPrincipale ul li figure {
@@ -66,7 +69,6 @@ header nav.navPrincipale ul li ul.sous {
   width: 120px;
   margin-top: 0px;
   padding: 10px;
-  background-color: #ffffff;
 }
 
 header nav.navPrincipale ul li ul.sous li p {
@@ -180,8 +182,16 @@ header nav.navPrincipale ul li ul.sous li p {
 
 /*--------------- Fichier _user.scss - FIN ----------*/
 
+section .prof {
+  padding: 0;
+}
+
+section .prof button:first-of-type::after {
+  content: ' Modifier';
+}
+
 form.userProfil {
-  width: 70%;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-flow: row wrap;
@@ -189,7 +199,7 @@ form.userProfil {
 }
 
 form.userProfil div {
-  flex-basis: 40%;
+  flex-basis: 49%;
 }
 
 form.userProfil div p {
@@ -220,10 +230,6 @@ form.userProfil div p img {
   width: 180px;
   height: 180px;
   clear: both;
-}
-
-button:first-of-type::after {
-  content: ' Modifier';
 }
 
 @media all and (max-width: 900px) {
@@ -344,15 +350,19 @@ button:first-of-type::after {
 }
 
 body {
-  max-width: 100%;
   min-height: 100vh;
-  background-color: #ffffff;
+  background-color: #f5f6f8;
+  width: 90%;
+  margin: 0 auto;
   color: #000000;
 }
 
 section {
   height: auto;
-  padding: 0 4%;
+  padding: 4%;
+  background-color: #ffffff;
+  border-radius: 5px;
+  margin: 0 auto;
 }
 
 section article {
@@ -384,6 +394,17 @@ tr,
   font-weight: bold;
   line-height: 1.8;
   text-align: center;
+}
+
+h1 {
+  text-align: left;
+  margin: 0 0 2% 0;
+}
+
+button,
+button a {
+  text-decoration: none;
+  line-height: 1.4;
 }
 
 button {
@@ -455,6 +476,6 @@ form input {
 }
 
 form input:focus {
-  border-bottom: 2px solid #6574cd;
+  border-bottom: 2px solid #4A3DC3;
 }
 
