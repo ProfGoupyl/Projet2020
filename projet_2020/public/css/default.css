@@ -6,7 +6,7 @@ $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 */
 header nav.navPrincipale ul {
-  margin: 0 auto 2%;
+  margin: 1% auto 2%;
   padding: 1%;
   border-radius: 5px;
   display: flex;
@@ -139,7 +139,7 @@ header nav.navPrincipale ul li ul.sous li p {
 }
 
 .listecours thead {
-  background-color: #d4d4d4;
+  background-color: #ececec;
 }
 
 .listecours thead tr th {
@@ -163,7 +163,7 @@ header nav.navPrincipale ul li ul.sous li p {
 
 .listecours tbody tr td {
   padding: 1%;
-  border-bottom: 1px solid #d4d4d4;
+  border-bottom: 1px solid #ececec;
 }
 
 .listecours tbody tr td a {
@@ -177,13 +177,13 @@ header nav.navPrincipale ul li ul.sous li p {
 }
 
 .listecours tbody tr:hover {
-  background-color: #ececec;
+  background-color: #fafafa;
 }
 
 /*--------------- Fichier _user.scss - FIN ----------*/
 
 section .prof {
-  padding: 0;
+  padding: 4%;
 }
 
 section .prof button:first-of-type::after {
@@ -256,26 +256,24 @@ form.userProfil div p img {
 /*--------------- Fichier _faq.scss ---------------*/
 
 .faq {
-  margin: 10px 5px 10px 5px;
-  padding: 10px 5px 10px 5px;
+  padding: 1%;
 }
 
 .faq li {
   list-style-type: none;
 }
 
+.faq li details {
+  display: flex;
+}
+
 .faq li details .faq_question {
+  padding: 1%;
   color: #808080;
   border-radius: 5px;
   font-weight: 700;
-  margin: 10px 5px 10px 5px;
-  padding: 10px 5px 10px 5px;
   background-color: #ececec;
   cursor: pointer;
-}
-
-.faq li details .faq_question::after {
-  content: "\25BC";
 }
 
 .faq li details .faq_question:hover {
@@ -283,7 +281,7 @@ form.userProfil div p img {
 }
 
 .faq li details .faq_question_hidden {
-  padding: 0px 30px;
+  padding: 1%;
 }
 
 .faq li details summary {
@@ -293,6 +291,20 @@ form.userProfil div p img {
 
 .faq li details summary::-webkit-details-marker {
   display: none;
+}
+
+.faq li details[open] > summary::after {
+  font-family: "FontAwesome";
+  position: relative;
+  float: right;
+  content: "\F068";
+}
+
+.faq li details > summary::after {
+  font-family: "FontAwesome";
+  position: relative;
+  float: right;
+  content: "\F067";
 }
 
 /*--------------- Fichier _faq.scss - FIN ----------*/
@@ -336,6 +348,9 @@ form.userProfil div p img {
 
 .section_page_cours article {
   flex-basis: 75%;
+  background-color: #fafafa;
+  border-radius: 5px;
+  padding: 1em;
 }
 
 .section_page_cours article p {
@@ -376,29 +391,24 @@ body {
 
 section {
   height: auto;
-  padding: 4%;
+  padding: 1%;
   background-color: #ffffff;
   border-radius: 5px;
   margin: 0 auto;
 }
 
-section article {
-  flex-basis: auto;
-}
-
-section aside {
-  flex-basis: 20%;
-}
-
 .footer {
   background-color: #ffffff;
   padding: 1%;
+  margin-bottom: 1%;
 }
 
 p,
 td,
 li,
-a {
+a,
+button,
+content {
   font-family: "Open Sans", sans-serif;
   font-size: 0.9rem;
   font-weight: normal;
@@ -416,11 +426,11 @@ tr,
   font-weight: bold;
   line-height: 1.8;
   text-align: center;
+  padding: 1%;
 }
 
 h1 {
   text-align: left;
-  margin: 0 0 2% 0;
 }
 
 button,
@@ -430,14 +440,36 @@ button a {
 }
 
 button {
-  padding: 0.8em;
-  margin: 1%;
+  padding: 0.6em;
+  margin: 1em;
   border-radius: 4px;
   text-decoration: none;
   text-align: center;
   background-color: #ffffff;
   cursor: pointer;
   outline: none;
+  color: #d4d4d4;
+  border: 2px solid #d4d4d4;
+}
+
+button a {
+  display: block;
+  color: #d4d4d4;
+}
+
+button a:hover,
+button a:focus {
+  color: #ffffff;
+}
+
+button:hover,
+button:focus {
+  background-color: #c7c7c7;
+  color: #ffffff;
+}
+
+button:active {
+  background-color: #4236b0;
 }
 
 #ajouter {
@@ -471,18 +503,18 @@ button {
 }
 
 #modifier {
-  color: #ffae18;
-  border: 2px solid #ffae18;
+  color: #4A3DC3;
+  border: 2px solid #4A3DC3;
 }
 
 #modifier:hover,
 #modifier:focus {
-  background-color: #ffae18;
+  background-color: #4A3DC3;
   color: #ffffff;
 }
 
 #modifier:active {
-  background-color: #fea500;
+  background-color: #4236b0;
 }
 
 form p {

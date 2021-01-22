@@ -30,6 +30,9 @@
     }
     article {
         flex-basis: 75%;
+        background-color: $smoke;
+        border-radius: 5px;
+        padding: 1em;
         p {
             padding: 5%;
         }
