@@ -62,7 +62,7 @@
                     name: this.userName,
                     prenom: this.userPrenom,
                     email: this.userEmail,
-                    pseudo: this.userPseudo
+                    pseudo: this.userPseudo,
                 })
                 .then(response => this.send = true)
                 .catch(error => this.send = false)

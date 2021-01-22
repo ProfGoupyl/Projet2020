@@ -42,6 +42,10 @@ Route::get('profile', function () {
     return View('pages.profile');
 });
 
+Route::get('/admin/test', function () {
+    return View('admin.users.test');
+})->name('poulet');
+
 Route::get('/administrationUser', function () {
     return view('administration.UserAdmin');
 });

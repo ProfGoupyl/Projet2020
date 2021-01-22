@@ -1,5 +1,5 @@
 <!-- Reprend le tableau des utilisateur avec le CRUD + Suppression des étudiants/cours à la fin de l'année scolaire -->
-<!-- Creat New user -->
+<!-- Create New user -->
 <button class="btn btn-primary addUser">+ Ajouter un utilisateur</button>
 
 <style>
@@ -11,6 +11,8 @@
         display: block;
     }
 </style>
+
+
 
 
 <div id="addUser">
@@ -60,19 +62,19 @@
                         @csrf
                         @method('put')
                         <td>
-                            <input class="input-{{$user->id}}" style="background:none;border:none;color:black;text-align:center;" disabled value={{$user->name}} type="text" name="name">
+                            <input class="input-{{$user->id}} input-user" style="background:none;border:none;color:black;text-align:center;" disabled value={{$user->name}} type="text" name="name">
                         </td>
                         <td>
-                            <input class="input-{{$user->id}}" style="background:none;border:none;color:black;text-align:center;" disabled type="text" name="prenom" value="{{ $user->prenom }}">
+                            <input class="input-{{$user->id}} input-user" style="background:none;border:none;color:black;text-align:center;" disabled type="text" name="prenom" value="{{ $user->prenom }}">
                         </td>
                         <td>
-                            <input class="input-{{$user->id}}" style="background:none;border:none;color:black;text-align:center;" disabled type="text" name="pseudo" value="{{ $user->pseudo }}">
+                            <input class="input-{{$user->id}} input-user" style="background:none;border:none;color:black;text-align:center;" disabled type="text" name="pseudo" value="{{ $user->pseudo }}">
                         </td>
                         <td>
-                            <input class="input-{{$user->id}}" style="background:none;border:none;color:black;text-align:center;" disabled type="text" name="email" value="{{ $user->email }}">
+                            <input class="input-{{$user->id}} input-user" style="background:none;border:none;color:black;text-align:center;" disabled type="text" name="email" value="{{ $user->email }}">
                         </td>
                         <td>
-                            <input class="input-{{$user->id}}" style="background:none;border:none;color:black;text-align:center;" disabled type="text" name="admin" value="{{ $user->admin }}">
+                            <input class="input-{{$user->id}} input-user" style="background:none;border:none;color:black;text-align:center;" disabled type="text" name="admin" value="{{ $user->admin }}">
                         </td>
                         <td>
                             <button type="button" data-target="{{$user->id}}" class="modify">Modifer</button>
@@ -102,8 +104,16 @@
 
 <script>
     const modifyBtnList = document.querySelectorAll('.modify');
+    const inputList = document.querySelectorAll('.input-user');
     modifyBtnList.forEach(btn => {
         btn.addEventListener('click', () => {
+            inputList.forEach((input) => {
+                if (input.disabled == false) {
+                    input.style.border = "none";
+                    input.style.backgroundColor = "white";
+                    input.disabled = true;
+                }
+            });
             const idTarget = btn.dataset.target;
             const inputs = document.querySelectorAll(`.input-${idTarget}`);
             const saveBtn = document.querySelector(`#save-${idTarget}`)

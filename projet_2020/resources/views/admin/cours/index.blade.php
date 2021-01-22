@@ -16,11 +16,15 @@
     }
 </style>
 
+<head>
+    <link rel="stylesheet" href="{{ asset('css/default.css') }}">
+
+</head>
 
 <h1>Liste des cours</h1>
 <button class='addCours'>Add</button>
 
-<table>
+<table class="listecours">
     <thead>
         <tr>
 
