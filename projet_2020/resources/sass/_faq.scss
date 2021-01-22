@@ -7,10 +7,19 @@
         list-style-type: none;
         details {
             .faq_question {
+                color: $gray;
+                border-radius: 5px;
                 font-weight: 700;
                 margin: 10px 5px 10px 5px;
                 padding: 10px 5px 10px 5px;
+                background-color: $lightgray;
                 cursor: pointer;
+                &::after {
+                    content: "\25BC";
+                }
+                &:hover {
+                    color: $main;
+                }
             }
             .faq_question_hidden {
                 padding: 0px 30px;

@@ -259,10 +259,21 @@ button:first-of-type::after {
 }
 
 .faq li details .faq_question {
+  color: #808080;
+  border-radius: 5px;
   font-weight: 700;
   margin: 10px 5px 10px 5px;
   padding: 10px 5px 10px 5px;
+  background-color: #d4d4d4;
   cursor: pointer;
+}
+
+.faq li details .faq_question::after {
+  content: "\25BC";
+}
+
+.faq li details .faq_question:hover {
+  color: #000000;
 }
 
 .faq li details .faq_question_hidden {
@@ -289,34 +300,40 @@ button:first-of-type::after {
 }
 
 .section_page_cours .aside_page_cours {
+  border-radius: 7px;
   height: auto;
   flex-basis: 25%;
-  background: #d4d4d4;
+  background-color: #d4d4d4;
   margin: 0 1em 0 0;
-}
-
-.section_page_cours .navSecondaire_coursName {
-  flex-basis: 75%;
-}
-
-.section_page_cours .navSecondaire_coursName article:first-of-type {
-  margin: 0 0 1em 0;
 }
 
 .section_page_cours .navSecondaire li {
   list-style-type: none;
 }
 
-.navSecondaire_coursName {
+.section_page_cours .navSecondaire li a {
+  color: #808080;
+  text-decoration: none;
+}
+
+.section_page_cours .navSecondaire li a:hover {
+  color: #000000;
+}
+
+.section_page_cours .navSecondaire_coursName {
   padding: 1em;
 }
 
-.navSecondaire_coursName li {
+.section_page_cours .navSecondaire_coursName li {
   list-style-type: none;
 }
 
-.module_page_cours {
-  width: 450px;
+.section_page_cours article {
+  flex-basis: 75%;
+}
+
+.section_page_cours article p {
+  padding: 5%;
 }
 
 @media all and (max-width: 900px) {
