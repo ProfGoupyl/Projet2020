@@ -1,3 +1,6 @@
+<!-- styles -->
+<link rel="stylesheet" href="/css/default.css">
+
 <form action="/admin/cours/{{$cours->id}}" method="POST">
     @csrf
     @method('put')

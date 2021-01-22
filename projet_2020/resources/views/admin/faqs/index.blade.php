@@ -31,9 +31,7 @@
             <td>{{ $faq->reponse }}</td>
             <td>
                 <form action="{{ route('faqs.destroy',$faq->id) }}" method="POST">
-   
-                    <a class="btn btn-info" href="{{ route('faqs.show',$faq->id) }}">Show</a>
-    
+
                     <a class="btn btn-primary" href="{{ route('faqs.edit',$faq->id) }}">Edit</a>
    
                     @csrf

@@ -3,18 +3,23 @@
     <ul class="navigation">
 
         <li>
-            <img src="images/logo.svg" alt="" class="logo" height="80px" width="80px">
+            <img src="{{ asset('images/logo.svg') }}" alt="" class="logo" height="80px" width="80px">
         </li>
 
+        @if(\Request::is('admin/*'))
         <li class="items">
-            <a href="/">Home</a>
+            <a href="/admin/cours">Dashboard</a>
         </li>
-
         <li class="items">
-            <a href="/user">Cours</a>
+            <a href="/admin/users">Utilisateurs</a>
         </li>
-        @if(\Route::current()->getName() == 'poulet')
-        <p>JE SUIS UN POULET !!!!!</p>
+        <li class="items">
+            <a href="/admin/faqs">Faqs</a>
+        </li>
+        @else
+        <li class="items">
+            <a href="/cours">Cours</a>
+        </li>
         @endif
         <li class="items">
             <figure>
@@ -58,15 +63,6 @@
             </ul>
 
         </li>
-        <li class="btn"><a href="#"><i class="fas fa-bars"></i></a></li>
+        <li class="burger"><a href="#"><i class="fas fa-bars"></i></a></li>
     </ul>
 </nav>
-
-<script>
-    $(document).ready(function() {
-        $('.btn').click(function() {
-            $('.items').toggleClass("show");
-            $('ul li').toggleClass("hide");
-        });
-    });
-</script>

@@ -1,7 +1,10 @@
+@extends('layouts.default')
+@section('content')
 <!-- Reprend le tableau des utilisateur avec le CRUD + Suppression des étudiants/cours à la fin de l'année scolaire -->
-<!-- Create New user -->
-<button class="btn btn-primary addUser">+ Ajouter un utilisateur</button>
-
+<!-- Creat New user -->
+<button id="ajouter" class="btn btn-primary addUser">+ Ajouter un utilisateur</button>
+<!-- styles -->
+<link rel="stylesheet" href="/css/default.css">
 <style>
     #addUser {
         display: none;
@@ -58,7 +61,7 @@
                 @foreach ($users as $user)
 
                 <tr>
-                    <form action="/admin/users/{{ $user->id }}" method="post">
+                    <form class="userProfil" action="/admin/users/{{ $user->id }}" method="post">
                         @csrf
                         @method('put')
                         <td>
@@ -77,7 +80,7 @@
                             <input class="input-{{$user->id}} input-user" style="background:none;border:none;color:black;text-align:center;" disabled type="text" name="admin" value="{{ $user->admin }}">
                         </td>
                         <td>
-                            <button type="button" data-target="{{$user->id}}" class="modify">Modifer</button>
+                            <button type="button" data-target="{{$user->id}}" id="modifier" class="modify">Modifer</button>
                             <input style="display:none;" id="save-{{$user->id}}" type="submit" value="Sauvegarder">
                         </td>
                     </form>
@@ -86,7 +89,7 @@
                         <form action='/admin/users/{{ $user->id }}' method="post">
                             @csrf
                             @method('delete')
-                            <input type='submit' value='Supprimer'>
+                            <input type='submit' id="supprimer" value='Supprimer'>
                         </form>
                     </td>
                 </tr>
@@ -146,3 +149,4 @@
         display: block;
     }
 </style>
+@stop

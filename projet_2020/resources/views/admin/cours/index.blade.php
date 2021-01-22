@@ -1,3 +1,5 @@
+@extends('layouts.default')
+@section('content')
 <style>
     #addCours {
         display: none;
@@ -16,102 +18,107 @@
     }
 </style>
 
-<head>
-    <link rel="stylesheet" href="{{ asset('css/default.css') }}">
+<!-- styles -->
+<link rel="stylesheet" href="/css/default.css">
 
-</head>
+<section>
+    <h1>Liste des cours</h1>
+    <button class='addCours'>Add</button>
+    <div id='addCours'>
+        <form action='/admin/cours' method='POST'>
+            @csrf
+            <div>
+                <label for="name">Entrer le titre </label>
+                <input type="text" name="titre" id="name" required>
+            </div>
+            <div>
+                <label>debut du cours: </label>
+                <input type="date" name='debut_du_cours' required>
+            </div>
+            <div>
+                <label>fin du cours: </label>
+                <input type="date" name='fin_du_cours' required>
+            </div>
+            <div>
+                <input type="submit" value="Ajouter!">
+            </div>
+        </form>
+    </div>
 
-<h1>Liste des cours</h1>
-<button class='addCours'>Add</button>
-
-<table class="listecours">
-    <thead>
-        <tr>
-
-            <th>Titre</th>
-            <th>Debut du cours</th>
-            <th>Fin du cours</th>
-            <th>Modifier</th>
-            <th>Delete</th>
-            <th>Détails du cours</th>
-            <th>liste des users pour le cours</th>
-            <th>Ajouter des utilisateurs par csv</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($cours_list as $cours)
-
-        <tr>
-
-
-            <form action='/admin/cours/{{ $cours->id }}' method='post'>
-                @csrf
-                @method('put')
-                <td>
-                    <input class="input-{{$cours->id}}" style="background:none;border:none;color:black;" disabled value="{{$cours->titre}}" type="text" name="titre">
-                </td>
-                <td>
-
-                    <input class="input-{{$cours->id}}" style="background:none;border:none;color:black;" disabled value="{{$cours->debut_du_cours }}" type="date" name="debut_du_cours">
-                </td>
-
-                <td>
-                    <input class="input-{{$cours->id}}" style="background:none;border:none;color:black;" disabled value="{{$cours->fin_du_cours}}" type="date" name="fin_du_cours">
-                </td>
-
-                <td>
-                    <button type="button" data-target="{{$cours->id}}" class="modify">Modifer</button>
-                    <input style="display:none;" id="save-{{$cours->id}}" type="submit" value="Sauvegarder">
-                </td>
-
-            </form>
-            <td>
-                <form action='/admin/cours/{{ $cours->id }}' method="post">
+    <table class="listecours">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Debut du cours</th>
+                <th>Fin du cours</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($cours_list as $cours)
+            <tr>
+                <form action='/admin/cours/{{ $cours->id }}' method='post'>
                     @csrf
-                    @method('delete')
-                    <input type='submit' value='Supprimer'>
+                    @method('put')
+                    <td>
+                        <input class="input-{{$cours->id}}" style="background:none;border:none;color:black;" disabled value="{{$cours->titre}}" type="text" name="titre">
+                    </td>
+                    <td>
+
+                        <input class="input-{{$cours->id}}" style="background:none;border:none;color:black;" disabled value="{{$cours->debut_du_cours }}" type="date" name="debut_du_cours">
+                    </td>
+
+                    <td>
+                        <input class="input-{{$cours->id}}" style="background:none;border:none;color:black;" disabled value="{{$cours->fin_du_cours}}" type="date" name="fin_du_cours">
+                    </td>
+
+                    <td>
+                        <button type="button" data-target="{{$cours->id}}" class="modify">Modifer</button>
+                        <input style="display:none;" id="save-{{$cours->id}}" type="submit" value="Sauvegarder">
+                    </td>
                 </form>
-            </td>
-            <td>
-                <a href='/admin/cours/{{$cours->id}}'>show</a>
-            </td>
-            <td>
-                <form enctype="multipart/form-data" action="/admin/csv/cours" method="post">
-                    @csrf
-                    <input type="hidden" name="cours" value="{{$cours->id}}">
-                    <input required type="file" name="file" value="Choisir un fichier .csv" accept=".csv">
-                    <input type="submit" name="submit" value="Transférer" title="Submit">
-                </form>
-            </td>
+                <td>
+                    <form action='/admin/cours/{{ $cours->id }}' method="post">
+                        @csrf
+                        @method('delete')
+                        <input type='submit' value='Supprimer'>
+                    </form>
+                </td>
+                <td>
+                    <a href='/admin/cours/{{$cours->id}}'>show</a>
+                </td>
 
 
-        </tr>
+            </tr>
 
-        @endforeach
-    </tbody>
-</table>
+            @endforeach
+        </tbody>
+    </table>
 
-<div id='addCours'>
-    <form action='/admin/cours' method='POST'>
-        @csrf
-        <div>
-            <label for="name">Entrer le titre </label>
-            <input type="text" name="titre" id="name" required>
-        </div>
-        <div>
-            <label>debut du cours: </label>
-            <input type="date" name='debut_du_cours' required>
-        </div>
-        <div>
-            <label>fin du cours: </label>
-            <input type="date" name='fin_du_cours' required>
-        </div>
-        <div>
-            <input type="submit" value="Ajouter!">
-        </div>
-    </form>
+    <div id='addCours'>
+        <form action='/admin/cours' method='POST'>
+            @csrf
+            <div>
+                <label for="name">Entrer le titre </label>
+                <input type="text" name="titre" id="name" required>
+            </div>
+            <div>
+                <label>debut du cours: </label>
+                <input type="date" name='debut_du_cours' required>
+            </div>
+            <div>
+                <label>fin du cours: </label>
+                <input type="date" name='fin_du_cours' required>
+            </div>
+            <div>
+                <input type="submit" value="Ajouter!">
+            </div>
+        </form>
 
-</div>
+    </div>
+
+
+</section>
 
 <script>
     const btnAddUser = document.querySelector('.addCours');
@@ -138,3 +145,4 @@
         })
     })
 </script>
+@stop

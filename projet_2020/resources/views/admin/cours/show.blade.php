@@ -1,3 +1,5 @@
+@extends('layouts.default')
+@section('content')
 <style>
     .drag-container {
         width: 25%;
@@ -17,45 +19,46 @@
     .draggable.dragging {
         opacity: .5;
     }
-    .form-modules{
+
+    .form-modules {
         display: none;
     }
-    .form-modules.show{
+
+    .form-modules.show {
         display: block;
     }
-
 </style>
 
+<!-- styles -->
+<link rel="stylesheet" href="/css/default.css">
 
 <h1>salut {{$cours->titre}}</h1>
 <section>
     <div>
-    <!-- Formulaire réceptionnant les nouvelles valeurs "ordre" du module dragged et l'envoyant au ModuleController->update() -->
-    <form id="myForm" action="" method="POST">
-        @csrf
-        @method('put')
-        <input id="module_id" type="hidden" name="data[]" value="">
-        <input id="module_order" type="hidden" name="data[]" value="">
-        <input type="hidden" name="cours" value="{{$cours->id}}">
-    </form>
-    <!-- AFFICHAGE DES MODULES DU COURS + GESTION DE L ORDRE -->
-    <div class="drag-container">
-        @foreach($modules as $m)
-        <div data-neworder="" data-element="{{$m->id}}" data-order="{{$m->ordre}}" class="draggable" draggable="true">
-            <input type="hidden" name="modules[]" value="{{$m->id}}-{{$m->ordre}}">
-            <p>{{$m->titre}}</p>
-            <p>{{$m->description}}</p>
-            <p>{{$m->url_video}}</p>
-            <button data-action="{{$m->id}}" data-titre="{{$m->titre}}" data-desc="{{$m->description}}" data-url="{{$m->url_video}}" class="edit-module" type="button">Modifier</button>
-            <form action="/admin/module/{{$m->id}}" method="POST">
+        <!-- Formulaire réceptionnant les nouvelles valeurs "ordre" du module dragged et l'envoyant au ModuleController->update() -->
+        <form id="myForm" action="" method="POST">
             @csrf
-            @method('delete')
-            <button> Supprimer </button>
-            </form>
-        </div>
+            @method('put')
+            <input id="module_id" type="hidden" name="data[]" value="">
+            <input id="module_order" type="hidden" name="data[]" value="">
+            <input type="hidden" name="cours" value="{{$cours->id}}">
+        </form>
+        <!-- AFFICHAGE DES MODULES DU COURS + GESTION DE L ORDRE -->
+        <div class="drag-container">
+            @foreach($modules as $m)
+            <div data-neworder="" data-element="{{$m->id}}" data-order="{{$m->ordre}}" class="draggable" draggable="true">
+                <input type="hidden" name="modules[]" value="{{$m->id}}-{{$m->ordre}}">
+                <p>{{$m->titre}}</p>
+                <button data-action="{{$m->id}}" data-titre="{{$m->titre}}" data-desc="{{$m->description}}" data-url="{{$m->url_video}}" class="edit-module" id="modifier" type="button">Modifier</button>
+                <form action="/admin/module/{{$m->id}}" method="POST">
+                    @csrf
+                    @method('delete')
+                    <button id="supprimer"> Supprimer </button>
+                </form>
+            </div>
 
-        @endforeach
-    </div>
+            @endforeach
+        </div>
 </section>
 
 <form id="form-module" action="/admin/cours/{{$cours->id}}" method="POST">
@@ -87,7 +90,7 @@
         </div>
 
         <div>
-            <input type="submit" value="Ajouter!">
+            <input type="submit" id="ajouter" value="Ajouter!">
         </div>
     </form>
 
@@ -95,9 +98,8 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-
-const showBtns = document.querySelectorAll('.show_module');
-const formAll = document.querySelectorAll('.form-modules');
+    const showBtns = document.querySelectorAll('.show_module');
+    const formAll = document.querySelectorAll('.form-modules');
     showBtns.forEach((btn) => {
         btn.addEventListener('click', () => {
             formAll.forEach((form) => {
@@ -188,3 +190,4 @@ const formAll = document.querySelectorAll('.form-modules');
         })
     })
 </script>
+@stop

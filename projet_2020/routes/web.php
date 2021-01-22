@@ -25,22 +25,25 @@ use App\Http\Controllers\Administration\FaqAdminController;
 
 Route::get('/', function () {
     return View('welcome');
-});
+})->middleware(['auth'])->name('login');
 Route::get('home', function () {
     return View('pages.home');
-});
+})->middleware(['auth'])->name('login');
 Route::get('user', function () {
     return View('pages.user');
-});
+})->middleware(['auth'])->name('login');
+
 Route::get('cours', function () {
     return View('pages.cours');
-});
+})->middleware(['auth'])->name('login');
+
 Route::get('session', function () {
     return View('pages.session');
-});
+})->middleware(['auth'])->name('login');
+
 Route::get('profile', function () {
     return View('pages.profile');
-});
+})->middleware(['auth'])->name('login');
 
 Route::get('/admin/test', function () {
     return View('admin.users.test');
@@ -63,7 +66,7 @@ Route::prefix('admin')
         // Mettez vos routes en dessous de la première
         // Route de base renvoyant au dashboard de l'administration
         Route::get('/', function () {
-            return view('dashboard');
+            return redirect('/admin/cours');
         })->name('dashboard');
 
         // route pour les users
