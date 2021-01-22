@@ -20,7 +20,7 @@
                 </nav> 
             </aside>
             <div>
-                <article v-if="moduleId">
+                <article v-show="moduleId">
                     <Session :key="componentKey" v-bind:user-infos="this.userInfos"></Session>
                 </article>
             </div>
