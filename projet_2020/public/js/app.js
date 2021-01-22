@@ -61542,18 +61542,26 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", [
-        _vm.moduleId
-          ? _c(
-              "article",
-              [
-                _c("Session", {
-                  key: _vm.componentKey,
-                  attrs: { "user-infos": this.userInfos }
-                })
-              ],
-              1
-            )
-          : _vm._e()
+        _c(
+          "article",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.moduleId,
+                expression: "moduleId"
+              }
+            ]
+          },
+          [
+            _c("Session", {
+              key: _vm.componentKey,
+              attrs: { "user-infos": this.userInfos }
+            })
+          ],
+          1
+        )
       ])
     ])
   ])
