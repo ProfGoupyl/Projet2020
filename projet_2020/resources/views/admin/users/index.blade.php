@@ -1,7 +1,10 @@
+@extends('layouts.default')
+@section('content')
 <!-- Reprend le tableau des utilisateur avec le CRUD + Suppression des étudiants/cours à la fin de l'année scolaire -->
 <!-- Creat New user -->
-<button class="btn btn-primary addUser">+ Ajouter un utilisateur</button>
-
+<button id="ajouter" class="btn btn-primary addUser">+ Ajouter un utilisateur</button>
+<!-- styles -->
+<link rel="stylesheet" href="/css/default.css">
 <style>
     #addUser {
         display: none;
@@ -12,66 +15,8 @@
     }
 </style>
 
-{{-- <div id="addUser">
-<div id="addUser">
-
-    <div id="addUser">
-
-        <x-guest-layout>
-            <x-auth-card>
-                <x-slot name="logo">
-                    <a href="/">
-                        <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                    </a>
-                </x-slot>
-
-                <!-- Validation Errors -->
-                <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
 
-                <form method="POST" action="http://localhost:8000/api/users">
-
-                    <form method="post" action="/users">
-
-                        @csrf
-                        <input type="hidden" value="sxSVzOnXPDZRk0UFuDMKhaMV2TC5accFVar9epV5nkxiIigOJ08AkFFs5HmkwxIYZ10e1cj1dZGDZIxFg6p4s9a0B8oS2c0bU3o9" name="api_token">
-
-                        <!-- Name -->
-                        <div>
-                            <x-label for="name" type="text" :value="_('Nom')" />
-
-                            <x-input id="name" class="block mt-1 w-full" type="text" name="name" required autofocus />
-                        </div>
-
-                        <!-- Prénom -->
-                        <div class="mt-4">
-                            <x-label for="prenom" :value="__('Prénom')" />
-
-
-                            <x-input id="prenom" class="block mt-1 w-full" type="text" name="prenom" :value="old('prenom')" required autofocus />
-                        </div>
-
-                        <x-input id="prenom" class="block mt-1 w-full" type="text" name="prenom" required autofocus />
-    </div>
-
-
-    <!-- Email Address -->
-    <div class="mt-4">
-        <x-label for="email" :value="__('Email')" />
-
-        <x-input id="email" class="block mt-1 w-full" type="email" name="email" required />
-    </div>
-
-
-    <div class="flex items-center justify-end mt-4">
-        <x-button class="ml-4">
-            {{ __('M\'inscrire') }}
-        </x-button>
-    </div>
-    </form>
-    </x-auth-card>
-    </x-guest-layout>
-</div> --}}
 
 <div id="addUser">
     <form action="/admin/users" method="POST">
@@ -116,43 +61,36 @@
                 @foreach ($users as $user)
 
                 <tr>
-                    <form action="/admin/users/{{ $user->id }}" method="post">
+                    <form class="userProfil" action="/admin/users/{{ $user->id }}" method="post">
                         @csrf
                         @method('put')
                         <td>
-                            <input class="input-{{$user->id}} users-input" style="background:none;border:none;color:black;text-align:center;" disabled value={{$user->name}} type="text" name="name">
+                            <input class="input-{{$user->id}} input-user" style="background:none;border:none;color:black;text-align:center;" disabled value={{$user->name}} type="text" name="name">
                         </td>
                         <td>
-                            <input class="input-{{$user->id}} users-input" style="background:none;border:none;color:black;text-align:center;" disabled type="text" name="prenom" value="{{ $user->prenom }}">
+                            <input class="input-{{$user->id}} input-user" style="background:none;border:none;color:black;text-align:center;" disabled type="text" name="prenom" value="{{ $user->prenom }}">
                         </td>
                         <td>
-                            <input class="input-{{$user->id}} users-input" style="background:none;border:none;color:black;text-align:center;" disabled type="text" name="pseudo" value="{{ $user->pseudo }}">
+                            <input class="input-{{$user->id}} input-user" style="background:none;border:none;color:black;text-align:center;" disabled type="text" name="pseudo" value="{{ $user->pseudo }}">
                         </td>
                         <td>
-                            <input class="input-{{$user->id}} users-input" style="background:none;border:none;color:black;text-align:center;" disabled type="text" name="email" value="{{ $user->email }}">
+                            <input class="input-{{$user->id}} input-user" style="background:none;border:none;color:black;text-align:center;" disabled type="text" name="email" value="{{ $user->email }}">
                         </td>
                         <td>
-                            <input class="input-{{$user->id}} users-input" style="background:none;border:none;color:black;text-align:center;" disabled type="text" name="admin" value="{{ $user->admin }}">
+                            <input class="input-{{$user->id}} input-user" style="background:none;border:none;color:black;text-align:center;" disabled type="text" name="admin" value="{{ $user->admin }}">
                         </td>
                         <td>
-                            <button type="button" data-target="{{$user->id}}" class="modify">Modifer</button>
-                            <input style="display:none;" class='save' id="save-{{$user->id}}" type="submit" value="Sauvegarder">
+                            <button type="button" data-target="{{$user->id}}" id="modifier" class="modify">Modifer</button>
+                            <input style="display:none;" id="save-{{$user->id}}" type="submit" value="Sauvegarder">
                         </td>
                     </form>
-                </td>
-
-            </td>
-        
-
 
                     <td>
                         <form action='/admin/users/{{ $user->id }}' method="post">
                             @csrf
                             @method('delete')
-                            <input type='submit' value='Supprimer'>
+                            <input type='submit' id="supprimer" value='Supprimer'>
                         </form>
-                    </td>
-
                     </td>
                 </tr>
                 @endforeach
@@ -204,7 +142,6 @@
     // Ajouter un utilisateur
     const btnAddUser = document.querySelector('.addUser');
     const addUser = document.querySelector('#addUser');
-
     btnAddUser.addEventListener('click', () => {
         addUser.classList.toggle('is-visible');
     })
@@ -220,3 +157,4 @@
         display: block;
     }
 </style>
+@stop

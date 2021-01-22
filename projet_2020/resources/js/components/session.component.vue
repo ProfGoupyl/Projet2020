@@ -11,13 +11,18 @@
         <article>
             <Faq v-bind:user-infos="this.userInfos"></Faq>
         </article>
+        <article>
+            <Comment v-bind:user-infos="this.userInfos"></Comment>
+        </article>
     </div>
 </template>
 <script>
     import Faq from './faq.component'
+    import Comment from './commentaire.component'
     export default {
         components: {
-            Faq
+            Faq,
+            Comment
         },
         props: ['userInfos'],
         data() {
