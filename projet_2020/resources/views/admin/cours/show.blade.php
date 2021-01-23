@@ -1,33 +1,6 @@
 @extends('layouts.default')
 @section('content')
-<style>
-    .drag-container {
-        width: 25%;
-        overflow-x: hidden;
-        background-color: lightgrey;
-        padding: 5px;
-    }
 
-    .draggable {
-        background-color: #333;
-        color: white;
-        padding: 1px;
-        cursor: move;
-        margin-bottom: 15px;
-    }
-
-    .draggable.dragging {
-        opacity: .5;
-    }
-
-    .form-modules {
-        display: none;
-    }
-
-    .form-modules.show {
-        display: block;
-    }
-</style>
 
 <!-- styles -->
 <link rel="stylesheet" href="/css/default.css">
