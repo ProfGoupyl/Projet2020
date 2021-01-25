@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="session">
     <div v-for="modules in filterModules" :key="modules.id">
       <div>
         <h2>{{ modules.titre }}</h2>

@@ -61833,6 +61833,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticClass: "session" },
     [
       _vm._l(_vm.filterModules, function(modules) {
         return _c("div", { key: modules.id }, [
