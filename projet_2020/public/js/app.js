@@ -3899,8 +3899,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -4052,20 +4050,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['userInfos'],
   data: function data() {
@@ -4077,7 +4061,9 @@ __webpack_require__.r(__webpack_exports__);
       userEmail: this.userInfos.email,
       userPseudo: this.userInfos.pseudo,
       userPhoto: null,
-      send: null
+      send: null,
+      uploadSucces: false,
+      uploadFail: false
     };
   },
   methods: {
@@ -4098,10 +4084,14 @@ __webpack_require__.r(__webpack_exports__);
     selectImage: function selectImage(event) {
       this.userPhoto = event.target.files[0];
     },
-    imageUpload: function imageUpload() {
-      var data = new FormData();
-      data.append('image', this.userPhoto, "user".concat(this.userId));
-      axios.post('', data).then(function (response) {
+    uploadImage: function uploadImage() {
+      var fd = new FormData();
+      fd.append('user_image', this.userPhoto, "user".concat(this.userId));
+      axios.post('', fd, {
+        header: {
+          'Content-Type': 'multiple/form-data'
+        }
+      }).then(function (response) {
         return console.log(response);
       })["catch"](function (error) {
         return console.log(error);
@@ -61541,28 +61531,18 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", [
-        _c(
-          "article",
-          {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: _vm.moduleId,
-                expression: "moduleId"
-              }
-            ]
-          },
-          [
-            _c("Session", {
-              key: _vm.componentKey,
-              attrs: { "user-infos": this.userInfos }
-            })
-          ],
-          1
-        )
-      ])
+      _vm.moduleId
+        ? _c(
+            "article",
+            [
+              _c("Session", {
+                key: _vm.componentKey,
+                attrs: { "user-infos": this.userInfos }
+              })
+            ],
+            1
+          )
+        : _vm._e()
     ])
   ])
 }
@@ -61599,11 +61579,13 @@ var render = function() {
           return _c("li", { key: module.id }, [
             _c("details", [
               _c("summary", { staticClass: "faq_question" }, [
-                _vm._v(" " + _vm._s(module.question) + " ")
+                _vm._v(" " + _vm._s(module.question)),
+                _c("a")
               ]),
               _vm._v(" "),
               _c("p", { staticClass: "faq_question_hidden" }, [
-                _vm._v(" " + _vm._s(module.reponse) + " ")
+                _vm._v(" " + _vm._s(module.reponse)),
+                _c("a")
               ])
             ])
           ])
@@ -61744,14 +61726,14 @@ var render = function() {
             _vm._m(0),
             _vm._v(" "),
             _c("p", [
-              _c("label", { attrs: { for: "downloadPicture" } }, [
-                _vm._v("Nouvelle photo de profil:")
-              ]),
-              _vm._v(" "),
               _c("input", {
-                attrs: { type: "file", accept: "image/jpeg, image/png" },
+                attrs: { type: "file" },
                 on: { change: _vm.selectImage }
-              })
+              }),
+              _vm._v(" "),
+              _c("button", { on: { click: _vm.uploadImage } }, [
+                _vm._v("Envoyer")
+              ])
             ])
           ])
         ]

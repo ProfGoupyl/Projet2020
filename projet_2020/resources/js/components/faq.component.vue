@@ -5,8 +5,8 @@
                 <ul class="faq">
                     <li v-for="module in filterFaq" :key="module.id">
                         <details>
-                        <summary class="faq_question"> {{ module.question }} </summary>
-                        <p class="faq_question_hidden"> {{ module.reponse }} </p>
+                        <summary class="faq_question"> {{ module.question }}<a></a> </summary>
+                        <p class="faq_question_hidden"> {{ module.reponse }}<a></a></p>
                         </details>
                     </li>
                 </ul>

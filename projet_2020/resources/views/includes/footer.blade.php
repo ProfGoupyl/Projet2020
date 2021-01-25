@@ -1,1 +1,1 @@
-<div id="copyright text-right">© Copyright 2020 Front-end MGR</div>
+<div id="copyright text-right" class="footer">© Copyright 2020 Front-end MGR</div>
