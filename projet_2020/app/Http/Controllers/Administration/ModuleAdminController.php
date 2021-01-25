@@ -22,17 +22,21 @@ class ModuleAdminController extends Controller
 
     public function destroy(Module $module)
     {
-        $modules = Cours::find($modules->cours->id)->modules;
+        
+         $modules = Cours::find($module->cours->id)->modules;
+         
+         $order_old= $module->ordre;
 
-        $order_old= $module->ordre;
+         
+         foreach($modules as $m){
+             if($m->ordre > $module->ordre ){
+                 $m->ordre--;
+                 $m->save();
+           }
+         }
 
-        foreach($modules as $m){
-            if($m->ordre > $module->ordre ){
-                $m->ordre--;
-                $m->save();
-            }
-        }
-
+        $module->delete();
+        return redirect('/admin/cours/'. $module->cours->id);
 
     }
 

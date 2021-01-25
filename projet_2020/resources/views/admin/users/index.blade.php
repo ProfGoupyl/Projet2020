@@ -44,7 +44,7 @@
     </form>
 
     <div class="col-12">
-        <table>
+        <table class='listecours'>
             <thead>
                 <tr>
                     <th>Nom</th>

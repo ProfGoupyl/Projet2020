@@ -23,7 +23,7 @@
 
 <section>
     <h1>Liste des cours</h1>
-    <button class='addCours'>Add</button>
+    <!-- <button class='addCours'>Add</button>
     <div id='addCours'>
         <form action='/admin/cours' method='POST'>
             @csrf
@@ -42,7 +42,7 @@
             <div>
                 <input type="submit" value="Ajouter!">
             </div>
-        </form>
+        </form> -->
     </div>
 
     <table class="listecours">

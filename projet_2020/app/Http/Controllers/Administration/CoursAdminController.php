@@ -63,15 +63,6 @@ class CoursAdminController extends Controller
                 $cours->fin_du_cours = 'pas de fin de cours';
             }
     
-        
-            
-        
-
-
-
-       
-
-
         $cours->save();
         return redirect('/admin/cours');
     }
