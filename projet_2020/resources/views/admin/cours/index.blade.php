@@ -1,124 +1,81 @@
-<style>
-    #addCours {
-        display: none;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: lightgrey;
-        padding: 25px;
-        border-radius: 5px;
+@extends('layouts.default')
+@section('content')
+<section>
+    <h1>Liste des cours</h1>
+    <button id='modal-open'>Add</button>
+    <div id='modal' style="display:none;">
+        <i id="modal-close" class="fas fa-times"></i>
+        <form action='/admin/cours' method='POST'>
+            @csrf
+            <div>
+                <label for="name">Entrer le titre </label>
+                <input type="text" name="titre" id="name" required>
+            </div>
+            <div>
+                <label>debut du cours: </label>
+                <input type="date" name='debut_du_cours' required>
+            </div>
+            <div>
+                <label>fin du cours: </label>
+                <input type="date" name='fin_du_cours' required>
+            </div>
+            <div>
+                <input type="submit" value="Ajouter!">
+            </div>
+        </form>
+    </div>
 
-    }
-
-    #addCours.is-visible {
-        display: block;
-    }
-</style>
-
-
-<h1>Liste des cours</h1>
-<button class='addCours'>Add</button>
-
-<table>
-    <thead>
-        <tr>
-
-            <th>Titre</th>
-            <th>Debut du cours</th>
-            <th>Fin du cours</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($cours_list as $cours)
-
-        <tr>
-
-
-            <form action='/admin/cours/{{ $cours->id }}' method='post'>
-                @csrf
-                @method('put')
-                <td>
-                    <input class="input-{{$cours->id}}" style="background:none;border:none;color:black;" disabled value="{{$cours->titre}}" type="text" name="titre">
-                </td>
-                <td>
-
-                    <input class="input-{{$cours->id}}" style="background:none;border:none;color:black;" disabled value="{{$cours->debut_du_cours }}" type="date" name="debut_du_cours">
-                </td>
-
-                <td>
-                    <input class="input-{{$cours->id}}" style="background:none;border:none;color:black;" disabled value="{{$cours->fin_du_cours}}" type="date" name="fin_du_cours">
-                </td>
-
-                <td>
-                    <button type="button" data-target="{{$cours->id}}" class="modify">Modifer</button>
-                    <input style="display:none;" id="save-{{$cours->id}}" type="submit" value="Sauvegarder">
-                </td>
-
-            </form>
-            <td>
-                <form action='/admin/cours/{{ $cours->id }}' method="post">
+    <table class="listecours">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Debut du cours</th>
+                <th>Fin du cours</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($cours_list as $cours)
+            <tr>
+                <form action='/admin/cours/{{ $cours->id }}' method='post'>
                     @csrf
-                    @method('delete')
-                    <input type='submit' value='Supprimer'>
+                    @method('put')
+                    <td>
+                        <input class="input-{{$cours->id}} line-input" style="background:none;border:none;color:black;" disabled value="{{$cours->titre}}" type="text" name="titre">
+                    </td>
+                    <td>
+
+                        <input class="input-{{$cours->id}} line-input" style="background:none;border:none;color:black;" disabled value="{{$cours->debut_du_cours }}" type="date" name="debut_du_cours">
+                    </td>
+
+                    <td>
+                        <input class="input-{{$cours->id}} line-input" style="background:none;border:none;color:black;" disabled value="{{$cours->fin_du_cours}}" type="date" name="fin_du_cours">
+                    </td>
+
+                    <td>
+                        <button type="button" data-target="{{$cours->id}}" class="modify-btn">Modifer</button>
+                        <input class="save-btn" style="display:none;" id="save-{{$cours->id}}" type="submit" value="Sauvegarder">
+                    </td>
                 </form>
-            </td>
-            <td>
-                <a href='/admin/cours/{{$cours->id}}'>show</a>
-            </td>
+                <td>
+                    <form action='/admin/cours/{{ $cours->id }}' method="post">
+                        @csrf
+                        @method('delete')
+                        <input type='submit' value='Supprimer'>
+                    </form>
+                </td>
+                <td>
+                    <a href='/admin/cours/{{$cours->id}}'>show</a>
+                </td>
 
 
-        </tr>
+            </tr>
 
-        @endforeach
-    </tbody>
-</table>
+            @endforeach
+        </tbody>
+    </table>
 
-<div id='addCours'>
-    <form action='/admin/cours' method='POST'>
-        @csrf
-        <div>
-            <label for="name">Entrer le titre </label>
-            <input type="text" name="titre" id="name" required>
-        </div>
-        <div>
-            <label>debut du cours: </label>
-            <input type="date" name='debut_du_cours' required>
-        </div>
-        <div>
-            <label>fin du cours: </label>
-            <input type="date" name='fin_du_cours' required>
-        </div>
-        <div>
-            <input type="submit" value="Ajouter!">
-        </div>
-    </form>
 
-</div>
 
-<script>
-    const btnAddUser = document.querySelector('.addCours');
-    const addUser = document.querySelector('#addCours');
-    btnAddUser.addEventListener('click', () => {
-        addUser.classList.toggle('is-visible');
-    })
-</script>
-
-<script>
-    const modifyBtnList = document.querySelectorAll('.modify');
-    modifyBtnList.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const idTarget = btn.dataset.target;
-            const inputs = document.querySelectorAll(`.input-${idTarget}`);
-            const saveBtn = document.querySelector(`#save-${idTarget}`)
-            inputs.forEach(input => {
-                input.style.border = "1px solid black";
-                input.style.backgroundColor = "#f3f3f3";
-                input.disabled = false;
-            });
-            btn.style.display = "none";
-            saveBtn.style.display = "inherit";
-        })
-    })
-</script>
+</section>
+@stop

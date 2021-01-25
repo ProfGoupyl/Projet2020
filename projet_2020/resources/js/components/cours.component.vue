@@ -1,11 +1,11 @@
 <template>
     <div>
-        <section>
-            <aside>
+        <section class="section_page_cours" >
+            <aside class="aside_page_cours">
                 <nav class="navSecondaire">
                     <ul>
                         <li> 
-                            <div v-for="names in coursNames" :key="names.id">
+                            <div v-for="names in coursNames" :key="names.id" class="navSecondaire_coursName">
                                 <span v-show="coursId === names.id">
                                     Cours : {{ names.titre }}
                                     <ul v-for="module in moduleList" :key="module.titre">
@@ -19,11 +19,9 @@
                     </ul>
                 </nav> 
             </aside>
-            <div>
-                <article v-if="moduleId">
-                    <Session :key="componentKey" v-bind:user-infos="this.userInfos"></Session>
-                </article>
-            </div>
+            <article v-if="moduleId">
+                <Session :key="componentKey" v-bind:user-infos="this.userInfos"></Session>
+            </article>
         </section>
     </div>
 </template>

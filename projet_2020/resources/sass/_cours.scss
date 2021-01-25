@@ -1,0 +1,56 @@
+/*--------------- Fichier _cours.scss ---------------*/
+.section_page_cours {
+    display: flex;
+    flex: 1;
+    margin: 0.5em 1em;
+    .aside_page_cours {
+        border-radius: 7px;
+        height: auto;
+        flex-basis: 25%;
+        background-color: $superlightgray;
+        margin: 0 1em 0 0;
+    }
+    .navSecondaire {
+        li {
+            list-style-type: none;
+            a {
+                color: $gray;
+                text-decoration: none;
+                &:hover {
+                    color: $main;
+                }
+            }
+        }
+    }
+    .navSecondaire_coursName {
+        padding: 1em;
+        li {
+            list-style-type: none;
+        }
+    }
+    article {
+        flex-basis: 75%;
+        background-color: $smoke;
+        border-radius: 5px;
+        padding: 1em;
+        p {
+            padding: 5%;
+        }
+    }
+}
+
+@media all and (max-width: 900px) {
+    .section_page_cours {
+        display: block;
+        .aside_page_cours {
+            height: auto;
+            width: 100%;
+            background: $superlightgray;
+        }
+        .navSecondaire_coursName {
+            width: 100%;
+        }
+    }
+}
+
+/*--------------- Fichier _cours.scss - FIN ----------*/

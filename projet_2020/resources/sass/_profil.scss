@@ -1,9 +1,15 @@
+section .prof{
+    padding: 4%;
+    button:first-of-type::after{
+        content: ' Modifier';
+    }
+}
 form.userProfil {
-    width: 70%;
+    width: 100%;
     margin: 0 auto;
     display: flex;
     flex-flow: row wrap;
-    //justify-content: space-between;
+    justify-content: space-evenly;
     div{
         flex-basis: 49%;
         p{
@@ -29,9 +35,6 @@ form.userProfil {
                 clear: both;
             }
         }
-    }
-    button:first-of-type::after{
-        content: ' Modifier';
     }
 }
 
