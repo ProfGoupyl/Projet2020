@@ -46,23 +46,22 @@ class CoursAdminController extends Controller
 
         $date = date('y-m-d');
         $new = strtotime($date);
-    
-        
+
+
         $cours->titre = $request->has('titre') && strlen($request->titre) ? $request->titre : "Pas de titre";
 
-        if($request->has('debut_du_cours') && strlen($request->debut_du_cours) && strtotime($request->debut_du_cours) > $new ) {
-                $cours->debut_du_cours= $request->debut_du_cours;
-            }else{
-                $cours->debut_du_cours = 'pas de debut de cours';
-            };
+        if ($request->has('debut_du_cours') && strlen($request->debut_du_cours) && strtotime($request->debut_du_cours) > $new) {
+            $cours->debut_du_cours = $request->debut_du_cours;
+        } else {
+            $cours->debut_du_cours = 'pas de debut de cours';
+        };
 
 
-        if($request->has('fin_du_cours') && strlen($request->fin_du_cours) && strtotime($request->fin_du_cours) > strtotime($request->debut_du_cours)){
-                $cours->fin_du_cours= $request->fin_du_cours;
-            }else{
-                $cours->fin_du_cours = 'pas de fin de cours';
-            }
-    
+        if ($request->has('fin_du_cours') && strlen($request->fin_du_cours) && strtotime($request->fin_du_cours) > strtotime($request->debut_du_cours)) {
+            $cours->fin_du_cours = $request->fin_du_cours;
+        } else {
+            $cours->fin_du_cours = 'pas de fin de cours';
+        }
         $cours->save();
         return redirect('/admin/cours');
     }
@@ -93,7 +92,6 @@ class CoursAdminController extends Controller
      */
     public function edit($id)
     {
-
     }
 
     /**

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <section>
+        <section class="prof">
             <h1>Votre profil:</h1>
             <form v-on:submit.prevent="submit" method="patch" class="userProfil">
                 <input type="hidden" name="_token" v-bind:value="token">
@@ -24,23 +24,9 @@
                         <img src="" alt="" class="UserImage" width="50px" height="50px">
                     </p>
                     <p>
-                        <label for="downloadPicture">Nouvelle photo de profil:</label>
-                        <input type="file" accept="image/jpeg, image/png" @change="selectImage">
+                        <input type="file" @change="selectImage">
+                        <button @click="uploadImage">Envoyer</button>
                     </p>
-                <!--
-                <div>
-                    <form method="post" id="formImg" action="" enctype="multipart/form-data" >
-                        <input type="hidden" name="_token" v-bind:value="token">
-                        <div>
-                            <label for="image">Sélectionner votre image:</label>
-                            <input type="file" name="image" id="image">
-                        </div>
-                        <div>
-                            <input type="submit" value="Envoyer votre image">
-                        </div>
-                    </form> 
-                </div>
-                -->              
                 </div>
             </form>
 
@@ -63,6 +49,7 @@
         data() {
             return {
                 token: document.querySelector('#token').getAttribute('content'),
+                url: document.querySelector('#envUrl').getAttribute('content'),
                 userId: this.userInfos.id,
                 userName: this.userInfos.name,
                 userPrenom: this.userInfos.prenom,
@@ -70,11 +57,13 @@
                 userPseudo: this.userInfos.pseudo,
                 userPhoto: null,
                 send: null,
+                uploadSucces: false,
+                uploadFail: false,
             }
         },
         methods: {
             submit() {
-                axios.patch(`http://localhost:8000/api/users/${this.userInfos.id}/?api_token=${this.userInfos.api_token}`
+                axios.patch(`${this.url}/api/users/${this.userInfos.id}/?api_token=${this.userInfos.api_token}`
                 , {
                     name: this.userName,
                     prenom: this.userPrenom,
@@ -87,13 +76,21 @@
             selectImage(event) {
                 this.userPhoto = event.target.files[0]
             },
-            imageUpload() {
-                const data = new FormData()
-                data.append('image', this.userPhoto, `user${this.userId}`)
-                axios.post('', data)
-                    .then(response => console.log(response))
-                    .catch(error => console.log(error))
+            uploadImage() {
+                const fd = new FormData()
+                fd.append('user_image', this.userPhoto, `user${this.userId}`)
+                console.log(fd)
+                axios.post('', fd, {
+                    header: {
+                        'Content-Type': 'multiple/form-data'
+                    }
+                })
+                .then(response => console.log(response))
+                .catch(error => console.log(error))
             }
+        },
+        mounted() {
+            console.log()
         }
     }
 </script>

@@ -1,9 +1,11 @@
 <!doctype html>
 <html>
+
 <head>
     @include('includes.head')
-    
+
 </head>
+
 <body>
     <div>
         <header>
@@ -31,5 +33,15 @@
             });
         });
     </script>
+    @if(\Request::is('admin/cours') || \Request::is('admin/users'))
+    <script src="{{ asset('js/admin/lineModify.js') }}"></script>
+    <script src="{{ asset('js/admin/modal.js') }}"></script>
+    @endif
+    @if(\Request::is('admin/cours/*'))
+    <script src="{{ asset('js/admin/dragAndDrop.js') }}"></script>
+    <script src="{{ asset('js/admin/coursEdit.js') }}"></script>
+    @endif
+
 </body>
+
 </html>

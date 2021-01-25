@@ -42,7 +42,7 @@ class ModuleAdminController extends Controller
 
     public function update(Request $request, $id)
     {
-            $module = Module::find($id);
+        $module = Module::find($id);
         if (!$request->request->get('general-data')) {
             // Récupération du module dont l'odre a été modifié ainsi que du cours d'où l'on vient
 
@@ -75,7 +75,6 @@ class ModuleAdminController extends Controller
             // Change l'odre du module choisis pour sa nouvelle valeur
             $module->ordre = $order_new;
             $module->save();
-
         } else {
             // Modification des données d'un module
             $module->titre = $request->has('titre') && strlen($request->titre) ? $request->titre : $module->titre;
@@ -85,12 +84,13 @@ class ModuleAdminController extends Controller
         }
         // Redirection vers la page du cours concerné
         return redirect('/admin/cours/' . $request->request->get('cours'));
-
     }
 
-    public function store(Request $request,$id){
+    public function store(Request $request)
+    {
         $module = new Module;
-        $cours = Cours::find($id)->module;
+        $cours = Cours::find($request->request->get('cours'))->module;
+        dd($cours);
         $module->cours_id = $cours;
 
         $module->titre = $request->has('titre') && strlen($request->titre) ? $request->titre : $module->titre;
@@ -100,16 +100,5 @@ class ModuleAdminController extends Controller
         $module->save();
 
         return redirect('/admin/cours');
-
-        
-
-
-
-
-
-
     }
-
-
-
 }

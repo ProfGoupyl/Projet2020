@@ -5,8 +5,8 @@
                 <ul class="faq">
                     <li v-for="module in filterFaq" :key="module.id">
                         <details>
-                        <summary class="faq_question"> {{ module.question }} </summary>
-                        <p class="faq_question_hidden"> {{ module.reponse }} </p>
+                        <summary class="faq_question"> {{ module.question }}<a></a> </summary>
+                        <p class="faq_question_hidden"> {{ module.reponse }}<a></a></p>
                         </details>
                     </li>
                 </ul>
@@ -21,11 +21,12 @@
             return {
                 faqList: [],
                 moduleId: JSON.parse(sessionStorage.getItem('moduleid')),
+                url: document.querySelector('#envUrl').getAttribute('content'),
             }
         },
         created() {
             axios
-                .get(`http://localhost:8000/api/faq?api_token=${this.userInfos.api_token}`)
+                .get(`${this.url}/api/faq?api_token=${this.userInfos.api_token}`)
                 .then(response => (this.faqList = response.data))
                 .catch(error => console.log(error))
         },

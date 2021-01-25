@@ -6,12 +6,15 @@ $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 */
 header nav.navPrincipale ul {
-  margin: 1% 4% 1% auto;
+  margin: 1% auto 2%;
+  padding: 1%;
+  border-radius: 5px;
   display: flex;
   flex-flow: row wrap;
   align-items: center;
   list-style-type: none;
   justify-content: space-between;
+  background-color: #ffffff;
 }
 
 header nav.navPrincipale ul li {
@@ -43,7 +46,7 @@ header nav.navPrincipale ul li a {
 }
 
 header nav.navPrincipale ul li a:hover {
-  color: #808080;
+  color: #4A3DC3;
 }
 
 header nav.navPrincipale ul li figure {
@@ -66,7 +69,6 @@ header nav.navPrincipale ul li ul.sous {
   width: 120px;
   margin-top: 0px;
   padding: 10px;
-  background-color: #ffffff;
 }
 
 header nav.navPrincipale ul li ul.sous li p {
@@ -82,7 +84,7 @@ header nav.navPrincipale ul li ul.sous li p {
 
 .items::after {
   position: absolute;
-  content: '';
+  content: "";
   left: 0;
   bottom: 5px;
   height: 2px;
@@ -101,7 +103,7 @@ header nav.navPrincipale ul li ul.sous li p {
 }
 
 .hide i:before {
-  content: '\F00D';
+  content: "\F00D";
 }
 
 /* VERSION MOBILE */
@@ -137,7 +139,7 @@ header nav.navPrincipale ul li ul.sous li p {
 }
 
 .listecours thead {
-  background-color: #d4d4d4;
+  background-color: #ececec;
 }
 
 .listecours thead tr th {
@@ -161,7 +163,7 @@ header nav.navPrincipale ul li ul.sous li p {
 
 .listecours tbody tr td {
   padding: 1%;
-  border-bottom: 1px solid #d4d4d4;
+  border-bottom: 1px solid #ececec;
 }
 
 .listecours tbody tr td a {
@@ -175,13 +177,21 @@ header nav.navPrincipale ul li ul.sous li p {
 }
 
 .listecours tbody tr:hover {
-  background-color: #ececec;
+  background-color: #fafafa;
 }
 
 /*--------------- Fichier _user.scss - FIN ----------*/
 
+section .prof {
+  padding: 4%;
+}
+
+section .prof button:first-of-type::after {
+  content: ' Modifier';
+}
+
 form.userProfil {
-  width: 70%;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-flow: row wrap;
@@ -189,7 +199,7 @@ form.userProfil {
 }
 
 form.userProfil div {
-  flex-basis: 40%;
+  flex-basis: 49%;
 }
 
 form.userProfil div p {
@@ -222,10 +232,6 @@ form.userProfil div p img {
   clear: both;
 }
 
-button:first-of-type::after {
-  content: ' Modifier';
-}
-
 @media all and (max-width: 900px) {
   form.userProfil {
     width: 90%;
@@ -250,23 +256,32 @@ button:first-of-type::after {
 /*--------------- Fichier _faq.scss ---------------*/
 
 .faq {
-  margin: 10px 5px 10px 5px;
-  padding: 10px 5px 10px 5px;
+  padding: 1%;
 }
 
 .faq li {
   list-style-type: none;
 }
 
+.faq li details {
+  display: flex;
+}
+
 .faq li details .faq_question {
+  padding: 1%;
+  color: #808080;
+  border-radius: 5px;
   font-weight: 700;
-  margin: 10px 5px 10px 5px;
-  padding: 10px 5px 10px 5px;
+  background-color: #ececec;
   cursor: pointer;
 }
 
+.faq li details .faq_question:hover {
+  color: #000000;
+}
+
 .faq li details .faq_question_hidden {
-  padding: 0px 30px;
+  padding: 1%;
 }
 
 .faq li details summary {
@@ -276,6 +291,20 @@ button:first-of-type::after {
 
 .faq li details summary::-webkit-details-marker {
   display: none;
+}
+
+.faq li details[open] > summary::after {
+  font-family: "FontAwesome";
+  position: relative;
+  float: right;
+  content: "\F068";
+}
+
+.faq li details > summary::after {
+  font-family: "FontAwesome";
+  position: relative;
+  float: right;
+  content: "\F067";
 }
 
 /*--------------- Fichier _faq.scss - FIN ----------*/
@@ -289,34 +318,43 @@ button:first-of-type::after {
 }
 
 .section_page_cours .aside_page_cours {
+  border-radius: 7px;
   height: auto;
   flex-basis: 25%;
-  background: #d4d4d4;
+  background-color: #ececec;
   margin: 0 1em 0 0;
-}
-
-.section_page_cours .navSecondaire_coursName {
-  flex-basis: 75%;
-}
-
-.section_page_cours .navSecondaire_coursName article:first-of-type {
-  margin: 0 0 1em 0;
 }
 
 .section_page_cours .navSecondaire li {
   list-style-type: none;
 }
 
-.navSecondaire_coursName {
+.section_page_cours .navSecondaire li a {
+  color: #808080;
+  text-decoration: none;
+}
+
+.section_page_cours .navSecondaire li a:hover {
+  color: #000000;
+}
+
+.section_page_cours .navSecondaire_coursName {
   padding: 1em;
 }
 
-.navSecondaire_coursName li {
+.section_page_cours .navSecondaire_coursName li {
   list-style-type: none;
 }
 
-.module_page_cours {
-  width: 450px;
+.section_page_cours article {
+  flex-basis: 75%;
+  background-color: #fafafa;
+  border-radius: 5px;
+  padding: 1em;
+}
+
+.section_page_cours article p {
+  padding: 5%;
 }
 
 @media all and (max-width: 900px) {
@@ -327,7 +365,7 @@ button:first-of-type::after {
   .section_page_cours .aside_page_cours {
     height: auto;
     width: 100%;
-    background: #d4d4d4;
+    background: #ececec;
   }
 
   .section_page_cours .navSecondaire_coursName {
@@ -344,29 +382,33 @@ button:first-of-type::after {
 }
 
 body {
-  max-width: 100%;
   min-height: 100vh;
-  background-color: #ffffff;
+  background-color: #f5f6f8;
+  width: 90%;
+  margin: 0 auto;
   color: #000000;
 }
 
 section {
   height: auto;
-  padding: 0 4%;
+  padding: 1%;
+  background-color: #ffffff;
+  border-radius: 5px;
+  margin: 0 auto;
 }
 
-section article {
-  flex-basis: auto;
-}
-
-section aside {
-  flex-basis: 20%;
+.footer {
+  background-color: #ffffff;
+  padding: 1%;
+  margin-bottom: 1%;
 }
 
 p,
 td,
 li,
-a {
+a,
+button,
+content {
   font-family: "Open Sans", sans-serif;
   font-size: 0.9rem;
   font-weight: normal;
@@ -384,17 +426,50 @@ tr,
   font-weight: bold;
   line-height: 1.8;
   text-align: center;
+  padding: 1%;
+}
+
+h1 {
+  text-align: left;
+}
+
+button,
+button a {
+  text-decoration: none;
+  line-height: 1.4;
 }
 
 button {
-  padding: 0.8em;
-  margin: 1%;
+  padding: 0.6em;
+  margin: 1em;
   border-radius: 4px;
   text-decoration: none;
   text-align: center;
   background-color: #ffffff;
   cursor: pointer;
   outline: none;
+  color: #d4d4d4;
+  border: 2px solid #d4d4d4;
+}
+
+button a {
+  display: block;
+  color: #d4d4d4;
+}
+
+button a:hover,
+button a:focus {
+  color: #ffffff;
+}
+
+button:hover,
+button:focus {
+  background-color: #c7c7c7;
+  color: #ffffff;
+}
+
+button:active {
+  background-color: #4236b0;
 }
 
 #ajouter {
@@ -428,18 +503,18 @@ button {
 }
 
 #modifier {
-  color: #ffae18;
-  border: 2px solid #ffae18;
+  color: #4A3DC3;
+  border: 2px solid #4A3DC3;
 }
 
 #modifier:hover,
 #modifier:focus {
-  background-color: #ffae18;
+  background-color: #4A3DC3;
   color: #ffffff;
 }
 
 #modifier:active {
-  background-color: #fea500;
+  background-color: #4236b0;
 }
 
 form p {
@@ -455,6 +530,6 @@ form input {
 }
 
 form input:focus {
-  border-bottom: 2px solid #6574cd;
+  border-bottom: 2px solid #4A3DC3;
 }
 
