@@ -29,6 +29,7 @@
             return {
                 moduleList: [],
                 moduleId: JSON.parse(sessionStorage.getItem('moduleid')),
+                url: document.querySelector('#envUrl').getAttribute('content'),
             }
         },
         computed: {
@@ -38,7 +39,7 @@
         },
         created() {
             axios
-                .get(`http://localhost:8000/api/module?api_token=${this.userInfos.api_token}`)
+                .get(`${this.url}/api/module?api_token=${this.userInfos.api_token}`)
                 .then(response => (this.moduleList = response.data))
                 .catch(error => console.log(error))
         },

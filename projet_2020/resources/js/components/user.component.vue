@@ -29,12 +29,13 @@
         props: ['userInfos'],
         data() {
             return {
+                url: document.querySelector('#envUrl').getAttribute('content'),
                 cours: [],
             }
         },
         created() {
             axios
-                .get(`http://localhost:8000/api/users/formations/${this.userInfos.id}?api_token=${this.userInfos.api_token}`)
+                .get(`${this.url}/api/users/formations/${this.userInfos.id}?api_token=${this.userInfos.api_token}`)
                 .then(response => {
                     let data = response.data
                     for(let i = 0; i < data.length; i++) {

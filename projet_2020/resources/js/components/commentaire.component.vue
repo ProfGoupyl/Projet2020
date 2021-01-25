@@ -20,13 +20,14 @@
                 posts: { text: null},
                 userId: this.userInfos.id,
                 apiToken: this.userInfos.api_token,
+                url: document.querySelector('#envUrl').getAttribute('content'),
             }
         },
         
         methods: {
             postData(e)
             {
-                this.axios.post(`http://localhost:8000/commentaires`, this.posts)
+                this.axios.post(`${this.url}/commentaires`, this.posts)
                 .then((result)=>{
                     console.warn(result)
                 })

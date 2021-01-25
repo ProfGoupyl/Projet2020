@@ -2,6 +2,7 @@
 <meta name="description" content="">
 <meta name="author" content="Scotch">
 <meta id="token" name="token" content="{{ csrf_token() }}">
+<meta id="envUrl" name="envUrl" content="{{ env('APP_URL') }}">
 
 <title>Homepage</title>
 

@@ -21,11 +21,12 @@
             return {
                 faqList: [],
                 moduleId: JSON.parse(sessionStorage.getItem('moduleid')),
+                url: document.querySelector('#envUrl').getAttribute('content'),
             }
         },
         created() {
             axios
-                .get(`http://localhost:8000/api/faq?api_token=${this.userInfos.api_token}`)
+                .get(`${this.url}/api/faq?api_token=${this.userInfos.api_token}`)
                 .then(response => (this.faqList = response.data))
                 .catch(error => console.log(error))
         },

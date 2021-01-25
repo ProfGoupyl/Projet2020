@@ -49,6 +49,7 @@
         data() {
             return {
                 token: document.querySelector('#token').getAttribute('content'),
+                url: document.querySelector('#envUrl').getAttribute('content'),
                 userId: this.userInfos.id,
                 userName: this.userInfos.name,
                 userPrenom: this.userInfos.prenom,
@@ -62,7 +63,7 @@
         },
         methods: {
             submit() {
-                axios.patch(`http://localhost:8000/api/users/${this.userInfos.id}/?api_token=${this.userInfos.api_token}`
+                axios.patch(`${this.url}/api/users/${this.userInfos.id}/?api_token=${this.userInfos.api_token}`
                 , {
                     name: this.userName,
                     prenom: this.userPrenom,
@@ -78,6 +79,7 @@
             uploadImage() {
                 const fd = new FormData()
                 fd.append('user_image', this.userPhoto, `user${this.userId}`)
+                console.log(fd)
                 axios.post('', fd, {
                     header: {
                         'Content-Type': 'multiple/form-data'
@@ -86,6 +88,9 @@
                 .then(response => console.log(response))
                 .catch(error => console.log(error))
             }
+        },
+        mounted() {
+            console.log()
         }
     }
 </script>
