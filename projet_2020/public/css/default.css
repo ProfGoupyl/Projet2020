@@ -1,320 +1,421 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;
-
-500&family=Open+Sans:wght@300;400;600&display=swap%27);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Nunito);
+@import url(https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500&family=Open+Sans:wght@300;400;600&display=swap%27);
+@charset "UTF-8";
 
 /*
 $font-family-sans-serif: 'Nunito', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 */
-header .navPrincipale ul {
-  margin: 1% 4% 1% auto;
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  padding: 0;
-  list-style-type: none;
-  justify-content: space-between;
+header nav.navPrincipale ul {
+    margin: 1% auto 2%;
+    padding: 1%;
+    border-radius: 5px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    list-style-type: none;
+    justify-content: space-between;
+    background-color: #ffffff;
 }
 
-header .navPrincipale ul li {
-  cursor: pointer;
+header nav.navPrincipale ul li {
+    cursor: pointer;
 }
 
-header .navPrincipale ul li img.logo {
-  text-align: left;
-  width: 210px;
-  position: relative;
-  left: -27px;
+header nav.navPrincipale ul li img.logo {
+    text-align: left;
+    width: 210px;
+    position: relative;
+    left: -27px;
 }
 
-header .navPrincipale ul li:first-of-type {
-  flex-basis: 60%;
-  cursor: default;
+header nav.navPrincipale ul li:first-of-type {
+    flex-basis: 60%;
+    cursor: default;
 }
 
-header .navPrincipale ul li i {
-  font-size: 23px;
-  color: #000000;
+header nav.navPrincipale ul li i {
+    font-size: 23px;
+    color: #000000;
 }
 
-header .navPrincipale ul li .btn {
-  display: none;
+header nav.navPrincipale ul li a {
+    display: flex;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #000000;
 }
 
-header .navPrincipale ul li .btn .hide i:before {
-  content: "\F00D";
+header nav.navPrincipale ul li a:hover {
+    color: #4a3dc3;
 }
 
-header .navPrincipale ul li a {
-  display: flex;
-  text-decoration: none;
-  text-transform: uppercase;
-  color: #000000;
+header nav.navPrincipale ul li figure {
+    display: flex;
+    width: auto;
 }
 
-header .navPrincipale ul li a:hover {
-  color: #808080;
+header nav.navPrincipale ul li figure img {
+    width: 120px;
 }
 
-header .navPrincipale ul li figure {
-  display: flex;
-  width: auto;
+header nav.navPrincipale ul li:hover ul.sous {
+    display: block;
+    max-height: 50em;
 }
 
-header .navPrincipale ul li figure img {
-  width: 120px;
+header nav.navPrincipale ul li ul.sous {
+    display: none;
+    position: absolute;
+    width: 120px;
+    margin-top: 0px;
+    padding: 10px;
 }
 
-header .navPrincipale ul li:hover .sous {
-  display: block;
-  max-height: 50em;
+header nav.navPrincipale ul li ul.sous li p {
+    font-size: 0.7em;
 }
 
-header .navPrincipale ul li .sous {
-  display: none;
-  position: absolute;
-  width: 120px;
-  margin-top: 0px;
-  padding: 10px;
-  background-color: #ffffff;
+.items {
+    position: relative;
+    width: auto;
+    text-align: center;
+    order: 3;
 }
 
-header .navPrincipale ul li .sous li p {
-  font-size: 0.7em;
+.items::after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 5px;
+    height: 2px;
+    width: 100%;
+    opacity: 0;
+    transition: all 0.2s linear;
 }
 
-header .navPrincipale ul li .items {
-  position: relative;
-  text-align: center;
+.items:hover::after {
+    opacity: 5;
+    bottom: 1px;
 }
 
-header .navPrincipale ul li .items::after {
-  position: absolute;
-  content: "";
-  left: 0;
-  bottom: 5px;
-  height: 2px;
-  width: 100%;
-  opacity: 0;
-  transition: all 0.2s linear;
+.burger {
+    display: none;
 }
 
-header .navPrincipale ul li .items:hover::after {
-  opacity: 5;
-  bottom: 1px;
+.hide i:before {
+    content: "\F00D";
 }
 
 /* VERSION MOBILE */
 
 @media all and (max-width: 900px) {
-  nav ul li figure {
-    display: none;
-  }
+    nav ul li.items {
+        width: 100%;
+        display: none;
+    }
 
-  nav ul li .items {
-    width: 100%;
-    display: block;
-  }
+    nav ul li.items.show {
+        display: block;
+    }
 
-  nav ul li .items .show {
-    display: block;
-  }
+    nav ul li.burger {
+        display: block;
+    }
 
-  nav ul li .btn {
-    display: block;
-  }
+    nav ul li figure {
+        display: block;
+    }
 
-  nav ul li .sous {
-    margin-top: 5px;
-    margin-left: 150px;
-  }
+    .sous {
+        margin-top: 5px;
+        margin-left: 150px;
+    }
 }
 
 /*--------------- Fichier _user.scss ---------------*/
 
 .listecours {
-  width: 100%;
-  padding: 4%;
+    width: 100%;
 }
 
 .listecours thead {
-  background-color: #d4d4d4;
+    background-color: #ececec;
 }
 
 .listecours thead tr th {
-  padding: 1%;
+    padding: 1%;
 }
 
 .listecours thead tr th:nth-of-type(1) {
-  text-align: left;
-  font-weight: bolder;
+    text-align: left;
+    font-weight: bolder;
 }
 
 .listecours thead tr th:nth-of-type(2 + 1n) {
-  text-align: center;
-  width: 12%;
+    text-align: center;
+    width: 12%;
 }
 
 .listecours tbody tr:hover td a,
 .listecours tbody tr:hover td p {
-  color: #000000;
+    color: #000000;
 }
 
 .listecours tbody tr td {
-  padding: 1%;
-  border-bottom: 1px solid #d4d4d4;
+    padding: 1%;
+    border-bottom: 1px solid #ececec;
 }
 
 .listecours tbody tr td a {
-  text-decoration: none;
-  color: #808080;
+    text-decoration: none;
+    color: #808080;
 }
 
 .listecours tbody tr td p {
-  text-align: center;
-  color: #808080;
+    text-align: center;
+    color: #808080;
 }
 
 .listecours tbody tr:hover {
-  background-color: #ececec;
+    background-color: #fafafa;
 }
 
 /*--------------- Fichier _user.scss - FIN ----------*/
 
+section .prof {
+    padding: 4%;
+}
+
+section .prof button:first-of-type::after {
+    content: " Modifier";
+}
+
 form.userProfil {
-  width: 70%;
-  margin: 0 auto;
-  display: flex;
-  flex-flow: row wrap;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
 }
 
 form.userProfil div {
-  flex-basis: 49%;
+    flex-basis: 49%;
 }
 
 form.userProfil div p {
-  height: auto;
-  padding: 10px;
+    height: auto;
+    padding: 10px;
 }
 
 form.userProfil div p label {
-  width: 100%;
-  height: 100px;
-  line-height: 2;
+    width: 100%;
+    height: 100px;
+    line-height: 2;
 }
 
-form.userProfil div p label[for=currentPicture],
-form.userProfil div p label[for=downloadPicture] {
-  display: none;
+form.userProfil div p label[for="currentPicture"],
+form.userProfil div p label[for="downloadPicture"] {
+    display: none;
 }
 
 form.userProfil div p input {
-  width: 100%;
+    width: 100%;
 }
 
-form.userProfil div p input[type=file] {
-  border: none;
+form.userProfil div p input[type="file"] {
+    border: none;
 }
 
 form.userProfil div p img {
-  width: 180px;
-  height: 180px;
-  clear: both;
-}
-
-form.userProfil button:first-of-type::after {
-  content: " Modifier";
+    width: 180px;
+    height: 180px;
+    clear: both;
 }
 
 @media all and (max-width: 900px) {
-  form.userProfil {
-    width: 90%;
-    justify-content: space-around;
-    display: flex;
-  }
+    form.userProfil {
+        width: 90%;
+        justify-content: space-around;
+        display: flex;
+    }
 
-  form.userProfil:not(button) {
-    justify-content: flex-start;
-  }
+    form.userProfil:not(button) {
+        justify-content: flex-start;
+    }
 
-  form.userProfil div {
-    flex-basis: 100%;
-  }
+    form.userProfil div {
+        flex-basis: 100%;
+    }
 
-  form.userProfil div:last-of-type {
-    margin: 0;
-    text-align: left;
-  }
+    form.userProfil div:last-of-type {
+        margin: 0;
+        text-align: left;
+    }
 }
 
 /*--------------- Fichier _faq.scss ---------------*/
 
 .faq {
-  margin: 10px 5px 10px 5px;
-  padding: 10px 5px 10px 5px;
+    padding: 1%;
 }
 
 .faq li {
-  list-style-type: none;
+    list-style-type: none;
+}
+
+.faq li details {
+    display: flex;
 }
 
 .faq li details .faq_question {
-  font-weight: 700;
-  margin: 10px 5px 10px 5px;
-  padding: 10px 5px 10px 5px;
-  cursor: pointer;
+    padding: 1%;
+    color: #808080;
+    border-radius: 5px;
+    font-weight: 700;
+    background-color: #ececec;
+    cursor: pointer;
+}
+
+.faq li details .faq_question:hover {
+    color: #000000;
 }
 
 .faq li details .faq_question_hidden {
-  padding: 0px 30px;
+    padding: 1%;
 }
 
 .faq li details summary {
-  list-style: none;
-  outline: none;
+    list-style: none;
+    outline: none;
 }
 
 .faq li details summary::-webkit-details-marker {
-  display: none;
+    display: none;
+}
+
+.faq li details[open] > summary::after {
+    font-family: "FontAwesome";
+    position: relative;
+    float: right;
+    content: "\F068";
+}
+
+.faq li details > summary::after {
+    font-family: "FontAwesome";
+    position: relative;
+    float: right;
+    content: "\F067";
 }
 
 /*--------------- Fichier _faq.scss - FIN ----------*/
 
+/*--------------- Fichier _cours.scss ---------------*/
+
+.section_page_cours {
+    display: flex;
+    flex: 1;
+    margin: 0.5em 1em;
+}
+
+.section_page_cours .aside_page_cours {
+    border-radius: 7px;
+    height: auto;
+    flex-basis: 25%;
+    background-color: #ececec;
+    margin: 0 1em 0 0;
+}
+
+.section_page_cours .navSecondaire li {
+    list-style-type: none;
+}
+
+.section_page_cours .navSecondaire li a {
+    color: #808080;
+    text-decoration: none;
+}
+
+.section_page_cours .navSecondaire li a:hover {
+    color: #000000;
+}
+
+.section_page_cours .navSecondaire_coursName {
+    padding: 1em;
+}
+
+.section_page_cours .navSecondaire_coursName li {
+    list-style-type: none;
+}
+
+.section_page_cours article {
+    flex-basis: 75%;
+    background-color: #fafafa;
+    border-radius: 5px;
+    padding: 1em;
+}
+
+.section_page_cours article p {
+    padding: 5%;
+}
+
+@media all and (max-width: 900px) {
+    .section_page_cours {
+        display: block;
+    }
+
+    .section_page_cours .aside_page_cours {
+        height: auto;
+        width: 100%;
+        background: #ececec;
+    }
+
+    .section_page_cours .navSecondaire_coursName {
+        width: 100%;
+    }
+}
+
+/*--------------- Fichier _cours.scss - FIN ----------*/
+
 * {
-  box-sizing: border-box;
-  margin: 0px;
-  padding: 0px;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
 }
 
 body {
-  max-width: 100%;
-  min-height: 100vh;
-  background-color: #ffffff;
-  color: #000000;
+    min-height: 100vh;
+    background-color: #f5f6f8;
+    width: 90%;
+    margin: 0 auto;
+    color: #000000;
 }
 
 section {
-  height: auto;
+    height: auto;
+    padding: 1%;
+    background-color: #ffffff;
+    border-radius: 5px;
+    margin: 0 auto;
 }
 
-section article {
-  flex-basis: auto;
-}
-
-section aside {
-  flex-basis: 20%;
+.footer {
+    background-color: #ffffff;
+    padding: 1%;
+    margin-bottom: 1%;
 }
 
 p,
 td,
 li,
-a {
-  font-family: "Open Sans", sans-serif;
-  font-size: 0.9rem;
-  font-weight: normal;
-  line-height: 1.6;
-  text-align: left;
+a,
+button,
+content {
+    font-family: "Open Sans", sans-serif;
+    font-size: 0.9rem;
+    font-weight: normal;
+    line-height: 1.6;
+    text-align: left;
 }
 
 h1,
@@ -322,82 +423,114 @@ h2,
 h3,
 tr,
 .navPrincipale a {
-  font-family: "Fira Sans", sans-serif;
-  font-size: 1rem;
-  font-weight: bold;
-  line-height: 1.8;
-  text-align: center;
+    font-family: "Fira Sans", sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 1.8;
+    text-align: center;
+    padding: 1%;
+}
+
+h1 {
+    text-align: left;
+}
+
+button,
+button a {
+    text-decoration: none;
+    line-height: 1.4;
 }
 
 button {
-  padding: 0.8em;
-  margin: 1%;
-  border-radius: 4px;
-  text-decoration: none;
-  text-align: center;
-  background-color: #ffffff;
-  cursor: pointer;
-  outline: none;
+    padding: 0.6em;
+    margin: 1em;
+    border-radius: 4px;
+    text-decoration: none;
+    text-align: center;
+    background-color: #ffffff;
+    cursor: pointer;
+    outline: none;
+    color: #d4d4d4;
+    border: 2px solid #d4d4d4;
+}
+
+button a {
+    display: block;
+    color: #d4d4d4;
+}
+
+button a:hover,
+button a:focus {
+    color: #ffffff;
+}
+
+button:hover,
+button:focus {
+    background-color: #c7c7c7;
+    color: #ffffff;
+}
+
+button:active {
+    background-color: #4236b0;
 }
 
 #ajouter {
-  color: #82e922;
-  border: 2px solid #82e922;
+    color: #82e922;
+    border: 2px solid #82e922;
 }
 
 #ajouter:hover,
 #ajouter:focus {
-  background-color: #82e922;
-  color: #ffffff;
+    background-color: #82e922;
+    color: #ffffff;
 }
 
 #ajouter:active {
-  background-color: #75dc16;
+    background-color: #75dc16;
 }
 
 #supprimer {
-  color: #e92222;
-  border: 2px solid #e92222;
+    color: #e92222;
+    border: 2px solid #e92222;
 }
 
 #supprimer:hover,
 #supprimer:focus {
-  background-color: #e92222;
-  color: #ffffff;
+    background-color: #e92222;
+    color: #ffffff;
 }
 
 #supprimer:active {
-  background-color: #dc1616;
+    background-color: #dc1616;
 }
 
 #modifier {
-  color: #ffae18;
-  border: 2px solid #ffae18;
+    color: #4a3dc3;
+    border: 2px solid #4a3dc3;
 }
 
 #modifier:hover,
 #modifier:focus {
-  background-color: #ffae18;
-  color: #ffffff;
+    background-color: #4a3dc3;
+    color: #ffffff;
 }
 
 #modifier:active {
-  background-color: #fea500;
+    background-color: #4236b0;
 }
 
 form p {
-  height: 50px;
+    height: 50px;
 }
 
 form input {
-  width: 300px;
-  padding: 10px 10px 10px 0;
-  border: none;
-  border-bottom: 2px solid #d4d4d4;
-  outline: none;
+    width: 300px;
+    padding: 10px 10px 10px 0;
+    border: none;
+    border-bottom: 2px solid #d4d4d4;
+    outline: none;
 }
 
 form input:focus {
-  border-bottom: 2px solid #6574cd;
+    border-bottom: 2px solid #4a3dc3;
 }
-
