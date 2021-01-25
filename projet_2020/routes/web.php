@@ -91,3 +91,7 @@ require __DIR__ . '/auth.php';
 Route::get('test', function () {
     return View('pages.test');
 });
+
+Route::get('legal', function () {
+    return View('mentions legales.cookies');
+});

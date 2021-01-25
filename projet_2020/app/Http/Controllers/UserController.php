@@ -87,7 +87,12 @@ class UserController extends Controller
                 'cours_user.end_at as end_at')
         ->where('cours_user.user_id', '=', $user->id)
         ->orderBy('cours_user.start_at', 'asc')
-        ->get();  
+        ->get(); 
+        
+        
+        // $userCours = User::find($user->id)->cours;
+        // return $userCours;
+  
     }
 
     

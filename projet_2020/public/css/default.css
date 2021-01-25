@@ -84,7 +84,7 @@ header nav.navPrincipale ul li ul.sous li p {
 
 .items::after {
   position: absolute;
-  content: '';
+  content: "";
   left: 0;
   bottom: 5px;
   height: 2px;
@@ -103,7 +103,7 @@ header nav.navPrincipale ul li ul.sous li p {
 }
 
 .hide i:before {
-  content: '\F00D';
+  content: "\F00D";
 }
 
 /* VERSION MOBILE */
