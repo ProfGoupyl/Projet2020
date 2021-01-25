@@ -68,10 +68,8 @@
                     </form>
                 </td>
                 <td>
-                    <a href='/admin/cours/{{$cours->id}}'>show</a>
+                    <a id="show" href='/admin/cours/{{$cours->id}}'>show</a>
                 </td>
-
-
             </tr>
 
             @endforeach
