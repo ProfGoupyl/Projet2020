@@ -410,15 +410,88 @@ iframe {
 
 /*--------------- Fichier _cours.scss - FIN ----------*/
 
-.login {
-  margin: 4%;
-  background-color: #f5f6f8;
+.p {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
 }
 
-.login .loginform {
-  padding: 4%;
+.p .login {
+  width: 50%;
+  height: 70vh;
+  margin: 0 auto;
   background-color: #ffffff;
+  padding: 4%;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.p .login div div {
+  text-align: center;
+  padding: 0 0 3% 0;
+}
+
+.p .login div form.loginform {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+
+.p .login div form.loginform div {
+  height: auto;
+  padding: 10px;
+  flex-basis: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+
+.p .login div form.loginform div label {
+  flex-basis: 100%;
+  text-align: left;
+}
+
+.p .login div form.loginform div input {
+  flex-basis: 100%;
+}
+
+.p .login div form.loginform div.remember {
+  text-align: left;
+  width: 100%;
+}
+
+.p .login div form.loginform div.remember label {
+  width: 100%;
+  text-align: left;
+}
+
+.p .login div form.loginform div.remember label input {
+  text-align: left;
+  width: auto;
+}
+
+.p .login div form.loginform div.remember label span {
+  width: auto;
+}
+
+.p .login div form.loginform:last-of-type a {
+  flex-basis: 100%;
+  text-decoration: none;
+  color: #808080;
+}
+
+.p .login div form.loginform:last-of-type a:hover,
+.p .login div form.loginform:last-of-type a:focus {
+  color: #000000;
+}
+
+.p .login div form.loginform:last-of-type button {
+  align-items: flex-start;
 }
 
 * {
