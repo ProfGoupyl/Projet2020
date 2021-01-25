@@ -3899,8 +3899,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -4052,20 +4050,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['userInfos'],
   data: function data() {
@@ -4077,7 +4061,9 @@ __webpack_require__.r(__webpack_exports__);
       userEmail: this.userInfos.email,
       userPseudo: this.userInfos.pseudo,
       userPhoto: null,
-      send: null
+      send: null,
+      uploadSucces: false,
+      uploadFail: false
     };
   },
   methods: {
@@ -4098,10 +4084,14 @@ __webpack_require__.r(__webpack_exports__);
     selectImage: function selectImage(event) {
       this.userPhoto = event.target.files[0];
     },
-    imageUpload: function imageUpload() {
-      var data = new FormData();
-      data.append('image', this.userPhoto, "user".concat(this.userId));
-      axios.post('', data).then(function (response) {
+    uploadImage: function uploadImage() {
+      var fd = new FormData();
+      fd.append('user_image', this.userPhoto, "user".concat(this.userId));
+      axios.post('', fd, {
+        header: {
+          'Content-Type': 'multiple/form-data'
+        }
+      }).then(function (response) {
         return console.log(response);
       })["catch"](function (error) {
         return console.log(error);
@@ -61541,20 +61531,18 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", [
-        _vm.moduleId
-          ? _c(
-              "article",
-              [
-                _c("Session", {
-                  key: _vm.componentKey,
-                  attrs: { "user-infos": this.userInfos }
-                })
-              ],
-              1
-            )
-          : _vm._e()
-      ])
+      _vm.moduleId
+        ? _c(
+            "article",
+            [
+              _c("Session", {
+                key: _vm.componentKey,
+                attrs: { "user-infos": this.userInfos }
+              })
+            ],
+            1
+          )
+        : _vm._e()
     ])
   ])
 }
@@ -61591,11 +61579,13 @@ var render = function() {
           return _c("li", { key: module.id }, [
             _c("details", [
               _c("summary", { staticClass: "faq_question" }, [
-                _vm._v(" " + _vm._s(module.question) + " ")
+                _vm._v(" " + _vm._s(module.question)),
+                _c("a")
               ]),
               _vm._v(" "),
               _c("p", { staticClass: "faq_question_hidden" }, [
-                _vm._v(" " + _vm._s(module.reponse) + " ")
+                _vm._v(" " + _vm._s(module.reponse)),
+                _c("a")
               ])
             ])
           ])
@@ -61628,7 +61618,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("section", [
+    _c("section", { staticClass: "prof" }, [
       _c("h1", [_vm._v("Votre profil:")]),
       _vm._v(" "),
       _c(
@@ -61736,14 +61726,14 @@ var render = function() {
             _vm._m(0),
             _vm._v(" "),
             _c("p", [
-              _c("label", { attrs: { for: "downloadPicture" } }, [
-                _vm._v("Nouvelle photo de profil:")
-              ]),
-              _vm._v(" "),
               _c("input", {
-                attrs: { type: "file", accept: "image/jpeg, image/png" },
+                attrs: { type: "file" },
                 on: { change: _vm.selectImage }
-              })
+              }),
+              _vm._v(" "),
+              _c("button", { on: { click: _vm.uploadImage } }, [
+                _vm._v("Envoyer")
+              ])
             ])
           ])
         ]
@@ -74144,34 +74134,15 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js");
 
-__webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"); // Vue.js
+__webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
-
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js"); //import VueRouter from 'vue-router'
-//Vue.use(VueRouter)
-
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 Vue.component('cours', __webpack_require__(/*! ./components/cours.component */ "./resources/js/components/cours.component.vue")["default"]);
 Vue.component('faq', __webpack_require__(/*! ./components/faq.component */ "./resources/js/components/faq.component.vue")["default"]);
 Vue.component('modifyuser', __webpack_require__(/*! ./components/modify-user.component */ "./resources/js/components/modify-user.component.vue")["default"]);
 Vue.component('user', __webpack_require__(/*! ./components/user.component */ "./resources/js/components/user.component.vue")["default"]);
 Vue.component('session', __webpack_require__(/*! ./components/session.component */ "./resources/js/components/session.component.vue")["default"]);
-/* Vue router
-
-const routes = [
-    { path: '/user', component: require('./components/user.component.vue') },
-    { path: '/cours', component: require('./components/cours.component.vue') },
-    { path: '/faq', component: require('./components/faq.component.vue') },
-    { path: '/profile', component: require('./components/modify-user.component.vue') },
-    { path: '/session', component: require('./components/session.component.vue') }
-]
-
-const router = new VueRouter({
-    mode: 'history',
-    routes // raccourci pour `routes: routes`
-}) */
-
 new Vue({
-  //router,
   el: '#app'
 });
 
@@ -74665,10 +74636,10 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/app.scss */"./resources/sass/app.scss");
-__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })
