@@ -40,16 +40,17 @@
                 moduleList: [],
                 coursNames: [],
                 componentKey: 0,
+                url: document.querySelector('#envUrl').getAttribute('content'),
             }
         },
         created() {
             axios
-                .get(`http://localhost:8000/api/module?api_token=${this.userInfos.api_token}`)
+                .get(`${this.url}/api/module?api_token=${this.userInfos.api_token}`)
                 .then(response => (this.moduleList = _.orderBy(response.data, 'ordre', 'asc')))
                 .catch(error => console.log(error))
         
             axios
-                .get(`http://localhost:8000/api/cours?api_token=${this.userInfos.api_token}`)
+                .get(`${this.url}/api/cours?api_token=${this.userInfos.api_token}`)
                 .then(response => (this.coursNames = response.data))
                 .catch(error => console.log(error))
         },

@@ -39,6 +39,13 @@
     }
 }
 
+iframe{
+    max-width: 100%;
+    min-height: 200%;
+    display: block;
+
+}
+
 @media all and (max-width: 900px) {
     .section_page_cours {
         display: block;
@@ -52,5 +59,4 @@
         }
     }
 }
-
 /*--------------- Fichier _cours.scss - FIN ----------*/

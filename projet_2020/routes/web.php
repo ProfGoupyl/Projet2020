@@ -7,6 +7,7 @@ use App\Http\Controllers\CsvController;
 use App\Http\Controllers\Administration\UserAdminController;
 use App\Http\Controllers\Administration\ModuleAdminController;
 use App\Http\Controllers\Administration\FaqAdminController;
+use App\Http\Controllers\UploadImageController;
 
 
 
@@ -21,6 +22,8 @@ use App\Http\Controllers\Administration\FaqAdminController;
 |
 */
 
+// Route pour upload une image
+Route::post('uploadImage', [UploadImageController::class, 'upload']);
 
 
 Route::get('/', function () {
@@ -90,4 +93,8 @@ require __DIR__ . '/auth.php';
 
 Route::get('test', function () {
     return View('pages.test');
+});
+
+Route::get('legal', function () {
+    return View('mentions legales.cookies');
 });
