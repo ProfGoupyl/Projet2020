@@ -67,7 +67,8 @@
                             <input class="input-{{$user->id}} line-input" style="background:none;border:none;color:black;text-align:center;" disabled type="text" name="admin" value="{{ $user->admin }}">
                         </td>
                         <td>
-                            <button type="button" data-target="{{$user->id}}" id="modifier" class="modify-btn">Modifer</button>
+
+                            <button id="modifier" class="btn btn-primary" type="button" data-target="{{$user->id}}"><i class="fas fa-pen fa-lg"></i></button>
                             <input class="save-btn" style="display:none;" id="save-{{$user->id}}" type="submit" value="Sauvegarder">
                         </td>
                     </form>
@@ -76,7 +77,7 @@
                         <form action='/admin/users/{{ $user->id }}' method="post">
                             @csrf
                             @method('delete')
-                            <input type='submit' id="supprimer" value='Supprimer'>
+                            <button id="delete" class="btn btn-primary" type="submit"><i class="fas fa-trash-alt fa-lg"></i></button>
                         </form>
                     </td>
                 </tr>

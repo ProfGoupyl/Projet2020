@@ -89,16 +89,16 @@ class ModuleAdminController extends Controller
     public function store(Request $request)
     {
         $module = new Module;
-        $cours = Cours::find($request->request->get('cours'))->module;
-        dd($cours);
-        $module->cours_id = $cours;
+        $cours = Cours::find($request->request->get('cours'));
+
+        $module->cours_id = $cours->id;
 
         $module->titre = $request->has('titre') && strlen($request->titre) ? $request->titre : $module->titre;
         $module->description = $request->has('description') && strlen($request->description) ? $request->description : $module->description;
         $module->url_video = $request->has('url_video') && strlen($request->url_video) ? $request->url_video : $module->url_video;
-        $module->ordre = $request->has('ordre') && strlen($request->ordre) ? $request->ordre : $module->ordre;
+        $module->ordre = count($cours->modules);
         $module->save();
 
-        return redirect('/admin/cours');
+        return redirect('/admin/cours/' . $cours->id);
     }
 }

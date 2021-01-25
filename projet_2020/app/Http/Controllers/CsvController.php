@@ -85,7 +85,7 @@ class CsvController extends Controller
       $user->email = $email;
       $user->admin = false;
       $user->password = "undefined";
-      $user->api_token = $register_token;
+      $user->register_token = $register_token;
       $user->save();
 
       // ENVOI EMAIL
