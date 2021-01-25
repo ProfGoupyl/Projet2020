@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Commentaire;
+use App\Models\User;
+use App\Models\Module;
+use App\Models\Cours;
 use Illuminate\Http\Request;
 
 class CommentaireController extends Controller
@@ -35,14 +38,14 @@ class CommentaireController extends Controller
         $user_id = User::find($request->user_id);
         $module_id = Module::find($request->module_id);
         $cours_id = Cours::find($request->cours_id);
-        
-        if($user_id) {
+
+        if ($user_id) {
             $commentaire->user()->associate($cours_id);
         }
-        if($module_id) {
+        if ($module_id) {
             $commentaire->modules()->associate($module_id);
         }
-        if($cours_id) {
+        if ($cours_id) {
             $commentaire->cours()->associate($cours_id);
         }
 
