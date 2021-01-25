@@ -20,7 +20,7 @@
                 <input type="date" name='fin_du_cours' required>
             </div>
             <div>
-                <input type="submit" value="Ajouter!">
+                <button id="ajouter" class="btn btn-primary" type="submit"><i class="fas fa-plus fa-lg"></i></button>
             </div>
         </form>
     </div>
@@ -53,7 +53,8 @@
                     </td>
 
                     <td>
-                        <button type="button" data-target="{{$cours->id}}" class="modify-btn">Modifer</button>
+
+                        <button id="modifier" class="btn btn-primary" type="submit" data-target="{{$cours->id}}"><i class="fas fa-pen fa-lg"></i></button>
                         <input class="save-btn" style="display:none;" id="save-{{$cours->id}}" type="submit" value="Sauvegarder">
                     </td>
                 </form>
@@ -61,7 +62,9 @@
                     <form action='/admin/cours/{{ $cours->id }}' method="post">
                         @csrf
                         @method('delete')
-                        <input type='submit' value='Supprimer'>
+                        <div>
+                            <button id="delete" value='Supprimer' class="btn btn-primary" type="submit"><i class="fas fa-trash-alt fa-lg"></i></button>
+                        </div>
                     </form>
                 </td>
                 <td>
