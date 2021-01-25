@@ -12,4 +12,9 @@ Vue.component('session', require('./components/session.component').default)
 
 new Vue({
     el: '#app',
+    data() {
+        return {
+            url: document.querySelector('#envUrl').getAttribute('content'),
+        }
+    }
 })

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="commentaire">
         <section>
             <form @submit="postData" method="post">
                 <input type="area" name="comment" placeholder="Tapez votre commentaire ici" v-model="posts.text"> <br>
@@ -20,13 +20,14 @@
                 posts: { text: null},
                 userId: this.userInfos.id,
                 apiToken: this.userInfos.api_token,
+                url: document.querySelector('#envUrl').getAttribute('content'),
             }
         },
         
         methods: {
             postData(e)
             {
-                this.axios.post(`http://localhost:8000/commentaires`, this.posts)
+                this.axios.post(`${this.url}/commentaires`, this.posts)
                 .then((result)=>{
                     console.warn(result)
                 })
