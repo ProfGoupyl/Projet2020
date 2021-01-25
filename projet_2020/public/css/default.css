@@ -376,17 +376,20 @@ form.userProfil div p img {
   flex-basis: 75%;
   background-color: #fafafa;
   border-radius: 5px;
-  padding: 1em;
-}
-
-.section_page_cours article p {
-  padding: 5%;
 }
 
 iframe {
   max-width: 100%;
   min-height: 200%;
   display: block;
+}
+
+.session {
+  padding: 1em;
+}
+
+.session article {
+  margin-top: 1em;
 }
 
 @media all and (max-width: 900px) {
@@ -407,8 +410,15 @@ iframe {
 
 /*--------------- Fichier _cours.scss - FIN ----------*/
 
-div.commentaire {
-  padding: 1%;
+.login {
+  margin: 4%;
+  background-color: #f5f6f8;
+}
+
+.login .loginform {
+  padding: 4%;
+  background-color: #ffffff;
+  border-radius: 5px;
 }
 
 * {
