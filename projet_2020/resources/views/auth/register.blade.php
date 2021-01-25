@@ -8,7 +8,7 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('register') }}">
+        <form class="loginform" method="POST" action="{{ route('register') }}">
             @csrf
             @method('put')
 
@@ -19,7 +19,7 @@
                 <x-input id="pseudo" class="block mt-1 w-full" type="text" name="pseudo" :value="old('pseudo')" autofocus />
             </div>
 
-             <!-- Password -->
+            <!-- Password -->
             <div class="mt-4">
                 <x-label for="password" :value="__('Mot de passe *min 8 caractères')" />
 
@@ -40,7 +40,7 @@
                     {{ __('Déjà enregisté ?') }}
                 </a>
 
-                <x-button class="ml-4">
+                <x-button class="btn btn-primary">
                     {{ __('S\'enregister') }}
                 </x-button>
             </div>

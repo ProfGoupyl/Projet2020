@@ -9,7 +9,7 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('password.update') }}">
+        <form class="loginform" method="POST" action="{{ route('password.update') }}">
             @csrf
 
             <!-- Password Reset Token -->
@@ -37,12 +37,10 @@
                     {{ __('Confirmation mot de passe') }}
                 </label>
 
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                    type="password"
-                                    name="password_confirmation" required />
+                <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required />
             </div>
 
-            <div class="flex items-center justify-end mt-4">
+            <div class="btn btn-primary">
                 <x-button>
                     {{ __('Réinitialiser mon mot de passe') }}
                 </x-button>

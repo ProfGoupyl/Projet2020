@@ -23,10 +23,10 @@
                         <label for="currentPicture">Photo de profil actuelle:</label>
                         <img src="" alt="" class="UserImage" width="50px" height="50px">
                     </p>
-                    <p>
+                    <form @submit="uploadImage" enctype="multipart/form-data">
                         <input type="file" @change="selectImage">
-                        <button @click="uploadImage">Envoyer</button>
-                    </p>
+                        <button>Modifier</button>
+                    </form>
                 </div>
             </form>
 
@@ -76,21 +76,25 @@
             selectImage(event) {
                 this.userPhoto = event.target.files[0]
             },
-            uploadImage() {
+            uploadImage(event) {
+                event.preventDefault()
+                let currentObj = this
+
+                const config = {
+                    headers: {'content-type': 'multipart/form-data'}
+                }
+
                 const fd = new FormData()
-                fd.append('user_image', this.userPhoto, `user${this.userId}`)
-                console.log(fd)
-                axios.post('', fd, {
-                    header: {
-                        'Content-Type': 'multiple/form-data'
-                    }
-                })
-                .then(response => console.log(response))
-                .catch(error => console.log(error))
+                fd.append('image', this.userPhoto)
+
+                axios.post('uploadImage', fd, config)
+                    .then(function(response) {
+                        currentObj.uploadSucces = response.data.success
+                    })
+                    .catch(function(error) {
+                        currentObj.uploadFail = error
+                    })
             }
         },
-        mounted() {
-            console.log()
-        }
     }
 </script>

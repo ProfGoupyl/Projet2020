@@ -180,6 +180,32 @@ header nav.navPrincipale ul li ul.sous li p {
   background-color: #fafafa;
 }
 
+#modal {
+  width: auto;
+  height: 100%;
+  text-align: center;
+  background-color: #ffffff;
+  border: 3px solid #808080;
+  border-radius: 5px;
+  padding: 4%;
+  margin: 1%;
+}
+
+#modal i {
+  cursor: pointer;
+}
+
+#modal form div {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  padding: 1%;
+}
+
+#modal form div label {
+  flex-basis: 100%;
+}
+
 /*--------------- Fichier _user.scss - FIN ----------*/
 
 section .prof {
@@ -350,11 +376,20 @@ form.userProfil div p img {
   flex-basis: 75%;
   background-color: #fafafa;
   border-radius: 5px;
+}
+
+iframe {
+  max-width: 100%;
+  min-height: 200%;
+  display: block;
+}
+
+.session {
   padding: 1em;
 }
 
-.section_page_cours article p {
-  padding: 5%;
+.session article {
+  margin-top: 1em;
 }
 
 @media all and (max-width: 900px) {
@@ -374,6 +409,17 @@ form.userProfil div p img {
 }
 
 /*--------------- Fichier _cours.scss - FIN ----------*/
+
+.login {
+  margin: 4%;
+  background-color: #f5f6f8;
+}
+
+.login .loginform {
+  padding: 4%;
+  background-color: #ffffff;
+  border-radius: 5px;
+}
 
 * {
   box-sizing: border-box;

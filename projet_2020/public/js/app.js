@@ -4088,23 +4088,22 @@ __webpack_require__.r(__webpack_exports__);
     selectImage: function selectImage(event) {
       this.userPhoto = event.target.files[0];
     },
-    uploadImage: function uploadImage() {
-      var fd = new FormData();
-      fd.append('user_image', this.userPhoto, "user".concat(this.userId));
-      console.log(fd);
-      axios.post('', fd, {
-        header: {
-          'Content-Type': 'multiple/form-data'
+    uploadImage: function uploadImage(event) {
+      event.preventDefault();
+      var currentObj = this;
+      var config = {
+        headers: {
+          'content-type': 'multipart/form-data'
         }
-      }).then(function (response) {
-        return console.log(response);
+      };
+      var fd = new FormData();
+      fd.append('image', this.userPhoto);
+      axios.post('uploadImage', fd, config).then(function (response) {
+        currentObj.uploadSucces = response.data.success;
       })["catch"](function (error) {
-        return console.log(error);
+        currentObj.uploadFail = error;
       });
     }
-  },
-  mounted: function mounted() {
-    console.log();
   }
 });
 
@@ -61742,16 +61741,21 @@ var render = function() {
           _c("div", [
             _vm._m(0),
             _vm._v(" "),
-            _c("p", [
-              _c("input", {
-                attrs: { type: "file" },
-                on: { change: _vm.selectImage }
-              }),
-              _vm._v(" "),
-              _c("button", { on: { click: _vm.uploadImage } }, [
-                _vm._v("Envoyer")
-              ])
-            ])
+            _c(
+              "form",
+              {
+                attrs: { enctype: "multipart/form-data" },
+                on: { submit: _vm.uploadImage }
+              },
+              [
+                _c("input", {
+                  attrs: { type: "file" },
+                  on: { change: _vm.selectImage }
+                }),
+                _vm._v(" "),
+                _c("button", [_vm._v("Modifier")])
+              ]
+            )
           ])
         ]
       ),
@@ -61829,6 +61833,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticClass: "session" },
     [
       _vm._l(_vm.filterModules, function(modules) {
         return _c("div", { key: modules.id }, [
@@ -74648,10 +74653,10 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\sass\app.scss */"./resources/sass/app.scss");
-__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\sass\default.scss */"./resources/sass/default.scss");
-module.exports = __webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! C:\wamp64\www\projetDyn\Projet2020\projet_2020\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! C:\wamp64\www\projetDyn\Projet2020\projet_2020\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\wamp64\www\projetDyn\Projet2020\projet_2020\resources\sass\default.scss */"./resources/sass/default.scss");
+module.exports = __webpack_require__(/*! C:\wamp64\www\projetDyn\Projet2020\projet_2020\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })
