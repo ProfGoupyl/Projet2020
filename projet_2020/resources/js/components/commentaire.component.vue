@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="commentaire">
         <section>
             <form @submit="postData" method="post">
                 <input type="area" name="comment" placeholder="Tapez votre commentaire ici" v-model="posts.text"> <br>
