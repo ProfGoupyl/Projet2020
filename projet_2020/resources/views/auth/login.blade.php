@@ -12,7 +12,7 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form class="loginform" method=" POST" action="{{ route('login') }}">
+        <form class="loginform" method="POST" action="{{ route('login') }}">
             @csrf
 
             <!-- Email Address -->
