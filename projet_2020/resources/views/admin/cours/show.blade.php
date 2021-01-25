@@ -4,6 +4,7 @@
 
 
 <h1>salut {{$cours->titre}}</h1>
+
 <section>
     <div>
         <!-- Formulaire réceptionnant les nouvelles valeurs "ordre" du module dragged et l'envoyant au ModuleController->update() -->
@@ -20,11 +21,14 @@
             <div data-neworder="" data-element="{{$m->id}}" data-order="{{$m->ordre}}" class="draggable" draggable="true">
                 <input type="hidden" name="modules[]" value="{{$m->id}}-{{$m->ordre}}">
                 <p>{{$m->titre}}</p>
+
+                <a href="/admin/faqs/{{$m->id}}">Consulter la FAQ</a>
                 <button data-action="{{$m->id}}" data-titre="{{$m->titre}}" data-desc="{{$m->description}}" data-url="{{$m->url_video}}" class="edit-module" id="modifier" type="button">Modifier</button>
                 <form action="/admin/module/{{$m->id}}" method="POST">
                     @csrf
                     @method('delete')
-                    <button id="supprimer"> Supprimer </button>
+                    <button id="delete" class="btn btn-primary" type="submit"><i class="fas fa-trash-alt fa-lg"></i></button>
+                    <!-- <button id="supprimer"> Supprimer </button> -->
                 </form>
             </div>
 

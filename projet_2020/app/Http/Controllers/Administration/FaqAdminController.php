@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Administration;
 
 use App\Models\Faqs;
+use App\Models\Module;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -55,9 +56,14 @@ class FaqAdminController extends Controller
      * @param  \App\Faq  $faq
      * @return \Illuminate\Http\Response
      */
-    public function show(Faqs $faq)
+    public function show($id)
     {
-        return view('admin.faqs.show', compact('faq'));
+        $module = Module::find($id);
+        $faqs = Faqs::where('module_id', "=", $module->id)->get();
+
+        return view('admin.faqs.index', [
+            'faqs' => $faqs
+        ]);
     }
 
     /**
