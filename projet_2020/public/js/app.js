@@ -3837,9 +3837,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CommentaireComponent",
-  props: ['userInfos'],
+  props: ["userInfos"],
   data: function data() {
     return {
       posts: {
@@ -3847,13 +3853,15 @@ __webpack_require__.r(__webpack_exports__);
       },
       userId: this.userInfos.id,
       apiToken: this.userInfos.api_token,
-      url: document.querySelector('#envUrl').getAttribute('content')
+      url: document.querySelector("#envUrl").getAttribute("content")
     };
   },
   methods: {
     postData: function postData(e) {
-      this.axios.post("".concat(this.url, "/commentaires"), this.posts).then(function (result) {
-        console.warn(result);
+      axios.post("postData", this.posts).then(function (response) {
+        console.log(response.data);
+      }, function (response) {
+        console.log(response.data);
       });
       e.preventDefault();
     }
@@ -61429,7 +61437,7 @@ var render = function() {
           ],
           attrs: {
             type: "area",
-            name: "comment",
+            name: "text",
             placeholder: "Tapez votre commentaire ici"
           },
           domProps: { value: _vm.posts.text },
@@ -61445,7 +61453,7 @@ var render = function() {
         _vm._v(" "),
         _c("br"),
         _vm._v(" "),
-        _c("button", { attrs: { type: "submit" } }, [_vm._v(" Envoyer ")])
+        _c("button", { attrs: { type: "submit" } }, [_vm._v("Envoyer")])
       ])
     ])
   ])

@@ -8,6 +8,7 @@ use App\Http\Controllers\Administration\UserAdminController;
 use App\Http\Controllers\Administration\ModuleAdminController;
 use App\Http\Controllers\Administration\FaqAdminController;
 use App\Http\Controllers\UploadImageController;
+use App\Http\Controllers\CommentaireController;
 
 
 
@@ -24,6 +25,10 @@ use App\Http\Controllers\UploadImageController;
 
 // Route pour upload une image
 Route::post('uploadImage', [UploadImageController::class, 'upload']);
+
+// Route pour les com
+
+Route::post('postData', [CommentaireController::class, 'store']);
 
 
 Route::get('/', function () {
