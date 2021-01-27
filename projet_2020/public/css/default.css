@@ -527,6 +527,30 @@ div.footer nav ul li a:hover {
   color: #808080;
 }
 
+div.mentions {
+  width: 98%;
+  text-align: left;
+}
+
+div.mentions h1,
+div.mentions h2,
+div.mentions h3,
+div.mentions h4 {
+  text-align: left;
+  padding: 1em 0;
+}
+
+div.mentions ul,
+div.mentions ol {
+  list-style-position: inside;
+}
+
+div.mentions p,
+div.mentions ol,
+div.mentions ul {
+  padding: 0 2em;
+}
+
 * {
   box-sizing: border-box;
   margin: 0px;
@@ -565,6 +589,7 @@ content {
 h1,
 h2,
 h3,
+h4,
 tr,
 .navPrincipale a {
   font-family: "Fira Sans", sans-serif;
