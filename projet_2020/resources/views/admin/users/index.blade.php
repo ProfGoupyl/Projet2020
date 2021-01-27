@@ -2,6 +2,13 @@
 @section('content')
 <section>
     <h1>Liste des utilisateurs</h1>
+    <p>Importez un <span id="csv-show" style="color:red;cursor:pointer;">.csv</span> pour créer des utilisateurs par lot. Ils recevront un email et un lien pour finaliser leur inscription.</p>
+    <img style="display:none;" id="csv-img" src="{{asset('images/csv_model.jpg')}}" alt="">
+    <form enctype="multipart/form-data" action="csv" method="post">
+        @csrf
+        <input required type="file" name="file" value="Choisir un fichier .csv" accept=".csv">
+        <input type="submit" name="submit" value="Transférer" title="Submit">
+    </form>
     <!-- Create New user -->
     <!-- Boutton ouvrant la modal et le formulaire d'ajout d'un cours -->
     <div>
@@ -24,6 +31,15 @@
             <div>
                 <label for="prenom">Prénom de l'utilisateur </label>
                 <input type="text" name='prenom' id="prenom" required>
+            </div>
+            <div>
+                <label for="prenom">Inviter l'étudiant à un cours (facultatif) </label>
+                <select name="cours" id="cours">
+                    <option value="null">-- Ne pas inviter à un cours --</option>
+                    @foreach($cours as $c)
+                    <option value="{{$c->id}}">{{$c->titre}}</option>
+                    @endforeach
+                </select>
             </div>
             <div>
                 <button id="ajouter" class="btn btn-primary" type="submit">
