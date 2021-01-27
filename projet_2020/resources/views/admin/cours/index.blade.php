@@ -2,9 +2,14 @@
 @section('content')
 <section>
     <h1>Liste des cours</h1>
-    <button id='modal-open'>Add</button>
+    <!-- Boutton ouvrant la modal et le formulaire d'ajout d'un cours -->
+    <div>
+        <button id="modal-open" class="btn btn-primary" type="button">
+            <i class="fas fa-plus fa-lg"></i>
+        </button>
+    </div>
+    <!-- Modal et formulaire d'ajout d'un cours -->
     <div id='modal' style="display:none;">
-        <i id="modal-close" class="fas fa-times"></i>
         <form action='/admin/cours' method='POST'>
             @csrf
             <div>
@@ -20,63 +25,72 @@
                 <input type="date" name='fin_du_cours' required>
             </div>
             <div>
-                <button id="ajouter" class="btn btn-primary" type="submit"><i class="fas fa-plus fa-lg"></i></button>
+                <button id="ajouter" class="btn btn-primary" type="submit">
+                    <i class="fas fa-plus fa-lg"></i>
+                    Ajouter
+                </button>
             </div>
-        </form> -->
+        </form>
     </div>
-
+    <!-- Liste des cours -->
     <table class="listecours">
         <thead>
             <tr>
-                <th>Titre</th>
-                <th>Debut du cours</th>
-                <th>Fin du cours</th>
+                <th>Nom du cours</th>
+                <th>Date de début</th>
+                <th>Date de fin</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($cours_list as $cours)
             <tr>
-                <form action='/admin/cours/{{ $cours->id }}' method='post'>
+                <form id="form-{{ $cours->id }}" action="/admin/cours/{{ $cours->id }}" method="post">
                     @csrf
-                    @method('put')
+                    @method("put")
                     <td>
                         <input class="input-{{$cours->id}} line-input" style="background:none;border:none;color:black;" disabled value="{{$cours->titre}}" type="text" name="titre">
                     </td>
                     <td>
-
                         <input class="input-{{$cours->id}} line-input" style="background:none;border:none;color:black;" disabled value="{{$cours->debut_du_cours }}" type="date" name="debut_du_cours">
                     </td>
-
                     <td>
                         <input class="input-{{$cours->id}} line-input" style="background:none;border:none;color:black;" disabled value="{{$cours->fin_du_cours}}" type="date" name="fin_du_cours">
                     </td>
-
                     <td>
+                        <!-- BUTTONS MODIFY & SAVE / START -->
+                        <button id="modifier" class="btn btn-primary modify-btn" type="button" data-target="{{$cours->id}}">
+                            <i class="fas fa-pen fa-lg"></i>
+                        </button>
+                        <input type="submit" data-target="form-{{$cours->id}}" class="save-btn" style="display:none;" id="save-{{$cours->id}}" type="submit" />
+                        <!-- BUTTONS MODIFY & SAVE / END -->
 
-                        <button id="modifier" class="btn btn-primary" type="submit" data-target="{{$cours->id}}"><i class="fas fa-pen fa-lg"></i></button>
-                        <input class="save-btn" style="display:none;" id="save-{{$cours->id}}" type="submit" value="Sauvegarder">
+                        <!-- Formulaire de suppression -->
+                        <div>
+                            <button class="delete-btn" data-titre="{{$cours->titre}}" data-target="/admin/cours/{{$cours->id}}" value='Supprimer' class="btn btn-primary" type="button">
+                                <i class="fas fa-trash-alt fa-lg"></i>
+                            </button>
+                        </div>
+                        <!-- Lien vers la page show d'un cours -->
+                        <a id="show" href='/admin/cours/{{$cours->id}}'>show</a>
                     </td>
                 </form>
-                <td>
-                    <form action='/admin/cours/{{ $cours->id }}' method="post">
-                        @csrf
-                        @method('delete')
-                        <div>
-                            <button id="delete" value='Supprimer' class="btn btn-primary" type="submit"><i class="fas fa-trash-alt fa-lg"></i></button>
-                        </div>
-                    </form>
-                </td>
-                <td>
-                    <a id="show" href='/admin/cours/{{$cours->id}}'>show</a>
-                </td>
             </tr>
-
             @endforeach
         </tbody>
     </table>
-
-
-
+    <div id="delete-modal" style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#333;display:none">
+        <h2>Etes-vous sur de vouloir supprimer le cours: <span id="delete-title"></span> ?</h2>
+        <form id="delete-form" action='' method="post">
+            @csrf
+            @method('delete')
+            <div>
+                <button id="delete" value='Supprimer' class="btn btn-primary" type="submit">
+                    OUI
+                </button>
+                <button id="delete-close" type="button">NON</button>
+            </div>
+        </form>
+    </div>
 </section>
 @stop
