@@ -37,17 +37,27 @@ class FaqAdminController extends Controller
      */
     public function store(Request $request)
     {
-        $faqs = Faqs::create($request->validate([
-            'question' => 'required',
-            'reponse' => 'required']));
-        $module = new Module();
-        $module->module_id = $request->get('module_id');
-        $faqs = new Module;
-        $faqs = Module::find($request->request->get('cours'))->module;
-        $module->cours_id = $cours;
-            return redirect('/admin/faqs');
+        // $faqs = Faqs::create($request->validate([
+        //     'question' => 'required',
+        //     'reponse' => 'required']));
+        // $module = new Module();
+        // $module->module_id = $request->get('module_id');
+        // $faqs = new Module;
+        // $faqs = Module::find($request->request->get('cours'))->module;
+        // $module->cours_id = $cours;
+        //     return redirect('/admin/faqs');
 
-           
+        $faq = new Faqs;
+        $module = Module::find($request->request->get('modules'));
+
+        $faq->module_id = $module->id;
+
+        $faq->question = $request->has('question') && strlen($request->question) ? $request->question : $faq->question;
+        $faq->reponse = $request->has('reponse') && strlen($request->reponse) ? $request->reponse : $faq->reponse;   
+        
+        $faq->save();
+        return redirect('/admin/faqs');
+
            
     }
 

@@ -69,7 +69,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 // Toutes les routes commencant par "/admin" utilisent le middleware IsAdmin (vérifie si l'user est ADMIN).
 Route::prefix('admin')
-    ->middleware(IsAdmin::class)
+    
     ->group(function () {
         // Mettez vos routes en dessous de la première
         // Route de base renvoyant au dashboard de l'administration
