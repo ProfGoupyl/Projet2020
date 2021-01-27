@@ -9,6 +9,8 @@
         flex-basis: 25%;
         background-color: $superlightgray;
         margin: 0 1em 0 0;
+        overflow-x: scroll;
+        resize: both;
     }
     .navSecondaire {
         li {
@@ -35,15 +37,13 @@
     }
 }
 
-iframe{
-    max-width: 100%;
-    min-height: 200%;
+iframe {
+    width: 100%;
     display: block;
-
 }
-.session{
+.session {
     padding: 1em;
-    article{
+    article {
         margin-top: 1em;
     }
 }
