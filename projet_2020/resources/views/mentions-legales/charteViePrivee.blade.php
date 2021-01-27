@@ -1,3 +1,4 @@
+@section('charte')
 <h1>Charte Vie Privée</h1>
 <h2>1. Pourquoi cette charte vie privée ?</h2>
 <p>Goupyl Education accorde beaucoup d’importance à la protection de votre vie privée et de vos données personnelles. Nous collectons et traitons vos données personnelles conformément aux dispositions légales applicables en la matière, à savoir la Loi du 8 décembre 1992 relative à la protection de la vie privée à l’égard des traitements de données à caractère personnel (« Loi vie privée ») et le Règlement européen du 27 avril 2016 relatif à la protection des personnes physiques à l’égard du traitement des données à caractère personnel et à la libre circulation de ces données (« Règlement »).
@@ -77,3 +78,4 @@ Téléphone:
 <p>Pour exercer vos droits, vous devez nous envoyer une demande par courrier recommandé à Goupyl Education, Adresse ou par mail à email. Nous y répondrons dans les meilleurs délais, et au plus tard un (1) mois après réception de la demande.</p>
 <h2>8. Possibilité d’introduire une plainte</h2>
 <p>Si vous n’êtes pas satisfait du traitement de vos données personnelles par la Goupyl Education, vous avez le droit d’introduire une plainte auprès de la Commission pour la Protection de la Vie Privée, qui devient l’Autorité de Protection des Données à partir du 25 mai 2018 (https://www.privacycommission.be/).</p>
+@endsection

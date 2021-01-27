@@ -1,3 +1,4 @@
+@section('cookies')
 <h1>Cookies</h1>
 <h2>Que sont les cookies ?</h2>
 <p>Un cookie est un petit fichier texte sauvé par le serveur d'un site web dans le navigateur de votre ordinateur ou de votre appareil mobile lorsque vous consultez ce site web. Le cookie contient un code unique permettant de reconnaître votre navigateur lors de votre visite sur le site web ("cookie de session") ou lors de futures visites répétées ("cookie permanent"). Les cookies peuvent être placés par le serveur du site web que vous visitez ou par des partenaires avec lesquels ce site web collabore. Le serveur d'un site web peut uniquement lire les cookies qu'il a lui-même placés ; il n'a accès à aucune autre information se trouvant sur votre ordinateur ou sur votre appareil mobile. Les cookies sont stockés sur votre ordinateur ou appareil mobile dans le répertoire de votre navigateur. Le contenu d'un cookie se compose en général du nom du serveur qui a placé le cookie, d'une date d'expiration et d'un code chiffré unique.</p>
@@ -20,3 +21,4 @@
 <p>Pour les cookies placés par ces parties externes, nous nous référons aux déclarations de confidentialité de ces parties sur leurs propres sites web pour les informations sur la collection et le but dans lequel ces informations sont utilisées. Ces déclarations peuvent changer de temps en temps et Goupyl Education n'a aucun contrôle sur elles.
 <h3>Gestion des cookies</h3>
 <p>Dans les paramètres de votre navigateur, vous avez la possibilité de refuser l'installation des cookies. Vous pouvez à tout moment supprimer les cookies déjà installés sur votre ordinateur ou sur votre terminal mobile.</p>
+@endsection

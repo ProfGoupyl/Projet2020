@@ -1,3 +1,4 @@
+@section('droit')
 <h1>Droits de l'utilisation</h1>
 <p>Ce site web est la propriété de :</p>
 <p><strong>Goupyl Education</strong></p>
@@ -7,13 +8,13 @@
 <p>En accédant et en utilisant le site web, vous acceptez expressément les conditions générales suivantes.</p>
 <h2>Droits de propriété intellectuelle</h2>
 <p>
-   Le contenu de ce site, y compris les marques, logos, dessins, données, noms de produits ou d'entreprises, textes, images,
-   etc. sont protégés par des droits intellectuels et appartiennent à <strong>Goupyl Education</strong> ou à des tiers habilités.
+    Le contenu de ce site, y compris les marques, logos, dessins, données, noms de produits ou d'entreprises, textes, images,
+    etc. sont protégés par des droits intellectuels et appartiennent à <strong>Goupyl Education</strong> ou à des tiers habilités.
 </p>
 <h2>Limitation de la responsabilité</h2>
 <p>
-   Les informations figurant sur le site web sont de nature générale. Les informations ne sont pas adaptées à des circonstances
-   personnelles ou spécifiques et ne peuvent donc pas être considérées comme des conseils personnels, professionnels ou juridiques à l'utilisateur.
+    Les informations figurant sur le site web sont de nature générale. Les informations ne sont pas adaptées à des circonstances
+    personnelles ou spécifiques et ne peuvent donc pas être considérées comme des conseils personnels, professionnels ou juridiques à l'utilisateur.
 </p>
 <p>
     <strong>Goupyl Education</strong> fait de grands efforts pour s'assurer que les informations fournies sont complètes, correctes, précises et à jour. Malgré ces efforts,
@@ -42,7 +43,7 @@
 <h2>L'utilisation des "cookies"</h2>
 <p>
     Lors d'une visite sur le site, des "cookies" peuvent être placés sur le disque dur de votre ordinateur, et ce uniquement pour mieux adapter le site aux besoins du visiteur qui revient.
-    Ces mini-fichiers ou cookies ne sont pas utilisés pour vérifier le comportement de navigation du visiteur sur d'autres sites web. Votre navigateur internet vous permet d'empêcher 
+    Ces mini-fichiers ou cookies ne sont pas utilisés pour vérifier le comportement de navigation du visiteur sur d'autres sites web. Votre navigateur internet vous permet d'empêcher
     l'utilisation de cookies, de recevoir un avertissement lorsqu'un cookie est installé ou de supprimer les cookies de votre disque dur par la suite. Pour cela, consultez la fonction d'aide de votre navigateur Internet.
 </p>
 <h2>Politique de confidentialité - protection de la vie privée</h2>
@@ -66,7 +67,7 @@
                 Se conformer aux obligations légales (par exemple, obligations comptables ou fiscales, administration du personnel) (la base juridique est l'obligation légale)
             </li>
             <li>
-                Communiquer aux prospects/non-membres et aux acteurs/parties prenantes en utilisant des données obtenues par un consentement sans équivoque ou sur la base 
+                Communiquer aux prospects/non-membres et aux acteurs/parties prenantes en utilisant des données obtenues par un consentement sans équivoque ou sur la base
                 d'intérêts légitimes (par exemple, via une lettre d'information).
             </li>
         </ul>
@@ -95,5 +96,4 @@
 <p>
     Le droit belge s'applique à ce site. En cas de litige, seuls les tribunaux de l'arrondissement du <strong>Brabant Wallon</strong> sont compétents.
 </p>
-    
-
+@endsection
