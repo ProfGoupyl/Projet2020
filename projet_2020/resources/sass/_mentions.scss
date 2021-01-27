@@ -1,0 +1,14 @@
+div.mentions{
+    width: 98%;
+    text-align: left;
+    h1, h2, h3, h4{
+        text-align: left;
+        padding: 1em 0;
+    }
+    ul, ol{
+        list-style-position: inside;
+    }
+    p, ol, ul{
+        padding: 0 2em;
+    }
+}

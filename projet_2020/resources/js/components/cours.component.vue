@@ -28,6 +28,7 @@
 
 <script>
     import Session from './session.component'
+
     export default {
         components: {
             Session
@@ -53,6 +54,17 @@
                 .get(`${this.url}/api/cours?api_token=${this.userInfos.api_token}`)
                 .then(response => (this.coursNames = response.data))
                 .catch(error => console.log(error))
+        },
+        updated() {
+            // Afficher le premier module au chargement du composant
+            let module = []
+            for (let i = 0; i < this.moduleList.length; i++) {
+                if(this.coursId === this.moduleList[i].cours_id) {
+                    module.push(this.moduleList[i].id)
+                }
+            }
+            this.moduleId = module[0]
+            sessionStorage.setItem('moduleid', this.moduleId)
         },
         methods: {
             save(moduleid) {
