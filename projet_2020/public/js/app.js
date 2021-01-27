@@ -4063,12 +4063,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['userInfos'],
+  props: ["userInfos"],
   data: function data() {
     return {
-      token: document.querySelector('#token').getAttribute('content'),
-      url: document.querySelector('#envUrl').getAttribute('content'),
+      token: document.querySelector("#token").getAttribute("content"),
+      url: document.querySelector("#envUrl").getAttribute("content"),
       userId: this.userInfos.id,
       userName: this.userInfos.name,
       userPrenom: this.userInfos.prenom,
@@ -4082,38 +4090,33 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     submit: function submit() {
-      var _this = this;
-
-      document.getElementById('formSubmit').submit();
       axios.patch("".concat(this.url, "/api/users/").concat(this.userInfos.id, "/?api_token=").concat(this.userInfos.api_token), {
         name: this.userName,
         prenom: this.userPrenom,
         email: this.userEmail,
         pseudo: this.userPseudo
       }).then(function (response) {
-        return _this.send = true;
+        return console.log(response);
       })["catch"](function (error) {
-        return _this.send = false;
+        return console.log(error);
       });
     },
-    selectImage: function selectImage(event) {
-      this.userPhoto = event.target.files[0];
-    },
-    uploadImage: function uploadImage(event) {
-      event.preventDefault();
+    submitFile: function submitFile() {
       var currentObj = this;
-      var config = {
-        headers: {
-          'content-type': 'multipart/form-data'
-        }
-      };
       var fd = new FormData();
-      fd.append('image', this.userPhoto);
-      axios.post('uploadImage', fd, config).then(function (response) {
+      fd.append("image", this.userPhoto);
+      axios.post("uploadImage", fd, {
+        headers: {
+          "content-type": "multipart/form-data"
+        }
+      }).then(function (response) {
         currentObj.uploadSucces = response.data.success;
       })["catch"](function (error) {
         currentObj.uploadFail = error;
       });
+    },
+    selectImage: function selectImage(event) {
+      this.userPhoto = event.target.files[0];
     }
   }
 });
@@ -61652,7 +61655,13 @@ var render = function() {
         "form",
         {
           staticClass: "userProfil",
-          attrs: { method: "patch", id: "formSubmit" }
+          attrs: { method: "patch" },
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.submit($event)
+            }
+          }
         },
         [
           _c("input", {
@@ -61662,7 +61671,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", [
             _c("p", [
-              _c("label", { attrs: { for: "firstname" } }, [
+              _c("label", { attrs: { for: "prenom" } }, [
                 _vm._v("First Name:")
               ]),
               _vm._v(" "),
@@ -61675,7 +61684,7 @@ var render = function() {
                     expression: "userPrenom"
                   }
                 ],
-                attrs: { type: "text", name: "firstname" },
+                attrs: { type: "text", name: "prenom" },
                 domProps: { value: _vm.userPrenom },
                 on: {
                   input: function($event) {
@@ -61689,9 +61698,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("p", [
-              _c("label", { attrs: { for: "lastname" } }, [
-                _vm._v("Last Name:")
-              ]),
+              _c("label", { attrs: { for: "name" } }, [_vm._v("Last Name:")]),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -61702,7 +61709,7 @@ var render = function() {
                     expression: "userName"
                   }
                 ],
-                attrs: { type: "text", name: "lastname" },
+                attrs: { type: "text", name: "name" },
                 domProps: { value: _vm.userName },
                 on: {
                   input: function($event) {
@@ -61743,21 +61750,32 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm._m(0)
+          _c("div", [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { type: "file", name: "userPhoto" },
+              on: { change: _vm.selectImage }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary",
+              attrs: { id: "modifier", type: "submit" },
+              on: {
+                click: function($event) {
+                  return _vm.submitFile()
+                }
+              }
+            },
+            [_c("i", { staticClass: "fas fa-pen fa-lg" })]
+          ),
+          _vm._v(" "),
+          _vm._m(1)
         ]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary",
-          attrs: { id: "modifier", type: "submit" },
-          on: { click: _vm.submit }
-        },
-        [_c("i", { staticClass: "fas fa-pen fa-lg" })]
-      ),
-      _vm._v(" "),
-      _vm._m(1)
+      )
     ])
   ])
 }
@@ -61766,17 +61784,15 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("p", [
-        _c("label", { attrs: { for: "currentPicture" } }, [
-          _vm._v("Photo de profil actuelle:")
-        ]),
-        _vm._v(" "),
-        _c("img", {
-          staticClass: "UserImage",
-          attrs: { src: "", alt: "", width: "50px", height: "50px" }
-        })
-      ])
+    return _c("p", [
+      _c("label", { attrs: { for: "currentPicture" } }, [
+        _vm._v("Photo de profil actuelle:")
+      ]),
+      _vm._v(" "),
+      _c("img", {
+        staticClass: "UserImage",
+        attrs: { src: "", alt: "", width: "50px", height: "50px" }
+      })
     ])
   },
   function() {
@@ -74631,10 +74647,10 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\www\projetDyn\Projet2020\projet_2020\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\wamp64\www\projetDyn\Projet2020\projet_2020\resources\sass\app.scss */"./resources/sass/app.scss");
-__webpack_require__(/*! C:\wamp64\www\projetDyn\Projet2020\projet_2020\resources\sass\default.scss */"./resources/sass/default.scss");
-module.exports = __webpack_require__(/*! C:\wamp64\www\projetDyn\Projet2020\projet_2020\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\sass\default.scss */"./resources/sass/default.scss");
+module.exports = __webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })
