@@ -1,48 +1,33 @@
-<!-- @yield('content')  a rajouter a la fin du layout -->
-@extends('admin.faqs.layout')
-<!--navbar a changer -->
-
+@extends('layouts.default')
 @section('content')
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
+    <div class="faq">
+        <div class="titre">
             <h2>FAQ Admin</h2>
         </div>
-        <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('faqs.create') }}"> Nouvel question</a>
+        <div class="button_new">
+            <a class="fas fa-plus fa-lg" href="{{ route('faqs.create') }}" > Nouvel question</a>
         </div>
-    </div>
-</div>
-
-@if ($message = Session::get('success'))
-<div class="alert alert-success">
-    <p>{{ $message }}</p>
-</div>
-@endif
-
-<table>
-
-    @foreach ($faqs as $faq)
-    <tr>
-
-        <td>{{ $faq->question }}</td>
-    </tr>
-    <tr>
-        <td>{{ $faq->reponse }}</td>
-        <td>
-            <form action="{{ route('faqs.destroy',$faq->id) }}" method="POST">
-
-                <a class="btn btn-primary" href="{{ route('faqs.edit',$faq->id) }}">Edit</a>
-
-                @csrf
-                @method('DELETE')
-
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </form>
-        </td>
-    </tr>
-    @endforeach
-</table>
-
-
+        <li>
+            @foreach ($faqs as $faq)
+            <details>
+            <div class='faq_question'>
+                <summary>{{ $faq->question }}</summary>
+            </div>
+            <p class='faq_question_hidden'>
+                {{ $faq->reponse }}
+            </p>
+                <p>
+                    <form action="{{ route('faqs.destroy',$faq->id) }}" method="POST">
+                        
+                        <a class="fas fa-pen fa-lg" href="{{ route('faqs.edit',$faq->id) }}">modifier
+                        </a>
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="fas fa-trash-alt fa-lg">supprimer</button>
+                    </form>
+                </p>
+            </details>
+            @endforeach
+        </li>
+    </div>    
 @endsection

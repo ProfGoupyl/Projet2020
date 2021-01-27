@@ -32,10 +32,19 @@
         flex-basis: 75%;
         background-color: $smoke;
         border-radius: 5px;
-        padding: 1em;
-        p {
-            padding: 5%;
-        }
+    }
+}
+
+iframe{
+    max-width: 100%;
+    min-height: 200%;
+    display: block;
+
+}
+.session{
+    padding: 1em;
+    article{
+        margin-top: 1em;
     }
 }
 
@@ -52,5 +61,4 @@
         }
     }
 }
-
 /*--------------- Fichier _cours.scss - FIN ----------*/

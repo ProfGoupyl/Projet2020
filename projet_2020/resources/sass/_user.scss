@@ -38,5 +38,31 @@
 	}
 }
 
+
+
+
+#modal{
+	i{
+		cursor: pointer;
+	}
+	width: auto;
+	height: 100%;
+	text-align: center;
+	background-color: $white;
+	border: 3px solid $gray;
+	border-radius: 5px;
+	padding: 4%;
+	margin: 1%;
+	form div{
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-evenly;
+		padding: 1%;
+		label{
+			flex-basis: 100%;
+		}
+	}
+}
+
 /*--------------- Fichier _user.scss - FIN ----------*/
 

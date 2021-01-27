@@ -2,9 +2,13 @@
 const modal = document.querySelector('#modal');
 const openModal = document.querySelector('#modal-open')
 const closeModal = document.querySelector('#modal-close')
+const icon = document.querySelector('.fa-plus')
 openModal.addEventListener('click', () => {
-    modal.style.display = "block";
-})
-closeModal.addEventListener('click', () => {
-    modal.style.display = "none";
+    if (modal.style.display == "block") {
+        modal.style.display = "none";
+        icon.style.transform = 'none';
+    } else {
+        modal.style.display = "block";
+        icon.style.transform = 'rotate(45deg)'
+    }
 })

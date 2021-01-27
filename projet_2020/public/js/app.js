@@ -3837,22 +3837,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CommentaireComponent",
-  props: ['userInfos'],
+  props: ["userInfos"],
   data: function data() {
     return {
       posts: {
         text: null
       },
       userId: this.userInfos.id,
-      apiToken: this.userInfos.api_token
+      apiToken: this.userInfos.api_token,
+      url: document.querySelector("#envUrl").getAttribute("content")
     };
   },
   methods: {
     postData: function postData(e) {
-      this.axios.post("http://localhost:8000/commentaires", this.posts).then(function (result) {
-        console.warn(result);
+      axios.post("postData", this.posts).then(function (response) {
+        console.log(response.data);
+      }, function (response) {
+        console.log(response.data);
       });
       e.preventDefault();
     }
@@ -3911,18 +3920,19 @@ __webpack_require__.r(__webpack_exports__);
       coursId: JSON.parse(sessionStorage.getItem('coursid')),
       moduleList: [],
       coursNames: [],
-      componentKey: 0
+      componentKey: 0,
+      url: document.querySelector('#envUrl').getAttribute('content')
     };
   },
   created: function created() {
     var _this = this;
 
-    axios.get("http://localhost:8000/api/module?api_token=".concat(this.userInfos.api_token)).then(function (response) {
+    axios.get("".concat(this.url, "/api/module?api_token=").concat(this.userInfos.api_token)).then(function (response) {
       return _this.moduleList = _.orderBy(response.data, 'ordre', 'asc');
     })["catch"](function (error) {
       return console.log(error);
     });
-    axios.get("http://localhost:8000/api/cours?api_token=".concat(this.userInfos.api_token)).then(function (response) {
+    axios.get("".concat(this.url, "/api/cours?api_token=").concat(this.userInfos.api_token)).then(function (response) {
       return _this.coursNames = response.data;
     })["catch"](function (error) {
       return console.log(error);
@@ -3971,13 +3981,14 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       faqList: [],
-      moduleId: JSON.parse(sessionStorage.getItem('moduleid'))
+      moduleId: JSON.parse(sessionStorage.getItem('moduleid')),
+      url: document.querySelector('#envUrl').getAttribute('content')
     };
   },
   created: function created() {
     var _this = this;
 
-    axios.get("http://localhost:8000/api/faq?api_token=".concat(this.userInfos.api_token)).then(function (response) {
+    axios.get("".concat(this.url, "/api/faq?api_token=").concat(this.userInfos.api_token)).then(function (response) {
       return _this.faqList = response.data;
     })["catch"](function (error) {
       return console.log(error);
@@ -4055,6 +4066,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       token: document.querySelector('#token').getAttribute('content'),
+      url: document.querySelector('#envUrl').getAttribute('content'),
       userId: this.userInfos.id,
       userName: this.userInfos.name,
       userPrenom: this.userInfos.prenom,
@@ -4070,7 +4082,7 @@ __webpack_require__.r(__webpack_exports__);
     submit: function submit() {
       var _this = this;
 
-      axios.patch("http://localhost:8000/api/users/".concat(this.userInfos.id, "/?api_token=").concat(this.userInfos.api_token), {
+      axios.patch("".concat(this.url, "/api/users/").concat(this.userInfos.id, "/?api_token=").concat(this.userInfos.api_token), {
         name: this.userName,
         prenom: this.userPrenom,
         email: this.userEmail,
@@ -4084,17 +4096,20 @@ __webpack_require__.r(__webpack_exports__);
     selectImage: function selectImage(event) {
       this.userPhoto = event.target.files[0];
     },
-    uploadImage: function uploadImage() {
-      var fd = new FormData();
-      fd.append('user_image', this.userPhoto, "user".concat(this.userId));
-      axios.post('', fd, {
-        header: {
-          'Content-Type': 'multiple/form-data'
+    uploadImage: function uploadImage(event) {
+      event.preventDefault();
+      var currentObj = this;
+      var config = {
+        headers: {
+          'content-type': 'multipart/form-data'
         }
-      }).then(function (response) {
-        return console.log(response);
+      };
+      var fd = new FormData();
+      fd.append('image', this.userPhoto);
+      axios.post('uploadImage', fd, config).then(function (response) {
+        currentObj.uploadSucces = response.data.success;
       })["catch"](function (error) {
-        return console.log(error);
+        currentObj.uploadFail = error;
       });
     }
   }
@@ -4131,6 +4146,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4138,11 +4160,12 @@ __webpack_require__.r(__webpack_exports__);
     Faq: _faq_component__WEBPACK_IMPORTED_MODULE_0__["default"],
     Comment: _commentaire_component__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  props: ['userInfos'],
+  props: ["userInfos"],
   data: function data() {
     return {
       moduleList: [],
-      moduleId: JSON.parse(sessionStorage.getItem('moduleid'))
+      moduleId: JSON.parse(sessionStorage.getItem("moduleid")),
+      url: document.querySelector("#envUrl").getAttribute("content")
     };
   },
   computed: {
@@ -4157,7 +4180,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this2 = this;
 
-    axios.get("http://localhost:8000/api/module?api_token=".concat(this.userInfos.api_token)).then(function (response) {
+    axios.get("".concat(this.url, "/api/module?api_token=").concat(this.userInfos.api_token)).then(function (response) {
       return _this2.moduleList = response.data;
     })["catch"](function (error) {
       return console.log(error);
@@ -4165,7 +4188,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   // permet de clear l'id du module
   updated: function updated() {
-    sessionStorage.removeItem('moduleid');
+    sessionStorage.removeItem("moduleid");
   }
 });
 
@@ -4211,13 +4234,14 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
   props: ['userInfos'],
   data: function data() {
     return {
+      url: document.querySelector('#envUrl').getAttribute('content'),
       cours: []
     };
   },
   created: function created() {
     var _this = this;
 
-    axios.get("http://localhost:8000/api/users/formations/".concat(this.userInfos.id, "?api_token=").concat(this.userInfos.api_token)).then(function (response) {
+    axios.get("".concat(this.url, "/api/users/formations/").concat(this.userInfos.id, "?api_token=").concat(this.userInfos.api_token)).then(function (response) {
       var data = response.data;
 
       for (var i = 0; i < data.length; i++) {
@@ -61399,7 +61423,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticClass: "commentaire" }, [
     _c("section", [
       _c("form", { attrs: { method: "post" }, on: { submit: _vm.postData } }, [
         _c("input", {
@@ -61413,7 +61437,7 @@ var render = function() {
           ],
           attrs: {
             type: "area",
-            name: "comment",
+            name: "text",
             placeholder: "Tapez votre commentaire ici"
           },
           domProps: { value: _vm.posts.text },
@@ -61429,7 +61453,7 @@ var render = function() {
         _vm._v(" "),
         _c("br"),
         _vm._v(" "),
-        _c("button", { attrs: { type: "submit" } }, [_vm._v(" Envoyer ")])
+        _c("button", { attrs: { type: "submit" } }, [_vm._v("Envoyer")])
       ])
     ])
   ])
@@ -61725,16 +61749,21 @@ var render = function() {
           _c("div", [
             _vm._m(0),
             _vm._v(" "),
-            _c("p", [
-              _c("input", {
-                attrs: { type: "file" },
-                on: { change: _vm.selectImage }
-              }),
-              _vm._v(" "),
-              _c("button", { on: { click: _vm.uploadImage } }, [
-                _vm._v("Envoyer")
-              ])
-            ])
+            _c(
+              "form",
+              {
+                attrs: { enctype: "multipart/form-data" },
+                on: { submit: _vm.uploadImage }
+              },
+              [
+                _c("input", {
+                  attrs: { type: "file" },
+                  on: { change: _vm.selectImage }
+                }),
+                _vm._v(" "),
+                _c("button", [_vm._v("Modifier")])
+              ]
+            )
           ])
         ]
       ),
@@ -61812,15 +61841,26 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticClass: "session" },
     [
       _vm._l(_vm.filterModules, function(modules) {
         return _c("div", { key: modules.id }, [
           _c("div", [
-            _c("h2", [_vm._v(" " + _vm._s(modules.titre) + " ")]),
+            _c("h2", [_vm._v(_vm._s(modules.titre))]),
             _vm._v(" "),
-            _c("p", [_vm._v(" " + _vm._s(modules.description) + " ")]),
+            _c("p", [_vm._v(_vm._s(modules.description))]),
             _vm._v(" "),
-            _vm._m(0, true)
+            _c("iframe", {
+              attrs: {
+                width: "560",
+                height: "315",
+                src: "https://www.youtube.com/embed/nhBVL41-_Cw",
+                frameborder: "0",
+                allow:
+                  "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
+                allowfullscreen: ""
+              }
+            })
           ])
         ])
       }),
@@ -61840,27 +61880,7 @@ var render = function() {
     2
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", [
-      _vm._v(" ex de video : "),
-      _c("iframe", {
-        attrs: {
-          width: "560",
-          height: "315",
-          src: "https://www.youtube.com/embed/nhBVL41-_Cw",
-          frameborder: "0",
-          allow:
-            "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
-          allowfullscreen: ""
-        }
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -74143,7 +74163,12 @@ Vue.component('modifyuser', __webpack_require__(/*! ./components/modify-user.com
 Vue.component('user', __webpack_require__(/*! ./components/user.component */ "./resources/js/components/user.component.vue")["default"]);
 Vue.component('session', __webpack_require__(/*! ./components/session.component */ "./resources/js/components/session.component.vue")["default"]);
 new Vue({
-  el: '#app'
+  el: '#app',
+  data: function data() {
+    return {
+      url: document.querySelector('#envUrl').getAttribute('content')
+    };
+  }
 });
 
 /***/ }),

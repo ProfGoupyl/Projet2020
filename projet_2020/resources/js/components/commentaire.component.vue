@@ -1,37 +1,46 @@
 <template>
-    <div>
-        <section>
-            <form @submit="postData" method="post">
-                <input type="area" name="comment" placeholder="Tapez votre commentaire ici" v-model="posts.text"> <br>
-                <button type="submit"> Envoyer </button>
-            </form> 
-        </section>
-    </div>
+  <div class="commentaire">
+    <section>
+      <form @submit="postData" method="post">
+        <input
+          type="area"
+          name="text"
+          placeholder="Tapez votre commentaire ici"
+          v-model="posts.text"
+        />
+        <br />
+        <button type="submit">Envoyer</button>
+      </form>
+    </section>
+  </div>
 </template>
 
 <script>
-    
-    export default {
-        name: "CommentaireComponent",
-        props: ['userInfos'],
-        
-        data() {
-            return {
-                posts: { text: null},
-                userId: this.userInfos.id,
-                apiToken: this.userInfos.api_token,
-            }
+export default {
+  name: "CommentaireComponent",
+  props: ["userInfos"],
+
+  data() {
+    return {
+      posts: { text: null },
+      userId: this.userInfos.id,
+      apiToken: this.userInfos.api_token,
+      url: document.querySelector("#envUrl").getAttribute("content"),
+    };
+  },
+
+  methods: {
+    postData(e) {
+      axios.post("postData", this.posts).then(
+        function (response) {
+          console.log(response.data);
         },
-        
-        methods: {
-            postData(e)
-            {
-                this.axios.post(`http://localhost:8000/commentaires`, this.posts)
-                .then((result)=>{
-                    console.warn(result)
-                })
-                e.preventDefault();
-            }
+        function (response) {
+          console.log(response.data);
         }
-    }
+      );
+      e.preventDefault();
+    },
+  },
+};
 </script>

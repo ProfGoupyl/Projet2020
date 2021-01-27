@@ -23,10 +23,10 @@
                         <label for="currentPicture">Photo de profil actuelle:</label>
                         <img src="" alt="" class="UserImage" width="50px" height="50px">
                     </p>
-                    <p>
+                    <form @submit="uploadImage" enctype="multipart/form-data">
                         <input type="file" @change="selectImage">
-                        <button @click="uploadImage">Envoyer</button>
-                    </p>
+                        <button>Modifier</button>
+                    </form>
                 </div>
             </form>
 
@@ -49,6 +49,7 @@
         data() {
             return {
                 token: document.querySelector('#token').getAttribute('content'),
+                url: document.querySelector('#envUrl').getAttribute('content'),
                 userId: this.userInfos.id,
                 userName: this.userInfos.name,
                 userPrenom: this.userInfos.prenom,
@@ -62,7 +63,7 @@
         },
         methods: {
             submit() {
-                axios.patch(`http://localhost:8000/api/users/${this.userInfos.id}/?api_token=${this.userInfos.api_token}`
+                axios.patch(`${this.url}/api/users/${this.userInfos.id}/?api_token=${this.userInfos.api_token}`
                 , {
                     name: this.userName,
                     prenom: this.userPrenom,
@@ -75,17 +76,25 @@
             selectImage(event) {
                 this.userPhoto = event.target.files[0]
             },
-            uploadImage() {
+            uploadImage(event) {
+                event.preventDefault()
+                let currentObj = this
+
+                const config = {
+                    headers: {'content-type': 'multipart/form-data'}
+                }
+
                 const fd = new FormData()
-                fd.append('user_image', this.userPhoto, `user${this.userId}`)
-                axios.post('', fd, {
-                    header: {
-                        'Content-Type': 'multiple/form-data'
-                    }
-                })
-                .then(response => console.log(response))
-                .catch(error => console.log(error))
+                fd.append('image', this.userPhoto)
+
+                axios.post('uploadImage', fd, config)
+                    .then(function(response) {
+                        currentObj.uploadSucces = response.data.success
+                    })
+                    .catch(function(error) {
+                        currentObj.uploadFail = error
+                    })
             }
-        }
+        },
     }
 </script>

@@ -1,0 +1,73 @@
+.p{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    .login{
+    width: 50%;
+    height: 70vh;
+    margin: 0 auto;
+    background-color: $white;
+    padding: 4%;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+        div{
+            div{
+                text-align: center;
+                padding: 0 0 3% 0;
+            }
+            form.loginform{
+                width: 70%;
+                margin: 0 auto;
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: space-evenly;
+                div{
+                    height: auto;
+                    padding: 10px;
+                    flex-basis: 100%;
+                    display: flex;
+                    flex-flow: row wrap;
+                    justify-content: space-evenly;
+                    label{
+                        flex-basis: 100%;
+                        text-align: left;
+                    }
+                    input{
+                        flex-basis: 100%;
+                    }
+                }
+                div.remember{
+                    text-align: left;
+                    width: 100%;
+                    label{
+                        width: 100%;
+                        text-align: left;
+                        input{
+                            text-align: left;
+                            width: auto;
+                        }
+                        span{
+                            width: auto;
+                        }
+                    }
+                }
+                &:last-of-type{
+                    a{
+                        flex-basis: 100%;
+                        text-decoration: none;
+                        color: $gray;
+                        &:hover, &:focus{
+                            color:$main;
+                        }
+                    }
+                    button{
+                        align-items: flex-start;
+                    }
+                }
+            }
+        }   
+    }
+}
