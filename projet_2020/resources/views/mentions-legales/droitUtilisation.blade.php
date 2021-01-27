@@ -1,6 +1,6 @@
 @extends('layouts.default')
 
-@section('droit')
+@section('content')
 <h1>Droits de l'utilisation</h1>
 <p>Ce site web est la propriété de :</p>
 <p><strong>Goupyl Education</strong></p>

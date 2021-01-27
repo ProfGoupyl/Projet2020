@@ -1,6 +1,6 @@
 @extends('layouts.default')
 
-@section('cookies')
+@section('content')
 <h1>Cookies</h1>
 <h2>Que sont les cookies ?</h2>
 <p>Un cookie est un petit fichier texte sauvé par le serveur d'un site web dans le navigateur de votre ordinateur ou de votre appareil mobile lorsque vous consultez ce site web. Le cookie contient un code unique permettant de reconnaître votre navigateur lors de votre visite sur le site web ("cookie de session") ou lors de futures visites répétées ("cookie permanent"). Les cookies peuvent être placés par le serveur du site web que vous visitez ou par des partenaires avec lesquels ce site web collabore. Le serveur d'un site web peut uniquement lire les cookies qu'il a lui-même placés ; il n'a accès à aucune autre information se trouvant sur votre ordinateur ou sur votre appareil mobile. Les cookies sont stockés sur votre ordinateur ou appareil mobile dans le répertoire de votre navigateur. Le contenu d'un cookie se compose en général du nom du serveur qui a placé le cookie, d'une date d'expiration et d'un code chiffré unique.</p>

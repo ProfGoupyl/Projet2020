@@ -1,6 +1,6 @@
 @extends('layouts.default')
 
-@section('charte')
+@section('content')
 <h1>Charte Vie Privée</h1>
 <h2>1. Pourquoi cette charte vie privée ?</h2>
 <p>Goupyl Education accorde beaucoup d’importance à la protection de votre vie privée et de vos données personnelles. Nous collectons et traitons vos données personnelles conformément aux dispositions légales applicables en la matière, à savoir la Loi du 8 décembre 1992 relative à la protection de la vie privée à l’égard des traitements de données à caractère personnel (« Loi vie privée ») et le Règlement européen du 27 avril 2016 relatif à la protection des personnes physiques à l’égard du traitement des données à caractère personnel et à la libre circulation de ces données (« Règlement »).
