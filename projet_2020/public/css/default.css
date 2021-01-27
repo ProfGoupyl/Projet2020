@@ -554,6 +554,44 @@ div.mentions ul {
   padding: 0 2em;
 }
 
+div.home {
+  width: 100%;
+}
+
+div.home h1 {
+  text-align: center;
+}
+
+div.home ul {
+  list-style-position: inside;
+}
+
+div.home ul li {
+  list-style: none;
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  padding: 0.5em;
+}
+
+div.home ul li:nth-child(even) {
+  background-color: #ececec;
+}
+
+div.home ul li p {
+  flex-basis: 70%;
+}
+
+div.home ul li a {
+  flex-basis: 15%;
+}
+
+div.home p,
+div.home ol,
+div.home ul {
+  padding: 0 1em;
+}
+
 * {
   box-sizing: border-box;
   margin: 0px;
