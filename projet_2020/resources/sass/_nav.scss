@@ -10,6 +10,7 @@ header nav.navPrincipale {
         justify-content: space-between;
         background-color: $white;
         li {
+            flex-basis: 10%;
             cursor: pointer;
             img.logo {
                 text-align: left;

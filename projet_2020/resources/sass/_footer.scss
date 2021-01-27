@@ -1,0 +1,28 @@
+.footer{
+	background-color: $white;
+	padding: 1%;
+	margin-bottom: 1%;
+}
+div.footer {
+	h3{
+		display: none;
+		text-align: left;	
+	}
+	nav ul{
+	display: flex;
+	flex-flow: row wrap;
+	padding: 0 1em 1em 1em;
+		li{
+			padding: 0 2em 0 0;
+			text-align: center;
+			list-style-type: none;
+			a{
+				color: $main;
+				text-decoration: none;
+				&:hover{
+				color: $gray;
+			}
+			}
+		}
+	} 
+}
