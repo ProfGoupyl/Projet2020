@@ -3938,6 +3938,18 @@ __webpack_require__.r(__webpack_exports__);
       return console.log(error);
     });
   },
+  updated: function updated() {
+    var module = [];
+
+    for (var i = 0; i < this.moduleList.length; i++) {
+      if (this.coursId === this.moduleList[i].cours_id) {
+        module.push(this.moduleList[i].id);
+      }
+    }
+
+    this.moduleId = module[0];
+    sessionStorage.setItem('moduleid', this.moduleId);
+  },
   methods: {
     save: function save(moduleid) {
       sessionStorage.setItem('moduleid', moduleid);
