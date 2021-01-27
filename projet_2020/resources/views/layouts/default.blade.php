@@ -15,6 +15,15 @@
         <section id="app">
             @yield('content')
         </section>
+        <section id="droit">
+            @yield('droit')
+        </section>
+        <section id="cookies">
+            @yield('cookies')
+        </section>
+        <section id="charte">
+            @yield('charte')
+        </section>
 
         <footer>
             @include('includes.footer')

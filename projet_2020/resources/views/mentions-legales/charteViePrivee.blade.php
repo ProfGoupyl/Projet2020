@@ -1,3 +1,5 @@
+@extends('layouts.default')
+
 @section('charte')
 <h1>Charte Vie Privée</h1>
 <h2>1. Pourquoi cette charte vie privée ?</h2>

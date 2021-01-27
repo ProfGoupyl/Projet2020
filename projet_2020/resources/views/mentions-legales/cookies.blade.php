@@ -1,3 +1,5 @@
+@extends('layouts.default')
+
 @section('cookies')
 <h1>Cookies</h1>
 <h2>Que sont les cookies ?</h2>

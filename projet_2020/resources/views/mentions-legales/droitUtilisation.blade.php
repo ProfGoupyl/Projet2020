@@ -1,3 +1,5 @@
+@extends('layouts.default')
+
 @section('droit')
 <h1>Droits de l'utilisation</h1>
 <p>Ce site web est la propriété de :</p>
