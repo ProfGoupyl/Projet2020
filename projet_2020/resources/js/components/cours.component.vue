@@ -56,6 +56,7 @@
                 .catch(error => console.log(error))
         },
         updated() {
+            // Afficher le premier module au chargement du composant
             let module = []
             for (let i = 0; i < this.moduleList.length; i++) {
                 if(this.coursId === this.moduleList[i].cours_id) {

@@ -3939,6 +3939,7 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   updated: function updated() {
+    // Afficher le premier module au chargement du composant
     var module = [];
 
     for (var i = 0; i < this.moduleList.length; i++) {
