@@ -308,6 +308,7 @@ form.userProfil div p img {
 }
 
 .faq li details .faq_question_hidden {
+  padding: 2%;
   padding-left: 5%;
 }
 
