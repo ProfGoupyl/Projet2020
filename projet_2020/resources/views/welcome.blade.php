@@ -44,6 +44,7 @@
             </li>
             <li>
                 <p>MILICAN Nicolas</p>
+                <a href="https://www.linkedin.com/in/nicolas-milican-3043b9205/" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a>
                 <a href="http://nicolasmilican.atspace.eu/" target="_blank"><i class="fas fa-globe fa-lg"></i></a>
             </li>
             <li>
