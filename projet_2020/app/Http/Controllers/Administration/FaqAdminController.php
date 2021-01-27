@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Administration;
 
 use App\Models\Faqs;
+use App\Models\Module;
 use Illuminate\Http\Request;
 use App\Models\Module;
 use App\Models\users;
@@ -111,4 +112,3 @@ class FaqAdminController extends Controller
         return redirect('/admin/faqs');
     }
 }
-?>
