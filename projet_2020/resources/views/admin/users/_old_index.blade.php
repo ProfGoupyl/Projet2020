@@ -1,6 +1,7 @@
 @extends('layouts.default')
 @section('content')
 
+
 <!-- Create New user -->
 <button id="modal-open" class="btn btn-primary addUser">+ Ajouter un utilisateur</button>
 <div id="modal" style="display:none">

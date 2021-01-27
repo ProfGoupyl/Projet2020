@@ -45,3 +45,14 @@ deleteBtns.forEach(btn => {
     })
 })
 deleteClose.addEventListener('click', () => deleteModal.style.display = "none")
+
+
+const csvShow = document.querySelector('#csv-show');
+const csvImg = document.querySelector('#csv-img');
+csvShow.addEventListener('click', () => {
+    if (csvImg.style.display === "none")
+        csvImg.style.display = "block"
+    else {
+        csvImg.style.display = "none"
+    }
+})
