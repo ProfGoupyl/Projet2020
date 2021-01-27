@@ -3,10 +3,10 @@
 @section('content')
     <h1>Bienvenue sur <strong>Goupyl Education</strong></h1>
     <p>
-        Salut, je m'appelle Rudy Renard et je suis formateur à l'IFOSUP et propriétaire du site goupyl.com,. Sur ce site vous trouverez mes cours en vidéo qui vous permettront de progresser principalement en programmation.
+        Salut, je m'appelle Rudy Renard et je suis formateur à l'IFOSUP et propriétaire du site goupyl.com, Sur ce site vous trouverez mes cours en vidéo qui vous permettront de progresser principalement en programmation.
     </p>
     <p>
-        Vous verrez à quel cours vous êtes inscrit (IFOSUP) mais également en élève libre ( sur demande )
+        Vous verrez à quel cours vous êtes inscrit (IFOSUP) mais également en élève libre ( sur demande ).
     </p>
     <p>
         Ce site a été réalisé dans le cadre du module 5XDYN - projet web dynamique 2020-2021- par les étudiants dont voici la liste : 
