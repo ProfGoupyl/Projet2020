@@ -23,7 +23,7 @@
                 <form action="/admin/module/{{$m->id}}" method="POST">
                     @csrf
                     @method('delete')
-                <button id="delete" class="btn btn-primary" type="submit"><i class="fas fa-trash-alt fa-lg"></i></button>
+                    <button id="delete" class="btn btn-primary" type="submit"><i class="fas fa-trash-alt fa-lg"></i></button>
                 </form>
 
             </div>

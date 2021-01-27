@@ -22,7 +22,9 @@
     </div>
 
     <script src="https://kit.fontawesome.com/3ccbb8d23f.js" crossorigin="anonymous"></script>
+    @if(!\Request::is('admin/*'))
     <script src="{{ asset('js/app.js') }}"></script>
+    @endif
     <script>
         $(document).ready(function() {
             $(document).ready(function() {

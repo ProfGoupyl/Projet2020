@@ -18,7 +18,7 @@
         </li>
         @else
         <li class="items">
-            <a href="/user">Cours</a>
+            <a href="/user">Mes cours</a>
         </li>
         @endif
         <li class="items">
