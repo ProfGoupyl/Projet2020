@@ -4050,17 +4050,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['userInfos'],
   data: function data() {
@@ -4082,6 +4071,7 @@ __webpack_require__.r(__webpack_exports__);
     submit: function submit() {
       var _this = this;
 
+      document.getElementById('formSubmit').submit();
       axios.patch("".concat(this.url, "/api/users/").concat(this.userInfos.id, "/?api_token=").concat(this.userInfos.api_token), {
         name: this.userName,
         prenom: this.userPrenom,
@@ -61649,13 +61639,7 @@ var render = function() {
         "form",
         {
           staticClass: "userProfil",
-          attrs: { method: "patch" },
-          on: {
-            submit: function($event) {
-              $event.preventDefault()
-              return _vm.submit($event)
-            }
-          }
+          attrs: { method: "patch", id: "formSubmit" }
         },
         [
           _c("input", {
@@ -61746,37 +61730,21 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _c("div", [
-            _vm._m(0),
-            _vm._v(" "),
-            _c(
-              "form",
-              {
-                attrs: { enctype: "multipart/form-data" },
-                on: { submit: _vm.uploadImage }
-              },
-              [
-                _c("input", {
-                  attrs: { type: "file" },
-                  on: { change: _vm.selectImage }
-                }),
-                _vm._v(" "),
-                _c("button", [_vm._v("Modifier")])
-              ]
-            )
-          ])
+          _vm._m(0)
         ]
       ),
       _vm._v(" "),
-      _vm._m(1),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary",
+          attrs: { id: "modifier", type: "submit" },
+          on: { click: _vm.submit }
+        },
+        [_c("i", { staticClass: "fas fa-pen fa-lg" })]
+      ),
       _vm._v(" "),
-      _vm._m(2),
-      _vm._v(" "),
-      _vm.send === true
-        ? _c("div", [_c("p", [_vm._v("Modifications enregistrées")])])
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.send === false ? _c("div", [_c("p", [_vm._v("Erreur")])]) : _vm._e()
+      _vm._m(1)
     ])
   ])
 }
@@ -61785,29 +61753,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("p", [
-      _c("label", { attrs: { for: "currentPicture" } }, [
-        _vm._v("Photo de profil actuelle:")
-      ]),
-      _vm._v(" "),
-      _c("img", {
-        staticClass: "UserImage",
-        attrs: { src: "", alt: "", width: "50px", height: "50px" }
-      })
+    return _c("div", [
+      _c("p", [
+        _c("label", { attrs: { for: "currentPicture" } }, [
+          _vm._v("Photo de profil actuelle:")
+        ]),
+        _vm._v(" "),
+        _c("img", {
+          staticClass: "UserImage",
+          attrs: { src: "", alt: "", width: "50px", height: "50px" }
+        })
+      ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "btn btn-primary",
-        attrs: { id: "modifier", type: "submit" }
-      },
-      [_c("i", { staticClass: "fas fa-pen fa-lg" })]
-    )
   },
   function() {
     var _vm = this
@@ -74661,10 +74618,17 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 __webpack_require__(/*! C:\wamp64\www\projetDyn\Projet2020\projet_2020\resources\js\app.js */"./resources/js/app.js");
 __webpack_require__(/*! C:\wamp64\www\projetDyn\Projet2020\projet_2020\resources\sass\app.scss */"./resources/sass/app.scss");
 __webpack_require__(/*! C:\wamp64\www\projetDyn\Projet2020\projet_2020\resources\sass\default.scss */"./resources/sass/default.scss");
 module.exports = __webpack_require__(/*! C:\wamp64\www\projetDyn\Projet2020\projet_2020\resources\css\app.css */"./resources/css/app.css");
+=======
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
+>>>>>>> 1c583ea4ff345b8b4c41112bfe794b02d3c89607
 
 
 /***/ })

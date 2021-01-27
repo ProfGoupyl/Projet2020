@@ -1,49 +1,36 @@
-@extends('admin.faqs.layout')
-   
+@extends('layouts.default')
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Edit Faq</h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('faqs.index') }}"> Back</a>
-            </div>
-        </div>
+<div class="faq">
+    <div class="titre_edit">
+        <h2>Edit Faq</h2>
     </div>
-   
+    <div class="button_back">
+        <a class="fas fa-plus fa-lg" href="{{ route('faqs.index') }}"> retour</a>
+    </div>
+    
     @if ($errors->any())
-        <div class="alert alert-danger">
-        <strong> (╯°□°)╯︵ ┻━┻ Whoops! </strong> (　ﾟдﾟ) Probleme avec ton input.<br><br>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
+    <div class="alert alert-danger">
+        <strong> (╯°□°)╯︵ ┻━┻ Whoops! </strong>Probleme avec ton input.<br><br>
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
     @endif
-  
+    
     <form action="{{ route('faqs.update',$faq->id) }}" method="POST">
+        @method('PATCH')
         @csrf
-        @method('PUT')
-   
-         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>question:</strong>
-                    <input type="text" name="question" value="{{ $faq->question }}" class="form-control" placeholder="Question">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>reponse:</strong>
-                    <textarea class="form-control" style="height:150px" name="reponse" placeholder="Reponse">{{ $faq->reponse }}</textarea>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
+        <div class="form-group">
+            <label for="question">question:</label>
+            <input type="text" name="question" value="{{ $faq->question }}" id="question" class="form-control">
         </div>
-   
+        <div class="form-group">
+            <label for="reponse">reponse:</label>
+            <textarea class="form-control" style="height:150px" value="{{ $faq->reponse }}" id="reponse" name="reponse" ></textarea>
+        </div>
+        <button type="submit" class="fas fa-plus fa-lg">Submit</button>
     </form>
+</div>
 @endsection

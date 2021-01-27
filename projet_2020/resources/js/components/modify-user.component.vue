@@ -2,7 +2,7 @@
     <div>
         <section class="prof">
             <h1>Votre profil:</h1>
-            <form v-on:submit.prevent="submit" method="patch" class="userProfil">
+            <form method="patch" id="formSubmit" class="userProfil">
                 <input type="hidden" name="_token" v-bind:value="token">
                 <div>
                     <p>
@@ -23,22 +23,11 @@
                         <label for="currentPicture">Photo de profil actuelle:</label>
                         <img src="" alt="" class="UserImage" width="50px" height="50px">
                     </p>
-                    <form @submit="uploadImage" enctype="multipart/form-data">
-                        <input type="file" @change="selectImage">
-                        <button>Modifier</button>
-                    </form>
                 </div>
             </form>
 
-            <button id="modifier" class="btn btn-primary" type="submit"><i class="fas fa-pen fa-lg"></i></button>
+            <button id="modifier" class="btn btn-primary" type="submit" @click="submit"><i class="fas fa-pen fa-lg"></i></button>
             <button><a href="/user">Annuler</a></button>
-
-            <div v-if="send === true">
-                <p>Modifications enregistrées</p>
-            </div>
-            <div v-if="send === false">
-                <p>Erreur</p>
-            </div>
         </section>
     </div>
 </template>
@@ -63,6 +52,8 @@
         },
         methods: {
             submit() {
+                document.getElementById('formSubmit').submit()
+                
                 axios.patch(`${this.url}/api/users/${this.userInfos.id}/?api_token=${this.userInfos.api_token}`
                 , {
                     name: this.userName,

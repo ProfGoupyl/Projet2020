@@ -4,27 +4,27 @@ namespace App\Http\Controllers\Administration;
 
 use App\Models\Faqs;
 use Illuminate\Http\Request;
+use App\Models\Module;
+use App\Models\users;
 use App\Http\Controllers\Controller;
 
 class FaqAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     * @param  App\Models\Faqs;
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $faqs = Faqs::latest()->paginate(5);
-
-        return view('admin.faqs.index', compact('faqs'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+    {   
+        $faqs = Faqs::all();
+        return view('admin.faqs.index',compact('faqs'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * 
      */
     public function create()
     {
@@ -34,67 +34,75 @@ class FaqAdminController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $faqs = Faqs::create($request->validate([
             'question' => 'required',
-            'reponse' => 'required',
-        ]);
+            'reponse' => 'required']));
+        $module = new Module();
+        $module->module_id = $request->get('module_id');
+        $faqs = new Module;
+        $faqs = Module::find($request->request->get('cours'))->module;
+        $module->cours_id = $cours;
+            return redirect('/admin/faqs');
 
-        Faqs::create($request->all());
-
-        return redirect('/admin/faqs');
+           
+           
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Faq  $faq
-     * @return \Illuminate\Http\Response
+     * 
      */
-    public function show(Faqs $faq)
+    public function show($id)
     {
-        return view('admin.faqs.show', compact('faq'));
+     $faqs=Faqs::where('module_id','=',$id)->get();
+     return view('admin.faqs.index',[
+         'faqs'=>$faqs
+     ]);
+       
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Faq  $faq
-     * @return \Illuminate\Http\Response
+     * 
      */
     public function edit(Faqs $faq)
     {
+        
         return view('admin.faqs.edit', compact('faq'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Faq  $faq
-     * @return \Illuminate\Http\Response
+     *
+     * 
      */
-    public function update(Request $request, Faqs $faq)
+    public function update(Request $request,$id)
     {
-        $request->validate([
+       $request->validate([
             'question' => 'required',
             'reponse' => 'required',
-        ]);
-
-        $faq->update($request->all());
-
+            
+            ]);
+            $faq = new Faqs(
+                [
+                    'question' => $request->get('question'),
+                    'reponse' => $request->get('reponse'),
+                    ]
+                );
+                $faq->save();
         return redirect('/admin/faqs');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Faq  $faq
-     * @return \Illuminate\Http\Response
+     * 
      */
     public function destroy(Faqs $faq)
     {
@@ -103,3 +111,4 @@ class FaqAdminController extends Controller
         return redirect('/admin/faqs');
     }
 }
+?>
