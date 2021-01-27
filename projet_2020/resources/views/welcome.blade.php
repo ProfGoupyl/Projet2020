@@ -12,7 +12,7 @@
         Ce site a été réalisé dans le cadre du module 5XDYN - projet web dynamique 2020-2021- par les étudiants dont voici la liste : 
     </p>
     <ul>
-        <li>GOMAND Jonathan - <a href="https://www.linkedin.com/in/jonathan-gomand-9690761b7/" target="_blank">LinkedIn</a></li>
+        <li>GOMAND Jonathan - <a href="https://www.linkedin.com/in/jonathan-gomand-9690761b7/" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a></li>
         <li>LEBEGUE Sébastien</li>
         <li>AMIR Ilham</li>
         <li>PERRIARD Céline</li>
