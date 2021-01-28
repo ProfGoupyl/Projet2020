@@ -48,21 +48,20 @@ class CsvController extends Controller
         $user->cours()->sync($cours, ['start_at' => $cours->debut_du_cours, 'end_at' => $cours->fin_du_cours]);
       } else {
         $user->cours()->attach($cours, ['start_at' => $cours->debut_du_cours, 'end_at' => $cours->fin_du_cours]);
+        // ENVOI EMAIL
+        $data = [
+          'subject' => "Invitation aux cours",
+          'name' => $user->name,
+          'email' => str_replace("\r\n", '', $user->email),
+          'content' => [
+            'message' => "Vous avez été invité au cours" . $cours->titre . ". Bienvenue !"
+          ]
+        ];
+        Mail::send('admin.email.invitation-cours-template', $data, function ($message) use ($data) {
+          $message->to($data['email'])
+            ->subject($data['subject']);
+        });
       }
-
-      // ENVOI EMAIL
-      $data = [
-        'subject' => "Invitation aux cours",
-        'name' => $user->name,
-        'email' => str_replace("\r\n", '', $user->email),
-        'content' => [
-          'message' => "Vous avez été invité au cours" . $cours->titre . ". Bienvenue !"
-        ]
-      ];
-      Mail::send('admin.email.invitation-cours-template', $data, function ($message) use ($data) {
-        $message->to($data['email'])
-          ->subject($data['subject']);
-      });
     }
     fclose($res);
     return redirect('/admin/cours');
