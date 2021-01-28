@@ -18,7 +18,7 @@
             @foreach($modules as $m)
             <div data-neworder="" data-element="{{$m->id}}" data-order="{{$m->ordre}}" class="draggable" draggable="true">
                 <input type="hidden" name="modules[]" value="{{$m->id}}-{{$m->ordre}}">
-                <p>{{$m->titre}}</p>
+                <p>{{$m->titre}}</p><a href="/admin/faqs/{{$m->id}}">Consulter la FAQ</a>
                 <button id="modifier" class="btn btn-primary edit-module" type="submit" data-action="{{$m->id}}" data-titre="{{$m->titre}}" data-desc="{{$m->description}}" data-url="{{$m->url_video}}"><i class="fas fa-pen fa-lg"></i></button>
                 <form action="/admin/module/{{$m->id}}" method="POST">
                     @csrf

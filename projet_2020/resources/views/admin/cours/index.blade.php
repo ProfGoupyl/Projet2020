@@ -66,13 +66,13 @@
                         <!-- BUTTONS MODIFY & SAVE / END -->
 
                         <!-- Formulaire de suppression -->
-                        <div>
+                        
                             <button class="delete-btn" data-titre="{{$cours->titre}}" data-target="/admin/cours/{{$cours->id}}" value='Supprimer' class="btn btn-primary" type="button">
                                 <i class="fas fa-trash-alt fa-lg"></i>
                             </button>
-                        </div>
+                        
                         <!-- Lien vers la page show d'un cours -->
-                        <a id="show" href='/admin/cours/{{$cours->id}}'>show</a>
+                        <a id="show" href='/admin/cours/{{$cours->id}}'> <i class="fas fa-eye  fa-lg"></i></a>
                     </td>
                 </form>
             </tr>

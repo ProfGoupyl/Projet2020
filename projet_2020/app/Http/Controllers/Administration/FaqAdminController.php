@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Administration;
 use App\Models\Faqs;
 use App\Models\Module;
 use Illuminate\Http\Request;
-use App\Models\Module;
 use App\Models\users;
 use App\Http\Controllers\Controller;
 
@@ -29,7 +28,8 @@ class FaqAdminController extends Controller
      */
     public function create()
     {
-        return view('admin.faqs.create');
+        
+        // return view('admin.faqs.create'); 
     }
 
     /**
@@ -38,26 +38,20 @@ class FaqAdminController extends Controller
      */
     public function store(Request $request)
     {
-        // $faqs = Faqs::create($request->validate([
-        //     'question' => 'required',
-        //     'reponse' => 'required']));
-        // $module = new Module();
-        // $module->module_id = $request->get('module_id');
-        // $faqs = new Module;
-        // $faqs = Module::find($request->request->get('cours'))->module;
-        // $module->cours_id = $cours;
-        //     return redirect('/admin/faqs');
-
+     
+        
         $faq = new Faqs;
+        
         $module = Module::find($request->request->get('modules'));
-
+        
         $faq->module_id = $module->id;
 
+        
         $faq->question = $request->has('question') && strlen($request->question) ? $request->question : $faq->question;
         $faq->reponse = $request->has('reponse') && strlen($request->reponse) ? $request->reponse : $faq->reponse;   
         
         $faq->save();
-        return redirect('/admin/faqs');
+        return redirect('/admin/faqs/' .$module->id);
 
            
     }
@@ -71,7 +65,8 @@ class FaqAdminController extends Controller
     {
      $faqs=Faqs::where('module_id','=',$id)->get();
      return view('admin.faqs.index',[
-         'faqs'=>$faqs
+         'faqs'=>$faqs,
+         'id'=>$id
      ]);
        
     }
@@ -95,19 +90,15 @@ class FaqAdminController extends Controller
      */
     public function update(Request $request,$id)
     {
-       $request->validate([
-            'question' => 'required',
-            'reponse' => 'required',
-            
-            ]);
-            $faq = new Faqs(
-                [
-                    'question' => $request->get('question'),
-                    'reponse' => $request->get('reponse'),
-                    ]
-                );
-                $faq->save();
-        return redirect('/admin/faqs');
+   
+        $faq = Faqs::find($id);
+        $faq->question = $request->has('question') && strlen($request->question) ? $request->question : $faq->question;
+        $faq->reponse = $request->has('reponse') && strlen($request->reponse) ? $request->reponse : $faq->reponse;
+        $faq->save();
+        return redirect('/admin/cours');
+
+
+
     }
 
     /**
@@ -117,8 +108,12 @@ class FaqAdminController extends Controller
      */
     public function destroy(Faqs $faq)
     {
+    
+       
         $faq->delete();
+        return redirect('/admin/cours');
 
-        return redirect('/admin/faqs');
-    }
+
+        }
+        
 }
