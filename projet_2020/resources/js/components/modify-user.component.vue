@@ -41,7 +41,7 @@
           </p>
           <p v-if="(fSend === false || iSend === false)">
             Impossible d'enregistrer les modifications
-            </p>
+          </p>
         </div>
       </form>
     </section>
@@ -92,7 +92,7 @@ export default {
         .post("uploadImage", fd, {
           headers: { "content-type": "multipart/form-data" },
         })
-        .then(this.iSend = false)
+        .then(this.iSend = true)
         .catch(function(error) {
           console.log(error)
           this.iSend = false
