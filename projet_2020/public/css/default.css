@@ -711,14 +711,14 @@ button,
   background-color: #ffffff;
   cursor: pointer;
   outline: none;
-  color: #d4d4d4;
-  border: 2px solid #d4d4d4;
+  color: #000000;
+  border: 2px solid #000000;
 }
 
 button a,
 #show a {
   display: block;
-  color: #d4d4d4;
+  color: #000000;
 }
 
 button a:hover,
@@ -732,7 +732,7 @@ button:hover,
 button:focus,
 #show:hover,
 #show:focus {
-  background-color: #c7c7c7;
+  background-color: black;
   color: #ffffff;
 }
 
@@ -741,33 +741,37 @@ button:active,
   background-color: #4236b0;
 }
 
-#ajouter {
-  color: #3dc387;
-  border: 2px solid #3dc387;
+#ajouter,
+.add {
+  color: #54bb00;
+  border: 2px solid #54bb00;
 }
 
 #ajouter:hover,
-#ajouter:focus {
-  background-color: #3dc387;
+#ajouter:focus,
+.add:hover,
+.add:focus {
+  background-color: #54bb00;
   color: #ffffff;
 }
 
-#ajouter:active {
-  background-color: #36b07a;
+#ajouter:active,
+.add:active {
+  background-color: #49a200;
 }
 
-#supprimer {
+.delete-btn {
   color: #e92222;
   border: 2px solid #e92222;
 }
 
-#supprimer:hover,
-#supprimer:focus {
+.delete-btn:hover,
+.delete-btn:focus {
   background-color: #e92222;
   color: #ffffff;
 }
 
-#supprimer:active {
+.delete-btn:active {
   background-color: #dc1616;
 }
 
@@ -800,5 +804,9 @@ form input {
 
 form input:focus {
   border-bottom: 2px solid #4A3DC3;
+}
+
+input[type="file"] {
+  border: none;
 }
 

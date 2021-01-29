@@ -12,7 +12,7 @@
     <!-- Create New user -->
     <!-- Boutton ouvrant la modal et le formulaire d'ajout d'un cours -->
     <div>
-        <button id="modal-open" class="btn btn-primary" type="button">
+        <button id="modal-open" class="add" type="button">
             <i class="fas fa-plus fa-lg"></i>
         </button>
     </div>
