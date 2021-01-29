@@ -13,6 +13,10 @@
           allowfullscreen
         ></iframe>
         <!-- {{ modules.url_video }} -->
+        <div>
+          <button v-on:click.prevent="onPrevious()">Précédent</button>
+          <button v-on:click.prevent="onNext()">Suivant</button>
+        </div>
       </div>
     </div>
     <article>
@@ -37,6 +41,9 @@ export default {
       moduleList: [],
       moduleId: JSON.parse(sessionStorage.getItem("moduleid")),
       url: document.querySelector("#envUrl").getAttribute("content"),
+
+      hasPrevious: false,
+      hasNext: true,
     };
   },
   computed: {
@@ -53,6 +60,25 @@ export default {
   // permet de clear l'id du module
   updated() {
     sessionStorage.removeItem("moduleid");
+  },
+  methods: {
+    onPrevious: function () {
+      this.moduleId -= 1;
+      this.hasNext = true;
+
+      if (this.moduleId == 0) {
+        this.hasPrevious = false;
+      }
+    },
+
+    onNext: function () {
+      this.moduleId += 1;
+      this.hasPrevious = true;
+
+      if (this.moduleId == 2) {
+        this.hasNext = false;
+      }
+    },
   },
 };
 </script>

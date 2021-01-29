@@ -4163,6 +4163,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4175,7 +4179,9 @@ __webpack_require__.r(__webpack_exports__);
     return {
       moduleList: [],
       moduleId: JSON.parse(sessionStorage.getItem("moduleid")),
-      url: document.querySelector("#envUrl").getAttribute("content")
+      url: document.querySelector("#envUrl").getAttribute("content"),
+      hasPrevious: false,
+      hasNext: true
     };
   },
   computed: {
@@ -4199,6 +4205,24 @@ __webpack_require__.r(__webpack_exports__);
   // permet de clear l'id du module
   updated: function updated() {
     sessionStorage.removeItem("moduleid");
+  },
+  methods: {
+    onPrevious: function onPrevious() {
+      this.moduleId -= 1;
+      this.hasNext = true;
+
+      if (this.moduleId == 0) {
+        this.hasPrevious = false;
+      }
+    },
+    onNext: function onNext() {
+      this.moduleId += 1;
+      this.hasPrevious = true;
+
+      if (this.moduleId == 2) {
+        this.hasNext = false;
+      }
+    }
   }
 });
 
@@ -61821,7 +61845,35 @@ var render = function() {
                   "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
                 allowfullscreen: ""
               }
-            })
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _c(
+                "button",
+                {
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.onPrevious()
+                    }
+                  }
+                },
+                [_vm._v("Précédent")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.onNext()
+                    }
+                  }
+                },
+                [_vm._v("Suivant")]
+              )
+            ])
           ])
         ])
       }),
@@ -74622,10 +74674,10 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/sass/app.scss */"./resources/sass/app.scss");
-__webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\sass\default.scss */"./resources/sass/default.scss");
+module.exports = __webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })
