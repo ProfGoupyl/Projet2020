@@ -7,9 +7,7 @@ use Illuminate\Http\Request;
 class UploadImageController extends Controller
 {
     public function upload(Request $request) {
-        $imageName = time().'.'.$request->image->getClientOriginalExtension();
+        $imageName = $request->image->getClientOriginalName();
         $request->image->move(public_path('images/users'), $imageName);
-
-        return response()->json(['success' => true]);
     }
 }

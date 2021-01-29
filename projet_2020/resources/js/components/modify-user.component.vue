@@ -24,7 +24,7 @@
             <img src="" alt="" class="UserImage" width="50px" height="50px" />
           </p>
 
-          <input type="file" name="userPhoto" v-on:change="selectImage" />
+          <input type="file" accept="image/png, image/jpg, image.jpeg" name="userPhoto" id="userPhoto" v-on:change="selectImage">
         </div>
         <button
           v-on:click="submitFile()"
@@ -61,6 +61,7 @@ export default {
       userEmail: this.userInfos.email,
       userPseudo: this.userInfos.pseudo,
       userPhoto: null,
+      imageName: `user${this.userInfos.id}`,
       fSend: null,
       iSend: null,
     };
@@ -99,7 +100,16 @@ export default {
         });
     },
     selectImage(event) {
-      this.userPhoto = event.target.files[0];
+      if(event.target.files[0].size > 50000) {
+        $('#userPhoto').val('')
+        alert('Fichier trop volumineux ! Maximum 50 Ko')
+      } else {
+        const id = this.userId
+        const fileExt = event.target.files[0].name.split('.').pop(1)
+        const newFile = new File([event.target.files[0]], 'user' + id + '.' + fileExt)
+        this.userPhoto = newFile
+        console.log(newFile.name)
+      }
     },
   },
 };

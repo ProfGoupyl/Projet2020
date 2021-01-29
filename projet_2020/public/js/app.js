@@ -4095,6 +4095,7 @@ __webpack_require__.r(__webpack_exports__);
       userEmail: this.userInfos.email,
       userPseudo: this.userInfos.pseudo,
       userPhoto: null,
+      imageName: "user".concat(this.userInfos.id),
       fSend: null,
       iSend: null
     };
@@ -4124,7 +4125,16 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     selectImage: function selectImage(event) {
-      this.userPhoto = event.target.files[0];
+      if (event.target.files[0].size > 50000) {
+        $('#userPhoto').val('');
+        alert('Fichier trop volumineux ! Maximum 50 Ko');
+      } else {
+        var id = this.userId;
+        var fileExt = event.target.files[0].name.split('.').pop(1);
+        var newFile = new File([event.target.files[0]], 'user' + id + '.' + fileExt);
+        this.userPhoto = newFile;
+        console.log(newFile.name);
+      }
     }
   }
 });
@@ -61757,7 +61767,12 @@ var render = function() {
             _vm._m(0),
             _vm._v(" "),
             _c("input", {
-              attrs: { type: "file", name: "userPhoto" },
+              attrs: {
+                type: "file",
+                accept: "image/png, image/jpg, image.jpeg",
+                name: "userPhoto",
+                id: "userPhoto"
+              },
               on: { change: _vm.selectImage }
             })
           ]),
