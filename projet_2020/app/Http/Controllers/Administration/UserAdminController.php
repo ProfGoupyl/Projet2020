@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Administration;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use App\Models\Cours;
 use DateTime;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -19,9 +20,10 @@ class UserAdminController extends Controller
     public function index()
     {
         $users = User::all();
-
+        $cours = Cours::all();
         return view('admin.users.index', [
-            'users' => $users
+            'users' => $users,
+            'cours' => $cours
         ]);
     }
 
@@ -43,6 +45,8 @@ class UserAdminController extends Controller
      */
     public function store(Request $request)
     {
+        $cours = Cours::find($request->request->get('cours'));
+
         $user = new User();
         $date = new DateTime();
         $register_token = Str::random(40) . $date->getTimestamp();
@@ -70,6 +74,23 @@ class UserAdminController extends Controller
                 ->subject($data['subject']);
         });
 
+        //Invite au cours
+        if ($cours != "null") {
+            $user->cours()->attach($cours, ['start_at' => $cours->debut_du_cours, 'end_at' => $cours->fin_du_cours]);
+            // ENVOI EMAIL
+            $data = [
+                'subject' => "Invitation aux cours",
+                'name' => $user->name,
+                'email' => str_replace("\r\n", '', $user->email),
+                'content' => [
+                    'message' => "Vous avez été invité au cours" . $cours->titre . ". Bienvenue !"
+                ]
+            ];
+            Mail::send('admin.email.invitation-cours-template', $data, function ($message) use ($data) {
+                $message->to($data['email'])
+                    ->subject($data['subject']);
+            });
+        }
 
         return redirect('/admin/users');
     }

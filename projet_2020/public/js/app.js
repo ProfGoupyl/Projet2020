@@ -3902,12 +3902,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -3920,6 +3914,7 @@ __webpack_require__.r(__webpack_exports__);
       coursId: JSON.parse(sessionStorage.getItem('coursid')),
       moduleList: [],
       coursNames: [],
+      cours: null,
       componentKey: 0,
       url: document.querySelector('#envUrl').getAttribute('content')
     };
@@ -3938,6 +3933,19 @@ __webpack_require__.r(__webpack_exports__);
       return console.log(error);
     });
   },
+  updated: function updated() {
+    // Afficher le premier module au chargement du composant
+    var module = [];
+
+    for (var i = 0; i < this.moduleList.length; i++) {
+      if (this.coursId === this.moduleList[i].cours_id) {
+        module.push(this.moduleList[i].id);
+      }
+    }
+
+    this.moduleId = module[0];
+    sessionStorage.setItem('moduleid', this.moduleId);
+  },
   methods: {
     save: function save(moduleid) {
       sessionStorage.setItem('moduleid', moduleid);
@@ -3945,6 +3953,15 @@ __webpack_require__.r(__webpack_exports__);
     },
     forceRerender: function forceRerender() {
       this.componentKey += 1;
+    }
+  },
+  computed: {
+    filterCours: function filterCours() {
+      var _this2 = this;
+
+      return this.cours = this.coursNames.filter(function (names) {
+        return names.id === _this2.coursId;
+      });
     }
   }
 });
@@ -4050,57 +4067,72 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['userInfos'],
+  props: ["userInfos"],
   data: function data() {
     return {
-      token: document.querySelector('#token').getAttribute('content'),
-      url: document.querySelector('#envUrl').getAttribute('content'),
+      token: document.querySelector("#token").getAttribute("content"),
+      url: document.querySelector("#envUrl").getAttribute("content"),
       userId: this.userInfos.id,
       userName: this.userInfos.name,
       userPrenom: this.userInfos.prenom,
       userEmail: this.userInfos.email,
       userPseudo: this.userInfos.pseudo,
       userPhoto: null,
-      send: null,
-      uploadSucces: false,
-      uploadFail: false
+      fSend: null,
+      iSend: null
     };
   },
   methods: {
     submit: function submit() {
-      var _this = this;
-
-      document.getElementById('formSubmit').submit();
       axios.patch("".concat(this.url, "/api/users/").concat(this.userInfos.id, "/?api_token=").concat(this.userInfos.api_token), {
         name: this.userName,
         prenom: this.userPrenom,
         email: this.userEmail,
         pseudo: this.userPseudo
-      }).then(function (response) {
-        return _this.send = true;
-      })["catch"](function (error) {
-        return _this.send = false;
+      }).then(this.fSend = true)["catch"](function (error) {
+        console.log(error);
+        this.fSend = false;
+      });
+    },
+    submitFile: function submitFile() {
+      var fd = new FormData();
+      fd.append("image", this.userPhoto);
+      axios.post("uploadImage", fd, {
+        headers: {
+          "content-type": "multipart/form-data"
+        }
+      }).then(this.iSend = true)["catch"](function (error) {
+        console.log(error);
+        this.iSend = false;
       });
     },
     selectImage: function selectImage(event) {
-      this.userPhoto = event.target.files[0];
-    },
-    uploadImage: function uploadImage(event) {
-      event.preventDefault();
-      var currentObj = this;
-      var config = {
-        headers: {
-          'content-type': 'multipart/form-data'
-        }
-      };
-      var fd = new FormData();
-      fd.append('image', this.userPhoto);
-      axios.post('uploadImage', fd, config).then(function (response) {
-        currentObj.uploadSucces = response.data.success;
-      })["catch"](function (error) {
-        currentObj.uploadFail = error;
-      });
+      if (event.target.files[0].size > 50000) {
+        $('#userPhoto').val('');
+        alert('Fichier trop volumineux ! Maximum 50 Ko');
+      } else {
+        var id = this.userId;
+        var fileExt = event.target.files[0].name.split('.').pop(1);
+        var newFile = new File([event.target.files[0]], 'user' + id + '.' + fileExt);
+        this.userPhoto = newFile;
+      }
     }
   }
 });
@@ -4143,6 +4175,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4155,7 +4191,9 @@ __webpack_require__.r(__webpack_exports__);
     return {
       moduleList: [],
       moduleId: JSON.parse(sessionStorage.getItem("moduleid")),
-      url: document.querySelector("#envUrl").getAttribute("content")
+      url: document.querySelector("#envUrl").getAttribute("content"),
+      hasPrevious: false,
+      hasNext: true
     };
   },
   computed: {
@@ -4179,6 +4217,24 @@ __webpack_require__.r(__webpack_exports__);
   // permet de clear l'id du module
   updated: function updated() {
     sessionStorage.removeItem("moduleid");
+  },
+  methods: {
+    onPrevious: function onPrevious() {
+      this.moduleId -= 1;
+      this.hasNext = true;
+
+      if (this.moduleId == 0) {
+        this.hasPrevious = false;
+      }
+    },
+    onNext: function onNext() {
+      this.moduleId += 1;
+      this.hasPrevious = true;
+
+      if (this.moduleId == 2) {
+        this.hasNext = false;
+      }
+    }
   }
 });
 
@@ -61472,78 +61528,49 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("section", { staticClass: "section_page_cours" }, [
-      _c("aside", { staticClass: "aside_page_cours" }, [
-        _c("nav", { staticClass: "navSecondaire" }, [
-          _c("ul", [
+      _c(
+        "aside",
+        { staticClass: "aside_page_cours" },
+        [
+          _vm._l(_vm.filterCours, function(cours) {
+            return _c(
+              "h2",
+              { key: cours.id, staticClass: "navSecondaire_coursName" },
+              [_vm._v(_vm._s(cours.titre))]
+            )
+          }),
+          _vm._v(" "),
+          _c("nav", { staticClass: "navSecondaire" }, [
             _c(
-              "li",
-              _vm._l(_vm.coursNames, function(names) {
-                return _c(
-                  "div",
-                  { key: names.id, staticClass: "navSecondaire_coursName" },
-                  [
-                    _c(
-                      "span",
-                      {
-                        directives: [
+              "ul",
+              _vm._l(_vm.moduleList, function(module) {
+                return _c("li", { key: module.id }, [
+                  _vm.cours[0].id === module.cours_id
+                    ? _c("span", [
+                        _c(
+                          "a",
                           {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.coursId === names.id,
-                            expression: "coursId === names.id"
-                          }
-                        ]
-                      },
-                      [
-                        _vm._v(
-                          "\n                                Cours : " +
-                            _vm._s(names.titre) +
-                            "\n                                "
-                        ),
-                        _vm._l(_vm.moduleList, function(module) {
-                          return _c("ul", { key: module.titre }, [
-                            _c(
-                              "li",
-                              {
-                                directives: [
-                                  {
-                                    name: "show",
-                                    rawName: "v-show",
-                                    value: names.id === module.cours_id,
-                                    expression: "names.id === module.cours_id"
-                                  }
-                                ]
-                              },
-                              [
-                                _c(
-                                  "a",
-                                  {
-                                    staticClass: "Modules",
-                                    attrs: { href: "/cours" },
-                                    on: {
-                                      click: function($event) {
-                                        $event.preventDefault()
-                                        _vm.save(module.id), _vm.forceRerender()
-                                      }
-                                    }
-                                  },
-                                  [_vm._v(" " + _vm._s(module.titre) + " ")]
-                                )
-                              ]
-                            )
-                          ])
-                        })
-                      ],
-                      2
-                    )
-                  ]
-                )
+                            staticClass: "Modules",
+                            attrs: { href: "/cours" },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                _vm.save(module.id), _vm.forceRerender()
+                              }
+                            }
+                          },
+                          [_vm._v(" " + _vm._s(module.titre) + " ")]
+                        )
+                      ])
+                    : _vm._e()
+                ])
               }),
               0
             )
           ])
-        ])
-      ]),
+        ],
+        2
+      ),
       _vm._v(" "),
       _vm.moduleId
         ? _c(
@@ -61639,7 +61666,13 @@ var render = function() {
         "form",
         {
           staticClass: "userProfil",
-          attrs: { method: "patch", id: "formSubmit" }
+          attrs: { method: "patch" },
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.submit($event)
+            }
+          }
         },
         [
           _c("input", {
@@ -61649,7 +61682,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", [
             _c("p", [
-              _c("label", { attrs: { for: "firstname" } }, [
+              _c("label", { attrs: { for: "prenom" } }, [
                 _vm._v("First Name:")
               ]),
               _vm._v(" "),
@@ -61662,7 +61695,7 @@ var render = function() {
                     expression: "userPrenom"
                   }
                 ],
-                attrs: { type: "text", name: "firstname" },
+                attrs: { type: "text", name: "prenom" },
                 domProps: { value: _vm.userPrenom },
                 on: {
                   input: function($event) {
@@ -61676,9 +61709,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("p", [
-              _c("label", { attrs: { for: "lastname" } }, [
-                _vm._v("Last Name:")
-              ]),
+              _c("label", { attrs: { for: "name" } }, [_vm._v("Last Name:")]),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -61689,7 +61720,7 @@ var render = function() {
                     expression: "userName"
                   }
                 ],
-                attrs: { type: "text", name: "lastname" },
+                attrs: { type: "text", name: "name" },
                 domProps: { value: _vm.userName },
                 on: {
                   input: function($event) {
@@ -61730,21 +61761,53 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm._m(0)
+          _c("div", [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("input", {
+              attrs: {
+                type: "file",
+                accept: "image/png, image/jpg, image/jpeg",
+                name: "userPhoto",
+                id: "userPhoto"
+              },
+              on: { change: _vm.selectImage }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _vm.fSend === true && _vm.iSend === true
+              ? _c("p", [
+                  _vm._v("\n          Modifications enregistrées\n        ")
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.fSend === false || _vm.iSend === false
+              ? _c("p", [
+                  _vm._v(
+                    "\n          Impossible d'enregistrer les modifications\n        "
+                  )
+                ])
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary",
+              attrs: { id: "modifier", type: "submit" },
+              on: {
+                click: function($event) {
+                  return _vm.submitFile()
+                }
+              }
+            },
+            [_c("i", { staticClass: "fas fa-pen fa-lg" })]
+          ),
+          _vm._v(" "),
+          _vm._m(1)
         ]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary",
-          attrs: { id: "modifier", type: "submit" },
-          on: { click: _vm.submit }
-        },
-        [_c("i", { staticClass: "fas fa-pen fa-lg" })]
-      ),
-      _vm._v(" "),
-      _vm._m(1)
+      )
     ])
   ])
 }
@@ -61753,17 +61816,15 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("p", [
-        _c("label", { attrs: { for: "currentPicture" } }, [
-          _vm._v("Photo de profil actuelle:")
-        ]),
-        _vm._v(" "),
-        _c("img", {
-          staticClass: "UserImage",
-          attrs: { src: "", alt: "", width: "50px", height: "50px" }
-        })
-      ])
+    return _c("p", [
+      _c("label", { attrs: { for: "currentPicture" } }, [
+        _vm._v("Photo de profil actuelle:")
+      ]),
+      _vm._v(" "),
+      _c("img", {
+        staticClass: "UserImage",
+        attrs: { src: "", alt: "", width: "50px", height: "50px" }
+      })
     ])
   },
   function() {
@@ -61817,7 +61878,35 @@ var render = function() {
                   "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
                 allowfullscreen: ""
               }
-            })
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _c(
+                "button",
+                {
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.onPrevious()
+                    }
+                  }
+                },
+                [_vm._v("Précédent")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.onNext()
+                    }
+                  }
+                },
+                [_vm._v("Suivant")]
+              )
+            ])
           ])
         ])
       }),

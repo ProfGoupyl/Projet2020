@@ -8,7 +8,7 @@
 
         @if(\Request::is('admin/*'))
         <li class="items">
-            <a href="/admin/cours">Dashboard</a>
+            <a href="/admin/cours">cours</a>
 
         <li class="items">
             <a href="/admin/users">Utilisateurs</a>
@@ -32,7 +32,9 @@
                 @if (Auth::user())
                 @if (Auth::user() && Auth::user()->admin === 1)
                 <li>
+                    @if(!\Request::is('admin/*'))
                     <a href="{{ url('/admin') }}">Dashboard</a>
+                    @endif
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();

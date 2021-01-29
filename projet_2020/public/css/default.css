@@ -6,7 +6,7 @@ $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 */
 header nav.navPrincipale ul {
-  margin: 1% auto 2%;
+  margin: 1% auto;
   padding: 1%;
   border-radius: 5px;
   display: flex;
@@ -18,6 +18,7 @@ header nav.navPrincipale ul {
 }
 
 header nav.navPrincipale ul li {
+  flex-basis: 10%;
   cursor: pointer;
 }
 
@@ -206,6 +207,55 @@ header nav.navPrincipale ul li ul.sous li p {
   flex-basis: 100%;
 }
 
+.listecoursadmin {
+  width: 100%;
+}
+
+.listecoursadmin thead {
+  background-color: #ececec;
+}
+
+.listecoursadmin thead tr th {
+  padding: 1%;
+}
+
+.listecoursadmin thead tr th:nth-of-type(1) {
+  text-align: left;
+  font-weight: bolder;
+  width: 50%;
+}
+
+.listecoursadmin thead tr th:nth-of-type(2 + 1n) {
+  text-align: center;
+  width: 16,66%;
+}
+
+.listecoursadmin tbody tr:hover td {
+  color: #000000;
+}
+
+.listecoursadmin tbody tr td input {
+  width: 100%;
+  padding: 1%;
+  border-bottom: 1px solid #ececec;
+  text-align: left;
+  color: #808080;
+}
+
+.listecoursadmin tbody tr td:nth-of-type(2 + 1n) {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.listecoursadmin tbody tr td:last-of-type {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.listecoursadmin tbody tr:hover {
+  background-color: #fafafa;
+}
+
 /*--------------- Fichier _user.scss - FIN ----------*/
 
 section .prof {
@@ -221,11 +271,10 @@ form.userProfil {
   margin: 0 auto;
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-evenly;
 }
 
 form.userProfil div {
-  flex-basis: 49%;
+  flex-basis: 50%;
 }
 
 form.userProfil div p {
@@ -307,7 +356,8 @@ form.userProfil div p img {
 }
 
 .faq li details .faq_question_hidden {
-  padding: 1%;
+  padding: 2%;
+  padding-left: 5%;
 }
 
 .faq li details summary {
@@ -349,6 +399,8 @@ form.userProfil div p img {
   flex-basis: 25%;
   background-color: #ececec;
   margin: 0 1em 0 0;
+  padding: 1em;
+  overflow-x: scroll;
 }
 
 .section_page_cours .navSecondaire li {
@@ -379,8 +431,8 @@ form.userProfil div p img {
 }
 
 iframe {
-  max-width: 100%;
-  min-height: 200%;
+  width: 100%;
+  height: 500px;
   display: block;
 }
 
@@ -494,6 +546,101 @@ iframe {
   align-items: flex-start;
 }
 
+.footer {
+  background-color: #ffffff;
+  padding: 1%;
+  margin: 1% 0;
+  border-radius: 5px;
+}
+
+div.footer h3 {
+  display: none;
+  text-align: left;
+}
+
+div.footer nav ul {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 1em;
+}
+
+div.footer nav ul li {
+  padding: 0 2em 0 0;
+  text-align: center;
+  list-style-type: none;
+}
+
+div.footer nav ul li a {
+  color: #000000;
+  text-decoration: none;
+}
+
+div.footer nav ul li a:hover {
+  color: #808080;
+}
+
+div.mentions {
+  width: 98%;
+  text-align: left;
+}
+
+div.mentions h1,
+div.mentions h2,
+div.mentions h3,
+div.mentions h4 {
+  text-align: left;
+  padding: 1em 0;
+}
+
+div.mentions ul,
+div.mentions ol {
+  list-style-position: inside;
+}
+
+div.mentions p,
+div.mentions ol,
+div.mentions ul {
+  padding: 0 2em;
+}
+
+div.home {
+  width: 100%;
+}
+
+div.home h1 {
+  text-align: center;
+}
+
+div.home ul {
+  list-style-position: inside;
+}
+
+div.home ul li {
+  list-style: none;
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  padding: 0.5em;
+}
+
+div.home ul li:nth-child(even) {
+  background-color: #ececec;
+}
+
+div.home ul li p {
+  flex-basis: 70%;
+}
+
+div.home ul li a {
+  flex-basis: 15%;
+}
+
+div.home p,
+div.home ol,
+div.home ul {
+  padding: 0 1em;
+}
+
 * {
   box-sizing: border-box;
   margin: 0px;
@@ -516,12 +663,6 @@ section {
   margin: 0 auto;
 }
 
-.footer {
-  background-color: #ffffff;
-  padding: 1%;
-  margin-bottom: 1%;
-}
-
 p,
 td,
 li,
@@ -538,6 +679,7 @@ content {
 h1,
 h2,
 h3,
+h4,
 tr,
 .navPrincipale a {
   font-family: "Fira Sans", sans-serif;
@@ -550,6 +692,7 @@ tr,
 
 h1 {
   text-align: left;
+  font-size: 1.3rem;
 }
 
 button,
@@ -558,9 +701,10 @@ button a {
   line-height: 1.4;
 }
 
-button {
+button,
+#show {
   padding: 0.6em;
-  margin: 1em;
+  margin: 1em 1em 1em 0;
   border-radius: 4px;
   text-decoration: none;
   text-align: center;
@@ -571,39 +715,45 @@ button {
   border: 2px solid #d4d4d4;
 }
 
-button a {
+button a,
+#show a {
   display: block;
   color: #d4d4d4;
 }
 
 button a:hover,
-button a:focus {
+button a:focus,
+#show a:hover,
+#show a:focus {
   color: #ffffff;
 }
 
 button:hover,
-button:focus {
+button:focus,
+#show:hover,
+#show:focus {
   background-color: #c7c7c7;
   color: #ffffff;
 }
 
-button:active {
+button:active,
+#show:active {
   background-color: #4236b0;
 }
 
 #ajouter {
-  color: #82e922;
-  border: 2px solid #82e922;
+  color: #3dc387;
+  border: 2px solid #3dc387;
 }
 
 #ajouter:hover,
 #ajouter:focus {
-  background-color: #82e922;
+  background-color: #3dc387;
   color: #ffffff;
 }
 
 #ajouter:active {
-  background-color: #75dc16;
+  background-color: #36b07a;
 }
 
 #supprimer {

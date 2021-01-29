@@ -5,6 +5,9 @@
 @import 'faq';
 @import 'cours';
 @import 'login';
+@import 'footer';
+@import 'mentions';
+@import 'home';
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500&family=Open+Sans:wght@300;400;600&display=swap%27');
 
@@ -31,11 +34,6 @@ section{
 	border-radius: 5px;
 	margin: 0 auto;
 }
-.footer{
-	background-color: $white;
-	padding: 1%;
-	margin-bottom: 1%;
-}
 
 // TYPO
 p, td, li, a, button, content{
@@ -45,7 +43,7 @@ p, td, li, a, button, content{
 	line-height: $line-height-base;
 	text-align: left;
 }
-h1, h2, h3, tr, .navPrincipale a{
+h1, h2, h3, h4, tr, .navPrincipale a{
 	font-family: $font-family-title;
 	font-size: $font-size-title;
 	font-weight: bold;
@@ -55,6 +53,7 @@ h1, h2, h3, tr, .navPrincipale a{
 }
 h1{
 	text-align: left;
+	font-size: $font-size-titleone;
 }
 button, button a{
 	text-decoration: none;
@@ -64,9 +63,9 @@ button, button a{
 
 
 // BOUTONS
-button{
+button, #show{
 	padding: 0.6em;
-	margin: 1em;
+	margin: 1em 1em 1em 0;
 	border-radius: 4px;
 	text-decoration: none;
 	text-align: center;
