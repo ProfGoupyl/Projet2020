@@ -47,7 +47,7 @@ header nav.navPrincipale ul li a {
 }
 
 header nav.navPrincipale ul li a:hover {
-  color: #4A3DC3;
+  color: #808080;
 }
 
 header nav.navPrincipale ul li figure {
@@ -263,7 +263,7 @@ section .prof {
 }
 
 section .prof button:first-of-type::after {
-  content: ' Modifier';
+  content: ' Enregistrer';
 }
 
 form.userProfil {
@@ -305,6 +305,10 @@ form.userProfil div p img {
   width: 180px;
   height: 180px;
   clear: both;
+}
+
+form.userProfil div:last-of-type {
+  flex-basis: 100%;
 }
 
 @media all and (max-width: 900px) {
@@ -649,7 +653,7 @@ div.home ul {
 
 body {
   min-height: 100vh;
-  background-color: #f5f6f8;
+  background-color: linen;
   width: 90%;
   margin: 0 auto;
   color: #000000;
@@ -711,14 +715,14 @@ button,
   background-color: #ffffff;
   cursor: pointer;
   outline: none;
-  color: #000000;
-  border: 2px solid #000000;
+  color: #3f3f3f;
+  border: 2px solid #3f3f3f;
 }
 
 button a,
 #show a {
   display: block;
-  color: #000000;
+  color: #3f3f3f;
 }
 
 button a:hover,
@@ -732,78 +736,82 @@ button:hover,
 button:focus,
 #show:hover,
 #show:focus {
-  background-color: black;
+  background-color: #323232;
   color: #ffffff;
 }
 
 button:active,
 #show:active {
-  background-color: #4236b0;
+  background-color: #ff8914;
 }
 
 #ajouter,
 .add {
-  color: #54bb00;
-  border: 2px solid #54bb00;
+  color: #7bcc76;
+  border: 2px solid #7bcc76;
 }
 
 #ajouter:hover,
 #ajouter:focus,
 .add:hover,
 .add:focus {
-  background-color: #54bb00;
+  background-color: #7bcc76;
   color: #ffffff;
 }
 
 #ajouter:active,
 .add:active {
-  background-color: #49a200;
+  background-color: #69c563;
 }
 
 .delete-btn {
-  color: #e92222;
-  border: 2px solid #e92222;
+  color: #e83a30;
+  border: 2px solid #e83a30;
 }
 
 .delete-btn:hover,
 .delete-btn:focus {
-  background-color: #e92222;
+  background-color: #e83a30;
   color: #ffffff;
 }
 
 .delete-btn:active {
-  background-color: #dc1616;
+  background-color: #e52519;
 }
 
 #modifier {
-  color: #4A3DC3;
-  border: 2px solid #4A3DC3;
+  color: #ff962d;
+  border: 2px solid #ff962d;
 }
 
 #modifier:hover,
 #modifier:focus {
-  background-color: #4A3DC3;
+  background-color: #ff962d;
   color: #ffffff;
 }
 
 #modifier:active {
-  background-color: #4236b0;
+  background-color: #ff8914;
 }
 
-form p {
-  height: 50px;
-}
+/*form{
+	p{height: 50px;}
+	input{
+   	 width: 300px;
+   	 padding: 10px 10px 10px 0;
+   	 border: none;
+   	 border-bottom: 2px solid $lightgray;
+   	 outline: none;
+		&:focus{border-bottom: 2px solid $purple;}
+	}
+}*/
 
 form input {
   width: 300px;
-  padding: 10px 10px 10px 0;
-  border: none;
-  border-bottom: 2px solid #d4d4d4;
+  padding: 1%;
+  border: 1px solid #d4d4d4;
+  border-radius: 5px;
   outline: none;
-}
-
-form input:focus {
-  border-bottom: 2px solid #4A3DC3;
 }
 
 input[type="file"] {
