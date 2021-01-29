@@ -24,7 +24,7 @@
             <img :src="`${url}/images/users/user${userId}.png`" alt="Photo de profil" class="UserImage" width="50px" height="50px">
           </p>
           <label for="userPhoto">Type de fichier accepté: PNG<br>Volume maximal autorisé: 50 ko</label>
-          <input type="file" accept="image/png" name="userPhoto" id="userPhoto" v-on:change="selectImage">
+          <input type="file" accept="image/png" name="userPhoto" id="userPhoto" v-on:change="selectImage, previewImage(this)">
         </div>
         <div>
           <p v-if="(fSend === true && iSend === true)">
@@ -104,6 +104,17 @@ export default {
         this.userPhoto = newFile
       }
     },
+    previewImage(input) {
+      let file = $('input[type=file]').get(0).files[0]
+
+      if(file) {
+        let reader = new FileReader()
+        reader.onload = () => {
+          $('.UserImage').attr('src', reader.result)
+        }
+        reader.readAsDataURL(file)
+      }
+    }
   },
 };
 </script>

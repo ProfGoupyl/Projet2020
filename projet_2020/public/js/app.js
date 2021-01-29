@@ -4128,6 +4128,19 @@ __webpack_require__.r(__webpack_exports__);
         var newFile = new File([event.target.files[0]], 'user' + id + '.' + fileExt);
         this.userPhoto = newFile;
       }
+    },
+    previewImage: function previewImage(input) {
+      var file = $('input[type=file]').get(0).files[0];
+
+      if (file) {
+        var reader = new FileReader();
+
+        reader.onload = function () {
+          $('.UserImage').attr('src', reader.result);
+        };
+
+        reader.readAsDataURL(file);
+      }
     }
   }
 });
@@ -61782,7 +61795,11 @@ var render = function() {
                 name: "userPhoto",
                 id: "userPhoto"
               },
-              on: { change: _vm.selectImage }
+              on: {
+                change: function($event) {
+                  _vm.selectImage, _vm.previewImage(this)
+                }
+              }
             })
           ]),
           _vm._v(" "),
