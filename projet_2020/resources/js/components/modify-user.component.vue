@@ -45,7 +45,7 @@
 
 <script>
 export default {
-  props: ["userInfos", "imagesPath"],
+  props: ["userInfos"],
   data() {
     return {
       token: document.querySelector("#token").getAttribute("content"),
