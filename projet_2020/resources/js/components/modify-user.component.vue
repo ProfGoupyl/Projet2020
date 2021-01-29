@@ -24,7 +24,15 @@
             <img src="" alt="" class="UserImage" width="50px" height="50px" />
           </p>
 
-          <input type="file" accept="image/png, image/jpg, image.jpeg" name="userPhoto" id="userPhoto" v-on:change="selectImage">
+          <input type="file" accept="image/png, image/jpg, image/jpeg" name="userPhoto" id="userPhoto" v-on:change="selectImage">
+        </div>
+        <div>
+          <p v-if="(fSend === true && iSend === true)">
+            Modifications enregistrées
+          </p>
+          <p v-if="(fSend === false || iSend === false)">
+            Impossible d'enregistrer les modifications
+          </p>
         </div>
         <button
           v-on:click="submitFile()"
@@ -35,14 +43,6 @@
           <i class="fas fa-pen fa-lg"></i>
         </button>
         <button><a href="/user">Annuler</a></button>
-        <div>
-          <p v-if="(fSend === true && iSend === true)">
-            Modifications enregistrées
-          </p>
-          <p v-if="(fSend === false || iSend === false)">
-            Impossible d'enregistrer les modifications
-          </p>
-        </div>
       </form>
     </section>
   </div>
@@ -61,7 +61,6 @@ export default {
       userEmail: this.userInfos.email,
       userPseudo: this.userInfos.pseudo,
       userPhoto: null,
-      imageName: `user${this.userInfos.id}`,
       fSend: null,
       iSend: null,
     };
@@ -108,7 +107,6 @@ export default {
         const fileExt = event.target.files[0].name.split('.').pop(1)
         const newFile = new File([event.target.files[0]], 'user' + id + '.' + fileExt)
         this.userPhoto = newFile
-        console.log(newFile.name)
       }
     },
   },
