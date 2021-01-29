@@ -4075,6 +4075,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["userInfos"],
   data: function data() {
@@ -4087,9 +4095,8 @@ __webpack_require__.r(__webpack_exports__);
       userEmail: this.userInfos.email,
       userPseudo: this.userInfos.pseudo,
       userPhoto: null,
-      send: null,
-      uploadSucces: false,
-      uploadFail: false
+      fSend: null,
+      iSend: null
     };
   },
   methods: {
@@ -4099,24 +4106,21 @@ __webpack_require__.r(__webpack_exports__);
         prenom: this.userPrenom,
         email: this.userEmail,
         pseudo: this.userPseudo
-      }).then(function (response) {
-        return console.log(response);
-      })["catch"](function (error) {
-        return console.log(error);
+      }).then(this.fSend = true)["catch"](function (error) {
+        console.log(error);
+        this.fSend = false;
       });
     },
     submitFile: function submitFile() {
-      var currentObj = this;
       var fd = new FormData();
       fd.append("image", this.userPhoto);
       axios.post("uploadImage", fd, {
         headers: {
           "content-type": "multipart/form-data"
         }
-      }).then(function (response) {
-        currentObj.uploadSucces = response.data.success;
-      })["catch"](function (error) {
-        currentObj.uploadFail = error;
+      }).then(this.iSend = false)["catch"](function (error) {
+        console.log(error);
+        this.iSend = false;
       });
     },
     selectImage: function selectImage(event) {
@@ -61748,7 +61752,23 @@ var render = function() {
             [_c("i", { staticClass: "fas fa-pen fa-lg" })]
           ),
           _vm._v(" "),
-          _vm._m(1)
+          _vm._m(1),
+          _vm._v(" "),
+          _c("div", [
+            _vm.fSend === true && _vm.iSend === true
+              ? _c("p", [
+                  _vm._v("\n          Modifications enregistrées\n        ")
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.fSend === false || _vm.iSend === false
+              ? _c("p", [
+                  _vm._v(
+                    "\n          Impossible d'enregistrer les modifications\n          "
+                  )
+                ])
+              : _vm._e()
+          ])
         ]
       )
     ])
@@ -74622,10 +74642,10 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/sass/app.scss */"./resources/sass/app.scss");
-__webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })

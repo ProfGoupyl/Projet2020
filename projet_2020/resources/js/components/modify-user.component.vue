@@ -35,6 +35,14 @@
           <i class="fas fa-pen fa-lg"></i>
         </button>
         <button><a href="/user">Annuler</a></button>
+        <div>
+          <p v-if="(fSend === true && iSend === true)">
+            Modifications enregistrées
+          </p>
+          <p v-if="(fSend === false || iSend === false)">
+            Impossible d'enregistrer les modifications
+            </p>
+        </div>
       </form>
     </section>
   </div>
@@ -53,9 +61,8 @@ export default {
       userEmail: this.userInfos.email,
       userPseudo: this.userInfos.pseudo,
       userPhoto: null,
-      send: null,
-      uploadSucces: false,
-      uploadFail: false,
+      fSend: null,
+      iSend: null,
     };
   },
   methods: {
@@ -70,13 +77,14 @@ export default {
             pseudo: this.userPseudo,
           }
         )
-        .then((response) => console.log(response))
-        .catch((error) => console.log(error));
+        .then(this.fSend = true)
+        .catch(function(error) {
+          console.log(error)
+          this.fSend = false
+        });
     },
 
     submitFile() {
-      let currentObj = this;
-
       const fd = new FormData();
       fd.append("image", this.userPhoto);
 
@@ -84,11 +92,10 @@ export default {
         .post("uploadImage", fd, {
           headers: { "content-type": "multipart/form-data" },
         })
-        .then(function (response) {
-          currentObj.uploadSucces = response.data.success;
-        })
-        .catch(function (error) {
-          currentObj.uploadFail = error;
+        .then(this.iSend = false)
+        .catch(function(error) {
+          console.log(error)
+          this.iSend = false
         });
     },
     selectImage(event) {

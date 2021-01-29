@@ -10,6 +10,6 @@ class UploadImageController extends Controller
         $imageName = time().'.'.$request->image->getClientOriginalExtension();
         $request->image->move(public_path('images/users'), $imageName);
 
-        return response()->json(['success' => 'Photo de profil modifiée.']);
+        return response()->json(['success' => true]);
     }
 }
