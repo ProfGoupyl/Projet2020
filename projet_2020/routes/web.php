@@ -23,6 +23,20 @@ use App\Http\Controllers\CommentaireController;
 |
 */
 
+// Routes pour les mentions légales
+
+Route::get('/charte-vie-privee', function() {
+    return View('mentions-legales.charteViePrivee');
+});
+
+Route::get('/cookies', function() {
+    return View('mentions-legales.cookies');
+});
+
+Route::get('/droits-utilisations', function() {
+    return View('mentions-legales.droitUtilisation');
+});
+
 // Route pour upload une image
 Route::post('uploadImage', [UploadImageController::class, 'upload']);
 
