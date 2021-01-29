@@ -4095,7 +4095,6 @@ __webpack_require__.r(__webpack_exports__);
       userEmail: this.userInfos.email,
       userPseudo: this.userInfos.pseudo,
       userPhoto: null,
-      imageName: "user".concat(this.userInfos.id),
       fSend: null,
       iSend: null
     };
@@ -4133,7 +4132,6 @@ __webpack_require__.r(__webpack_exports__);
         var fileExt = event.target.files[0].name.split('.').pop(1);
         var newFile = new File([event.target.files[0]], 'user' + id + '.' + fileExt);
         this.userPhoto = newFile;
-        console.log(newFile.name);
       }
     }
   }
@@ -61769,12 +61767,28 @@ var render = function() {
             _c("input", {
               attrs: {
                 type: "file",
-                accept: "image/png, image/jpg, image.jpeg",
+                accept: "image/png, image/jpg, image/jpeg",
                 name: "userPhoto",
                 id: "userPhoto"
               },
               on: { change: _vm.selectImage }
             })
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _vm.fSend === true && _vm.iSend === true
+              ? _c("p", [
+                  _vm._v("\n          Modifications enregistrées\n        ")
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.fSend === false || _vm.iSend === false
+              ? _c("p", [
+                  _vm._v(
+                    "\n          Impossible d'enregistrer les modifications\n        "
+                  )
+                ])
+              : _vm._e()
           ]),
           _vm._v(" "),
           _c(
@@ -61791,23 +61805,7 @@ var render = function() {
             [_c("i", { staticClass: "fas fa-pen fa-lg" })]
           ),
           _vm._v(" "),
-          _vm._m(1),
-          _vm._v(" "),
-          _c("div", [
-            _vm.fSend === true && _vm.iSend === true
-              ? _c("p", [
-                  _vm._v("\n          Modifications enregistrées\n        ")
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.fSend === false || _vm.iSend === false
-              ? _c("p", [
-                  _vm._v(
-                    "\n          Impossible d'enregistrer les modifications\n        "
-                  )
-                ])
-              : _vm._e()
-          ])
+          _vm._m(1)
         ]
       )
     ])
@@ -74709,10 +74707,10 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/sass/app.scss */"./resources/sass/app.scss");
-__webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })
