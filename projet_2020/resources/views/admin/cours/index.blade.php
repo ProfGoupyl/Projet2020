@@ -45,7 +45,7 @@
         </form>
     </div>
     <!-- Liste des cours -->
-    <table class="listecours">
+    <table class="listecoursadmin">
         <thead>
             <tr>
                 <th>Nom du cours</th>

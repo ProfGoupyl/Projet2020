@@ -64,5 +64,49 @@
 	}
 }
 
+.listecoursadmin{
+	width: 100%;
+	thead{
+		background-color: $superlightgray;
+		tr th{
+			padding: 1%;
+			&:nth-of-type(1){
+				text-align: left;
+				font-weight: bolder;
+				width: 50%;
+			}
+			&:nth-of-type(2 + 1n){
+				text-align: center;
+				width: 16,66%;
+			}
+		}
+	}
+	tbody tr{
+		&:hover td{
+			color: $main;
+		}
+		td{
+			input{
+				width: 100%;
+				padding: 1%;
+				border-bottom: 1px solid $superlightgray;
+				text-align: left;
+				color: $gray;
+			}
+			&:nth-of-type(2 + 1n){
+				text-align: center;
+				margin: 0 auto;
+			}
+			&:last-of-type{
+				text-align: center;
+				margin: 0 auto;
+			}
+		} 
+		&:hover {
+			background-color: $smoke;
+		}
+	}
+}
+
 /*--------------- Fichier _user.scss - FIN ----------*/
 

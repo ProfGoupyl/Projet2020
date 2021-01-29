@@ -207,6 +207,55 @@ header nav.navPrincipale ul li ul.sous li p {
   flex-basis: 100%;
 }
 
+.listecoursadmin {
+  width: 100%;
+}
+
+.listecoursadmin thead {
+  background-color: #ececec;
+}
+
+.listecoursadmin thead tr th {
+  padding: 1%;
+}
+
+.listecoursadmin thead tr th:nth-of-type(1) {
+  text-align: left;
+  font-weight: bolder;
+  width: 50%;
+}
+
+.listecoursadmin thead tr th:nth-of-type(2 + 1n) {
+  text-align: center;
+  width: 16,66%;
+}
+
+.listecoursadmin tbody tr:hover td {
+  color: #000000;
+}
+
+.listecoursadmin tbody tr td input {
+  width: 100%;
+  padding: 1%;
+  border-bottom: 1px solid #ececec;
+  text-align: left;
+  color: #808080;
+}
+
+.listecoursadmin tbody tr td:nth-of-type(2 + 1n) {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.listecoursadmin tbody tr td:last-of-type {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.listecoursadmin tbody tr:hover {
+  background-color: #fafafa;
+}
+
 /*--------------- Fichier _user.scss - FIN ----------*/
 
 section .prof {
@@ -222,11 +271,10 @@ form.userProfil {
   margin: 0 auto;
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-evenly;
 }
 
 form.userProfil div {
-  flex-basis: 49%;
+  flex-basis: 50%;
 }
 
 form.userProfil div p {
@@ -653,7 +701,8 @@ button a {
   line-height: 1.4;
 }
 
-button {
+button,
+#show {
   padding: 0.6em;
   margin: 1em 1em 1em 0;
   border-radius: 4px;
@@ -666,23 +715,29 @@ button {
   border: 2px solid #d4d4d4;
 }
 
-button a {
+button a,
+#show a {
   display: block;
   color: #d4d4d4;
 }
 
 button a:hover,
-button a:focus {
+button a:focus,
+#show a:hover,
+#show a:focus {
   color: #ffffff;
 }
 
 button:hover,
-button:focus {
+button:focus,
+#show:hover,
+#show:focus {
   background-color: #c7c7c7;
   color: #ffffff;
 }
 
-button:active {
+button:active,
+#show:active {
   background-color: #4236b0;
 }
 
