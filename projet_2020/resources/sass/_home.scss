@@ -1,0 +1,28 @@
+div.home{
+    width: 100%;
+    h1{
+        text-align: center;
+    }
+    ul{
+        list-style-position: inside;
+        li{
+            list-style: none;
+            display: flex;
+            width: 80%;
+            margin: 0 auto;
+            padding: 0.5em;
+            &:nth-child(even){
+                background-color: $superlightgray;
+            }
+            p{
+                flex-basis: 70%;
+            }
+            a{
+                flex-basis: 15%;
+            }
+        }
+    }
+    p, ol, ul{
+        padding: 0 1em;
+    }
+}

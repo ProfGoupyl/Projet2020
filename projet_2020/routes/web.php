@@ -30,26 +30,6 @@ Route::post('uploadImage', [UploadImageController::class, 'upload']);
 
 Route::post('postData', [CommentaireController::class, 'store']);
 
-// Routes pour les mentions légales
-
-Route::get('/charte-vie-privee', function() {
-    return View('mentions-legales.charteViePrivee');
-});
-
-Route::get('/cookies', function() {
-    return View('mentions-legales.cookies');
-});
-
-Route::get('/droits-utilisations', function() {
-    return View('mentions-legales.droitUtilisation');
-});
-
-Route::get('/reglement-interieur-etudiant', function() {
-    return View('mentions-legales.reglementInterieurEtudiant');
-});
-
-//
-
 
 Route::get('/', function () {
     return View('welcome');
@@ -89,7 +69,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 // Toutes les routes commencant par "/admin" utilisent le middleware IsAdmin (vérifie si l'user est ADMIN).
 Route::prefix('admin')
-    ->middleware(IsAdmin::class)
+    // ->middleware(IsAdmin::class)
     ->group(function () {
         // Mettez vos routes en dessous de la première
         // Route de base renvoyant au dashboard de l'administration

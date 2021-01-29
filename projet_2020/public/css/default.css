@@ -308,7 +308,8 @@ form.userProfil div p img {
 }
 
 .faq li details .faq_question_hidden {
-  padding: 1%;
+  padding: 2%;
+  padding-left: 5%;
 }
 
 .faq li details summary {
@@ -350,8 +351,8 @@ form.userProfil div p img {
   flex-basis: 25%;
   background-color: #ececec;
   margin: 0 1em 0 0;
+  padding: 1em;
   overflow-x: scroll;
-  resize: both;
 }
 
 .section_page_cours .navSecondaire li {
@@ -383,6 +384,7 @@ form.userProfil div p img {
 
 iframe {
   width: 100%;
+  height: 500px;
   display: block;
 }
 
@@ -551,6 +553,44 @@ div.mentions p,
 div.mentions ol,
 div.mentions ul {
   padding: 0 2em;
+}
+
+div.home {
+  width: 100%;
+}
+
+div.home h1 {
+  text-align: center;
+}
+
+div.home ul {
+  list-style-position: inside;
+}
+
+div.home ul li {
+  list-style: none;
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  padding: 0.5em;
+}
+
+div.home ul li:nth-child(even) {
+  background-color: #ececec;
+}
+
+div.home ul li p {
+  flex-basis: 70%;
+}
+
+div.home ul li a {
+  flex-basis: 15%;
+}
+
+div.home p,
+div.home ol,
+div.home ul {
+  padding: 0 1em;
 }
 
 * {

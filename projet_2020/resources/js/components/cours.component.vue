@@ -2,19 +2,13 @@
     <div>
         <section class="section_page_cours" >
             <aside class="aside_page_cours">
+                <h2 v-for="cours in filterCours" :key="cours.id" class="navSecondaire_coursName">{{ cours.titre }}</h2>
                 <nav class="navSecondaire">
                     <ul>
-                        <li> 
-                            <div v-for="names in coursNames" :key="names.id" class="navSecondaire_coursName">
-                                <span v-show="coursId === names.id">
-                                    Cours : {{ names.titre }}
-                                    <ul v-for="module in moduleList" :key="module.titre">
-                                        <li v-show="names.id === module.cours_id">
-                                            <a href="/cours" class="Modules" v-on:click.prevent="save(module.id), forceRerender()"> {{ module.titre }} </a>
-                                        </li>
-                                    </ul>
-                                </span>
-                            </div>
+                        <li v-for="module in moduleList" :key="module.id">
+                            <span v-if="cours[0].id === module.cours_id">
+                                <a href="/cours" class="Modules" v-on:click.prevent="save(module.id), forceRerender()"> {{ module.titre }} </a>
+                            </span>
                         </li>
                     </ul>
                 </nav> 
@@ -40,6 +34,7 @@
                 coursId: JSON.parse(sessionStorage.getItem('coursid')),
                 moduleList: [],
                 coursNames: [],
+                cours: null,
                 componentKey: 0,
                 url: document.querySelector('#envUrl').getAttribute('content'),
             }
@@ -74,6 +69,11 @@
             forceRerender() {
                 this.componentKey += 1
             },
-        }
+        },
+        computed: {
+            filterCours() {
+                return this.cours = this.coursNames.filter((names) => names.id === this.coursId)
+            }
+        },
     }
 </script>
