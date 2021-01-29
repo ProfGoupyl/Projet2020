@@ -89,7 +89,7 @@ button, #show{
 	   background-color: $btn-update-dark;
    }
 }
-#ajouter{
+#ajouter, .add{
 	color: $btn-add;
 	border: 2px solid $btn-add;
 	&:hover, &:focus{
@@ -100,7 +100,7 @@ button, #show{
 	  background-color: $btn-add-dark;
 	}
 }
-#supprimer{
+.delete-btn{
 	color: $btn-delete;
 	border: 2px solid $btn-delete;
 	&:hover, &:focus{
@@ -127,8 +127,6 @@ button, #show{
 
 
 
-
-
 // INPUT
 form{
 	p{height: 50px;}
@@ -140,4 +138,8 @@ form{
    	 outline: none;
 		&:focus{border-bottom: 2px solid $purple;}
 	}
+}
+
+input[type="file"]{
+	border: none;
 }
