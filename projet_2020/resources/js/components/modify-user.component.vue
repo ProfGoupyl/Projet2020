@@ -3,28 +3,28 @@
     <section class="prof">
       <h1>Votre profil:</h1>
       <form v-on:submit.prevent="submit" method="patch" class="userProfil">
-        <input type="hidden" name="_token" v-bind:value="token" />
+        <input type="hidden" name="_token" v-bind:value="token">
         <div>
           <p>
             <label for="prenom">First Name:</label>
-            <input type="text" name="prenom" v-model="userPrenom" />
+            <input type="text" name="prenom" v-model="userPrenom">
           </p>
           <p>
             <label for="name">Last Name:</label>
-            <input type="text" name="name" v-model="userName" />
+            <input type="text" name="name" v-model="userName">
           </p>
           <p>
             <label for="email">Email address:</label>
-            <input type="email" name="email" v-model="userEmail" />
+            <input type="email" name="email" v-model="userEmail">
           </p>
         </div>
         <div>
           <p>
             <label for="currentPicture">Photo de profil actuelle:</label>
-            <img src="" alt="" class="UserImage" width="50px" height="50px" />
+            <img :src="`${url}/images/users/user${userId}.png`" alt="Photo de profil" class="UserImage" width="50px" height="50px">
           </p>
-
-          <input type="file" accept="image/png, image/jpg, image/jpeg" name="userPhoto" id="userPhoto" v-on:change="selectImage">
+          <label for="userPhoto">Type de fichier accepté: PNG<br>Volume maximal autorisé: 50 ko</label>
+          <input type="file" accept="image/png" name="userPhoto" id="userPhoto" v-on:change="selectImage">
         </div>
         <div>
           <p v-if="(fSend === true && iSend === true)">
@@ -34,13 +34,8 @@
             Impossible d'enregistrer les modifications
           </p>
         </div>
-        <button
-          v-on:click="submitFile()"
-          id="modifier"
-          class="btn btn-primary"
-          type="submit"
-        >
-          <i class="fas fa-pen fa-lg"></i>
+        <button v-on:click="submitFile()" id="modifier" class="btn btn-primary" type="submit">
+          <i class="fas fa-arrow-circle-down fa-lg"></i>
         </button>
         <button><a href="/user">Annuler</a></button>
       </form>
@@ -50,7 +45,7 @@
 
 <script>
 export default {
-  props: ["userInfos"],
+  props: ["userInfos", "imagesPath"],
   data() {
     return {
       token: document.querySelector("#token").getAttribute("content"),

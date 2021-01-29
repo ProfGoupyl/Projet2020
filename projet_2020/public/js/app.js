@@ -4078,13 +4078,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["userInfos"],
+  props: ["userInfos", "imagesPath"],
   data: function data() {
     return {
       token: document.querySelector("#token").getAttribute("content"),
@@ -61762,12 +61757,28 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", [
+            _c("p", [
+              _c("label", { attrs: { for: "currentPicture" } }, [
+                _vm._v("Photo de profil actuelle:")
+              ]),
+              _vm._v(" "),
+              _c("img", {
+                staticClass: "UserImage",
+                attrs: {
+                  src: _vm.url + "/images/users/user" + _vm.userId + ".png",
+                  alt: "Photo de profil",
+                  width: "50px",
+                  height: "50px"
+                }
+              })
+            ]),
+            _vm._v(" "),
             _vm._m(0),
             _vm._v(" "),
             _c("input", {
               attrs: {
                 type: "file",
-                accept: "image/png, image/jpg, image/jpeg",
+                accept: "image/png",
                 name: "userPhoto",
                 id: "userPhoto"
               },
@@ -61802,7 +61813,7 @@ var render = function() {
                 }
               }
             },
-            [_c("i", { staticClass: "fas fa-pen fa-lg" })]
+            [_c("i", { staticClass: "fas fa-arrow-circle-down fa-lg" })]
           ),
           _vm._v(" "),
           _vm._m(1)
@@ -61816,15 +61827,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("p", [
-      _c("label", { attrs: { for: "currentPicture" } }, [
-        _vm._v("Photo de profil actuelle:")
-      ]),
-      _vm._v(" "),
-      _c("img", {
-        staticClass: "UserImage",
-        attrs: { src: "", alt: "", width: "50px", height: "50px" }
-      })
+    return _c("label", { attrs: { for: "userPhoto" } }, [
+      _vm._v("Type de fichier accepté: PNG"),
+      _c("br"),
+      _vm._v("Volume maximal autorisé: 50 ko")
     ])
   },
   function() {
