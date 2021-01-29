@@ -128,7 +128,7 @@ button, #show{
 
 
 // INPUT
-form{
+/*form{
 	p{height: 50px;}
 	input{
    	 width: 300px;
@@ -137,6 +137,15 @@ form{
    	 border-bottom: 2px solid $lightgray;
    	 outline: none;
 		&:focus{border-bottom: 2px solid $purple;}
+	}
+}*/
+form{
+	input{
+   	 	width: 300px;
+   		padding: 1%;
+		border: 1px solid $lightgray;
+		border-radius: 5px;
+		outline: none;
 	}
 }
 
