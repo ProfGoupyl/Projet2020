@@ -3913,6 +3913,7 @@ __webpack_require__.r(__webpack_exports__);
       moduleId: false,
       coursId: JSON.parse(sessionStorage.getItem('coursid')),
       moduleList: [],
+      modulesCours: [],
       coursNames: [],
       cours: null,
       componentKey: 0,
@@ -3934,7 +3935,6 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   updated: function updated() {
-    // Afficher le premier module au chargement du composant
     var module = [];
 
     for (var i = 0; i < this.moduleList.length; i++) {
@@ -3962,6 +3962,20 @@ __webpack_require__.r(__webpack_exports__);
       return this.cours = this.coursNames.filter(function (names) {
         return names.id === _this2.coursId;
       });
+    },
+    filterModules: function filterModules() {
+      var _this3 = this;
+
+      var modules = [];
+      modules = this.moduleList.filter(function (modules) {
+        return modules.cours_id === _this3.coursId;
+      });
+
+      for (var i = 0; i < modules.length; i++) {
+        this.modulesCours.push(modules[i].id);
+      }
+
+      return this.moduleId = this.modulesCours[0];
     }
   }
 });
@@ -4194,7 +4208,7 @@ __webpack_require__.r(__webpack_exports__);
     Faq: _faq_component__WEBPACK_IMPORTED_MODULE_0__["default"],
     Comment: _commentaire_component__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  props: ["userInfos"],
+  props: ["userInfos", "modules"],
   data: function data() {
     return {
       moduleList: [],
@@ -61586,7 +61600,10 @@ var render = function() {
             [
               _c("Session", {
                 key: _vm.componentKey,
-                attrs: { "user-infos": this.userInfos }
+                attrs: {
+                  "user-infos": this.userInfos,
+                  modules: this.modulesCours
+                }
               })
             ],
             1
