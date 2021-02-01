@@ -3898,29 +3898,46 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     Session: _session_component__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  props: ['userInfos'],
+  props: ["userInfos"],
   data: function data() {
     return {
       moduleId: false,
-      coursId: JSON.parse(sessionStorage.getItem('coursid')),
+      coursId: JSON.parse(sessionStorage.getItem("coursid")),
       moduleList: [],
       modulesCours: [],
       coursNames: [],
       cours: null,
       componentKey: 0,
-      url: document.querySelector('#envUrl').getAttribute('content')
+      url: document.querySelector("#envUrl").getAttribute("content")
     };
   },
   created: function created() {
     var _this = this;
 
     axios.get("".concat(this.url, "/api/module?api_token=").concat(this.userInfos.api_token)).then(function (response) {
-      return _this.moduleList = _.orderBy(response.data, 'ordre', 'asc');
+      return _this.moduleList = _.orderBy(response.data, "ordre", "asc");
     })["catch"](function (error) {
       return console.log(error);
     });
@@ -3940,11 +3957,11 @@ __webpack_require__.r(__webpack_exports__);
     }
 
     this.moduleId = module[0];
-    sessionStorage.setItem('moduleid', this.moduleId);
+    sessionStorage.setItem("moduleid", this.moduleId);
   },
   methods: {
     save: function save(moduleid) {
-      sessionStorage.setItem('moduleid', moduleid);
+      sessionStorage.setItem("moduleid", moduleid);
       this.moduleId = moduleid;
     },
     forceRerender: function forceRerender() {
@@ -61581,7 +61598,7 @@ var render = function() {
             return _c(
               "h2",
               { key: cours.id, staticClass: "navSecondaire_coursName" },
-              [_vm._v(_vm._s(cours.titre))]
+              [_vm._v("\n        " + _vm._s(cours.titre) + "\n      ")]
             )
           }),
           _vm._v(" "),
@@ -61604,7 +61621,13 @@ var render = function() {
                               }
                             }
                           },
-                          [_vm._v(" " + _vm._s(module.titre) + " ")]
+                          [
+                            _vm._v(
+                              "\n                " +
+                                _vm._s(module.titre) +
+                                "\n              "
+                            )
+                          ]
                         )
                       ])
                     : _vm._e()
@@ -61626,7 +61649,8 @@ var render = function() {
                 attrs: {
                   "user-infos": this.userInfos,
                   modules: this.modulesCours
-                }
+                },
+                on: { change: _vm.filterModules }
               })
             ],
             1
@@ -74766,10 +74790,10 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/app.scss */"./resources/sass/app.scss");
-__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\sass\default.scss */"./resources/sass/default.scss");
+module.exports = __webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })
