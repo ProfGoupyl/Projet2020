@@ -59,7 +59,9 @@
                 <p>PERRIARD Céline</p>
             </li>
             <li>
-                <p>REMY Clémentine</p>
+                <p>REMY Clémentine
+                    <a href="https://www.linkedin.com/in/clem-remy-8a25b4205/" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a>
+                </p>
             </li>
             <li>
                 <p>ROULEZ Antoine</p>
