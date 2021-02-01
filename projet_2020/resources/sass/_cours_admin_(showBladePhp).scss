@@ -1,0 +1,71 @@
+/*--------------- Fichier_cours_admin_(showBaldephp).scss ---------------*/
+
+#section_page_cours {
+    .aside_page_cours {
+        .drag-container {
+            .draggable {
+                a {
+                    color: $gray;
+                    text-decoration: none;
+                    &:hover {
+                        color: $main;
+                    }
+                }
+            }
+        }
+        article {
+            flex-basis: 75%;
+            background-color: $smoke;
+            border-radius: 5px;
+        }
+    }
+}
+
+.coursName_titre {
+    padding: 1em;
+}
+
+/*
+.drag-container {
+    width: 25%;
+    overflow-x: hidden;
+    background-color: lightgrey;
+    padding: 5px;
+}
+
+.draggable {
+    background-color: #333;
+    color: white;
+    padding: 1px;
+    cursor: move;
+    margin-bottom: 15px;
+}
+
+.draggable.dragging {
+    opacity: .5;
+}
+
+.form-modules {
+    display: none;
+}
+
+.form-modules.show {
+    display: block;
+}
+*/
+
+@media all and (max-width: 900px) {
+    .section_page_cours {
+        display: block;
+        .aside_page_cours {
+            height: auto;
+            width: 100%;
+            background: $superlightgray;
+        }
+    }
+    .navSecondaire_coursName {
+        width: 100%;
+    }
+}
+
+/*--------------- Fichier_cours_admin_(showBaldephp).scss - FIN ----------*/

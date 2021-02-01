@@ -8,6 +8,7 @@
 @import 'footer';
 @import 'mentions';
 @import 'home';
+@import 'cours_admin_(showBladePhp)';
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500&family=Open+Sans:wght@300;400;600&display=swap%27');
 
@@ -63,7 +64,7 @@ button, button a{
 
 
 // BOUTONS
-button{
+button, #show{
 	padding: 0.6em;
 	margin: 1em 1em 1em 0;
 	border-radius: 4px;
@@ -89,7 +90,7 @@ button{
 	   background-color: $btn-update-dark;
    }
 }
-#ajouter{
+#ajouter, .add{
 	color: $btn-add;
 	border: 2px solid $btn-add;
 	&:hover, &:focus{
@@ -100,7 +101,7 @@ button{
 	  background-color: $btn-add-dark;
 	}
 }
-#supprimer{
+.delete-btn{
 	color: $btn-delete;
 	border: 2px solid $btn-delete;
 	&:hover, &:focus{
@@ -127,10 +128,8 @@ button{
 
 
 
-
-
 // INPUT
-form{
+/*form{
 	p{height: 50px;}
 	input{
    	 width: 300px;
@@ -140,4 +139,17 @@ form{
    	 outline: none;
 		&:focus{border-bottom: 2px solid $purple;}
 	}
+}*/
+form{
+	input{
+   	 	width: 300px;
+   		padding: 1%;
+		border: 1px solid $lightgray;
+		border-radius: 5px;
+		outline: none;
+	}
+}
+
+input[type="file"]{
+	border: none;
 }

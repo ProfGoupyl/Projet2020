@@ -1,5 +1,5 @@
 // Général
-$background: #f5f6f8;
+$background: linen;
 $main: #000000;
 $white: #ffffff;
 
@@ -25,16 +25,16 @@ $line-height-base: 1.6;
 // Button
 $btn-main: white;
 // de base
-$btn-basic: #d4d4d4;
+$btn-basic: #3f3f3f;
 $btn-basic-dark: darken($btn-basic,5%);
 // delete
-$btn-delete: #e92222;
+$btn-delete: #e83a30;
 $btn-delete-dark: darken($btn-delete,5%);
 // add
-$btn-add: #3dc387;
+$btn-add: #7bcc76;
 $btn-add-dark: darken($btn-add,5%);
 // update
-$btn-update: #4A3DC3 ;
+$btn-update: #ff962d ;
 $btn-update-dark: darken($btn-update,5%);
 
 // Colors

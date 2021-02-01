@@ -4075,6 +4075,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["userInfos"],
   data: function data() {
@@ -4087,9 +4090,8 @@ __webpack_require__.r(__webpack_exports__);
       userEmail: this.userInfos.email,
       userPseudo: this.userInfos.pseudo,
       userPhoto: null,
-      send: null,
-      uploadSucces: false,
-      uploadFail: false
+      fSend: null,
+      iSend: null
     };
   },
   methods: {
@@ -4099,28 +4101,46 @@ __webpack_require__.r(__webpack_exports__);
         prenom: this.userPrenom,
         email: this.userEmail,
         pseudo: this.userPseudo
-      }).then(function (response) {
-        return console.log(response);
-      })["catch"](function (error) {
-        return console.log(error);
+      }).then(this.fSend = true)["catch"](function (error) {
+        console.log(error);
+        this.fSend = false;
       });
     },
     submitFile: function submitFile() {
-      var currentObj = this;
       var fd = new FormData();
       fd.append("image", this.userPhoto);
       axios.post("uploadImage", fd, {
         headers: {
           "content-type": "multipart/form-data"
         }
-      }).then(function (response) {
-        currentObj.uploadSucces = response.data.success;
-      })["catch"](function (error) {
-        currentObj.uploadFail = error;
+      }).then(this.iSend = true)["catch"](function (error) {
+        console.log(error);
+        this.iSend = false;
       });
     },
     selectImage: function selectImage(event) {
-      this.userPhoto = event.target.files[0];
+      if (event.target.files[0].size > 50000) {
+        $('#userPhoto').val('');
+        alert('Fichier trop volumineux ! Maximum 50 Ko');
+      } else {
+        var id = this.userId;
+        var fileExt = event.target.files[0].name.split('.').pop(1);
+        var newFile = new File([event.target.files[0]], 'user' + id + '.' + fileExt);
+        this.userPhoto = newFile;
+      }
+    },
+    previewImage: function previewImage(input) {
+      var file = $('input[type=file]').get(0).files[0];
+
+      if (file) {
+        var reader = new FileReader();
+
+        reader.onload = function () {
+          $('.UserImage').attr('src', reader.result);
+        };
+
+        reader.readAsDataURL(file);
+      }
     }
   }
 });
@@ -4163,6 +4183,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4175,7 +4199,9 @@ __webpack_require__.r(__webpack_exports__);
     return {
       moduleList: [],
       moduleId: JSON.parse(sessionStorage.getItem("moduleid")),
-      url: document.querySelector("#envUrl").getAttribute("content")
+      url: document.querySelector("#envUrl").getAttribute("content"),
+      hasPrevious: false,
+      hasNext: true
     };
   },
   computed: {
@@ -4199,6 +4225,24 @@ __webpack_require__.r(__webpack_exports__);
   // permet de clear l'id du module
   updated: function updated() {
     sessionStorage.removeItem("moduleid");
+  },
+  methods: {
+    onPrevious: function onPrevious() {
+      this.moduleId -= 1;
+      this.hasNext = true;
+
+      if (this.moduleId == 0) {
+        this.hasPrevious = false;
+      }
+    },
+    onNext: function onNext() {
+      this.moduleId += 1;
+      this.hasPrevious = true;
+
+      if (this.moduleId == 2) {
+        this.hasNext = false;
+      }
+    }
   }
 });
 
@@ -61726,12 +61770,53 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", [
+            _c("p", [
+              _c("label", { attrs: { for: "currentPicture" } }, [
+                _vm._v("Photo de profil actuelle:")
+              ]),
+              _vm._v(" "),
+              _c("img", {
+                staticClass: "UserImage",
+                attrs: {
+                  src: _vm.url + "/images/users/user" + _vm.userId + ".png",
+                  alt: "Photo de profil",
+                  width: "50px",
+                  height: "50px"
+                }
+              })
+            ]),
+            _vm._v(" "),
             _vm._m(0),
             _vm._v(" "),
             _c("input", {
-              attrs: { type: "file", name: "userPhoto" },
-              on: { change: _vm.selectImage }
+              attrs: {
+                type: "file",
+                accept: "image/png",
+                name: "userPhoto",
+                id: "userPhoto"
+              },
+              on: {
+                change: function($event) {
+                  _vm.selectImage, _vm.previewImage(this)
+                }
+              }
             })
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _vm.fSend === true && _vm.iSend === true
+              ? _c("p", [
+                  _vm._v("\n          Modifications enregistrées\n        ")
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.fSend === false || _vm.iSend === false
+              ? _c("p", [
+                  _vm._v(
+                    "\n          Impossible d'enregistrer les modifications\n        "
+                  )
+                ])
+              : _vm._e()
           ]),
           _vm._v(" "),
           _c(
@@ -61745,7 +61830,7 @@ var render = function() {
                 }
               }
             },
-            [_c("i", { staticClass: "fas fa-pen fa-lg" })]
+            [_c("i", { staticClass: "fas fa-arrow-circle-down fa-lg" })]
           ),
           _vm._v(" "),
           _vm._m(1)
@@ -61759,15 +61844,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("p", [
-      _c("label", { attrs: { for: "currentPicture" } }, [
-        _vm._v("Photo de profil actuelle:")
-      ]),
-      _vm._v(" "),
-      _c("img", {
-        staticClass: "UserImage",
-        attrs: { src: "", alt: "", width: "50px", height: "50px" }
-      })
+    return _c("label", { attrs: { for: "userPhoto" } }, [
+      _vm._v("Type de fichier accepté: PNG"),
+      _c("br"),
+      _vm._v("Volume maximal autorisé: 50 ko")
     ])
   },
   function() {
@@ -61821,7 +61901,35 @@ var render = function() {
                   "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
                 allowfullscreen: ""
               }
-            })
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _c(
+                "button",
+                {
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.onPrevious()
+                    }
+                  }
+                },
+                [_vm._v("Précédent")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.onNext()
+                    }
+                  }
+                },
+                [_vm._v("Suivant")]
+              )
+            ])
           ])
         ])
       }),
