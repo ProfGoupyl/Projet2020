@@ -4238,19 +4238,34 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     onPrevious: function onPrevious() {
-      this.moduleId -= 1;
-      this.hasNext = true;
+      var current;
 
-      if (this.moduleId == 0) {
-        this.hasPrevious = false;
+      for (var i = 0; i < this.modules.length; i++) {
+        if (this.moduleId === this.modules[i]) {
+          current = i;
+        }
+      }
+
+      if (this.moduleId === this.modules[0]) {
+        this.moduleId = this.moduleId;
+      } else {
+        this.moduleId = this.modules[current - 1];
       }
     },
     onNext: function onNext() {
-      this.moduleId += 1;
-      this.hasPrevious = true;
+      var current;
+      var max = this.modules.length - 1;
 
-      if (this.moduleId == 2) {
-        this.hasNext = false;
+      for (var i = 0; i < this.modules.length; i++) {
+        if (this.moduleId === this.modules[i]) {
+          current = i;
+        }
+      }
+
+      if (this.moduleId === this.modules[max]) {
+        this.moduleId = this.moduleId;
+      } else {
+        this.moduleId = this.modules[current + 1];
       }
     }
   }
