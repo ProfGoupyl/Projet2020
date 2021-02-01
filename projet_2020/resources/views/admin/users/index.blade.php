@@ -86,7 +86,8 @@
                         </button>
                         <input type="submit" data-target="form-{{$user->id}}" class="save-btn" style="display:none;" id="save-{{$user->id}}" type="submit" />
                         <!-- BUTTONS MODIFY & SAVE / END -->
-
+                         <<!-- button show cours_user -->
+                        <a class="fas fa-eye  fa-lg" href="/admin/users/{{$user->id}}"></a>
                         <!-- Formulaire de suppression -->
                         <div>
                             <button class="delete-btn" data-titre="{{$user->email}}" data-target="/admin/users/{{$user->id}}" value='Supprimer' class="btn btn-primary" type="button">
