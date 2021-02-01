@@ -18,7 +18,8 @@
                 }
             }
             .faq_question_hidden {
-                padding: 1%;
+                padding: 2%;
+                padding-left: 5%;
             }
             summary {
                 list-style: none;
@@ -28,13 +29,13 @@
                 display: none;
             }
         }
-        details[open]>summary::after {
+        details[open] > summary::after {
             font-family: "FontAwesome";
             position: relative;
             float: right;
             content: "\f068";
         }
-        details>summary::after {
+        details > summary::after {
             font-family: "FontAwesome";
             position: relative;
             float: right;

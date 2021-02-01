@@ -23,13 +23,6 @@ use App\Http\Controllers\CommentaireController;
 |
 */
 
-// Route pour upload une image
-Route::post('uploadImage', [UploadImageController::class, 'upload']);
-
-// Route pour les com
-
-Route::post('postData', [CommentaireController::class, 'store']);
-
 // Routes pour les mentions légales
 
 Route::get('/charte-vie-privee', function() {
@@ -44,11 +37,12 @@ Route::get('/droits-utilisations', function() {
     return View('mentions-legales.droitUtilisation');
 });
 
-Route::get('/reglement-interieur-etudiant', function() {
-    return View('mentions-legales.reglementInterieurEtudiant');
-});
+// Route pour upload une image
+Route::post('uploadImage', [UploadImageController::class, 'upload']);
 
-//
+// Route pour les com
+
+Route::post('postData', [CommentaireController::class, 'store']);
 
 
 Route::get('/', function () {
@@ -89,7 +83,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 // Toutes les routes commencant par "/admin" utilisent le middleware IsAdmin (vérifie si l'user est ADMIN).
 Route::prefix('admin')
-    ->middleware(IsAdmin::class)
+    // ->middleware(IsAdmin::class)
     ->group(function () {
         // Mettez vos routes en dessous de la première
         // Route de base renvoyant au dashboard de l'administration

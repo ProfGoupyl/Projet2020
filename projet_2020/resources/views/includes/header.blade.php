@@ -8,7 +8,7 @@
 
         @if(\Request::is('admin/*'))
         <li class="items">
-            <a href="/admin/cours">Dashboard</a>
+            <a href="/admin/cours">cours</a>
 
         <li class="items">
             <a href="/admin/users">Utilisateurs</a>
