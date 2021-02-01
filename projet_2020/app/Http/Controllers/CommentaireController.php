@@ -40,16 +40,15 @@ class CommentaireController extends Controller
         $cours_id = Cours::find($request->cours_id);
 
         if ($user_id) {
-            $commentaire->user()->associate($cours_id);
+            $commentaire->User()->associate($user_id);
         }
         if ($module_id) {
-            $commentaire->modules()->associate($module_id);
+            $commentaire->Module()->associate($module_id);
         }
         if ($cours_id) {
-            $commentaire->cours()->associate($cours_id);
+            $commentaire->Cours()->associate($cours_id);
         }
-
-        $commentaire->save();
+        Commentaire::create($data);
     }
 
     /**
