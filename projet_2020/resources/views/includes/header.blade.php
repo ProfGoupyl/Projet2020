@@ -23,7 +23,9 @@
         @endif
         <li class="items">
             <figure>
-                <img src="" alt="" class="UserImage" height="80px" width="80px">
+                @if (Auth::user())
+                    <img src="{{ asset('images/users/user'.Auth::user()->id).'.png' }}" alt="" class="UserImage" height="80px" width="80px">
+                @endif
             </figure>
             <ul class="sous">
                 <li>
