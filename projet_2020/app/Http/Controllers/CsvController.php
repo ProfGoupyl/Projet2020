@@ -41,7 +41,7 @@ class CsvController extends Controller
       $email = str_replace("\n", '', str_replace("\r", '', $tabLigne[2]));
       $this->generate_user($email, $tabLigne[0], $tabLigne[1]);
       $user = User::where('email', '=', $email)->get()[0];
-      //TODO CHECK PAR RAPPORT A l'ID fournit
+
       $existing = Cours::whereHas('users', function ($q) use ($user) {
         $q->where('users.id', '=', $user->id);
       })
