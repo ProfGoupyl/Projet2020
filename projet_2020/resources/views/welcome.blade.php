@@ -12,7 +12,7 @@
         </p>
         <br/>
         <p>
-            Ce site a été réalisé dans le cadre du module 5XDYN - projet web dynamique 2020-2021- par les étudiants dont voici la liste : 
+            Ce site a été réalisé dans le cadre du module 5XDYN - projet web dynamique 2020-2021 - par les étudiants dont voici la liste : 
         </p>
         <ul>
             <li>

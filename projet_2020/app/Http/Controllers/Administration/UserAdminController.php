@@ -47,49 +47,64 @@ class UserAdminController extends Controller
     {
         $cours = Cours::find($request->request->get('cours'));
 
-        $user = new User();
-        $date = new DateTime();
-        $register_token = Str::random(40) . $date->getTimestamp();
+        $currentEmail = $request->request->get('email');
+        $existing = User::firstWhere('email', $currentEmail);
+        if ($existing === null) {
+            $user = new User();
+            $date = new DateTime();
+            $register_token = Str::random(40) . $date->getTimestamp();
 
-        $user->email = $request->has('email') && strlen($request->email) ? $request->email : "Pas d'email";
-        $user->name = $request->has('name') && strlen($request->name) ? $request->name : "Pas de nom";
-        $user->prenom = $request->has('prenom') && strlen($request->prenom) ? $request->prenom : "Pas de prénom";
-        $user->admin = 0;
-        $user->password = "undefined";
-        $user->register_token = $register_token;
-        $user->save();
+            $user->email = $request->has('email') && strlen($request->email) ? $request->email : "Pas d'email";
+            $user->name = $request->has('name') && strlen($request->name) ? $request->name : "Pas de nom";
+            $user->prenom = $request->has('prenom') && strlen($request->prenom) ? $request->prenom : "Pas de prénom";
+            $user->admin = 0;
+            $user->password = "undefined";
+            $user->register_token = $register_token;
+            $user->save();
 
-        // ENVOI EMAIL
-        $data = [
-            'subject' => "Invitation aux cours",
-            'name' => $request->name,
-            'email' => $request->email,
-            'content' => [
-                'message' => "Cliquez sur le lien suivant pour accepter l'invitation au cours de Goupyl:",
-                'link' => route('register') . '?token=' . $register_token
-            ]
-        ];
-        Mail::send('admin.email.invitation-template', $data, function ($message) use ($data) {
-            $message->to($data['email'])
-                ->subject($data['subject']);
-        });
-
-        //Invite au cours
-        if ($cours != "null") {
-            $user->cours()->attach($cours, ['start_at' => $cours->debut_du_cours, 'end_at' => $cours->fin_du_cours]);
             // ENVOI EMAIL
             $data = [
                 'subject' => "Invitation aux cours",
-                'name' => $user->name,
-                'email' => str_replace("\r\n", '', $user->email),
+                'name' => $request->name,
+                'email' => $request->email,
                 'content' => [
-                    'message' => "Vous avez été invité au cours" . $cours->titre . ". Bienvenue !"
+                    'message' => "Cliquez sur le lien suivant pour accepter l'invitation au cours de Goupyl:",
+                    'link' => route('register') . '?token=' . $register_token
                 ]
             ];
-            Mail::send('admin.email.invitation-cours-template', $data, function ($message) use ($data) {
+            Mail::send('admin.email.invitation-template', $data, function ($message) use ($data) {
                 $message->to($data['email'])
                     ->subject($data['subject']);
             });
+        } else {
+            $user = $existing;
+        }
+
+        //Invite au cours
+        if ($cours != "null") {
+            $existing = Cours::whereHas('users', function ($q) use ($user) {
+                $q->where('users.id', '=', $user->id);
+            })
+                ->where('id', '=', $cours->id)
+                ->get();
+            if (!empty($existing[0])) {
+                $user->cours()->sync($cours, ['start_at' => $cours->debut_du_cours, 'end_at' => $cours->fin_du_cours]);
+            } else {
+                $user->cours()->attach($cours, ['start_at' => $cours->debut_du_cours, 'end_at' => $cours->fin_du_cours]);
+                // ENVOI EMAIL
+                $data = [
+                    'subject' => "Invitation aux cours",
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'content' => [
+                        'message' => "Vous avez été invité au cours" . $cours->titre . ". Bienvenue !"
+                    ]
+                ];
+                Mail::send('admin.email.invitation-cours-template', $data, function ($message) use ($data) {
+                    $message->to($data['email'])
+                        ->subject($data['subject']);
+                });
+            }
         }
 
         return redirect('/admin/users');
@@ -103,12 +118,12 @@ class UserAdminController extends Controller
      */
     public function show($id)
     {
-       
-      $user=User::find($id);
-      
-     return view('admin.users.show',[
-         'user'=>$user
-     ]);
+
+        $user = User::find($id);
+
+        return view('admin.users.show', [
+            'user' => $user
+        ]);
     }
 
     /**

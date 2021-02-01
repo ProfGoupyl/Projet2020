@@ -66,6 +66,7 @@
 
 .listecoursadmin{
 	width: 100%;
+	height: 50vh;
 	thead{
 		background-color: $superlightgray;
 		tr th{
@@ -81,31 +82,35 @@
 			}
 		}
 	}
-	tbody tr{
-		&:hover td{
-			color: $main;
+	tbody{
+
+	width: 100%;
+		tr{
+			&:hover td{
+				color: $main;
+			}
+			td{
+				input{
+					width: 100%;
+					padding: 1%;
+					border-bottom: 1px solid $superlightgray;
+					text-align: left;
+					color: $gray;
+				}
+				&:nth-of-type(2 + 1n){
+					text-align: center;
+					margin: 0 auto;
+				}
+				&:last-of-type{
+					text-align: center;
+					margin: 0 auto;
+				}
+			} 
+			&:hover {
+				background-color: $smoke;
+			}
 		}
-		td{
-			input{
-				width: 100%;
-				padding: 1%;
-				border-bottom: 1px solid $superlightgray;
-				text-align: left;
-				color: $gray;
-			}
-			&:nth-of-type(2 + 1n){
-				text-align: center;
-				margin: 0 auto;
-			}
-			&:last-of-type{
-				text-align: center;
-				margin: 0 auto;
-			}
-		} 
-		&:hover {
-			background-color: $smoke;
-		}
-	}
+	} 
 }
 
 /*--------------- Fichier _user.scss - FIN ----------*/
