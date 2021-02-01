@@ -84,9 +84,14 @@
                         <button id="modifier" class="btn btn-primary modify-btn" type="button" data-target="{{$user->id}}">
                             <i class="fas fa-pen fa-lg"></i>
                         </button>
-                        <input type="submit" data-target="form-{{$user->id}}" class="save-btn" style="display:none;" id="save-{{$user->id}}" type="submit" />
+                        <button type="submit" data-target="form-{{$user->id}}" class="save-btn" style="display:none;" id="save-{{$user->id}}">
+                            <i class="fas fa-arrow-circle-down fa-lg"></i>
+                        </button>
+                        <!-- <input type="submit" data-target="form-{{$user->id}}" class="save-btn" style="display:none;" id="save-{{$user->id}}" type="submit" /> -->
                         <!-- BUTTONS MODIFY & SAVE / END -->
-
+                         <!-- button show cours_user -->
+                         <a id="show" href='/admin/users/{{$user->id}}'> <i class="fas fa-eye  fa-lg"></i></a>
+                        
                         <!-- Formulaire de suppression -->
                         <div>
                             <button class="delete-btn" data-titre="{{$user->email}}" data-target="/admin/users/{{$user->id}}" value='Supprimer' class="btn btn-primary" type="button">

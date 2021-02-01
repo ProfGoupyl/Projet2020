@@ -31,19 +31,22 @@ class CsvController extends Controller
 
   public function add_to_cours(Request $request)
   {
+
+
     $res = fopen(request('file'), 'r');
     $cours = Cours::find($request->request->get('cours'));
     while (!feof($res)) {
       $tabLigne = explode(';', fgets($res));
       if (!$tabLigne[0]) break;
-
-      $this->generate_user($tabLigne[2], $tabLigne[0], $tabLigne[1]);
-
-      $user = User::where('email', '=', str_replace("\r\n", '', $tabLigne[2]))->get()[0];
-
+      $email = str_replace("\n", '', str_replace("\r", '', $tabLigne[2]));
+      $this->generate_user($email, $tabLigne[0], $tabLigne[1]);
+      $user = User::where('email', '=', $email)->get()[0];
+      //TODO CHECK PAR RAPPORT A l'ID fournit
       $existing = Cours::whereHas('users', function ($q) use ($user) {
         $q->where('users.id', '=', $user->id);
-      })->get();
+      })
+        ->where('id', '=', $cours->id)
+        ->get();
       if (!empty($existing[0])) {
         $user->cours()->sync($cours, ['start_at' => $cours->debut_du_cours, 'end_at' => $cours->fin_du_cours]);
       } else {
@@ -52,7 +55,7 @@ class CsvController extends Controller
         $data = [
           'subject' => "Invitation aux cours",
           'name' => $user->name,
-          'email' => str_replace("\r\n", '', $user->email),
+          'email' => $user->email,
           'content' => [
             'message' => "Vous avez été invité au cours" . $cours->titre . ". Bienvenue !"
           ]
@@ -70,9 +73,8 @@ class CsvController extends Controller
 
 
 
-  protected function generate_user($email_raw, $name, $firstname)
+  protected function generate_user($email, $name, $firstname)
   {
-    $email = str_replace("\r\n", '', $email_raw);
     $existing = User::where('email', '=', $email)->get();
     if (!isset($existing[0])) {
       $user = new User();
@@ -86,12 +88,11 @@ class CsvController extends Controller
       $user->password = "undefined";
       $user->register_token = $register_token;
       $user->save();
-
       // ENVOI EMAIL
       $data = [
         'subject' => "Invitation aux cours",
-        'name' => $user->name = $name,
-        'email' => $user->email = $email,
+        'name' => $user->name,
+        'email' => $user->email,
         'content' => [
           'message' => "Cliquez sur le lien suivant pour accepter l'invitation au cours de Goupyl:",
           'link' => route('register') . '?token=' . $register_token

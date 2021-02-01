@@ -3844,26 +3844,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "CommentaireComponent",
   props: ["userInfos"],
   data: function data() {
     return {
-      posts: {
-        text: null
-      },
-      userId: this.userInfos.id,
+      userId: this.userInfos.user_id,
       apiToken: this.userInfos.api_token,
-      url: document.querySelector("#envUrl").getAttribute("content")
+      url: document.querySelector("#envUrl").getAttribute("content"),
+      comment: ""
     };
   },
   methods: {
-    postData: function postData(e) {
-      axios.post("postData", this.posts).then(function (response) {
-        console.log(response.data);
-      }, function (response) {
-        console.log(response.data);
+    postData: function postData() {
+      axios.post("postData", {
+        text: this.comment
+      }).then(function (response) {
+        console.log(response);
       });
-      e.preventDefault();
     }
   }
 });
@@ -61493,36 +61489,48 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "commentaire" }, [
     _c("section", [
-      _c("form", { attrs: { method: "post" }, on: { submit: _vm.postData } }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.posts.text,
-              expression: "posts.text"
-            }
-          ],
-          attrs: {
-            type: "area",
-            name: "text",
-            placeholder: "Tapez votre commentaire ici"
-          },
-          domProps: { value: _vm.posts.text },
+      _c(
+        "form",
+        {
+          attrs: { method: "post" },
           on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.posts, "text", $event.target.value)
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.postData($event)
             }
           }
-        }),
-        _vm._v(" "),
-        _c("br"),
-        _vm._v(" "),
-        _c("button", { attrs: { type: "submit" } }, [_vm._v("Envoyer")])
-      ])
+        },
+        [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.comment,
+                expression: "comment"
+              }
+            ],
+            attrs: {
+              type: "area",
+              name: "text",
+              placeholder: "Tapez votre commentaire ici"
+            },
+            domProps: { value: _vm.comment },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.comment = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("button", { attrs: { type: "submit" } }, [_vm._v("Envoyer")])
+        ]
+      )
     ])
   ])
 }

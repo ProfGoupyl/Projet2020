@@ -608,7 +608,10 @@ div.mentions ul {
 }
 
 div.home {
-  width: 100%;
+  width: 65%;
+  margin: 1% auto;
+  padding: 1%;
+  border-radius: 5px;
 }
 
 div.home h1 {
@@ -617,26 +620,31 @@ div.home h1 {
 
 div.home ul {
   list-style-position: inside;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
 }
 
 div.home ul li {
   list-style: none;
   display: flex;
-  width: 80%;
   margin: 0 auto;
-  padding: 0.5em;
-}
-
-div.home ul li:nth-child(even) {
-  background-color: #ececec;
+  margin: 2%;
+  padding: 0.5%;
+  border-radius: 15px;
+  background-color: #fafafa;
+  box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.05);
 }
 
 div.home ul li p {
-  flex-basis: 70%;
+  flex-basis: auto;
+  white-space: nowrap;
 }
 
-div.home ul li a {
-  flex-basis: 15%;
+div.home ul li p a {
+  flex-basis: auto;
+  color: #000000;
+  text-align: center;
 }
 
 div.home p,
@@ -884,5 +892,9 @@ form input {
 
 input[type="file"] {
   border: none;
+}
+
+.commentaire section form {
+  margin: 1%;
 }
 
