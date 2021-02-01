@@ -2,6 +2,19 @@
 @section('content')
 
 <h1 class="coursName_titre">{{$cours->titre}}</h1>
+<button id="open-modal-user" class="btn btn-primary">
+    <i class="fas fa-eye  fa-lg"></i> Consulter la liste des étudiants
+</button>
+<div style="position:fixed;top:50%;left:50%;z-index:-500;transform:translate(-50%,-50%);background:#f5f5f5;padding:25px;border:2px solid #333" id="user-modal">
+    <h2>Liste des utilisateurs pour le cours {{$cours->titre}}</h2>
+    <ul>
+        @foreach($cours->users as $u)
+        <li>
+            {{$u->email}}
+        </li>
+        @endforeach
+    </ul>
+</div>
 
 <section class="section_page_cours">
 

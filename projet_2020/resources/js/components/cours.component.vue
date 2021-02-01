@@ -14,7 +14,7 @@
                 </nav> 
             </aside>
             <article v-if="moduleId">
-                <Session :key="componentKey" v-bind:user-infos="this.userInfos"></Session>
+                <Session :key="componentKey" :user-infos="this.userInfos" :modules="this.modulesCours"></Session>
             </article>
         </section>
     </div>
@@ -33,6 +33,7 @@
                 moduleId: false,
                 coursId: JSON.parse(sessionStorage.getItem('coursid')),
                 moduleList: [],
+                modulesCours: [],
                 coursNames: [],
                 cours: null,
                 componentKey: 0,
@@ -51,7 +52,6 @@
                 .catch(error => console.log(error))
         },
         updated() {
-            // Afficher le premier module au chargement du composant
             let module = []
             for (let i = 0; i < this.moduleList.length; i++) {
                 if(this.coursId === this.moduleList[i].cours_id) {
@@ -73,6 +73,16 @@
         computed: {
             filterCours() {
                 return this.cours = this.coursNames.filter((names) => names.id === this.coursId)
+            },
+            filterModules() {
+                let modules = []
+                modules = this.moduleList.filter((modules) => modules.cours_id === this.coursId)
+
+                for(let i = 0; i < modules.length; i++) {
+                    this.modulesCours.push(modules[i].id)
+                }
+
+                return this.moduleId = this.modulesCours[0]
             }
         },
     }

@@ -35,7 +35,7 @@ export default {
     Faq,
     Comment,
   },
-  props: ["userInfos"],
+  props: ["userInfos", "modules"],
   data() {
     return {
       moduleList: [],
