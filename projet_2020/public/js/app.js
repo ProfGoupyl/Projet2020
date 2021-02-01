@@ -4127,19 +4127,19 @@ __webpack_require__.r(__webpack_exports__);
         var fileExt = event.target.files[0].name.split('.').pop(1);
         var newFile = new File([event.target.files[0]], 'user' + id + '.' + fileExt);
         this.userPhoto = newFile;
-      }
-    },
-    previewImage: function previewImage(input) {
-      var file = $('input[type=file]').get(0).files[0];
+      } // Prévisualisation de l'image
 
-      if (file) {
+
+      var preview = event.target.files[0];
+
+      if (preview) {
         var reader = new FileReader();
 
         reader.onload = function () {
           $('.UserImage').attr('src', reader.result);
         };
 
-        reader.readAsDataURL(file);
+        reader.readAsDataURL(preview);
       }
     }
   }
@@ -61795,11 +61795,7 @@ var render = function() {
                 name: "userPhoto",
                 id: "userPhoto"
               },
-              on: {
-                change: function($event) {
-                  _vm.selectImage, _vm.previewImage(this)
-                }
-              }
+              on: { change: _vm.selectImage }
             })
           ]),
           _vm._v(" "),
@@ -61847,7 +61843,7 @@ var staticRenderFns = [
     return _c("label", { attrs: { for: "userPhoto" } }, [
       _vm._v("Type de fichier accepté: PNG"),
       _c("br"),
-      _vm._v("Volume maximal autorisé: 50 ko")
+      _vm._v("Volume maximum autorisé: 50 ko")
     ])
   },
   function() {
@@ -61895,7 +61891,7 @@ var render = function() {
               attrs: {
                 width: "560",
                 height: "315",
-                src: "https://www.youtube.com/embed/nhBVL41-_Cw",
+                src: modules.url_video,
                 frameborder: "0",
                 allow:
                   "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
@@ -74730,10 +74726,10 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/sass/app.scss */"./resources/sass/app.scss");
-__webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/projet-web-dynamique/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })
