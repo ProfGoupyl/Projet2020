@@ -47,6 +47,12 @@ class UserAdminController extends Controller
     {
         $cours = Cours::find($request->request->get('cours'));
 
+        $currentEmail = $request->request->get('email');
+        $existing = User::where('email', '=' , $currentEmail )->get();
+        if($existing){
+            return redirect('/admin/users');
+        };
+        
         $user = new User();
         $date = new DateTime();
         $register_token = Str::random(40) . $date->getTimestamp();
@@ -119,6 +125,7 @@ class UserAdminController extends Controller
      */
     public function edit(user $user)
     {
+
     }
 
     /**
