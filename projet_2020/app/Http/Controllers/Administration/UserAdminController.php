@@ -101,8 +101,14 @@ class UserAdminController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($id)
     {
+       
+      $user=User::find($id);
+      
+     return view('admin.users.show',[
+         'user'=>$user
+     ]);
     }
 
     /**
