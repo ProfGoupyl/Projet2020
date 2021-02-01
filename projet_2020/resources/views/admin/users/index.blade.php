@@ -84,7 +84,10 @@
                         <button id="modifier" class="btn btn-primary modify-btn" type="button" data-target="{{$user->id}}">
                             <i class="fas fa-pen fa-lg"></i>
                         </button>
-                        <input type="submit" data-target="form-{{$user->id}}" class="save-btn" style="display:none;" id="save-{{$user->id}}" type="submit" />
+                        <button type="submit" data-target="form-{{$user->id}}" class="save-btn" style="display:none;" id="save-{{$user->id}}">
+                            <i class="fas fa-arrow-circle-down fa-lg"></i>
+                        </button>
+                        <!-- <input type="submit" data-target="form-{{$user->id}}" class="save-btn" style="display:none;" id="save-{{$user->id}}" type="submit" /> -->
                         <!-- BUTTONS MODIFY & SAVE / END -->
 
                         <!-- Formulaire de suppression -->
