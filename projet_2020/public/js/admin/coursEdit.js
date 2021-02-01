@@ -1,7 +1,7 @@
 const editBtns = document.querySelectorAll('.edit-module')
-const titre = document.querySelector('input[name=titre]')
-const desc = document.querySelector('textarea[name=description]')
-const url = document.querySelector('input[name=url_video]')
+const titre = document.querySelector('#edit-titre')
+const desc = document.querySelector('#edit-desc')
+const url = document.querySelector('#edit-video')
 const form = document.querySelector('#form-module')
 editBtns.forEach(btn => {
     btn.addEventListener('click', () => {

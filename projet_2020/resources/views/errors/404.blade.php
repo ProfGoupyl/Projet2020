@@ -1,1 +1,6 @@
-<h1>Votre page existe pas, t'es nul</h1>
+@extends('layouts.default')
+@section('content')
+
+<h1>Diantre ! Erreur 404</h1>
+
+@stop
