@@ -25,15 +25,15 @@ use App\Http\Controllers\CommentaireController;
 
 // Routes pour les mentions légales
 
-Route::get('/charte-vie-privee', function() {
+Route::get('/charte-vie-privee', function () {
     return View('mentions-legales.charteViePrivee');
 });
 
-Route::get('/cookies', function() {
+Route::get('/cookies', function () {
     return View('mentions-legales.cookies');
 });
 
-Route::get('/droits-utilisations', function() {
+Route::get('/droits-utilisations', function () {
     return View('mentions-legales.droitUtilisation');
 });
 
@@ -42,8 +42,9 @@ Route::post('uploadImage', [UploadImageController::class, 'upload']);
 
 // Route pour les com
 
-Route::post('postData', [CommentaireController::class, 'store']);
+// Route pour les com
 
+Route::post('postData', [CommentaireController::class, 'store']);
 
 Route::get('/', function () {
     return View('welcome');
@@ -53,8 +54,18 @@ Route::get('user', function () {
     return View('pages.user');
 })->middleware(['auth'])->name('login');
 
-Route::get('cours', function () {
-    return View('pages.cours');
+Route::get('/', function () {
+    return View('welcome');
+})->middleware(['auth'])->name('login');
+Route::get('home', function () {
+    return View('pages.home');
+})->middleware(['auth'])->name('login');
+Route::get('user', function () {
+    return View('pages.user');
+})->middleware(['auth'])->name('login');
+
+Route::get('profile', function () {
+    return View('pages.profile');
 })->middleware(['auth'])->name('login');
 
 Route::get('profile', function () {
@@ -72,8 +83,6 @@ Route::get('/administrationModule', function () {
     return view('administration.CreateCoursAdmin');
 });
 
-Route::group(['middleware' => ['auth']], function () {
-});
 
 // Toutes les routes commencant par "/admin" utilisent le middleware IsAdmin (vérifie si l'user est ADMIN).
 Route::prefix('admin')
@@ -102,12 +111,3 @@ Route::prefix('admin')
 
 
 require __DIR__ . '/auth.php';
-
-
-Route::get('test', function () {
-    return View('pages.test');
-});
-
-Route::get('legal', function () {
-    return View('mentions legales.cookies');
-});
