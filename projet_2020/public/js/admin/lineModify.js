@@ -6,7 +6,7 @@ const saveBtns = document.querySelectorAll('.save-btn')
 modifyBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         // Reset l'affichage des inputs et des buttons
-        modifyBtns.forEach(btn => btn.style.display = 'block')
+        modifyBtns.forEach(btn => btn.style.display = 'inline-block')
         saveBtns.forEach(btn => btn.style.display = 'none')
         inputs.forEach(input => {
             if (input.disabled == false) {
