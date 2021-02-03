@@ -5,6 +5,7 @@
             <li><a href="/charte-vie-privee">Charte vie privée</a></li>
             <li><a href="/cookies">Cookies</a></li>
             <li><a href="/droits-utilisations">Droits d'utilisations</a></li>
+            <li>&copy; WebDev Ifosup 2021</li>
         </ul>
     </nav>
 </div>

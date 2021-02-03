@@ -12,7 +12,7 @@
         </p>
         <br/>
         <p>
-            Ce site a été réalisé dans le cadre du module 5XDYN - projet web dynamique 2020-2021- par les étudiants dont voici la liste : 
+            Ce site a été réalisé dans le cadre du module 5XDYN - projet web dynamique 2020-2021 - par les étudiants dont voici la liste : 
         </p>
         <ul>
             <li>
@@ -59,7 +59,9 @@
                 <p>PERRIARD Céline</p>
             </li>
             <li>
-                <p>REMY Clémentine</p>
+                <p>REMY Clémentine
+                    <a href="https://www.linkedin.com/in/clem-remy-8a25b4205/" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a>
+                </p>
             </li>
             <li>
                 <p>ROULEZ Antoine</p>

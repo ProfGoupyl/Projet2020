@@ -16,9 +16,9 @@ class FaqAdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $faqs = Faqs::all();
-        return view('admin.faqs.index',compact('faqs'));
+        return view('admin.faqs.index', compact('faqs'));
     }
 
     /**
@@ -28,7 +28,7 @@ class FaqAdminController extends Controller
      */
     public function create()
     {
-        
+
         // return view('admin.faqs.create'); 
     }
 
@@ -38,22 +38,20 @@ class FaqAdminController extends Controller
      */
     public function store(Request $request)
     {
-     
-        
+
+
         $faq = new Faqs;
-        
+
         $module = Module::find($request->request->get('modules'));
-        
+
         $faq->module_id = $module->id;
 
-        
-        $faq->question = $request->has('question') && strlen($request->question) ? $request->question : $faq->question;
-        $faq->reponse = $request->has('reponse') && strlen($request->reponse) ? $request->reponse : $faq->reponse;   
-        
-        $faq->save();
-        return redirect('/admin/faqs/' .$module->id);
 
-           
+        $faq->question = $request->has('question') && strlen($request->question) ? $request->question : $faq->question;
+        $faq->reponse = $request->has('reponse') && strlen($request->reponse) ? $request->reponse : $faq->reponse;
+
+        $faq->save();
+        return redirect('/admin/faqs/' . $module->id);
     }
 
     /**
@@ -63,12 +61,11 @@ class FaqAdminController extends Controller
      */
     public function show($id)
     {
-     $faqs=Faqs::where('module_id','=',$id)->get();
-     return view('admin.faqs.index',[
-         'faqs'=>$faqs,
-         'id'=>$id
-     ]);
-       
+        $faqs = Faqs::where('module_id', '=', $id)->get();
+        return view('admin.faqs.index', [
+            'faqs' => $faqs,
+            'id' => $id
+        ]);
     }
 
     /**
@@ -78,7 +75,7 @@ class FaqAdminController extends Controller
      */
     public function edit(Faqs $faq)
     {
-        
+
         return view('admin.faqs.edit', compact('faq'));
     }
 
@@ -88,17 +85,14 @@ class FaqAdminController extends Controller
      *
      * 
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
-   
+
         $faq = Faqs::find($id);
         $faq->question = $request->has('question') && strlen($request->question) ? $request->question : $faq->question;
         $faq->reponse = $request->has('reponse') && strlen($request->reponse) ? $request->reponse : $faq->reponse;
         $faq->save();
-        return redirect('/admin/cours');
-
-
-
+        return redirect('/admin/faqs/' . $faq->module_id);
     }
 
     /**
@@ -108,12 +102,7 @@ class FaqAdminController extends Controller
      */
     public function destroy(Faqs $faq)
     {
-    
-       
         $faq->delete();
-        return redirect('/admin/cours');
-
-
-        }
-        
+        return redirect('/admin/faqs/' . $faq->module_id);
+    }
 }

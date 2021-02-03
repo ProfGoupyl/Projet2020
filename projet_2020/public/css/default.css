@@ -209,6 +209,7 @@ header nav.navPrincipale ul li ul.sous li p {
 
 .listecoursadmin {
   width: 100%;
+  height: 50vh;
 }
 
 .listecoursadmin thead {
@@ -228,6 +229,10 @@ header nav.navPrincipale ul li ul.sous li p {
 .listecoursadmin thead tr th:nth-of-type(2 + 1n) {
   text-align: center;
   width: 16,66%;
+}
+
+.listecoursadmin tbody {
+  width: 100%;
 }
 
 .listecoursadmin tbody tr:hover td {
@@ -896,5 +901,20 @@ input[type="file"] {
 
 .commentaire section form {
   margin: 1%;
+}
+
+.table-wrapper {
+  overflow-y: scroll;
+  display: block;
+  width: 100%;
+  height: 50vh;
+  flex-grow: 1;
+}
+
+.table-wrapper th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color: #ececec;
 }
 

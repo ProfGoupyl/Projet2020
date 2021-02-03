@@ -26,9 +26,11 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        if (User::create($request->all())) {
-            return response()->json(['insert succes'], 200);
-        }
+        $data = request()->validate([
+            'email' => 'required|unique:users'
+        ]);
+
+        User::create($data);
     }
 
     /**
@@ -70,7 +72,7 @@ class UserController extends Controller
     }
 
 
-        /**
+    /**
      * Display the specified resource and relations.
      *
      * @param  \App\Models\user  $user
@@ -79,21 +81,21 @@ class UserController extends Controller
     public function formations(user $user)
     {
         return DB::table('users')
-        ->join('cours_user', 'users.id', '=', 'cours_user.user_id')
-        ->join('cours', 'cours.id', '=', 'cours_user.cours_id')
-        ->select('cours.id as coursId',
+            ->join('cours_user', 'users.id', '=', 'cours_user.user_id')
+            ->join('cours', 'cours.id', '=', 'cours_user.cours_id')
+            ->select(
+                'cours.id as coursId',
                 'cours.titre as titre',
                 'cours_user.start_at as start_at',
-                'cours_user.end_at as end_at')
-        ->where('cours_user.user_id', '=', $user->id)
-        ->orderBy('cours_user.start_at', 'asc')
-        ->get(); 
-        
-        
+                'cours_user.end_at as end_at'
+            )
+            ->where('cours_user.user_id', '=', $user->id)
+            ->orderBy('cours_user.start_at', 'asc')
+            ->get();
+
+
         // $userCours = User::find($user->id)->cours;
         // return $userCours;
-  
-    }
 
-    
+    }
 }

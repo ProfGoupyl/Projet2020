@@ -23,20 +23,6 @@ use App\Http\Controllers\CommentaireController;
 |
 */
 
-// Routes pour les mentions légales
-
-Route::get('/charte-vie-privee', function() {
-    return View('mentions-legales.charteViePrivee');
-});
-
-Route::get('/cookies', function() {
-    return View('mentions-legales.cookies');
-});
-
-Route::get('/droits-utilisations', function() {
-    return View('mentions-legales.droitUtilisation');
-});
-
 // Route pour upload une image
 Route::post('uploadImage', [UploadImageController::class, 'upload']);
 
@@ -48,13 +34,19 @@ Route::post('postData', [CommentaireController::class, 'store']);
 Route::get('/', function () {
     return View('welcome');
 })->middleware(['auth'])->name('login');
-
+Route::get('home', function () {
+    return View('pages.home');
+})->middleware(['auth'])->name('login');
 Route::get('user', function () {
     return View('pages.user');
 })->middleware(['auth'])->name('login');
 
 Route::get('cours', function () {
     return View('pages.cours');
+})->middleware(['auth'])->name('login');
+
+Route::get('session', function () {
+    return View('pages.session');
 })->middleware(['auth'])->name('login');
 
 Route::get('profile', function () {
@@ -102,12 +94,3 @@ Route::prefix('admin')
 
 
 require __DIR__ . '/auth.php';
-
-
-Route::get('test', function () {
-    return View('pages.test');
-});
-
-Route::get('legal', function () {
-    return View('mentions legales.cookies');
-});
