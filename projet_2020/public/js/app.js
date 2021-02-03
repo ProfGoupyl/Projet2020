@@ -3915,6 +3915,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -4020,13 +4022,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['userInfos'],
+  props: ["userInfos", "module"],
   data: function data() {
     return {
       faqList: [],
-      moduleId: JSON.parse(sessionStorage.getItem('moduleid')),
-      url: document.querySelector('#envUrl').getAttribute('content')
+      componentKey: 0,
+      url: document.querySelector("#envUrl").getAttribute("content")
     };
   },
   created: function created() {
@@ -4043,7 +4049,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       return this.faqList.filter(function (module) {
-        return module.module_id === _this2.moduleId;
+        return module.module_id === _this2.module;
       });
     }
   }
@@ -4214,6 +4220,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4225,6 +4234,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       moduleList: [],
+      componentKey: 0,
       moduleId: JSON.parse(sessionStorage.getItem("moduleid")),
       url: document.querySelector("#envUrl").getAttribute("content"),
       hasPrevious: false,
@@ -61598,7 +61608,11 @@ var render = function() {
             return _c(
               "h2",
               { key: cours.id, staticClass: "navSecondaire_coursName" },
-              [_vm._v("\n        " + _vm._s(cours.titre) + "\n      ")]
+              [
+                _vm._v(
+                  "\n                " + _vm._s(cours.titre) + "\n            "
+                )
+              ]
             )
           }),
           _vm._v(" "),
@@ -61623,9 +61637,9 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n                " +
+                              "\n                                " +
                                 _vm._s(module.titre) +
-                                "\n              "
+                                "\n                            "
                             )
                           ]
                         )
@@ -61692,12 +61706,12 @@ var render = function() {
           return _c("li", { key: module.id }, [
             _c("details", [
               _c("summary", { staticClass: "faq_question" }, [
-                _vm._v(" " + _vm._s(module.question)),
+                _vm._v("\n                        " + _vm._s(module.question)),
                 _c("a")
               ]),
               _vm._v(" "),
               _c("p", { staticClass: "faq_question_hidden" }, [
-                _vm._v(" " + _vm._s(module.reponse)),
+                _vm._v("\n                        " + _vm._s(module.reponse)),
                 _c("a")
               ])
             ])
@@ -61996,7 +62010,11 @@ var render = function() {
       _vm._v(" "),
       _c(
         "article",
-        [_c("Faq", { attrs: { "user-infos": this.userInfos } })],
+        [
+          _c("Faq", {
+            attrs: { "user-infos": this.userInfos, module: this.moduleId }
+          })
+        ],
         1
       ),
       _vm._v(" "),
