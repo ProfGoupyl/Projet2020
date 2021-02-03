@@ -7,7 +7,6 @@
 
 
 </div>
-
 <div id='addFaqs'>
     <form action='/admin/faqs' method='POST'>
         @csrf

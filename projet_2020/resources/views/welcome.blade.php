@@ -56,7 +56,9 @@
 
             </li>
             <li>
-                <p>PERRIARD Céline</p>
+                <p>PERRIARD Céline
+                    <a href="https://www.linkedin.com/in/c%C3%A9line-perriard-81175b1b7/" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a>   
+                </p>
             </li>
             <li>
                 <p>REMY Clémentine

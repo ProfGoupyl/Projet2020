@@ -65,7 +65,7 @@
                     </div>
                     <div>
                         <label>Description du module</label>
-                        <textarea name="description" cols="25" rows="1"></textarea>
+                        <textarea id="textarea-editor" name="description" cols="25" rows="1"></textarea>
                     </div>
                     <div>
                         <input type="text" name="url_video">
