@@ -7,8 +7,8 @@
           name="text"
           placeholder="Tapez votre commentaire ici"
           v-model="comment"
-        />
-        <br />
+        >
+        <br>
         <button type="submit">Envoyer</button>
       </form>
     </section>
@@ -17,37 +17,26 @@
 
 <script>
 export default {
-  props: ["userInfos", "modules"],
+  props: ['userInfos', 'module'],
 
   data() {
     return {
-      userId: this.userInfos.user_id,
-      apiToken: this.userInfos.api_token,
       url: document.querySelector("#envUrl").getAttribute("content"),
       comment: "",
-      userId: this.userInfos.id,
-      moduleId: JSON.parse(sessionStorage.getItem("moduleid")),
       coursId: JSON.parse(sessionStorage.getItem("coursid")),
     };
   },
-  computed: {
-    filterModules: function () {
-      return this.moduleList.filter((modules) => modules.id === this.moduleId);
-    },
-  },
-
   methods: {
     postData() {
       axios
-        .post("postData", {
+        .post(`${this.url}/api/commentaires/?api_token=${this.userInfos.api_token}`, {
           text: this.comment,
-          user_id: this.userId,
-          module_id: this.moduleId,
+          user_id: this.userInfos.id,
+          module_id: this.module,
           cours_id: this.coursId,
         })
-        .then((response) => {
-          console.log(response);
-        });
+        .then(response => console.log(response))
+        .catch(error => console.log(error))
     },
   },
 };

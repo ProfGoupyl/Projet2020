@@ -3826,8 +3826,6 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 //
 //
 //
@@ -3846,35 +3844,25 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["userInfos", "modules"],
+  props: ['userInfos', 'module'],
   data: function data() {
-    var _ref;
-
-    return _ref = {
-      userId: this.userInfos.user_id,
-      apiToken: this.userInfos.api_token,
+    return {
       url: document.querySelector("#envUrl").getAttribute("content"),
-      comment: ""
-    }, _defineProperty(_ref, "userId", this.userInfos.id), _defineProperty(_ref, "moduleId", JSON.parse(sessionStorage.getItem("moduleid"))), _defineProperty(_ref, "coursId", JSON.parse(sessionStorage.getItem("coursid"))), _ref;
-  },
-  computed: {
-    filterModules: function filterModules() {
-      var _this = this;
-
-      return this.moduleList.filter(function (modules) {
-        return modules.id === _this.moduleId;
-      });
-    }
+      comment: "",
+      coursId: JSON.parse(sessionStorage.getItem("coursid"))
+    };
   },
   methods: {
     postData: function postData() {
-      axios.post("postData", {
+      axios.post("".concat(this.url, "/api/commentaires/?api_token=").concat(this.userInfos.api_token), {
         text: this.comment,
-        user_id: this.userId,
-        module_id: this.moduleId,
+        user_id: this.userInfos.id,
+        module_id: this.module,
         cours_id: this.coursId
       }).then(function (response) {
-        console.log(response);
+        return console.log(response);
+      })["catch"](function (error) {
+        return console.log(error);
       });
     }
   }
@@ -4207,6 +4195,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _faq_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./faq.component */ "./resources/js/components/faq.component.vue");
 /* harmony import */ var _commentaire_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./commentaire.component */ "./resources/js/components/commentaire.component.vue");
+//
 //
 //
 //
@@ -62001,7 +61990,7 @@ var render = function() {
           _c("div", [
             _c("h2", [_vm._v(_vm._s(modules.titre))]),
             _vm._v(" "),
-            _c("p", [_vm._v(_vm._s(modules.description))]),
+            _c("p", { domProps: { innerHTML: _vm._s(modules.description) } }),
             _vm._v(" "),
             _c("iframe", {
               attrs: {
@@ -62027,11 +62016,7 @@ var render = function() {
                         }
                       }
                     },
-                    [
-                      _vm._v(
-                        "\n                    Précédent\n                "
-                      )
-                    ]
+                    [_vm._v("\n          Précédent\n        ")]
                   )
                 : _vm._e(),
               _vm._v(" "),
@@ -62046,7 +62031,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v("\n                    Suivant\n                ")]
+                    [_vm._v("\n          Suivant\n        ")]
                   )
                 : _vm._e()
             ])
@@ -62066,7 +62051,11 @@ var render = function() {
       _vm._v(" "),
       _c(
         "article",
-        [_c("Comment", { attrs: { "user-infos": this.userInfos } })],
+        [
+          _c("Comment", {
+            attrs: { "user-infos": this.userInfos, module: this.moduleId }
+          })
+        ],
         1
       )
     ],
@@ -74854,10 +74843,10 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\sass\app.scss */"./resources/sass/app.scss");
-__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\sass\default.scss */"./resources/sass/default.scss");
-module.exports = __webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/2/projet-web-dynamique/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/2/projet-web-dynamique/Projet2020/projet_2020/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/2/projet-web-dynamique/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/2/projet-web-dynamique/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })
