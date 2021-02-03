@@ -27,28 +27,13 @@
             Suivant
           </button>
         </div>
-<<<<<<< HEAD
-        <article>
-            <Faq
-                :user-infos="this.userInfos"
-                :module="this.moduleId"
-            ></Faq>
-        </article>
-        <article>
-            <Comment
-                :user-infos="this.userInfos"
-                :module="this.moduleId"
-            ></Comment>
-        </article>
-=======
       </div>
->>>>>>> daf3a1f4d4290365ba81a0ad3309592bfcb9092e
     </div>
     <article>
       <Faq :user-infos="this.userInfos" :module="this.moduleId"></Faq>
     </article>
     <article>
-      <Comment :user-infos="this.userInfos"></Comment>
+      <Comment :user-infos="this.userInfos" :module="this.moduleId"></Comment>
     </article>
   </div>
 </template>
