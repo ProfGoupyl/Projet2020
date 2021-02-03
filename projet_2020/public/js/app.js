@@ -4239,6 +4239,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4250,14 +4256,13 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       moduleList: [],
-      componentKey: 0,
+      handleButton: 2,
       moduleId: JSON.parse(sessionStorage.getItem("moduleid")),
-      url: document.querySelector("#envUrl").getAttribute("content"),
-      hasPrevious: false,
-      hasNext: true
+      url: document.querySelector("#envUrl").getAttribute("content")
     };
   },
   computed: {
+    // Récupération du module qui a le même id que moduleId
     filterModules: function filterModules() {
       var _this = this;
 
@@ -4269,17 +4274,22 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this2 = this;
 
+    // Récupération de la liste des modules
     axios.get("".concat(this.url, "/api/module?api_token=").concat(this.userInfos.api_token)).then(function (response) {
       return _this2.moduleList = response.data;
     })["catch"](function (error) {
       return console.log(error);
     });
   },
+  mounted: function mounted() {
+    this.sessionFirst = true;
+  },
   // permet de clear l'id du module
   updated: function updated() {
     sessionStorage.removeItem("moduleid");
   },
   methods: {
+    // Gestion du bouton précédent
     onPrevious: function onPrevious() {
       var current;
 
@@ -4294,7 +4304,14 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         this.moduleId = this.modules[current - 1];
       }
+
+      if (this.moduleId === this.modules[0]) {
+        this.handleButton = 2;
+      } else {
+        this.handleButton = 3;
+      }
     },
+    // Gestion du bouton suivant
     onNext: function onNext() {
       var current;
       var max = this.modules.length - 1;
@@ -4307,8 +4324,16 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.moduleId === this.modules[max]) {
         this.moduleId = this.moduleId;
+        this.handleButton = 1;
       } else {
         this.moduleId = this.modules[current + 1];
+        this.handleButton = 3;
+      }
+
+      if (this.moduleId === this.modules[max]) {
+        this.handleButton = 1;
+      } else {
+        this.handleButton = 3;
       }
     }
   }
@@ -61994,31 +62019,39 @@ var render = function() {
             }),
             _vm._v(" "),
             _c("div", [
-              _c(
-                "button",
-                {
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      return _vm.onPrevious()
-                    }
-                  }
-                },
-                [_vm._v("Précédent")]
-              ),
+              _vm.handleButton === 1 || _vm.handleButton === 3
+                ? _c(
+                    "button",
+                    {
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.onPrevious()
+                        }
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n                    Précédent\n                "
+                      )
+                    ]
+                  )
+                : _vm._e(),
               _vm._v(" "),
-              _c(
-                "button",
-                {
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      return _vm.onNext()
-                    }
-                  }
-                },
-                [_vm._v("Suivant")]
-              )
+              _vm.handleButton === 2 || _vm.handleButton === 3
+                ? _c(
+                    "button",
+                    {
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.onNext()
+                        }
+                      }
+                    },
+                    [_vm._v("\n                    Suivant\n                ")]
+                  )
+                : _vm._e()
             ])
           ])
         ])
