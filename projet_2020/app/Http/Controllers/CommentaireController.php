@@ -31,7 +31,7 @@ class CommentaireController extends Controller
         dd($commentaire);
         $commentaire = new Commentaire;
 
-        $commentaire->text = $request->has('text');
+        $commentaire->text = $request->text;
         $commentaire->user_id = $request->user_id;
         $commentaire->module_id = $request->module_id;
         $commentaire->cours_id = $request->cours_id;
