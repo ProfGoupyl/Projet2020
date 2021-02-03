@@ -3,7 +3,7 @@
     <div v-for="modules in filterModules" :key="modules.id">
       <div>
         <h2>{{ modules.titre }}</h2>
-        <v-html>{{ modules.description }}</v-html>
+        <p v-html="modules.description"></p>
         <iframe
           width="560"
           height="315"
