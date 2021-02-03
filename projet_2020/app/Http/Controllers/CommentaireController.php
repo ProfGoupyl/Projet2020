@@ -28,6 +28,7 @@ class CommentaireController extends Controller
      */
     public function store(Request $request)
     {
+        dd($commentaire);
         $commentaire = new Commentaire;
 
         $commentaire->text = $request->has('text');
