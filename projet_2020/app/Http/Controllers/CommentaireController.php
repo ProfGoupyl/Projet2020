@@ -28,12 +28,13 @@ class CommentaireController extends Controller
      */
     public function store(Request $request)
     {
+        dd($commentaire);
         $commentaire = new Commentaire;
 
-        $commentaire->text = $request->has('text');
-        $commentaire->user_id = User::find($request->user_id);
-        $commentaire->module_id = Module::find($request->module_id);
-        $commentaire->cours_id = Cours::find($request->cours_id);
+        $commentaire->text = $request->text;
+        $commentaire->user_id = $request->user_id;
+        $commentaire->module_id = $request->module_id;
+        $commentaire->cours_id = $request->cours_id;
 
         $commentaire->save();
     }
