@@ -7,6 +7,7 @@ use App\Http\Controllers\CsvController;
 use App\Http\Controllers\Administration\UserAdminController;
 use App\Http\Controllers\Administration\ModuleAdminController;
 use App\Http\Controllers\Administration\FaqAdminController;
+use App\Http\Controllers\Administration\CoursUsersController;
 use App\Http\Controllers\UploadImageController;
 use App\Http\Controllers\CommentaireController;
 
@@ -84,6 +85,7 @@ Route::prefix('admin')
         Route::resource('cours', CoursAdminController::class);
         Route::resource('faqs', FaqAdminController::class);
         Route::resource('module', ModuleAdminController::class);
+        Route::delete('/coursusers', [ CoursUsersController::class , 'delete']);
 
         //Routes CSV : GET && POST
         //Test de l'ajout d'utilisateurs par fichier .csv;
