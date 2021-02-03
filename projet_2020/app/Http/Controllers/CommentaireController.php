@@ -29,7 +29,7 @@ class CommentaireController extends Controller
     public function store(Request $request)
     {
         $data = request()->validate([
-            'text' => 'required|max:300|alpha_num',
+            'text' => 'required|max:300',
         ]);
 
         $commentaire = new Commentaire;
@@ -40,13 +40,13 @@ class CommentaireController extends Controller
         $cours_id = Cours::find($request->cours_id);
 
         if ($user_id) {
-            $commentaire->User()->associate($user_id);
+            $commentaire->users()->associate($user_id);
         }
         if ($module_id) {
-            $commentaire->Module()->associate($module_id);
+            $commentaire->modules()->associate($module_id);
         }
         if ($cours_id) {
-            $commentaire->Cours()->associate($cours_id);
+            $commentaire->cours()->associate($cours_id);
         }
         Commentaire::create($data);
     }

@@ -14,25 +14,33 @@
                 ></iframe>
                 <!-- {{ modules.url_video }} -->
                 <div>
-                    <button v-on:click.prevent="onPrevious()">Précédent</button>
-                    <button v-on:click.prevent="onNext()">Suivant</button>
+                    <button v-on:click.prevent="onPrevious()" v-if="handleButton === 1 || handleButton === 3">
+                        Précédent
+                    </button>
+                    <button v-on:click.prevent="onNext()" v-if="handleButton === 2 || handleButton === 3">
+                        Suivant
+                    </button>
                 </div>
             </div>
         </div>
         <article>
             <Faq
-                v-bind:user-infos="this.userInfos"
+                :user-infos="this.userInfos"
                 :module="this.moduleId"
             ></Faq>
         </article>
         <article>
-            <Comment v-bind:user-infos="this.userInfos"></Comment>
+            <Comment
+                :user-infos="this.userInfos"
+            ></Comment>
         </article>
     </div>
 </template>
 <script>
-import Faq from "./faq.component";
-import Comment from "./commentaire.component";
+
+import Faq from "./faq.component"
+import Comment from "./commentaire.component"
+
 export default {
     components: {
         Faq,
@@ -42,15 +50,13 @@ export default {
     data() {
         return {
             moduleList: [],
-            componentKey: 0,
+            handleButton: 2,
             moduleId: JSON.parse(sessionStorage.getItem("moduleid")),
             url: document.querySelector("#envUrl").getAttribute("content"),
-
-            hasPrevious: false,
-            hasNext: true,
         };
     },
     computed: {
+      // Récupération du module qui a le même id que moduleId
         filterModules: function () {
             return this.moduleList.filter(
                 (modules) => modules.id === this.moduleId
@@ -58,48 +64,68 @@ export default {
         },
     },
     created() {
+      // Récupération de la liste des modules
         axios
             .get(`${this.url}/api/module?api_token=${this.userInfos.api_token}`)
             .then((response) => (this.moduleList = response.data))
-            .catch((error) => console.log(error));
+            .catch((error) => console.log(error))
+    },
+    mounted() {
+      this.sessionFirst = true
     },
     // permet de clear l'id du module
     updated() {
-        sessionStorage.removeItem("moduleid");
+        sessionStorage.removeItem("moduleid")
     },
     methods: {
+      // Gestion du bouton précédent
         onPrevious: function () {
-            let current;
+            let current
 
             for (let i = 0; i < this.modules.length; i++) {
                 if (this.moduleId === this.modules[i]) {
-                    current = i;
+                    current = i
                 }
             }
 
             if (this.moduleId === this.modules[0]) {
-                this.moduleId = this.moduleId;
+                this.moduleId = this.moduleId
             } else {
-                this.moduleId = this.modules[current - 1];
+                this.moduleId = this.modules[current - 1]
+            }
+
+            if (this.moduleId === this.modules[0]) {
+                this.handleButton = 2
+            } else {
+                this.handleButton = 3
             }
         },
 
+        // Gestion du bouton suivant
         onNext: function () {
-            let current;
-            const max = this.modules.length - 1;
+            let current
+            const max = this.modules.length - 1
 
             for (let i = 0; i < this.modules.length; i++) {
                 if (this.moduleId === this.modules[i]) {
-                    current = i;
+                    current = i
                 }
             }
 
             if (this.moduleId === this.modules[max]) {
-                this.moduleId = this.moduleId;
+                this.moduleId = this.moduleId
+                this.handleButton = 1
             } else {
-                this.moduleId = this.modules[current + 1];
+                this.moduleId = this.modules[current + 1]
+                this.handleButton = 3
+            }
+
+            if (this.moduleId === this.modules[max]) {
+                this.handleButton = 1
+            } else {
+                this.handleButton = 3
             }
         },
     },
-};
+}
 </script>
