@@ -10,7 +10,8 @@
     <ul>
         @foreach($cours->users as $u)
         <li>
-            {{$u->email}}
+        <input type="checkbox" id='users-{{$u->id}}'>
+            <label htmlFor='users-{{$u->id}}'>{{$u->email}}</label>
         </li>
         @endforeach
     </ul>

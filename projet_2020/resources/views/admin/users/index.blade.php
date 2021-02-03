@@ -49,6 +49,7 @@
             </div>
         </form>
     </div>
+    <div class="table-wrapper">
     <table class="listecours">
         <thead>
             <th>Nom</th>
@@ -93,11 +94,11 @@
                          <a id="show" href='/admin/users/{{$user->id}}'> <i class="fas fa-eye  fa-lg"></i></a>
                         
                         <!-- Formulaire de suppression -->
-                        <div>
+                        
                             <button class="delete-btn" data-titre="{{$user->email}}" data-target="/admin/users/{{$user->id}}" value='Supprimer' class="btn btn-primary" type="button">
                                 <i class="fas fa-trash-alt fa-lg"></i>
                             </button>
-                        </div>
+                        
 
                     </td>
                 </form>
@@ -105,6 +106,7 @@
             @endforeach
         </tbody>
     </table>
+    </div>
     <div id="delete-modal" style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#333;display:none">
         <h2>Etes-vous sur de vouloir supprimer l'utilisateur: <span id="delete-title"></span> ?</h2>
         <form id="delete-form" action='' method="post">
