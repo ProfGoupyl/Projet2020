@@ -28,7 +28,6 @@ class CommentaireController extends Controller
      */
     public function store(Request $request)
     {
-       /* dd($commentaire);
         $commentaire = new Commentaire;
 
         $commentaire->text = $request->text;
@@ -36,13 +35,7 @@ class CommentaireController extends Controller
         $commentaire->module_id = $request->module_id;
         $commentaire->cours_id = $request->cours_id;
 
-        $commentaire->save(); */
-
-        $data = request()->validate([
-            'text' => 'required|max:1000|alpha_num'
-        ]);
-
-        Commentaire::create($data);
+        $commentaire->save();
     }
 
     /**
