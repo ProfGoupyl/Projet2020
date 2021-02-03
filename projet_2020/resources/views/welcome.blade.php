@@ -16,7 +16,9 @@
         </p>
         <ul>
             <li>
-                <p>AMIR Ilham</p>
+                <p>AMIR Ilham
+                    <a href="https://www.linkedin.com/in/ilham-amir-1ba8891b9/" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a>
+                </p>
             </li>
             <li>
                 <p>CHAOUNI Saïd
@@ -69,7 +71,7 @@
                 <p>ROULEZ Antoine</p>
             </li>
             <li>
-                    <p>SCORNEAUX ROMAIN</p>
+                <p>SCORNEAUX ROMAIN</p>
             </li>
             <li>
                 <p>SIMONET Xavier</p>
