@@ -9,5 +9,14 @@ editBtns.forEach(btn => {
         desc.value = btn.dataset.desc;
         url.value = btn.dataset.url;
         form.action = `/admin/module/${btn.dataset.action}`
+        const textEditor = document.querySelectorAll('.ck-editor');
+        if (textEditor.length === 2) {
+            textEditor[1].remove();
+        }
+        ClassicEditor
+            .create(document.querySelector('#edit-desc'))
+            .catch(error => {
+                console.error(error);
+            });
     })
 })

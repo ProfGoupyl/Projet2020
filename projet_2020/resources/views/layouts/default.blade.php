@@ -40,6 +40,7 @@
     <script src="{{ asset('js/admin/modal.js') }}"></script>
     @endif
     @if(\Request::is('admin/cours/*'))
+    <script src="https://cdn.ckeditor.com/ckeditor5/25.0.0/classic/ckeditor.js"></script>
     <script src="{{ asset('js/admin/dragAndDrop.js') }}"></script>
     <script src="{{ asset('js/admin/coursEdit.js') }}"></script>
     @endif
