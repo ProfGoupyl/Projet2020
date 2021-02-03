@@ -21,8 +21,11 @@ div.footer {
 				color: $main;
 				text-decoration: none;
 				&:hover{
-				color: $gray;
+					color: $gray;
+				}
 			}
+			&:last-of-type{
+				margin-left: auto;
 			}
 		}
 	} 
