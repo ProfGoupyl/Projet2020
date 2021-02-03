@@ -8,17 +8,17 @@
 <div style="position:fixed;top:50%;left:50%;z-index:-500;transform:translate(-50%,-50%);background:#f5f5f5;padding:25px;border:2px solid #333" id="user-modal">
     <h2>Liste des utilisateurs pour le cours {{$cours->titre}}</h2>
     <form action='/admin/coursusers' method='post'>
-    @csrf
-    @method('delete')
-    <input type="submit" value="Supprimer">
-    <ul>
-        @foreach($cours->users as $u)
-        <li>
-        <input type="checkbox" id='users-{{$u->id}}'>
-            <label htmlFor='users-{{$u->id}}'>{{$u->email}}</label>
-        </li>
-        @endforeach
-    </ul>
+        @csrf
+        @method('delete')
+        <input type="submit" value="Supprimer">
+        <ul>
+            @foreach($cours->users as $u)
+            <li>
+                <input type="checkbox" id='users-{{$u->id}}'>
+                <label htmlFor='users-{{$u->id}}'>{{$u->email}}</label>
+            </li>
+            @endforeach
+        </ul>
     </form>
 </div>
 

@@ -69,7 +69,9 @@ openModal.addEventListener('click', () => {
 })
 
 ClassicEditor
-    .create(document.querySelector('#textarea-editor'))
+    .create(document.querySelector('#textarea-editor'), {
+        link: { addTargetToExternalLinks: true }
+    })
     .catch(error => {
         console.error(error);
     });

@@ -14,7 +14,9 @@ editBtns.forEach(btn => {
             textEditor[1].remove();
         }
         ClassicEditor
-            .create(document.querySelector('#edit-desc'))
+            .create(document.querySelector('#edit-desc'), {
+                link: { addTargetToExternalLinks: true }
+            })
             .catch(error => {
                 console.error(error);
             });
