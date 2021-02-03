@@ -28,10 +28,6 @@ class CommentaireController extends Controller
      */
     public function store(Request $request)
     {
-        $data = request()->validate([
-            'text' => 'required|max:1000|alpha_num',
-        ]);
-
         $commentaire = new Commentaire;
 
         $commentaire->text = $request->has('text');
