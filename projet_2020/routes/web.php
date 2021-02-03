@@ -23,36 +23,13 @@ use App\Http\Controllers\CommentaireController;
 |
 */
 
-// Routes pour les mentions légales
-
-Route::get('/charte-vie-privee', function () {
-    return View('mentions-legales.charteViePrivee');
-});
-
-Route::get('/cookies', function () {
-    return View('mentions-legales.cookies');
-});
-
-Route::get('/droits-utilisations', function () {
-    return View('mentions-legales.droitUtilisation');
-});
-
 // Route pour upload une image
 Route::post('uploadImage', [UploadImageController::class, 'upload']);
 
 // Route pour les com
 
-// Route pour les com
-
 Route::post('postData', [CommentaireController::class, 'store']);
 
-Route::get('/', function () {
-    return View('welcome');
-})->middleware(['auth'])->name('login');
-
-Route::get('user', function () {
-    return View('pages.user');
-})->middleware(['auth'])->name('login');
 
 Route::get('/', function () {
     return View('welcome');
@@ -64,8 +41,12 @@ Route::get('user', function () {
     return View('pages.user');
 })->middleware(['auth'])->name('login');
 
-Route::get('profile', function () {
-    return View('pages.profile');
+Route::get('cours', function () {
+    return View('pages.cours');
+})->middleware(['auth'])->name('login');
+
+Route::get('session', function () {
+    return View('pages.session');
 })->middleware(['auth'])->name('login');
 
 Route::get('profile', function () {
@@ -83,6 +64,8 @@ Route::get('/administrationModule', function () {
     return view('administration.CreateCoursAdmin');
 });
 
+Route::group(['middleware' => ['auth']], function () {
+});
 
 // Toutes les routes commencant par "/admin" utilisent le middleware IsAdmin (vérifie si l'user est ADMIN).
 Route::prefix('admin')
