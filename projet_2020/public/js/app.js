@@ -3837,12 +3837,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['userInfos', 'module'],
   data: function data() {
@@ -61570,31 +61564,6 @@ var render = function() {
           }
         },
         [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.comment,
-                expression: "comment"
-              }
-            ],
-            attrs: {
-              type: "area",
-              name: "text",
-              placeholder: "Tapez votre commentaire ici"
-            },
-            domProps: { value: _vm.comment },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.comment = $event.target.value
-              }
-            }
-          }),
-          _vm._v(" "),
           _c("br"),
           _vm._v(" "),
           _c("button", { attrs: { type: "submit" } }, [_vm._v("Envoyer")])

@@ -2,12 +2,6 @@
   <div class="commentaire">
     <section>
       <form v-on:submit.prevent="postData" method="post">
-        <input
-          type="area"
-          name="text"
-          placeholder="Tapez votre commentaire ici"
-          v-model="comment"
-        >
         <br>
         <button type="submit">Envoyer</button>
       </form>
