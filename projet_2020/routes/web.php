@@ -23,48 +23,47 @@ use App\Http\Controllers\CommentaireController;
 |
 */
 
-// Route pour upload une image
-Route::post('uploadImage', [UploadImageController::class, 'upload']);
-
-// Route pour les com
-
-Route::post('postData', [CommentaireController::class, 'store']);
-
-
-Route::get('/', function () {
-    return View('welcome');
-})->middleware(['auth'])->name('login');
-Route::get('home', function () {
-    return View('pages.home');
-})->middleware(['auth'])->name('login');
-Route::get('user', function () {
-    return View('pages.user');
-})->middleware(['auth'])->name('login');
-
-Route::get('cours', function () {
-    return View('pages.cours');
-})->middleware(['auth'])->name('login');
-
-Route::get('session', function () {
-    return View('pages.session');
-})->middleware(['auth'])->name('login');
-
-Route::get('profile', function () {
-    return View('pages.profile');
-})->middleware(['auth'])->name('login');
-
-Route::get('/admin/test', function () {
-    return View('admin.users.test');
-})->name('poulet');
-
-Route::get('/administrationUser', function () {
-    return view('administration.UserAdmin');
-});
-Route::get('/administrationModule', function () {
-    return view('administration.CreateCoursAdmin');
-});
-
 Route::group(['middleware' => ['auth']], function () {
+    // Route pour upload une image
+    Route::post('uploadImage', [UploadImageController::class, 'upload']);
+
+    // Route pour les com
+
+    Route::post('postData', [CommentaireController::class, 'store']);
+
+
+    Route::get('/', function () {
+        return View('welcome');
+    })->middleware(['auth'])->name('login');
+    Route::get('home', function () {
+        return View('pages.home');
+    })->middleware(['auth'])->name('login');
+    Route::get('user', function () {
+        return View('pages.user');
+    })->middleware(['auth'])->name('login');
+
+    Route::get('cours', function () {
+        return View('pages.cours');
+    })->middleware(['auth'])->name('login');
+
+    Route::get('session', function () {
+        return View('pages.session');
+    })->middleware(['auth'])->name('login');
+
+    Route::get('profile', function () {
+        return View('pages.profile');
+    })->middleware(['auth'])->name('login');
+
+    Route::get('/admin/test', function () {
+        return View('admin.users.test');
+    })->name('poulet');
+
+    Route::get('/administrationUser', function () {
+        return view('administration.UserAdmin');
+    });
+    Route::get('/administrationModule', function () {
+        return view('administration.CreateCoursAdmin');
+    });
 });
 
 // Toutes les routes commencant par "/admin" utilisent le middleware IsAdmin (vérifie si l'user est ADMIN).
@@ -94,12 +93,3 @@ Route::prefix('admin')
 
 
 require __DIR__ . '/auth.php';
-
-
-Route::get('test', function () {
-    return View('pages.test');
-});
-
-Route::get('legal', function () {
-    return View('mentions legales.cookies');
-});

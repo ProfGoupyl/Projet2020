@@ -25,9 +25,7 @@ class ModuleController extends Controller
      */
     public function store(Request $request)
     {
-        if (Module::create($request->all())) {
-            return response()->json(['insert succes'], 200);
-        }
+        Module::create($request->all());
     }
 
     /**
@@ -50,9 +48,7 @@ class ModuleController extends Controller
      */
     public function update(Request $request, Module $module)
     {
-        if ($module->update($request->all())) {
-            return response()->json(['update succes'], 200);
-        }
+        $module->update($request->all());
     }
 
     /**
@@ -63,8 +59,6 @@ class ModuleController extends Controller
      */
     public function destroy(Module $module)
     {
-        if ($module->delete()) {
-            return response()->json(['delete succes'], 200);
-        }
+        $module->delete();
     }
 }
