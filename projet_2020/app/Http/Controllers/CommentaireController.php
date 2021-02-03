@@ -36,8 +36,8 @@ class CommentaireController extends Controller
 
         $commentaire->text = $request->has('text');
         $commentaire->user_id = User::find($request->user_id);
-        $commentaire->$module_id = Module::find($request->module_id);
-        $commentaire->$cours_id = Cours::find($request->cours_id);
+        $commentaire->module_id = Module::find($request->module_id);
+        $commentaire->cours_id = Cours::find($request->cours_id);
 
         Commentaire::create($commentaire);
     }
