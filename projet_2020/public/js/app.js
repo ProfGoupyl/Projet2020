@@ -61987,59 +61987,55 @@ var render = function() {
     [
       _vm._l(_vm.filterModules, function(modules) {
         return _c("div", { key: modules.id }, [
-          _c(
-            "div",
-            [
-              _c("h2", [_vm._v(_vm._s(modules.titre))]),
-              _vm._v(" "),
-              _c("v-html", [_vm._v(_vm._s(modules.description))]),
-              _vm._v(" "),
-              _c("iframe", {
-                attrs: {
-                  width: "560",
-                  height: "315",
-                  src: modules.url_video,
-                  frameborder: "0",
-                  allow:
-                    "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
-                  allowfullscreen: ""
-                }
-              }),
-              _vm._v(" "),
-              _c("div", [
-                _vm.handleButton === 1 || _vm.handleButton === 3
-                  ? _c(
-                      "button",
-                      {
-                        on: {
-                          click: function($event) {
-                            $event.preventDefault()
-                            return _vm.onPrevious()
-                          }
+          _c("div", [
+            _c("h2", [_vm._v(_vm._s(modules.titre))]),
+            _vm._v(" "),
+            _c("p", { domProps: { innerHTML: _vm._s(modules.description) } }),
+            _vm._v(" "),
+            _c("iframe", {
+              attrs: {
+                width: "560",
+                height: "315",
+                src: modules.url_video,
+                frameborder: "0",
+                allow:
+                  "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
+                allowfullscreen: ""
+              }
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _vm.handleButton === 1 || _vm.handleButton === 3
+                ? _c(
+                    "button",
+                    {
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.onPrevious()
                         }
-                      },
-                      [_vm._v("\n          Précédent\n        ")]
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.handleButton === 2 || _vm.handleButton === 3
-                  ? _c(
-                      "button",
-                      {
-                        on: {
-                          click: function($event) {
-                            $event.preventDefault()
-                            return _vm.onNext()
-                          }
+                      }
+                    },
+                    [_vm._v("\n          Précédent\n        ")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.handleButton === 2 || _vm.handleButton === 3
+                ? _c(
+                    "button",
+                    {
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.onNext()
                         }
-                      },
-                      [_vm._v("\n          Suivant\n        ")]
-                    )
-                  : _vm._e()
-              ])
-            ],
-            1
-          )
+                      }
+                    },
+                    [_vm._v("\n          Suivant\n        ")]
+                  )
+                : _vm._e()
+            ])
+          ])
         ])
       }),
       _vm._v(" "),
