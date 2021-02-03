@@ -1,6 +1,9 @@
 <meta charset="utf-8">
-<meta name="description" content="">
-<meta name="author" content="Scotch">
+<meta name="description" content="Site d'e-learning sur la programmation, cours divisés en modules avec des vidéos. Pour élèves de l'IFOSUP et sur demande">
+<meta name="keywords" content="programmation, vidéos, cours, modules, IFOSUP, apprentissage, cours en ligne, e-learning, Javascript, PHP, HTML, CSS, frameworks">
+<meta name="author" content="Goupyl Education">
+<meta name="copyright" content="Goupyl Education">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta id="token" name="token" content="{{ csrf_token() }}">
 <meta id="envUrl" name="envUrl" content="{{ env('APP_URL') }}">
 
