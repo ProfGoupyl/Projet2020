@@ -1,9 +1,14 @@
-/*--------------- Fichier_cours_admin_(showBaldephp).scss ---------------*/
+/*--------------- Fichier_cours_admin_(showBladephp).scss ---------------*/
 
-#section_page_cours {
+.section_page_cours {
     .aside_page_cours {
         .drag-container {
             .draggable {
+                background-color: $smoke;
+                border-radius: 5px;
+                margin: 0.7em 0;
+                padding: 0.5em;
+                border: 2px solid $gray;
                 a {
                     color: $gray;
                     text-decoration: none;
@@ -11,12 +16,88 @@
                         color: $main;
                     }
                 }
+                form {
+                    display: flex;
+                    justify-content: flex-start;
+                    #delete {
+                        margin: 0;
+                        border: 1px solid $lightgray;
+                        padding: 0.5em;
+
+                        i::after {
+                            content: 'Supprimer le module';
+                            font-size: 0.9rem;
+                            font-weight: normal;
+                        }
+                    }
+                }
+
+                div {
+                    display: flex;
+                    justify-content: space-between;
+                    align-content: center;
+                    a {
+                        text-align: center;
+                    }
+
+                    #modifier {
+                        margin: 0;
+                        padding: 0.3em;
+                    }
+                }
+            }
+            .draggable:hover,
+            .draggable:focus {
+                background-color: $lightgray;
             }
         }
-        article {
-            flex-basis: 75%;
-            background-color: $smoke;
-            border-radius: 5px;
+
+        #addModule {
+            div {
+                padding: 5% 3%;
+            }
+            textarea {
+                max-width: 100%;
+                min-width: 100%;
+                min-height: 100px;
+                max-height: 100px;
+                resize: none;
+            }
+            input {
+                width: 100%;
+            }
+        }
+    }
+
+    .session {
+        .module {
+            width: 100%;
+            #form-module {
+                #edit-titre,
+                #edit-video {
+                    margin: 2%;
+                }
+                #edit-desc {
+                    padding: 2%;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+button #open-modal-user {
+    z-index: 100;
+}
+
+@media all and(max-width: 900px) {
+    .section_page_cours {
+        .aside_page_cours {
+            #addModule {
+                div {
+                    padding: 2% 1%;
+                }
+            }
         }
     }
 }
@@ -25,47 +106,4 @@
     padding: 1em;
 }
 
-/*
-.drag-container {
-    width: 25%;
-    overflow-x: hidden;
-    background-color: lightgrey;
-    padding: 5px;
-}
-
-.draggable {
-    background-color: #333;
-    color: white;
-    padding: 1px;
-    cursor: move;
-    margin-bottom: 15px;
-}
-
-.draggable.dragging {
-    opacity: .5;
-}
-
-.form-modules {
-    display: none;
-}
-
-.form-modules.show {
-    display: block;
-}
-*/
-
-@media all and (max-width: 900px) {
-    .section_page_cours {
-        display: block;
-        .aside_page_cours {
-            height: auto;
-            width: 100%;
-            background: $superlightgray;
-        }
-    }
-    .navSecondaire_coursName {
-        width: 100%;
-    }
-}
-
-/*--------------- Fichier_cours_admin_(showBaldephp).scss - FIN ----------*/
+/*--------------- Fichier_cours_admin_(showBladephp).scss - FIN ----------*/
