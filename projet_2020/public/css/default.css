@@ -269,6 +269,12 @@ header nav.navPrincipale ul li ul.sous li p {
   background-color: #fafafa;
 }
 
+#delete-modal {
+  background-color: #ffffff;
+  border: 2px solid #000000;
+  padding: 2%;
+}
+
 /*--------------- Fichier _user.scss - FIN ----------*/
 
 section .prof {
@@ -594,6 +600,10 @@ div.footer nav ul li a {
 
 div.footer nav ul li a:hover {
   color: #808080;
+}
+
+div.footer nav ul li:last-of-type {
+  margin-left: auto;
 }
 
 div.mentions {
