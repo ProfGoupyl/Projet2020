@@ -239,10 +239,13 @@ header nav.navPrincipale ul li ul.sous li p {
   color: #000000;
 }
 
+.listecoursadmin tbody tr td {
+  border-bottom: 1px solid #ececec;
+}
+
 .listecoursadmin tbody tr td input {
   width: 100%;
   padding: 1%;
-  border-bottom: 1px solid #ececec;
   text-align: left;
   color: #808080;
 }
