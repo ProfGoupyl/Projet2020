@@ -102,7 +102,6 @@ class FaqAdminController extends Controller
      */
     public function destroy(Faqs $faq)
     {
-
         $faq->delete();
         return redirect('/admin/faqs/' . $faq->module_id);
     }
