@@ -1,7 +1,8 @@
 <template>
   <div class="commentaire">
     <section>
-      <form v-on:submit.prevent="postData" method="post">
+      <form v-on:submit.prevent="postData" method="post" enctype="multipart/form-data" id="formCommentaire">
+        <input type="area" name="text" placeholder="Tapez votre commentaire ici" v-model="comment">
         <br>
         <button type="submit">Envoyer</button>
       </form>
