@@ -4265,10 +4265,7 @@ __webpack_require__.r(__webpack_exports__);
       return console.log(error);
     });
   },
-  mounted: function mounted() {
-    this.sessionFirst = true;
-  },
-  // permet de clear l'id du module
+  // Permet de clear l'id du module
   updated: function updated() {
     sessionStorage.removeItem("moduleid");
   },

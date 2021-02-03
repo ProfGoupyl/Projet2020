@@ -70,10 +70,7 @@ export default {
             .then((response) => (this.moduleList = response.data))
             .catch((error) => console.log(error))
     },
-    mounted() {
-      this.sessionFirst = true
-    },
-    // permet de clear l'id du module
+    // Permet de clear l'id du module
     updated() {
         sessionStorage.removeItem("moduleid")
     },
