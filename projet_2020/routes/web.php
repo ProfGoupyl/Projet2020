@@ -7,6 +7,7 @@ use App\Http\Controllers\CsvController;
 use App\Http\Controllers\Administration\UserAdminController;
 use App\Http\Controllers\Administration\ModuleAdminController;
 use App\Http\Controllers\Administration\FaqAdminController;
+use App\Http\Controllers\Administration\CoursUsersController;
 use App\Http\Controllers\UploadImageController;
 use App\Http\Controllers\CommentaireController;
 
@@ -69,7 +70,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 // Toutes les routes commencant par "/admin" utilisent le middleware IsAdmin (vérifie si l'user est ADMIN).
 Route::prefix('admin')
-    // ->middleware(IsAdmin::class)
+    ->middleware(IsAdmin::class)
     ->group(function () {
         // Mettez vos routes en dessous de la première
         // Route de base renvoyant au dashboard de l'administration
@@ -84,6 +85,7 @@ Route::prefix('admin')
         Route::resource('cours', CoursAdminController::class);
         Route::resource('faqs', FaqAdminController::class);
         Route::resource('module', ModuleAdminController::class);
+        Route::delete('/coursusers', [ CoursUsersController::class , 'delete']);
 
         //Routes CSV : GET && POST
         //Test de l'ajout d'utilisateurs par fichier .csv;
