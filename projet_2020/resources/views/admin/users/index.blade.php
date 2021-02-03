@@ -56,7 +56,7 @@
             <th>prenom</th>
             <th>pseudo</th>
             <th>email</th>
-            <th>admin</th>
+            <th class="a">admin</th>
             <th>action</th>
         </thead>
         <tbody>

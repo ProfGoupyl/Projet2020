@@ -1,6 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;
-
-500&family=Open+Sans:wght@300;400;600&display=swap%27);/*
+@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500&family=Open+Sans:wght@300;400;600&display=swap%27);/*
 $font-family-sans-serif: 'Nunito', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
@@ -175,6 +173,11 @@ header nav.navPrincipale ul li ul.sous li p {
 .listecours tbody tr td p {
   text-align: center;
   color: #808080;
+}
+
+.listecours tbody tr td:last-of-type {
+  text-align: center;
+  margin: 0 auto;
 }
 
 .listecours tbody tr:hover {
@@ -791,7 +794,8 @@ button a {
 
 button,
 #show {
-  padding: 0.6em;
+  width: auto;
+  padding: 0.5em;
   margin: 1em 1em 1em 0;
   border-radius: 4px;
   text-decoration: none;
@@ -863,18 +867,22 @@ button:active,
   background-color: #e52519;
 }
 
-#modifier {
+#modifier,
+.save-btn {
   color: #ff962d;
   border: 2px solid #ff962d;
 }
 
 #modifier:hover,
-#modifier:focus {
+#modifier:focus,
+.save-btn:hover,
+.save-btn:focus {
   background-color: #ff962d;
   color: #ffffff;
 }
 
-#modifier:active {
+#modifier:active,
+.save-btn:active {
   background-color: #ff8914;
 }
 
@@ -892,6 +900,7 @@ button:active,
 
 form input {
   width: 300px;
+  height: auto;
   padding: 1%;
   border: 1px solid #d4d4d4;
   border-radius: 5px;
@@ -900,6 +909,19 @@ form input {
 
 input[type="file"] {
   border: none;
+}
+
+tr td input.line-input {
+  width: 100%;
+  padding: 2% 0;
+  text-align: left;
+  border: 1px solid #d4d4d4;
+  border-radius: 5px;
+  outline: none;
+}
+
+.a {
+  width: 8%;
 }
 
 .commentaire section form {
