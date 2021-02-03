@@ -23,14 +23,45 @@ use App\Http\Controllers\CommentaireController;
 |
 */
 
+<<<<<<< HEAD
 Route::group(['middleware' => ['auth']], function () {
     // Route pour upload une image
     Route::post('uploadImage', [UploadImageController::class, 'upload']);
+=======
+// Routes pour les mentions légales
+
+Route::get('/charte-vie-privee', function() {
+    return View('mentions-legales.charteViePrivee');
+});
+
+Route::get('/cookies', function() {
+    return View('mentions-legales.cookies');
+});
+
+Route::get('/droits-utilisations', function() {
+    return View('mentions-legales.droitUtilisation');
+});
+
+// Route pour upload une image
+Route::post('uploadImage', [UploadImageController::class, 'upload']);
+
+// Route pour les com
+>>>>>>> 07d537571d672ff38b9f8da4efa9cedf8a71c737
 
     // Route pour les com
 
     Route::post('postData', [CommentaireController::class, 'store']);
 
+<<<<<<< HEAD
+=======
+Route::get('/', function () {
+    return View('welcome');
+})->middleware(['auth'])->name('login');
+
+Route::get('user', function () {
+    return View('pages.user');
+})->middleware(['auth'])->name('login');
+>>>>>>> 07d537571d672ff38b9f8da4efa9cedf8a71c737
 
     Route::get('/', function () {
         return View('welcome');
@@ -42,6 +73,7 @@ Route::group(['middleware' => ['auth']], function () {
         return View('pages.user');
     })->middleware(['auth'])->name('login');
 
+<<<<<<< HEAD
     Route::get('cours', function () {
         return View('pages.cours');
     })->middleware(['auth'])->name('login');
@@ -49,6 +81,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('session', function () {
         return View('pages.session');
     })->middleware(['auth'])->name('login');
+=======
+Route::get('profile', function () {
+    return View('pages.profile');
+})->middleware(['auth'])->name('login');
+>>>>>>> 07d537571d672ff38b9f8da4efa9cedf8a71c737
 
     Route::get('profile', function () {
         return View('pages.profile');

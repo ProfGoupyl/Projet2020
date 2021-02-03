@@ -47,7 +47,7 @@ header nav.navPrincipale ul li a {
 }
 
 header nav.navPrincipale ul li a:hover {
-  color: #4A3DC3;
+  color: #808080;
 }
 
 header nav.navPrincipale ul li figure {
@@ -207,6 +207,60 @@ header nav.navPrincipale ul li ul.sous li p {
   flex-basis: 100%;
 }
 
+.listecoursadmin {
+  width: 100%;
+  height: 50vh;
+}
+
+.listecoursadmin thead {
+  background-color: #ececec;
+}
+
+.listecoursadmin thead tr th {
+  padding: 1%;
+}
+
+.listecoursadmin thead tr th:nth-of-type(1) {
+  text-align: left;
+  font-weight: bolder;
+  width: 50%;
+}
+
+.listecoursadmin thead tr th:nth-of-type(2 + 1n) {
+  text-align: center;
+  width: 16,66%;
+}
+
+.listecoursadmin tbody {
+  width: 100%;
+}
+
+.listecoursadmin tbody tr:hover td {
+  color: #000000;
+}
+
+.listecoursadmin tbody tr td input {
+  width: 100%;
+  padding: 1%;
+  border-bottom: 1px solid #ececec;
+  text-align: left;
+  color: #808080;
+}
+
+.listecoursadmin tbody tr td:nth-of-type(2 + 1n) {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.listecoursadmin tbody tr td:last-of-type {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.listecoursadmin tbody tr:hover {
+  background-color: #fafafa;
+}
+
 /*--------------- Fichier _user.scss - FIN ----------*/
 
 section .prof {
@@ -214,7 +268,7 @@ section .prof {
 }
 
 section .prof button:first-of-type::after {
-  content: ' Modifier';
+  content: ' Enregistrer';
 }
 
 form.userProfil {
@@ -222,11 +276,10 @@ form.userProfil {
   margin: 0 auto;
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-evenly;
 }
 
 form.userProfil div {
-  flex-basis: 49%;
+  flex-basis: 50%;
 }
 
 form.userProfil div p {
@@ -257,6 +310,10 @@ form.userProfil div p img {
   width: 180px;
   height: 180px;
   clear: both;
+}
+
+form.userProfil div:last-of-type {
+  flex-basis: 100%;
 }
 
 @media all and (max-width: 900px) {
@@ -556,7 +613,10 @@ div.mentions ul {
 }
 
 div.home {
-  width: 100%;
+  width: 65%;
+  margin: 1% auto;
+  padding: 1%;
+  border-radius: 5px;
 }
 
 div.home h1 {
@@ -565,26 +625,31 @@ div.home h1 {
 
 div.home ul {
   list-style-position: inside;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
 }
 
 div.home ul li {
   list-style: none;
   display: flex;
-  width: 80%;
   margin: 0 auto;
-  padding: 0.5em;
-}
-
-div.home ul li:nth-child(even) {
-  background-color: #ececec;
+  margin: 2%;
+  padding: 0.5%;
+  border-radius: 15px;
+  background-color: #fafafa;
+  box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.05);
 }
 
 div.home ul li p {
-  flex-basis: 70%;
+  flex-basis: auto;
+  white-space: nowrap;
 }
 
-div.home ul li a {
-  flex-basis: 15%;
+div.home ul li p a {
+  flex-basis: auto;
+  color: #000000;
+  text-align: center;
 }
 
 div.home p,
@@ -592,6 +657,74 @@ div.home ol,
 div.home ul {
   padding: 0 1em;
 }
+
+/*--------------- Fichier_cours_admin_(showBaldephp).scss ---------------*/
+
+#section_page_cours .aside_page_cours .drag-container .draggable a {
+  color: #808080;
+  text-decoration: none;
+}
+
+#section_page_cours .aside_page_cours .drag-container .draggable a:hover {
+  color: #000000;
+}
+
+#section_page_cours .aside_page_cours article {
+  flex-basis: 75%;
+  background-color: #fafafa;
+  border-radius: 5px;
+}
+
+.coursName_titre {
+  padding: 1em;
+}
+
+/*
+.drag-container {
+    width: 25%;
+    overflow-x: hidden;
+    background-color: lightgrey;
+    padding: 5px;
+}
+
+.draggable {
+    background-color: #333;
+    color: white;
+    padding: 1px;
+    cursor: move;
+    margin-bottom: 15px;
+}
+
+.draggable.dragging {
+    opacity: .5;
+}
+
+.form-modules {
+    display: none;
+}
+
+.form-modules.show {
+    display: block;
+}
+*/
+
+@media all and (max-width: 900px) {
+  .section_page_cours {
+    display: block;
+  }
+
+  .section_page_cours .aside_page_cours {
+    height: auto;
+    width: 100%;
+    background: #ececec;
+  }
+
+  .navSecondaire_coursName {
+    width: 100%;
+  }
+}
+
+/*--------------- Fichier_cours_admin_(showBaldephp).scss - FIN ----------*/
 
 * {
   box-sizing: border-box;
@@ -601,7 +734,7 @@ div.home ul {
 
 body {
   min-height: 100vh;
-  background-color: #f5f6f8;
+  background-color: linen;
   width: 90%;
   margin: 0 auto;
   color: #000000;
@@ -653,7 +786,8 @@ button a {
   line-height: 1.4;
 }
 
-button {
+button,
+#show {
   padding: 0.6em;
   margin: 1em 1em 1em 0;
   border-radius: 4px;
@@ -662,88 +796,125 @@ button {
   background-color: #ffffff;
   cursor: pointer;
   outline: none;
-  color: #d4d4d4;
-  border: 2px solid #d4d4d4;
+  color: #3f3f3f;
+  border: 2px solid #3f3f3f;
 }
 
-button a {
+button a,
+#show a {
   display: block;
-  color: #d4d4d4;
+  color: #3f3f3f;
 }
 
 button a:hover,
-button a:focus {
+button a:focus,
+#show a:hover,
+#show a:focus {
   color: #ffffff;
 }
 
 button:hover,
-button:focus {
-  background-color: #c7c7c7;
+button:focus,
+#show:hover,
+#show:focus {
+  background-color: #323232;
   color: #ffffff;
 }
 
-button:active {
-  background-color: #4236b0;
+button:active,
+#show:active {
+  background-color: #ff8914;
 }
 
-#ajouter {
-  color: #3dc387;
-  border: 2px solid #3dc387;
+#ajouter,
+.add {
+  color: #7bcc76;
+  border: 2px solid #7bcc76;
 }
 
 #ajouter:hover,
-#ajouter:focus {
-  background-color: #3dc387;
+#ajouter:focus,
+.add:hover,
+.add:focus {
+  background-color: #7bcc76;
   color: #ffffff;
 }
 
-#ajouter:active {
-  background-color: #36b07a;
+#ajouter:active,
+.add:active {
+  background-color: #69c563;
 }
 
-#supprimer {
-  color: #e92222;
-  border: 2px solid #e92222;
+.delete-btn {
+  color: #e83a30;
+  border: 2px solid #e83a30;
 }
 
-#supprimer:hover,
-#supprimer:focus {
-  background-color: #e92222;
+.delete-btn:hover,
+.delete-btn:focus {
+  background-color: #e83a30;
   color: #ffffff;
 }
 
-#supprimer:active {
-  background-color: #dc1616;
+.delete-btn:active {
+  background-color: #e52519;
 }
 
 #modifier {
-  color: #4A3DC3;
-  border: 2px solid #4A3DC3;
+  color: #ff962d;
+  border: 2px solid #ff962d;
 }
 
 #modifier:hover,
 #modifier:focus {
-  background-color: #4A3DC3;
+  background-color: #ff962d;
   color: #ffffff;
 }
 
 #modifier:active {
-  background-color: #4236b0;
+  background-color: #ff8914;
 }
 
-form p {
-  height: 50px;
-}
+/*form{
+	p{height: 50px;}
+	input{
+   	 width: 300px;
+   	 padding: 10px 10px 10px 0;
+   	 border: none;
+   	 border-bottom: 2px solid $lightgray;
+   	 outline: none;
+		&:focus{border-bottom: 2px solid $purple;}
+	}
+}*/
 
 form input {
   width: 300px;
-  padding: 10px 10px 10px 0;
-  border: none;
-  border-bottom: 2px solid #d4d4d4;
+  padding: 1%;
+  border: 1px solid #d4d4d4;
+  border-radius: 5px;
   outline: none;
 }
 
-form input:focus {
-  border-bottom: 2px solid #4A3DC3;
+input[type="file"] {
+  border: none;
+}
+
+.commentaire section form {
+  margin: 1%;
+}
+
+.table-wrapper {
+  overflow-y: scroll;
+  display: block;
+  width: 100%;
+  height: 50vh;
+  flex-grow: 1;
+}
+
+.table-wrapper th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color: #ececec;
 }
 

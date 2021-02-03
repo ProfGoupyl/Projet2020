@@ -56,3 +56,14 @@ function getDragAfterElement(container, y) {
         offset: Number.NEGATIVE_INFINITY
     }).element
 }
+
+const userModal = document.querySelector('#user-modal');
+const openModal = document.querySelector('#open-modal-user');
+
+openModal.addEventListener('click', () => {
+    if (userModal.style.zIndex == -500) {
+        userModal.style.zIndex = 0
+    } else {
+        userModal.style.zIndex = -500
+    }
+})

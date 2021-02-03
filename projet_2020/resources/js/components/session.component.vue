@@ -7,12 +7,16 @@
         <iframe
           width="560"
           height="315"
-          src="https://www.youtube.com/embed/nhBVL41-_Cw"
+          :src="modules.url_video"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
         ></iframe>
         <!-- {{ modules.url_video }} -->
+        <div>
+          <button v-on:click.prevent="onPrevious()">Précédent</button>
+          <button v-on:click.prevent="onNext()">Suivant</button>
+        </div>
       </div>
     </div>
     <article>
@@ -31,12 +35,15 @@ export default {
     Faq,
     Comment,
   },
-  props: ["userInfos"],
+  props: ["userInfos", "modules"],
   data() {
     return {
       moduleList: [],
       moduleId: JSON.parse(sessionStorage.getItem("moduleid")),
       url: document.querySelector("#envUrl").getAttribute("content"),
+
+      hasPrevious: false,
+      hasNext: true,
     };
   },
   computed: {
@@ -53,6 +60,40 @@ export default {
   // permet de clear l'id du module
   updated() {
     sessionStorage.removeItem("moduleid");
+  },
+  methods: {
+    onPrevious: function () {
+     let current
+
+     for(let i = 0; i < this.modules.length; i++) {
+       if(this.moduleId === this.modules[i]) {
+         current = i
+       }
+     }
+
+     if(this.moduleId === this.modules[0]) {
+       this.moduleId = this.moduleId
+     } else {
+       this.moduleId = this.modules[current - 1]
+     }
+    },
+
+    onNext: function () {
+     let current
+     const max = this.modules.length - 1
+
+     for(let i = 0; i < this.modules.length; i++) {
+       if(this.moduleId === this.modules[i]) {
+         current = i
+       }
+     }
+
+     if(this.moduleId === this.modules[max]) {
+       this.moduleId = this.moduleId
+     } else {
+       this.moduleId = this.modules[current + 1]
+     }
+    },
   },
 };
 </script>

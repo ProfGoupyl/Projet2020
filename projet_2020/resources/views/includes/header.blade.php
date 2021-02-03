@@ -13,9 +13,6 @@
         <li class="items">
             <a href="/admin/users">Utilisateurs</a>
         </li>
-        <li class="items">
-            <a href="/admin/faqs">Faqs</a>
-        </li>
         @else
         <li class="items">
             <a href="/user">Mes cours</a>
@@ -23,7 +20,9 @@
         @endif
         <li class="items">
             <figure>
-                <img src="" alt="" class="UserImage" height="80px" width="80px">
+                @if (Auth::user())
+                <img src="{{ asset('images/users/user'.Auth::user()->id).'.png' }}" alt="" class="UserImage" height="80px" width="80px">
+                @endif
             </figure>
             <ul class="sous">
                 <li>

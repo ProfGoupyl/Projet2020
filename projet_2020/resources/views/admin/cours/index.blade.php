@@ -16,7 +16,7 @@
     </form>
     <!-- Boutton ouvrant la modal et le formulaire d'ajout d'un cours -->
     <div>
-        <button id="modal-open" class="btn btn-primary" type="button">
+        <button id="modal-open" class="add" type="button">
             <i class="fas fa-plus fa-lg"></i>
         </button>
     </div>
@@ -45,7 +45,7 @@
         </form>
     </div>
     <!-- Liste des cours -->
-    <table class="listecours">
+    <table class="listecoursadmin">
         <thead>
             <tr>
                 <th>Nom du cours</th>
@@ -74,15 +74,18 @@
                         <button id="modifier" class="btn btn-primary modify-btn" type="button" data-target="{{$cours->id}}">
                             <i class="fas fa-pen fa-lg"></i>
                         </button>
-                        <input type="submit" data-target="form-{{$cours->id}}" class="save-btn" style="display:none;" id="save-{{$cours->id}}" type="submit" />
+                        <button type="submit" data-target="form-{{$cours->id}}" class="save-btn" style="display:none;" id="save-{{$cours->id}}" type="submit">
+                            <i class="fas fa-arrow-circle-down fa-lg"></i>
+                        </button>
+                        <!-- <input type="submit" data-target="form-{{$cours->id}}" class="save-btn" style="display:none;" id="save-{{$cours->id}}" type="submit" /> -->
                         <!-- BUTTONS MODIFY & SAVE / END -->
 
                         <!-- Formulaire de suppression -->
-                        
+
                             <button class="delete-btn" data-titre="{{$cours->titre}}" data-target="/admin/cours/{{$cours->id}}" value='Supprimer' class="btn btn-primary" type="button">
                                 <i class="fas fa-trash-alt fa-lg"></i>
                             </button>
-                        
+
                         <!-- Lien vers la page show d'un cours -->
                         <a id="show" href='/admin/cours/{{$cours->id}}'> <i class="fas fa-eye  fa-lg"></i></a>
                     </td>
