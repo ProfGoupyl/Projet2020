@@ -39,7 +39,7 @@ class CommentaireController extends Controller
         $commentaire->module_id = Module::find($request->module_id);
         $commentaire->cours_id = Cours::find($request->cours_id);
 
-        Commentaire::create($commentaire);
+        $commentaire->save();
     }
 
     /**
