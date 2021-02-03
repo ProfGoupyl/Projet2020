@@ -32,6 +32,7 @@
         <article>
             <Comment
                 :user-infos="this.userInfos"
+                :module="this.moduleId"
             ></Comment>
         </article>
     </div>
