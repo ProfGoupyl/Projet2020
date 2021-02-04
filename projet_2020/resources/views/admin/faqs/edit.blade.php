@@ -6,7 +6,8 @@
 @method('put')
 <input type="text" name="question" value="{{ $faq->question }}">
 <input type="text" name="reponse" value="{{ $faq->reponse }}">
-<input type="submit">
+<button id="ajouter" class="btn btn-primary" type="submit">
+<i class="fas fa-plus fa-lg"></i></button>
 
 
 </form>

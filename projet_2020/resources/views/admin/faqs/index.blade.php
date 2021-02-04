@@ -1,11 +1,9 @@
 @extends('layouts.default')
 @section('content')
 <div class="faq">
-    <div class="titre">
-        <h2>FAQ Admin</h2>
-    </div>
-
-
+        <div class="titre">
+            <h2>FAQ Admin de {{$module->titre}} </h2>
+        </div>
 </div>
 <div id='addFaqs'>
     <form action='/admin/faqs' method='POST'>
@@ -39,10 +37,10 @@
             <form action='/admin/faqs/{{$faq->id}}' method='post'>
                 @csrf
                 @method('delete')
-                <input type="submit" value="Delete">
-
+                <button id="delete" class="btn btn-primary" type="submit"><i
+                            class="fas fa-trash-alt fa-lg"></i></button>
             </form>
-            <button><a href='/admin/faqs/{{$faq->id}}/edit'>edit</a></button></br></td>
+            <button onclick="location.href='/admin/faqs/{{$faq->id}}/edit';"><i class="fas fa-pen fa-lg"></i></button>
             </p>
         </details>
         @endforeach
