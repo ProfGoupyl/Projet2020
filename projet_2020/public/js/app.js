@@ -62025,8 +62025,8 @@ var render = function() {
             _vm._v(" "),
             _c("iframe", {
               attrs: {
-                width: "auto",
-                height: "auto",
+                width: "560",
+                height: "315",
                 src: modules.url_video,
                 frameborder: "0",
                 allow:

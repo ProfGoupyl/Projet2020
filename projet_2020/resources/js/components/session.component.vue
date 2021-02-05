@@ -5,8 +5,8 @@
         <h2>{{ modules.titre }}</h2>
         <p v-html="modules.description"></p>
         <iframe
-          width="auto"
-          height="auto"
+          width="560"
+          height="315"
           :src="modules.url_video"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
