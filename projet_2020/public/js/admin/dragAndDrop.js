@@ -62,7 +62,7 @@ const openModal = document.querySelector('#open-modal-user');
 
 openModal.addEventListener('click', () => {
     if (userModal.style.zIndex == -500) {
-        userModal.style.zIndex = 0
+        userModal.style.zIndex = 100
     } else {
         userModal.style.zIndex = -500
     }
@@ -70,8 +70,8 @@ openModal.addEventListener('click', () => {
 
 const userModel = document.querySelector('.close-div')
 const closeDiv = document.querySelector('.close')
-closeDiv.addEventListener('click',() => {
-    if(userModel.style.zIndex== 0) {
+closeDiv.addEventListener('click', () => {
+    if (userModel.style.zIndex == 100) {
         userModel.style.zIndex = -500;
     }
 })
