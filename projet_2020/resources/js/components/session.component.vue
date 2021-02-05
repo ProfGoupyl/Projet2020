@@ -13,20 +13,6 @@
           allowfullscreen
         ></iframe>
         <!-- {{ modules.url_video }} -->
-        <div>
-          <button
-            v-on:click.prevent="onPrevious()"
-            v-if="handleButton === 1 || handleButton === 3"
-          >
-            Précédent
-          </button>
-          <button
-            v-on:click.prevent="onNext()"
-            v-if="handleButton === 2 || handleButton === 3"
-          >
-            Suivant
-          </button>
-        </div>
       </div>
     </div>
     <article v-if="faq === true">
@@ -46,12 +32,11 @@ export default {
     Faq,
     Comment,
   },
-  props: ["userInfos", "modules"],
+  props: ["userInfos", "module"],
   data() {
     return {
       moduleList: [],
-      handleButton: 2,
-      moduleId: JSON.parse(sessionStorage.getItem("moduleid")),
+      moduleId: this.module,
       faqList: null,
       faq: null,
       url: document.querySelector("#envUrl").getAttribute("content"),
@@ -89,9 +74,6 @@ export default {
       .catch((error) => console.log(error));
   },
   updated() {
-    // Permet de clear l'id du module
-    sessionStorage.removeItem("moduleid");
-
     // Gère l'affichage de la FAQ à chaque mise à jour du composant
     let temp
     temp = this.faqList.filter((item) => item.module_id === this.moduleId)
@@ -101,56 +83,6 @@ export default {
     } else {
       this.faq = true
     }
-  },
-  methods: {
-    // Gestion du bouton précédent
-    onPrevious: function () {
-      let current;
-
-      for (let i = 0; i < this.modules.length; i++) {
-        if (this.moduleId === this.modules[i]) {
-          current = i;
-        }
-      }
-
-      if (this.moduleId === this.modules[0]) {
-        this.moduleId = this.moduleId;
-      } else {
-        this.moduleId = this.modules[current - 1];
-      }
-
-      if (this.moduleId === this.modules[0]) {
-        this.handleButton = 2;
-      } else {
-        this.handleButton = 3;
-      }
-    },
-
-    // Gestion du bouton suivant
-    onNext: function () {
-      let current;
-      const max = this.modules.length - 1;
-
-      for (let i = 0; i < this.modules.length; i++) {
-        if (this.moduleId === this.modules[i]) {
-          current = i;
-        }
-      }
-
-      if (this.moduleId === this.modules[max]) {
-        this.moduleId = this.moduleId;
-        this.handleButton = 1;
-      } else {
-        this.moduleId = this.modules[current + 1];
-        this.handleButton = 3;
-      }
-
-      if (this.moduleId === this.modules[max]) {
-        this.handleButton = 1;
-      } else {
-        this.handleButton = 3;
-      }
-    },
   },
 }
 </script>

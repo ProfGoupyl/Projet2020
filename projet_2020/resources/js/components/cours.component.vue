@@ -2,38 +2,29 @@
     <div>
         <section class="section_page_cours">
             <aside class="aside_page_cours">
-                <h2
-                    v-for="cours in filterCours"
-                    :key="cours.id"
-                    class="navSecondaire_coursName"
-                >
-                    {{ cours.titre }}
+                <h2 class="navSecondaire_coursName">
+                    {{ coursName.titre }}
                 </h2>
                 <nav class="navSecondaire">
                     <ul>
                         <li v-for="module in moduleList" :key="module.id">
-                            <span v-if="cours[0].id === module.cours_id">
-                                <a
-                                    href="/cours"
-                                    class="Modules"
-                                    v-on:click.prevent="
-                                        save(module.id), forceRerender()
-                                    "
-                                >
+                                <a href="/cours" class="Modules" v-on:click.prevent="save(module.id), forceRerender()">
                                     {{ module.titre }}
                                 </a>
-                            </span>
                         </li>
                     </ul>
                 </nav>
             </aside>
             <article v-if="moduleId">
-                <Session
-                    :key="componentKey"
-                    :user-infos="this.userInfos"
-                    :modules="this.modulesCours"
-                    v-on:change="filterModules"
-                ></Session>
+                <Session :key="componentKey" :user-infos="this.userInfos" :module="this.moduleId"></Session>
+                <div>
+                    <button v-on:click.prevent="onPrevious()" v-if="handleButton === 1 || handleButton === 3">
+                        Précédent
+                    </button>
+                    <button v-on:click.prevent="onNext()" v-if="handleButton === 2 || handleButton === 3">
+                        Suivant
+                    </button>
+                </div>
             </article>
         </section>
     </div>
@@ -49,39 +40,37 @@ export default {
     props: ["userInfos"],
     data() {
         return {
-            moduleId: false,
+            moduleId: null,
             coursId: JSON.parse(sessionStorage.getItem("coursid")),
             moduleList: [],
-            modulesCours: [],
-            coursNames: [],
-            cours: null,
+            coursName: null,
             componentKey: 0,
+            handleButton: 2,
             url: document.querySelector("#envUrl").getAttribute("content"),
         };
     },
     created() {
         axios
             .get(`${this.url}/api/module?api_token=${this.userInfos.api_token}`)
-            .then(
-                (response) =>
-                    (this.moduleList = _.orderBy(response.data, "ordre", "asc"))
-            )
+            .then((response) => {
+                let temp
+                let first
+                temp = _.orderBy(response.data, "ordre", "asc")
+                this.moduleList = temp.filter((module) => module.cours_id === this.coursId)
+                first = temp.filter((module) => module.cours_id === this.coursId)
+                this.moduleId = first[0].id
+            })
             .catch((error) => console.log(error));
 
         axios
             .get(`${this.url}/api/cours?api_token=${this.userInfos.api_token}`)
-            .then((response) => (this.coursNames = response.data))
+            .then((response) => {
+                let temp = response.data
+                let tab
+                tab = temp.filter((name) => name.id === this.coursId)
+                this.coursName = tab[0]
+            })
             .catch((error) => console.log(error));
-    },
-    updated() {
-        let module = [];
-        for (let i = 0; i < this.moduleList.length; i++) {
-            if (this.coursId === this.moduleList[i].cours_id) {
-                module.push(this.moduleList[i].id);
-            }
-        }
-        this.moduleId = module[0];
-        sessionStorage.setItem("moduleid", this.moduleId);
     },
     methods: {
         save(moduleid) {
@@ -91,25 +80,55 @@ export default {
         forceRerender() {
             this.componentKey += 1;
         },
-    },
-    computed: {
-        filterCours() {
-            return (this.cours = this.coursNames.filter(
-                (names) => names.id === this.coursId
-            ));
-        },
-        filterModules() {
-            let modules = [];
-            modules = this.moduleList.filter(
-                (modules) => modules.cours_id === this.coursId
-            );
+        
+        // Gestion du bouton précédent
+        onPrevious: function () {
+            let current;
 
-            for (let i = 0; i < modules.length; i++) {
-                this.modulesCours.push(modules[i].id);
+            for (let i = 0; i < this.moduleList.length; i++) {
+                if (this.moduleId === this.moduleList[i]) {
+                current = i;
+                }
             }
 
-            return (this.moduleId = this.modulesCours[0]);
+            if (this.moduleId === this.moduleList[0]) {
+                this.moduleId = this.moduleId;
+            } else {
+                this.moduleId = this.moduleList[current - 1];
+            }
+
+            if (this.moduleId === this.moduleList[0]) {
+                this.handleButton = 2;
+            } else {
+                this.handleButton = 3;
+            }
         },
+
+        // Gestion du bouton suivant
+        onNext: function () {
+            let current;
+            const max = this.moduleList.length - 1;
+
+            for (let i = 0; i < this.moduleList.length; i++) {
+                if (this.moduleId === this.moduleList[i]) {
+                current = i;
+                }
+            }
+
+            if (this.moduleId === this.moduleList[max]) {
+                this.moduleId = this.moduleId;
+                this.handleButton = 1;
+            } else {
+                this.moduleId = this.moduleList[current + 1];
+                this.handleButton = 3;
+            }
+
+            if (this.moduleId === this.moduleList[max]) {
+                this.handleButton = 1;
+            } else {
+                this.handleButton = 3;
+            }
+        }
     },
 };
 </script>

@@ -3907,15 +3907,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -3924,13 +3915,12 @@ __webpack_require__.r(__webpack_exports__);
   props: ["userInfos"],
   data: function data() {
     return {
-      moduleId: false,
+      moduleId: null,
       coursId: JSON.parse(sessionStorage.getItem("coursid")),
       moduleList: [],
-      modulesCours: [],
-      coursNames: [],
-      cours: null,
+      coursName: null,
       componentKey: 0,
+      handleButton: 2,
       url: document.querySelector("#envUrl").getAttribute("content")
     };
   },
@@ -3938,27 +3928,29 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.get("".concat(this.url, "/api/module?api_token=").concat(this.userInfos.api_token)).then(function (response) {
-      return _this.moduleList = _.orderBy(response.data, "ordre", "asc");
+      var temp;
+      var first;
+      temp = _.orderBy(response.data, "ordre", "asc");
+      _this.moduleList = temp.filter(function (module) {
+        return module.cours_id === _this.coursId;
+      });
+      first = temp.filter(function (module) {
+        return module.cours_id === _this.coursId;
+      });
+      _this.moduleId = first[0].id;
     })["catch"](function (error) {
       return console.log(error);
     });
     axios.get("".concat(this.url, "/api/cours?api_token=").concat(this.userInfos.api_token)).then(function (response) {
-      return _this.coursNames = response.data;
+      var temp = response.data;
+      var tab;
+      tab = temp.filter(function (name) {
+        return name.id === _this.coursId;
+      });
+      _this.coursName = tab[0];
     })["catch"](function (error) {
       return console.log(error);
     });
-  },
-  updated: function updated() {
-    var module = [];
-
-    for (var i = 0; i < this.moduleList.length; i++) {
-      if (this.coursId === this.moduleList[i].cours_id) {
-        module.push(this.moduleList[i].id);
-      }
-    }
-
-    this.moduleId = module[0];
-    sessionStorage.setItem("moduleid", this.moduleId);
   },
   methods: {
     save: function save(moduleid) {
@@ -3967,29 +3959,53 @@ __webpack_require__.r(__webpack_exports__);
     },
     forceRerender: function forceRerender() {
       this.componentKey += 1;
-    }
-  },
-  computed: {
-    filterCours: function filterCours() {
-      var _this2 = this;
-
-      return this.cours = this.coursNames.filter(function (names) {
-        return names.id === _this2.coursId;
-      });
     },
-    filterModules: function filterModules() {
-      var _this3 = this;
+    // Gestion du bouton précédent
+    onPrevious: function onPrevious() {
+      var current;
 
-      var modules = [];
-      modules = this.moduleList.filter(function (modules) {
-        return modules.cours_id === _this3.coursId;
-      });
-
-      for (var i = 0; i < modules.length; i++) {
-        this.modulesCours.push(modules[i].id);
+      for (var i = 0; i < this.moduleList.length; i++) {
+        if (this.moduleId === this.moduleList[i]) {
+          current = i;
+        }
       }
 
-      return this.moduleId = this.modulesCours[0];
+      if (this.moduleId === this.moduleList[0]) {
+        this.moduleId = this.moduleId;
+      } else {
+        this.moduleId = this.moduleList[current - 1];
+      }
+
+      if (this.moduleId === this.moduleList[0]) {
+        this.handleButton = 2;
+      } else {
+        this.handleButton = 3;
+      }
+    },
+    // Gestion du bouton suivant
+    onNext: function onNext() {
+      var current;
+      var max = this.moduleList.length - 1;
+
+      for (var i = 0; i < this.moduleList.length; i++) {
+        if (this.moduleId === this.moduleList[i]) {
+          current = i;
+        }
+      }
+
+      if (this.moduleId === this.moduleList[max]) {
+        this.moduleId = this.moduleId;
+        this.handleButton = 1;
+      } else {
+        this.moduleId = this.moduleList[current + 1];
+        this.handleButton = 3;
+      }
+
+      if (this.moduleId === this.moduleList[max]) {
+        this.handleButton = 1;
+      } else {
+        this.handleButton = 3;
+      }
     }
   }
 });
@@ -4215,20 +4231,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4236,12 +4238,11 @@ __webpack_require__.r(__webpack_exports__);
     Faq: _faq_component__WEBPACK_IMPORTED_MODULE_0__["default"],
     Comment: _commentaire_component__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  props: ["userInfos", "modules"],
+  props: ["userInfos", "module"],
   data: function data() {
     return {
       moduleList: [],
-      handleButton: 2,
-      moduleId: JSON.parse(sessionStorage.getItem("moduleid")),
+      moduleId: this.module,
       faqList: null,
       faq: null,
       url: document.querySelector("#envUrl").getAttribute("content")
@@ -4287,9 +4288,7 @@ __webpack_require__.r(__webpack_exports__);
   updated: function updated() {
     var _this3 = this;
 
-    // Permet de clear l'id du module
-    sessionStorage.removeItem("moduleid"); // Gère l'affichage de la FAQ à chaque mise à jour du composant
-
+    // Gère l'affichage de la FAQ à chaque mise à jour du composant
     var temp;
     temp = this.faqList.filter(function (item) {
       return item.module_id === _this3.moduleId;
@@ -4299,55 +4298,6 @@ __webpack_require__.r(__webpack_exports__);
       this.faq = false;
     } else {
       this.faq = true;
-    }
-  },
-  methods: {
-    // Gestion du bouton précédent
-    onPrevious: function onPrevious() {
-      var current;
-
-      for (var i = 0; i < this.modules.length; i++) {
-        if (this.moduleId === this.modules[i]) {
-          current = i;
-        }
-      }
-
-      if (this.moduleId === this.modules[0]) {
-        this.moduleId = this.moduleId;
-      } else {
-        this.moduleId = this.modules[current - 1];
-      }
-
-      if (this.moduleId === this.modules[0]) {
-        this.handleButton = 2;
-      } else {
-        this.handleButton = 3;
-      }
-    },
-    // Gestion du bouton suivant
-    onNext: function onNext() {
-      var current;
-      var max = this.modules.length - 1;
-
-      for (var i = 0; i < this.modules.length; i++) {
-        if (this.moduleId === this.modules[i]) {
-          current = i;
-        }
-      }
-
-      if (this.moduleId === this.modules[max]) {
-        this.moduleId = this.moduleId;
-        this.handleButton = 1;
-      } else {
-        this.moduleId = this.modules[current + 1];
-        this.handleButton = 3;
-      }
-
-      if (this.moduleId === this.modules[max]) {
-        this.handleButton = 1;
-      } else {
-        this.handleButton = 3;
-      }
     }
   }
 });
@@ -61658,59 +61608,46 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("section", { staticClass: "section_page_cours" }, [
-      _c(
-        "aside",
-        { staticClass: "aside_page_cours" },
-        [
-          _vm._l(_vm.filterCours, function(cours) {
-            return _c(
-              "h2",
-              { key: cours.id, staticClass: "navSecondaire_coursName" },
-              [
-                _vm._v(
-                  "\n                " + _vm._s(cours.titre) + "\n            "
+      _c("aside", { staticClass: "aside_page_cours" }, [
+        _c("h2", { staticClass: "navSecondaire_coursName" }, [
+          _vm._v(
+            "\n                " +
+              _vm._s(_vm.coursName.titre) +
+              "\n            "
+          )
+        ]),
+        _vm._v(" "),
+        _c("nav", { staticClass: "navSecondaire" }, [
+          _c(
+            "ul",
+            _vm._l(_vm.moduleList, function(module) {
+              return _c("li", { key: module.id }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "Modules",
+                    attrs: { href: "/cours" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        _vm.save(module.id), _vm.forceRerender()
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                                " +
+                        _vm._s(module.titre) +
+                        "\n                            "
+                    )
+                  ]
                 )
-              ]
-            )
-          }),
-          _vm._v(" "),
-          _c("nav", { staticClass: "navSecondaire" }, [
-            _c(
-              "ul",
-              _vm._l(_vm.moduleList, function(module) {
-                return _c("li", { key: module.id }, [
-                  _vm.cours[0].id === module.cours_id
-                    ? _c("span", [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "Modules",
-                            attrs: { href: "/cours" },
-                            on: {
-                              click: function($event) {
-                                $event.preventDefault()
-                                _vm.save(module.id), _vm.forceRerender()
-                              }
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n                                " +
-                                _vm._s(module.titre) +
-                                "\n                            "
-                            )
-                          ]
-                        )
-                      ])
-                    : _vm._e()
-                ])
-              }),
-              0
-            )
-          ])
-        ],
-        2
-      ),
+              ])
+            }),
+            0
+          )
+        ])
+      ]),
       _vm._v(" "),
       _vm.moduleId
         ? _c(
@@ -61718,12 +61655,48 @@ var render = function() {
             [
               _c("Session", {
                 key: _vm.componentKey,
-                attrs: {
-                  "user-infos": this.userInfos,
-                  modules: this.modulesCours
-                },
-                on: { change: _vm.filterModules }
-              })
+                attrs: { "user-infos": this.userInfos, module: this.moduleId }
+              }),
+              _vm._v(" "),
+              _c("div", [
+                _vm.handleButton === 1 || _vm.handleButton === 3
+                  ? _c(
+                      "button",
+                      {
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            return _vm.onPrevious()
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                    Précédent\n                "
+                        )
+                      ]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.handleButton === 2 || _vm.handleButton === 3
+                  ? _c(
+                      "button",
+                      {
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            return _vm.onNext()
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                    Suivant\n                "
+                        )
+                      ]
+                    )
+                  : _vm._e()
+              ])
             ],
             1
           )
@@ -62033,39 +62006,7 @@ var render = function() {
                   "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
                 allowfullscreen: ""
               }
-            }),
-            _vm._v(" "),
-            _c("div", [
-              _vm.handleButton === 1 || _vm.handleButton === 3
-                ? _c(
-                    "button",
-                    {
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          return _vm.onPrevious()
-                        }
-                      }
-                    },
-                    [_vm._v("\n          Précédent\n        ")]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.handleButton === 2 || _vm.handleButton === 3
-                ? _c(
-                    "button",
-                    {
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          return _vm.onNext()
-                        }
-                      }
-                    },
-                    [_vm._v("\n          Suivant\n        ")]
-                  )
-                : _vm._e()
-            ])
+            })
           ])
         ])
       }),
@@ -62118,7 +62059,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("section", [
+    _c("section", { attrs: { id: "user" } }, [
       _c("h1", [_vm._v("Liste des cours")]),
       _vm._v(" "),
       _c("table", { staticClass: "listecours" }, [
@@ -74713,14 +74654,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!*******************************************************!*\
   !*** ./resources/js/components/session.component.vue ***!
   \*******************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _session_component_vue_vue_type_template_id_a1ed5b2c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./session.component.vue?vue&type=template&id=a1ed5b2c& */ "./resources/js/components/session.component.vue?vue&type=template&id=a1ed5b2c&");
 /* harmony import */ var _session_component_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./session.component.vue?vue&type=script&lang=js& */ "./resources/js/components/session.component.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _session_component_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _session_component_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -74750,7 +74692,7 @@ component.options.__file = "resources/js/components/session.component.vue"
 /*!********************************************************************************!*\
   !*** ./resources/js/components/session.component.vue?vue&type=script&lang=js& ***!
   \********************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
