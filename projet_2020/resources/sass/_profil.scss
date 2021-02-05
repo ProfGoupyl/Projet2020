@@ -40,7 +40,7 @@ form.userProfil {
     }
 }
 
-@media all and (max-width: 900px){
+@media #{$mobile}{
     form.userProfil{
         width: 90%;
         justify-content: space-around;

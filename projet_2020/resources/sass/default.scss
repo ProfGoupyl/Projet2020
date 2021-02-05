@@ -176,3 +176,22 @@ tr{
 		background-color: $superlightgray;
 		}
 }
+
+@media #{$mobile}{
+	body{
+		width: 100%;
+		div.home{
+    		width: 90%;
+		}
+		#user table thead tr th:not(:first-child){
+			display: none;
+		}
+		#user table tbody td:not(:first-child){
+			display: none;
+		}
+	}
+	*{
+		width: 100%;
+		margin: 0;
+	}
+}

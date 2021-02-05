@@ -48,12 +48,13 @@
                         }
                     }
 
-                    @media all and(max-width: 900px) {
+                    @media #{$mobile} {
                         .section_page_cours {
                             display: block;
                             .aside_page_cours {
                                 height: auto;
                                 width: 100%;
+                                margin: 0;
                                 background: $superlightgray;
                             }
                             .navSecondaire_coursName {
