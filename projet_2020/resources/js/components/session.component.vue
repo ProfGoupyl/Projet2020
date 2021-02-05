@@ -29,7 +29,7 @@
         </div>
       </div>
     </div>
-    <article>
+    <article v-if="faq === true">
       <Faq :user-infos="this.userInfos" :module="this.moduleId"></Faq>
     </article>
     <article>
@@ -52,6 +52,8 @@ export default {
       moduleList: [],
       handleButton: 2,
       moduleId: JSON.parse(sessionStorage.getItem("moduleid")),
+      faqList: null,
+      faq: null,
       url: document.querySelector("#envUrl").getAttribute("content"),
     };
   },
@@ -67,10 +69,26 @@ export default {
       .get(`${this.url}/api/module?api_token=${this.userInfos.api_token}`)
       .then((response) => (this.moduleList = response.data))
       .catch((error) => console.log(error));
+
+    axios
+      .get(`${this.url}/api/faq?api_token=${this.userInfos.api_token}`)
+      .then((response) => {
+        this.faqList = response.data
+      })
+      .catch((error) => console.log(error));
   },
   // Permet de clear l'id du module
   updated() {
     sessionStorage.removeItem("moduleid");
+
+    let temp
+    temp = this.faqList.filter((item) => item.module_id === this.moduleId)
+
+    if(temp.length === 0) {
+      this.faq = false
+    } else {
+      this.faq = true
+    }
   },
   methods: {
     // Gestion du bouton précédent
