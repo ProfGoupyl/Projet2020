@@ -3838,26 +3838,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['userInfos', 'module'],
   data: function data() {
     return {
       url: document.querySelector("#envUrl").getAttribute("content"),
       comment: "",
+      messageSent: null,
       coursId: JSON.parse(sessionStorage.getItem("coursid"))
     };
   },
   methods: {
     postData: function postData() {
+      var _this = this;
+
       axios.post("".concat(this.url, "/api/commentaires/?api_token=").concat(this.userInfos.api_token), {
         text: this.comment,
         user_id: this.userInfos.id,
         module_id: this.module,
         cours_id: this.coursId
       }).then(function (response) {
-        return console.log(response);
+        if (response.statusText === 'OK') {
+          _this.messageSent = true;
+        } else {
+          _this.messageSent = false;
+        }
       })["catch"](function (error) {
-        return console.log(error);
+        if (error) {
+          _this.messageSent = false;
+        }
       });
     }
   }
@@ -61595,7 +61610,19 @@ var render = function() {
           _vm._v(" "),
           _c("button", { attrs: { type: "submit" } }, [_vm._v("Envoyer")])
         ]
-      )
+      ),
+      _vm._v(" "),
+      _vm.messageSent === true
+        ? _c("p", [_vm._v("\n      Votre message a été envoyé !\n    ")])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.messageSent === false
+        ? _c("p", [
+            _vm._v(
+              "\n      Impossible d'envoyé votre message pour le moment.\n    "
+            )
+          ])
+        : _vm._e()
     ])
   ])
 }

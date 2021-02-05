@@ -6,6 +6,12 @@
         <br>
         <button type="submit">Envoyer</button>
       </form>
+      <p v-if="messageSent === true">
+        Votre message a été envoyé !
+      </p>
+      <p v-if="messageSent === false">
+        Impossible d'envoyé votre message pour le moment.
+      </p>
     </section>
   </div>
 </template>
@@ -18,6 +24,7 @@ export default {
     return {
       url: document.querySelector("#envUrl").getAttribute("content"),
       comment: "",
+      messageSent: null,
       coursId: JSON.parse(sessionStorage.getItem("coursid")),
     };
   },
@@ -30,8 +37,18 @@ export default {
           module_id: this.module,
           cours_id: this.coursId,
         })
-        .then(response => console.log(response))
-        .catch(error => console.log(error))
+        .then((response) => {
+          if(response.statusText === 'OK') {
+            this.messageSent = true
+          } else {
+            this.messageSent = false
+          }
+        })
+        .catch((error) => {
+          if(error) {
+            this.messageSent = false
+          }
+        })
     },
   },
 };
