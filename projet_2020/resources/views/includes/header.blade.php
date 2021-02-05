@@ -66,7 +66,7 @@
             <li class="items hide">   
                 @if (Auth::user())
                 @if (Auth::user() && Auth::user()->admin === 1)
-                <li>
+                <p>
                     @if(!\Request::is('admin/*'))
                     <a href="{{ url('/admin') }}">Dashboard</a>
                     @endif
@@ -78,10 +78,10 @@
                         </x-dropdown-link>
                     </form>
                     <p>Vous êtes connecté(e) en tant que {{ Auth::user()->name }} {{ Auth::user()->prenom }} (Admin)</p>
-                </li>
+                </p>
                 @endif
                 @if (Auth::user() && Auth::user()->admin === 0)
-                <li>
+                <p>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
@@ -90,7 +90,7 @@
                         </x-dropdown-link>
                     </form>
                     <p>Vous êtes connecté(e) en tant que <span>{{ Auth::user()->name }} {{ Auth::user()->prenom }}</span></p>
-                </li>
+                </p>
                 @endif
                 @else
                 @endif

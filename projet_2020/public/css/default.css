@@ -29,11 +29,6 @@ header nav.navPrincipale ul li img.logo {
   left: -27px;
 }
 
-header nav.navPrincipale ul li:first-of-type {
-  flex-basis: 60%;
-  cursor: default;
-}
-
 header nav.navPrincipale ul li i {
   font-size: 23px;
   color: #000000;
@@ -52,11 +47,7 @@ header nav.navPrincipale ul li a:hover {
 
 header nav.navPrincipale ul li figure {
   display: flex;
-  width: auto;
-}
-
-header nav.navPrincipale ul li figure img {
-  width: 120px;
+  width: 100%;
 }
 
 header nav.navPrincipale ul li:hover ul.sous {
@@ -103,13 +94,54 @@ header nav.navPrincipale ul li ul.sous li p {
   display: none;
 }
 
+li.btn {
+  display: none;
+}
+
 .hide i:before {
   content: "\F00D";
+}
+
+li:nth-child(5),
+li:nth-child(4) {
+  display: none;
 }
 
 /* VERSION MOBILE */
 
 @media all and (max-width: 900px) {
+  /*
+    nav {
+        ul {
+            li.items {
+                width: 100%;
+                display: none;
+            }
+            li.items.show {
+                display: block;
+            }
+            li.burger {
+                display: block;
+            }
+            li {
+                figure {
+                    display: block;
+                }
+            }
+        }
+    }
+    .sous {
+        margin-top: 5px;
+        margin-left: 150px;
+    }
+    */
+
+  nav ul {
+    display: flex;
+    flex-flow: column wrap;
+    width: 100%;
+  }
+
   nav ul li.items {
     width: 100%;
     display: none;
@@ -117,19 +149,30 @@ header nav.navPrincipale ul li ul.sous li p {
 
   nav ul li.items.show {
     display: block;
+    flex-basis: 100%;
   }
 
   nav ul li.burger {
     display: block;
   }
 
-  nav ul li figure {
+  nav ul li figure img {
+    display: none;
+  }
+
+  li:nth-child(3) {
+    display: none;
+  }
+
+  li:nth-child(5),
+  li:nth-child(4) {
     display: block;
   }
 
   .sous {
     margin-top: 5px;
     margin-left: 150px;
+    display: block;
   }
 }
 
