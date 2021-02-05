@@ -90,7 +90,7 @@ button #open-modal-user {
     z-index: 100;
 }
 
-@media all and(max-width: 900px) {
+@media #{$mobile} {
     .section_page_cours {
         .aside_page_cours {
             #addModule {

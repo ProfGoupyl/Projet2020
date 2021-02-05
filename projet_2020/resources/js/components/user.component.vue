@@ -1,6 +1,6 @@
 <template>
     <div>
-       <section>
+       <section id="user">
            <h1>Liste des cours</h1>
            <table class="listecours">
                <thead>

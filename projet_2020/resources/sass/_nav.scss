@@ -12,15 +12,14 @@ header nav.navPrincipale {
         li {
             flex-basis: 10%;
             cursor: pointer;
+            &:first-of-type{
+                flex: 2;
+            }
             img.logo {
                 text-align: left;
                 width: 210px;
                 position: relative;
                 left: -27px;
-            }
-            &:first-of-type {
-                flex-basis: 60%;
-                cursor: default;
             }
             i {
                 font-size: 23px;
@@ -37,10 +36,7 @@ header nav.navPrincipale {
             }
             figure {
                 display: flex;
-                width: auto;
-                img {
-                    width: 120px;
-                }
+                width: 100%;
             }
             &:hover ul.sous {
                 display: block;
@@ -83,33 +79,50 @@ header nav.navPrincipale {
 .burger {
     display: none;
 }
+li.btn{
+    display:none;
+}
 .hide i:before {
     content: "\f00d";
 }
+li:nth-child(5), li:nth-child(4){
+    display: none;
+}
 
 /* VERSION MOBILE */
-@media all and (max-width: 900px) {
+@media #{$mobile} {
     nav {
         ul {
+            display:flex;
+            flex-flow: column wrap;
+            width: 100%;
             li.items {
                 width: 100%;
                 display: none;
             }
             li.items.show {
                 display: block;
+                flex-basis: 100%;
             }
             li.burger {
                 display: block;
             }
             li {
-                figure {
-                    display: block;
+                figure img{
+                    display: none;
                 }
             }
         }
     }
+    li:nth-child(3){
+        display: none;
+    }
+    li:nth-child(4){
+        display: block;
+    }
     .sous {
         margin-top: 5px;
         margin-left: 150px;
+        display: block;
     }
 }
