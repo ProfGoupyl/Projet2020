@@ -3954,29 +3954,44 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     save: function save(moduleid) {
-      sessionStorage.setItem("moduleid", moduleid);
       this.moduleId = moduleid;
     },
     forceRerender: function forceRerender() {
       this.componentKey += 1;
+      var current;
+      var max = this.moduleList.length - 1;
+
+      for (var i = 0; i < this.moduleList.length; i++) {
+        if (this.moduleId === this.moduleList[i].id) {
+          current = i;
+        }
+      }
+
+      if (current === 0) {
+        this.handleButton = 2;
+      } else if (current === max) {
+        this.handleButton = 1;
+      } else {
+        this.handleButton = 3;
+      }
     },
     // Gestion du bouton précédent
     onPrevious: function onPrevious() {
       var current;
 
       for (var i = 0; i < this.moduleList.length; i++) {
-        if (this.moduleId === this.moduleList[i]) {
+        if (this.moduleId === this.moduleList[i].id) {
           current = i;
         }
       }
 
-      if (this.moduleId === this.moduleList[0]) {
+      if (this.moduleId === this.moduleList[0].id) {
         this.moduleId = this.moduleId;
       } else {
-        this.moduleId = this.moduleList[current - 1];
+        this.moduleId = this.moduleList[current - 1].id;
       }
 
-      if (this.moduleId === this.moduleList[0]) {
+      if (this.moduleId === this.moduleList[0].id) {
         this.handleButton = 2;
       } else {
         this.handleButton = 3;
@@ -3988,20 +4003,20 @@ __webpack_require__.r(__webpack_exports__);
       var max = this.moduleList.length - 1;
 
       for (var i = 0; i < this.moduleList.length; i++) {
-        if (this.moduleId === this.moduleList[i]) {
+        if (this.moduleId === this.moduleList[i].id) {
           current = i;
         }
       }
 
-      if (this.moduleId === this.moduleList[max]) {
+      if (this.moduleId === this.moduleList[max].id) {
         this.moduleId = this.moduleId;
         this.handleButton = 1;
       } else {
-        this.moduleId = this.moduleList[current + 1];
+        this.moduleId = this.moduleList[current + 1].id;
         this.handleButton = 3;
       }
 
-      if (this.moduleId === this.moduleList[max]) {
+      if (this.moduleId === this.moduleList[max].id) {
         this.handleButton = 1;
       } else {
         this.handleButton = 3;
@@ -61666,7 +61681,7 @@ var render = function() {
                         on: {
                           click: function($event) {
                             $event.preventDefault()
-                            return _vm.onPrevious()
+                            _vm.onPrevious(), _vm.forceRerender()
                           }
                         }
                       },
@@ -61685,7 +61700,7 @@ var render = function() {
                         on: {
                           click: function($event) {
                             $event.preventDefault()
-                            return _vm.onNext()
+                            _vm.onNext(), _vm.forceRerender()
                           }
                         }
                       },
@@ -74654,15 +74669,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!*******************************************************!*\
   !*** ./resources/js/components/session.component.vue ***!
   \*******************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _session_component_vue_vue_type_template_id_a1ed5b2c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./session.component.vue?vue&type=template&id=a1ed5b2c& */ "./resources/js/components/session.component.vue?vue&type=template&id=a1ed5b2c&");
 /* harmony import */ var _session_component_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./session.component.vue?vue&type=script&lang=js& */ "./resources/js/components/session.component.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _session_component_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _session_component_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -74692,7 +74706,7 @@ component.options.__file = "resources/js/components/session.component.vue"
 /*!********************************************************************************!*\
   !*** ./resources/js/components/session.component.vue?vue&type=script&lang=js& ***!
   \********************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -74818,10 +74832,10 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/sass/app.scss */"./resources/sass/app.scss");
-__webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/2/projet-web-dynamique/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/2/projet-web-dynamique/Projet2020/projet_2020/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/2/projet-web-dynamique/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/2/projet-web-dynamique/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })

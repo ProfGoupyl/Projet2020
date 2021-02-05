@@ -18,10 +18,10 @@
             <article v-if="moduleId">
                 <Session :key="componentKey" :user-infos="this.userInfos" :module="this.moduleId"></Session>
                 <div>
-                    <button v-on:click.prevent="onPrevious()" v-if="handleButton === 1 || handleButton === 3">
+                    <button v-on:click.prevent="onPrevious(), forceRerender()" v-if="handleButton === 1 || handleButton === 3">
                         Précédent
                     </button>
-                    <button v-on:click.prevent="onNext()" v-if="handleButton === 2 || handleButton === 3">
+                    <button v-on:click.prevent="onNext(), forceRerender()" v-if="handleButton === 2 || handleButton === 3">
                         Suivant
                     </button>
                 </div>
@@ -74,11 +74,27 @@ export default {
     },
     methods: {
         save(moduleid) {
-            sessionStorage.setItem("moduleid", moduleid);
             this.moduleId = moduleid;
         },
         forceRerender() {
             this.componentKey += 1;
+
+            let current
+            const max = this.moduleList.length - 1
+
+            for (let i = 0; i < this.moduleList.length; i++) {
+                if (this.moduleId === this.moduleList[i].id) {
+                current = i
+                }
+            }
+
+            if(current === 0) {
+                this.handleButton = 2
+            } else if(current === max ) {
+                this.handleButton = 1
+            } else {
+                this.handleButton = 3
+            }
         },
         
         // Gestion du bouton précédent
@@ -86,18 +102,18 @@ export default {
             let current;
 
             for (let i = 0; i < this.moduleList.length; i++) {
-                if (this.moduleId === this.moduleList[i]) {
+                if (this.moduleId === this.moduleList[i].id) {
                 current = i;
                 }
             }
 
-            if (this.moduleId === this.moduleList[0]) {
+            if (this.moduleId === this.moduleList[0].id) {
                 this.moduleId = this.moduleId;
             } else {
-                this.moduleId = this.moduleList[current - 1];
+                this.moduleId = this.moduleList[current - 1].id;
             }
 
-            if (this.moduleId === this.moduleList[0]) {
+            if (this.moduleId === this.moduleList[0].id) {
                 this.handleButton = 2;
             } else {
                 this.handleButton = 3;
@@ -110,20 +126,20 @@ export default {
             const max = this.moduleList.length - 1;
 
             for (let i = 0; i < this.moduleList.length; i++) {
-                if (this.moduleId === this.moduleList[i]) {
+                if (this.moduleId === this.moduleList[i].id) {
                 current = i;
                 }
             }
 
-            if (this.moduleId === this.moduleList[max]) {
+            if (this.moduleId === this.moduleList[max].id) {
                 this.moduleId = this.moduleId;
                 this.handleButton = 1;
             } else {
-                this.moduleId = this.moduleList[current + 1];
+                this.moduleId = this.moduleList[current + 1].id;
                 this.handleButton = 3;
             }
 
-            if (this.moduleId === this.moduleList[max]) {
+            if (this.moduleId === this.moduleList[max].id) {
                 this.handleButton = 1;
             } else {
                 this.handleButton = 3;
