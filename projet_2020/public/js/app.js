@@ -4242,6 +4242,8 @@ __webpack_require__.r(__webpack_exports__);
       moduleList: [],
       handleButton: 2,
       moduleId: JSON.parse(sessionStorage.getItem("moduleid")),
+      faqList: null,
+      faq: null,
       url: document.querySelector("#envUrl").getAttribute("content")
     };
   },
@@ -4264,10 +4266,27 @@ __webpack_require__.r(__webpack_exports__);
     })["catch"](function (error) {
       return console.log(error);
     });
+    axios.get("".concat(this.url, "/api/faq?api_token=").concat(this.userInfos.api_token)).then(function (response) {
+      _this2.faqList = response.data;
+    })["catch"](function (error) {
+      return console.log(error);
+    });
   },
   // Permet de clear l'id du module
   updated: function updated() {
+    var _this3 = this;
+
     sessionStorage.removeItem("moduleid");
+    var temp;
+    temp = this.faqList.filter(function (item) {
+      return item.module_id === _this3.moduleId;
+    });
+
+    if (temp.length === 0) {
+      this.faq = false;
+    } else {
+      this.faq = true;
+    }
   },
   methods: {
     // Gestion du bouton précédent
@@ -62038,15 +62057,17 @@ var render = function() {
         ])
       }),
       _vm._v(" "),
-      _c(
-        "article",
-        [
-          _c("Faq", {
-            attrs: { "user-infos": this.userInfos, module: this.moduleId }
-          })
-        ],
-        1
-      ),
+      _vm.faq === true
+        ? _c(
+            "article",
+            [
+              _c("Faq", {
+                attrs: { "user-infos": this.userInfos, module: this.moduleId }
+              })
+            ],
+            1
+          )
+        : _vm._e(),
       _vm._v(" "),
       _c(
         "article",
@@ -74842,10 +74863,10 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\sass\app.scss */"./resources/sass/app.scss");
-__webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\sass\default.scss */"./resources/sass/default.scss");
-module.exports = __webpack_require__(/*! C:\wamp64\www\NicolasM\Projet2020\projet_2020\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/2/projet-web-dynamique/Projet2020/projet_2020/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/2/projet-web-dynamique/Projet2020/projet_2020/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/2/projet-web-dynamique/Projet2020/projet_2020/resources/sass/default.scss */"./resources/sass/default.scss");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/ifosup/2/projet-web-dynamique/Projet2020/projet_2020/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })
