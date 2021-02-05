@@ -70,17 +70,29 @@ export default {
       .then((response) => (this.moduleList = response.data))
       .catch((error) => console.log(error));
 
+    // Récupération de la liste FAQ
     axios
       .get(`${this.url}/api/faq?api_token=${this.userInfos.api_token}`)
       .then((response) => {
         this.faqList = response.data
+        
+        // Gestion de l'affichage de la FAQ au démarrage
+        let temp
+        temp = this.faqList.filter((item) => item.module_id === this.moduleId)
+
+        if(temp.length === 0) {
+          this.faq = false
+        } else {
+          this.faq = true
+        }
       })
       .catch((error) => console.log(error));
   },
-  // Permet de clear l'id du module
   updated() {
+    // Permet de clear l'id du module
     sessionStorage.removeItem("moduleid");
 
+    // Gère l'affichage de la FAQ à chaque mise à jour du composant
     let temp
     temp = this.faqList.filter((item) => item.module_id === this.moduleId)
 
@@ -140,5 +152,5 @@ export default {
       }
     },
   },
-};
+}
 </script>

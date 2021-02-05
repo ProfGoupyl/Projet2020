@@ -4265,18 +4265,31 @@ __webpack_require__.r(__webpack_exports__);
       return _this2.moduleList = response.data;
     })["catch"](function (error) {
       return console.log(error);
-    });
+    }); // Récupération de la liste FAQ
+
     axios.get("".concat(this.url, "/api/faq?api_token=").concat(this.userInfos.api_token)).then(function (response) {
-      _this2.faqList = response.data;
+      _this2.faqList = response.data; // Gestion de l'affichage de la FAQ au démarrage
+
+      var temp;
+      temp = _this2.faqList.filter(function (item) {
+        return item.module_id === _this2.moduleId;
+      });
+
+      if (temp.length === 0) {
+        _this2.faq = false;
+      } else {
+        _this2.faq = true;
+      }
     })["catch"](function (error) {
       return console.log(error);
     });
   },
-  // Permet de clear l'id du module
   updated: function updated() {
     var _this3 = this;
 
-    sessionStorage.removeItem("moduleid");
+    // Permet de clear l'id du module
+    sessionStorage.removeItem("moduleid"); // Gère l'affichage de la FAQ à chaque mise à jour du composant
+
     var temp;
     temp = this.faqList.filter(function (item) {
       return item.module_id === _this3.moduleId;
