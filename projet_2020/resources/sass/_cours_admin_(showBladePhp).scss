@@ -53,8 +53,13 @@
         }
 
         #addModule {
-            div {
-                padding: 5% 3%;
+            padding: 3% 0;
+            div.ck-blurred.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline,
+            div.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline.ck-focused {
+                height: 20vh;
+            }
+            div.ck.ck-reset.ck-dropdown__panel.ck-dropdown__panel_sw.ck-dropdown__panel-visible {
+                width: 25vh;
             }
             textarea {
                 max-width: 100%;
@@ -88,6 +93,12 @@
 
 button #open-modal-user {
     z-index: 100;
+}
+
+.close-div {
+    ::marker {
+        color: rgb(245, 245, 245);
+    }
 }
 
 @media #{$mobile} {

@@ -1,65 +1,68 @@
 /*--------------- Fichier _cours.scss ---------------*/
-                    .section_page_cours {
-                        display: flex;
-                        flex: 1;
-                        margin: 0.5em 1em;
-                        .aside_page_cours {
-                            border-radius: 7px;
-                            height: auto;
-                            flex-basis: 35%;
-                            background-color: $superlightgray;
-                            margin: 0 1em;
-                            padding: 1em;
-                            overflow-x: scroll;
-                        }
-                        .navSecondaire {
-                            li {
-                                list-style-type: none;
-                                a {
-                                    color: $gray;
-                                    text-decoration: none;
-                                    &:hover {
-                                        color: $main;
-                                    }
-                                }
-                            }
-                        }
-                        .navSecondaire_coursName {
-                            padding: 1em;
-                            li {
-                                list-style-type: none;
-                            }
-                        }
-                        article {
-                            flex-basis: 75%;
-                            background-color: $smoke;
-                            border-radius: 5px;
-                        }
-                    }
-                    iframe {
-                        max-width: 100%;
-                        max-height: 100%;
-                        margin-top: 1em;
-                    }
-                    .session {
-                        padding: 1em;
-                        article {
-                            margin-top: 1em;
-                        }
-                    }
+.section_page_cours {
+    display: flex;
+    flex: 1;
+    margin: 0.5em 1em;
+    z-index: 10;
+    .aside_page_cours {
+        border-radius: 7px;
+        height: auto;
+        flex-basis: 35%;
+        background-color: $superlightgray;
+        margin: 0 1em;
+        padding: 1em;
+        overflow-x: scroll;
+        overflow-y: scroll;
+        height: 85vh;
+    }
+    .navSecondaire {
+        li {
+            list-style-type: none;
+            a {
+                color: $gray;
+                text-decoration: none;
+                &:hover {
+                    color: $main;
+                }
+            }
+        }
+    }
+    .navSecondaire_coursName {
+        padding: 1em;
+        li {
+            list-style-type: none;
+        }
+    }
+    article {
+        flex-basis: 75%;
+        background-color: $smoke;
+        border-radius: 5px;
+    }
+}
+iframe {
+    max-width: 100%;
+    max-height: 100%;
+    margin-top: 1em;
+}
+.session {
+    padding: 1em;
+    article {
+        margin-top: 1em;
+    }
+}
 
-                    @media #{$mobile} {
-                        .section_page_cours {
-                            display: block;
-                            .aside_page_cours {
-                                height: auto;
-                                width: 100%;
-                                margin: 0;
-                                background: $superlightgray;
-                            }
-                            .navSecondaire_coursName {
-                                width: 100%;
-                            }
-                        }
-                    }
-                    /*--------------- Fichier _cours.scss - FIN ----------*/
+@media #{$mobile} {
+    .section_page_cours {
+        display: block;
+        .aside_page_cours {
+            height: auto;
+            width: 100%;
+            margin: 0;
+            background: $superlightgray;
+        }
+        .navSecondaire_coursName {
+            width: 100%;
+        }
+    }
+}
+/*--------------- Fichier _cours.scss - FIN ----------*/

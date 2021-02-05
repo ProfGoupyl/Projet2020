@@ -434,6 +434,7 @@ form.userProfil div:last-of-type {
   display: flex;
   flex: 1;
   margin: 0.5em 1em;
+  z-index: 10;
 }
 
 .section_page_cours .aside_page_cours {
@@ -444,6 +445,8 @@ form.userProfil div:last-of-type {
   margin: 0 1em;
   padding: 1em;
   overflow-x: scroll;
+  overflow-y: scroll;
+  height: 85vh;
 }
 
 .section_page_cours .navSecondaire li {
@@ -753,8 +756,17 @@ div.home ul {
   background-color: #d4d4d4;
 }
 
-.section_page_cours .aside_page_cours #addModule div {
-  padding: 5% 3%;
+.section_page_cours .aside_page_cours #addModule {
+  padding: 3% 0;
+}
+
+.section_page_cours .aside_page_cours #addModule div.ck-blurred.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline,
+.section_page_cours .aside_page_cours #addModule div.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline.ck-focused {
+  height: 20vh;
+}
+
+.section_page_cours .aside_page_cours #addModule div.ck.ck-reset.ck-dropdown__panel.ck-dropdown__panel_sw.ck-dropdown__panel-visible {
+  width: 25vh;
 }
 
 .section_page_cours .aside_page_cours #addModule textarea {
@@ -785,6 +797,10 @@ div.home ul {
 
 button #open-modal-user {
   z-index: 100;
+}
+
+.close-div ::marker {
+  color: whitesmoke;
 }
 
 @media all and (max-width: 900px) {
