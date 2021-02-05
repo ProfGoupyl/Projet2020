@@ -26,7 +26,19 @@
         <li class="items">
             <figure>
                 @if (Auth::user())
-                <img src="{{ asset('images/users/user'.Auth::user()->id).'.png' }}" alt="" class="UserImage" height="80px" width="80px">
+                    @php
+                        $file = asset('images/users/user'.Auth::user()->id).'.png';
+                        if(file_exists($file)) {
+                            $src = 'ok';
+                        } else {
+                            $src = 'nok';
+                        }
+                    @endphp
+                    @if ($src === 'ok')
+                        <img src="{{ asset('images/users/user'.Auth::user()->id).'.png' }}" alt="" class="UserImage" height="80px" width="80px">
+                    @elseif ($src === 'nok')
+                        <img src="https://via.placeholder.com/80" alt="" class="UserImage" height="80px" width="80px">
+                    @endif
                 @endif
             </figure>
             <ul class="sous">
