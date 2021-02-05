@@ -5,6 +5,11 @@
         <li class="items">
             <a href="/"><img src="{{ asset('images/logo.svg') }}" alt="" class="logo" height="80px" width="80px"></a>
         </li>
+        @if (Auth::user() === null)
+            <li>
+                <a href="/login">Se connecter</a>
+            </li>
+        @endif
 
         @if(\Request::is('admin/*'))
         <li class="items">
