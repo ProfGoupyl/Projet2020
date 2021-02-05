@@ -3962,7 +3962,7 @@ __webpack_require__.r(__webpack_exports__);
       tab = temp.filter(function (name) {
         return name.id === _this.coursId;
       });
-      _this.coursName = tab[0];
+      _this.coursName = tab[0].titre;
     })["catch"](function (error) {
       return console.log(error);
     });
@@ -4273,7 +4273,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       moduleList: [],
       moduleId: this.module,
-      faqList: null,
+      faqList: [],
       faq: null,
       url: document.querySelector("#envUrl").getAttribute("content")
     };
@@ -61653,9 +61653,7 @@ var render = function() {
       _c("aside", { staticClass: "aside_page_cours" }, [
         _c("h2", { staticClass: "navSecondaire_coursName" }, [
           _vm._v(
-            "\n                " +
-              _vm._s(_vm.coursName.titre) +
-              "\n            "
+            "\n                " + _vm._s(_vm.coursName) + "\n            "
           )
         ]),
         _vm._v(" "),

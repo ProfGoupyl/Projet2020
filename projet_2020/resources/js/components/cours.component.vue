@@ -3,7 +3,7 @@
         <section class="section_page_cours">
             <aside class="aside_page_cours">
                 <h2 class="navSecondaire_coursName">
-                    {{ coursName.titre }}
+                    {{ coursName }}
                 </h2>
                 <nav class="navSecondaire">
                     <ul>
@@ -68,7 +68,7 @@ export default {
                 let temp = response.data
                 let tab
                 tab = temp.filter((name) => name.id === this.coursId)
-                this.coursName = tab[0]
+                this.coursName = tab[0].titre
             })
             .catch((error) => console.log(error));
     },

@@ -37,7 +37,7 @@ export default {
     return {
       moduleList: [],
       moduleId: this.module,
-      faqList: null,
+      faqList: [],
       faq: null,
       url: document.querySelector("#envUrl").getAttribute("content"),
     };
