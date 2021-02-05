@@ -66,7 +66,7 @@
                     @csrf
                     @method('put')
                     <td>
-                        <input class="input-{{$user->id}} line-input" style="background:none;border:none;color:black;text-align:center;" disabled value={{$user->name}} type="text" name="name">
+                        <input class="input-{{$user->id}} line-input" style="background:none;border:none;color:black;text-align:center;" disabled value='{{$user->name}}' type="text" name="name">
                     </td>
                     <td>
                         <input class="input-{{$user->id}} line-input" style="background:none;border:none;color:black;text-align:center;" disabled type="text" name="prenom" value="{{ $user->prenom }}">

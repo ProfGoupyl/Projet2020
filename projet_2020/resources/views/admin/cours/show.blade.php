@@ -9,17 +9,18 @@
     id="user-modal">
     <h2>Liste des utilisateurs pour le cours {{$cours->titre}}</h2>
     <form action='/admin/coursusers' method='post'>
-        @csrf
-        @method('delete')
-        <input type="submit" value="Supprimer">
-        <ul>
-            @foreach($cours->users as $u)
-            <li>
-                <input type="checkbox" id='users-{{$u->id}}'>
-                <label htmlFor='users-{{$u->id}}'>{{$u->email}}</label>
-            </li>
-            @endforeach
-        </ul>
+    @csrf
+    @method('delete')
+    <input type="hidden" name="cours" value="{{$cours->id}}">
+    <input type="submit" value="Supprimer">
+    <ul>
+        @foreach($cours->users as $u)
+        <li>
+        <input type="checkbox" id='users-{{$u->id}}' name='users[]' value='{{$u->id}}'>
+            <label htmlFor='users-{{$u->id}}'>{{$u->email}}</label>
+        </li>
+        @endforeach
+    </ul>
     </form>
 </div>
 
