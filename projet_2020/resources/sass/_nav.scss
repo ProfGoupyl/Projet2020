@@ -12,6 +12,9 @@ header nav.navPrincipale {
         li {
             flex-basis: 10%;
             cursor: pointer;
+            &:first-of-type{
+                flex: 2;
+            }
             img.logo {
                 text-align: left;
                 width: 210px;
@@ -88,31 +91,6 @@ li:nth-child(5), li:nth-child(4){
 
 /* VERSION MOBILE */
 @media all and (max-width: 900px) {
-    /*
-    nav {
-        ul {
-            li.items {
-                width: 100%;
-                display: none;
-            }
-            li.items.show {
-                display: block;
-            }
-            li.burger {
-                display: block;
-            }
-            li {
-                figure {
-                    display: block;
-                }
-            }
-        }
-    }
-    .sous {
-        margin-top: 5px;
-        margin-left: 150px;
-    }
-    */
     nav {
         ul {
             display:flex;
@@ -137,10 +115,10 @@ li:nth-child(5), li:nth-child(4){
         }
     }
     li:nth-child(3){
-    display: none;
+        display: none;
     }
-    li:nth-child(5), li:nth-child(4){
-    display: block;
+    li:nth-child(4){
+        display: block;
     }
     .sous {
         margin-top: 5px;
