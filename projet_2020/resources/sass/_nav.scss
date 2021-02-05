@@ -12,7 +12,7 @@ header nav.navPrincipale {
         li {
             flex-basis: 10%;
             cursor: pointer;
-            &:first-of-type{
+            &:first-of-type {
                 flex: 2;
             }
             img.logo {
@@ -46,7 +46,7 @@ header nav.navPrincipale {
                 display: none;
                 position: absolute;
                 width: 120px;
-                margin-top: 0px;
+                margin-top: 0;
                 padding: 10px;
                 li p {
                     font-size: 0.7em;
@@ -79,21 +79,26 @@ header nav.navPrincipale {
 .burger {
     display: none;
 }
-li.btn{
-    display:none;
+li.btn {
+    display: none;
 }
 .hide i:before {
     content: "\f00d";
 }
+.items.hide {
+    display: none;
+}
+/*
 li:nth-child(5), li.hide:nth-last-child(2){
     display: none;
 }
+*/
 
 /* VERSION MOBILE */
 @media #{$mobile} {
     nav {
         ul {
-            display:flex;
+            display: flex;
             flex-flow: column wrap;
             width: 100%;
             li.items {
@@ -108,16 +113,16 @@ li:nth-child(5), li.hide:nth-last-child(2){
                 display: block;
             }
             li {
-                figure img{
+                figure img {
                     display: none;
                 }
             }
         }
     }
-    li:nth-child(3){
+    li:nth-child(3) {
         display: none;
     }
-    li:nth-child(4){
+    li:nth-child(4) {
         display: block;
     }
     .sous {

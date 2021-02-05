@@ -63,7 +63,7 @@ header nav.navPrincipale ul li ul.sous {
   display: none;
   position: absolute;
   width: 120px;
-  margin-top: 0px;
+  margin-top: 0;
   padding: 10px;
 }
 
@@ -106,10 +106,15 @@ li.btn {
   content: "\F00D";
 }
 
-li:nth-child(5),
-li.hide:nth-last-child(2) {
+.items.hide {
   display: none;
 }
+
+/*
+li:nth-child(5), li.hide:nth-last-child(2){
+    display: none;
+}
+*/
 
 /* VERSION MOBILE */
 
