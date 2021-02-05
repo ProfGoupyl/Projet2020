@@ -2,7 +2,7 @@
 @section('content')
 <div class="faq">
         <div class="titre">
-            <h2>FAQ Admin de {{$module->titre}} </h2>
+            <h2>FAQ Admin - {{$module->titre}} </h2>
         </div>
 </div>
 <div id='addFaqs'>
