@@ -48,7 +48,8 @@ Route::get('/droits-utilisations', function () {
 
 Route::get('/', function () {
     return View('welcome');
-})->middleware(['auth'])->name('login');
+});
+
 Route::get('home', function () {
     return View('pages.home');
 })->middleware(['auth'])->name('login');
