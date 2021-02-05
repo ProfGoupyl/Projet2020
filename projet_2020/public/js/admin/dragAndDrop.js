@@ -68,6 +68,14 @@ openModal.addEventListener('click', () => {
     }
 })
 
+const userModel = document.querySelector('.close-div')
+const closeDiv = document.querySelector('.close')
+closeDiv.addEventListener('click',() => {
+    if(userModel.style.zIndex== 0) {
+        userModel.style.zIndex = -500;
+    }
+})
+
 ClassicEditor
     .create(document.querySelector('#textarea-editor'), {
         link: { addTargetToExternalLinks: true }
