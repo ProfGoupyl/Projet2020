@@ -64,33 +64,7 @@ button, button a{
 
 
 // BOUTONS
-button, #show{
-	width: auto;
-	padding: 0.5em;
-	margin: 1em 1em 1em 0;
-	border-radius: 4px;
-	text-decoration: none;
-	text-align: center;
-	background-color: $white;
-	cursor: pointer;
-	outline: none;
-	color: $btn-basic;
-	border: 2px solid $btn-basic;
-	a{
-		display: block;
-		color: $btn-basic;
-		&:hover, &:focus{
-			color: $white;
-		}
-	}
-	&:hover, &:focus{
-		background-color: $btn-basic-dark;
-		color: $white;
-	}
-   &:active{
-	   background-color: $btn-update-dark;
-   }
-}
+
 #ajouter, .add{
 	color: $btn-add;
 	border: 2px solid $btn-add;
@@ -125,22 +99,39 @@ button, #show{
    }
 }
 
+button, #show{
+	width: auto;
+	padding: 0.5em;
+	margin: 1em 1em 1em 0;
+	border-radius: 4px;
+	text-decoration: none;
+	text-align: center;
+	background-color: $white;
+	cursor: pointer;
+	outline: none;
+	color: $btn-basic;
+	border: 2px solid $btn-basic;
+	a{
+		display: block;
+		color: $btn-basic;
+		&:hover, &:focus{
+			color: $white;
+		}
+	}
+	&:hover, &:focus{
+		background-color: $btn-basic-dark;
+		color: $white;
+	}
+   &:active{
+	   background-color: $btn-basic-dark;
+   }
+}
+
 
 
 
 
 // INPUT
-/*form{
-	p{height: 50px;}
-	input{
-   	 width: 300px;
-   	 padding: 10px 10px 10px 0;
-   	 border: none;
-   	 border-bottom: 2px solid $lightgray;
-   	 outline: none;
-		&:focus{border-bottom: 2px solid $purple;}
-	}
-}*/
 form{
 	input{
 		width: 300px;

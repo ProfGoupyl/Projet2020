@@ -858,47 +858,6 @@ button a {
   line-height: 1.4;
 }
 
-button,
-#show {
-  width: auto;
-  padding: 0.5em;
-  margin: 1em 1em 1em 0;
-  border-radius: 4px;
-  text-decoration: none;
-  text-align: center;
-  background-color: #ffffff;
-  cursor: pointer;
-  outline: none;
-  color: #3f3f3f;
-  border: 2px solid #3f3f3f;
-}
-
-button a,
-#show a {
-  display: block;
-  color: #3f3f3f;
-}
-
-button a:hover,
-button a:focus,
-#show a:hover,
-#show a:focus {
-  color: #ffffff;
-}
-
-button:hover,
-button:focus,
-#show:hover,
-#show:focus {
-  background-color: #323232;
-  color: #ffffff;
-}
-
-button:active,
-#show:active {
-  background-color: #ff8914;
-}
-
 #ajouter,
 .add {
   color: #7bcc76;
@@ -952,17 +911,46 @@ button:active,
   background-color: #ff8914;
 }
 
-/*form{
-	p{height: 50px;}
-	input{
-   	 width: 300px;
-   	 padding: 10px 10px 10px 0;
-   	 border: none;
-   	 border-bottom: 2px solid $lightgray;
-   	 outline: none;
-		&:focus{border-bottom: 2px solid $purple;}
-	}
-}*/
+button,
+#show {
+  width: auto;
+  padding: 0.5em;
+  margin: 1em 1em 1em 0;
+  border-radius: 4px;
+  text-decoration: none;
+  text-align: center;
+  background-color: #ffffff;
+  cursor: pointer;
+  outline: none;
+  color: #3f3f3f;
+  border: 2px solid #3f3f3f;
+}
+
+button a,
+#show a {
+  display: block;
+  color: #3f3f3f;
+}
+
+button a:hover,
+button a:focus,
+#show a:hover,
+#show a:focus {
+  color: #ffffff;
+}
+
+button:hover,
+button:focus,
+#show:hover,
+#show:focus {
+  background-color: #323232;
+  color: #ffffff;
+}
+
+button:active,
+#show:active {
+  background-color: #323232;
+}
 
 form input {
   width: 300px;
