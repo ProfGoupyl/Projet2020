@@ -31,6 +31,20 @@ Route::post('uploadImage', [UploadImageController::class, 'upload']);
 
 Route::post('postData', [CommentaireController::class, 'store']);
 
+// Routes pour les mentions légales
+
+Route::get('/charte-vie-privee', function () {
+    return View('mentions-legales.charteViePrivee');
+});
+
+Route::get('/cookies', function () {
+    return View('mentions-legales.cookies');
+});
+
+Route::get('/droits-utilisations', function () {
+    return View('mentions-legales.droitUtilisation');
+});
+
 
 Route::get('/', function () {
     return View('welcome');
@@ -85,7 +99,7 @@ Route::prefix('admin')
         Route::resource('cours', CoursAdminController::class);
         Route::resource('faqs', FaqAdminController::class);
         Route::resource('module', ModuleAdminController::class);
-        Route::delete('/coursusers', [ CoursUsersController::class , 'delete']);
+        Route::delete('/coursusers', [CoursUsersController::class, 'delete']);
 
         //Routes CSV : GET && POST
         //Test de l'ajout d'utilisateurs par fichier .csv;
