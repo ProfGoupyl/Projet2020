@@ -12,3 +12,4 @@ openModal.addEventListener('click', () => {
         icon.style.transform = 'rotate(45deg)'
     }
 })
+

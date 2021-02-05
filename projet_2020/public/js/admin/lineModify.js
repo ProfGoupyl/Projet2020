@@ -18,9 +18,7 @@ modifyBtns.forEach(btn => {
         // Vise la ligne actuelle et active les inputs + le save button
         const idTarget = btn.dataset.target;
         const currentInputs = document.querySelectorAll(`.input-${idTarget}`);
-        const saveBtn = document.querySelector(`#save-${idTarget}`)
-        const deleteForm = document.querySelector(`#test`)
-        console.log(deleteForm);
+        const saveBtn = document.querySelector(`#save-${idTarget}`);3.
         currentInputs.forEach(input => {
             input.style.border = "1px solid black";
             input.style.backgroundColor = "#f3f3f3";

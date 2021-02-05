@@ -4242,6 +4242,8 @@ __webpack_require__.r(__webpack_exports__);
       moduleList: [],
       handleButton: 2,
       moduleId: JSON.parse(sessionStorage.getItem("moduleid")),
+      faqList: null,
+      faq: null,
       url: document.querySelector("#envUrl").getAttribute("content")
     };
   },
@@ -4263,11 +4265,41 @@ __webpack_require__.r(__webpack_exports__);
       return _this2.moduleList = response.data;
     })["catch"](function (error) {
       return console.log(error);
+    }); // Récupération de la liste FAQ
+
+    axios.get("".concat(this.url, "/api/faq?api_token=").concat(this.userInfos.api_token)).then(function (response) {
+      _this2.faqList = response.data; // Gestion de l'affichage de la FAQ au démarrage
+
+      var temp;
+      temp = _this2.faqList.filter(function (item) {
+        return item.module_id === _this2.moduleId;
+      });
+
+      if (temp.length === 0) {
+        _this2.faq = false;
+      } else {
+        _this2.faq = true;
+      }
+    })["catch"](function (error) {
+      return console.log(error);
     });
   },
-  // Permet de clear l'id du module
   updated: function updated() {
-    sessionStorage.removeItem("moduleid");
+    var _this3 = this;
+
+    // Permet de clear l'id du module
+    sessionStorage.removeItem("moduleid"); // Gère l'affichage de la FAQ à chaque mise à jour du composant
+
+    var temp;
+    temp = this.faqList.filter(function (item) {
+      return item.module_id === _this3.moduleId;
+    });
+
+    if (temp.length === 0) {
+      this.faq = false;
+    } else {
+      this.faq = true;
+    }
   },
   methods: {
     // Gestion du bouton précédent
@@ -62038,15 +62070,17 @@ var render = function() {
         ])
       }),
       _vm._v(" "),
-      _c(
-        "article",
-        [
-          _c("Faq", {
-            attrs: { "user-infos": this.userInfos, module: this.moduleId }
-          })
-        ],
-        1
-      ),
+      _vm.faq === true
+        ? _c(
+            "article",
+            [
+              _c("Faq", {
+                attrs: { "user-infos": this.userInfos, module: this.moduleId }
+              })
+            ],
+            1
+          )
+        : _vm._e(),
       _vm._v(" "),
       _c(
         "article",
