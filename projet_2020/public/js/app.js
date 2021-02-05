@@ -4169,8 +4169,20 @@ __webpack_require__.r(__webpack_exports__);
       userPseudo: this.userInfos.pseudo,
       userPhoto: null,
       fSend: null,
-      iSend: null
+      iSend: null,
+      urlSrc: null
     };
+  },
+  created: function created() {
+    var _this = this;
+
+    fetch("".concat(this.url, "/images/users/user").concat(this.userId, ".png")).then(function (response) {
+      if (response.status === 404) {
+        _this.urlSrc = 'https://via.placeholder.com/50';
+      } else {
+        _this.urlSrc = "".concat(_this.url, "/images/users/user").concat(_this.userId, ".png");
+      }
+    });
   },
   methods: {
     submit: function submit() {
@@ -61927,7 +61939,7 @@ var render = function() {
               _c("img", {
                 staticClass: "UserImage",
                 attrs: {
-                  src: _vm.url + "/images/users/user" + _vm.userId + ".png",
+                  src: _vm.urlSrc,
                   alt: "Photo de profil",
                   width: "50px",
                   height: "50px"

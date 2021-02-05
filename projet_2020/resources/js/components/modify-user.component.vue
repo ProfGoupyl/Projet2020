@@ -21,7 +21,7 @@
         <div>
           <p>
             <label for="currentPicture">Photo de profil actuelle:</label>
-            <img :src="`${url}/images/users/user${userId}.png`" alt="Photo de profil" class="UserImage" width="50px" height="50px">
+            <img :src="urlSrc" alt="Photo de profil" class="UserImage" width="50px" height="50px">
           </p>
           <label for="userPhoto">Type de fichier accepté: PNG<br>Volume maximum autorisé: 50 ko</label>
           <input type="file" accept="image/png" name="userPhoto" id="userPhoto" v-on:change="selectImage">
@@ -58,7 +58,18 @@ export default {
       userPhoto: null,
       fSend: null,
       iSend: null,
+      urlSrc: null,
     };
+  },
+  created() {
+    fetch(`${this.url}/images/users/user${this.userId}.png`)
+      .then(response => {
+        if(response.status === 404) {
+          this.urlSrc = 'https://via.placeholder.com/50'
+        } else {
+          this.urlSrc = `${this.url}/images/users/user${this.userId}.png`
+        }
+      })
   },
   methods: {
     submit() {
