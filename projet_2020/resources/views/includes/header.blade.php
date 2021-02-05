@@ -27,16 +27,13 @@
             <figure>
                 @if (Auth::user())
                     @php
-                        $file = asset('images/users/user'.Auth::user()->id).'.png';
-                        if(file_exists($file)) {
-                            $src = 'ok';
-                        } else {
-                            $src = 'nok';
-                        }
+                        $root = $_SERVER['DOCUMENT_ROOT'];
+                        $url = $root.'/images/users/user'.Auth::user()->id.'.png';
+                        $file = file_exists($url);
                     @endphp
-                    @if ($src === 'ok')
+                    @if ($file)
                         <img src="{{ asset('images/users/user'.Auth::user()->id).'.png' }}" alt="" class="UserImage" height="80px" width="80px">
-                    @elseif ($src === 'nok')
+                    @else
                         <img src="https://via.placeholder.com/80" alt="" class="UserImage" height="80px" width="80px">
                     @endif
                 @endif
