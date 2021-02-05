@@ -177,6 +177,11 @@ header nav.navPrincipale ul li ul.sous li p {
   color: #808080;
 }
 
+.listecours tbody tr td:last-of-type {
+  text-align: center;
+  margin: 0 auto;
+}
+
 .listecours tbody tr:hover {
   background-color: #fafafa;
 }
@@ -239,10 +244,13 @@ header nav.navPrincipale ul li ul.sous li p {
   color: #000000;
 }
 
+.listecoursadmin tbody tr td {
+  border-bottom: 1px solid #ececec;
+}
+
 .listecoursadmin tbody tr td input {
   width: 100%;
   padding: 1%;
-  border-bottom: 1px solid #ececec;
   text-align: left;
   color: #808080;
 }
@@ -259,6 +267,12 @@ header nav.navPrincipale ul li ul.sous li p {
 
 .listecoursadmin tbody tr:hover {
   background-color: #fafafa;
+}
+
+#delete-modal {
+  background-color: #ffffff;
+  border: 2px solid #000000;
+  padding: 2%;
 }
 
 /*--------------- Fichier _user.scss - FIN ----------*/
@@ -422,7 +436,82 @@ form.userProfil div:last-of-type {
 }
 
 .section_page_cours .navSecondaire li a:hover {
+  /*--------------- Fichier _cours.scss ---------------*/
+  /*--------------- Fichier _cours.scss - FIN ----------*/
   color: #000000;
+}
+
+.section_page_cours .navSecondaire li a:hover .section_page_cours {
+  display: flex;
+  flex: 1;
+  margin: 0.5em 1em;
+}
+
+.section_page_cours .navSecondaire li a:hover .section_page_cours .aside_page_cours {
+  border-radius: 7px;
+  height: auto;
+  flex-basis: 25%;
+  background-color: #ececec;
+  margin: 0 1em;
+  padding: 1em;
+  overflow-x: scroll;
+}
+
+.section_page_cours .navSecondaire li a:hover .section_page_cours .navSecondaire li {
+  list-style-type: none;
+}
+
+.section_page_cours .navSecondaire li a:hover .section_page_cours .navSecondaire li a {
+  color: #808080;
+  text-decoration: none;
+}
+
+.section_page_cours .navSecondaire li a:hover .section_page_cours .navSecondaire li a:hover {
+  color: #000000;
+}
+
+.section_page_cours .navSecondaire li a:hover .section_page_cours .navSecondaire_coursName {
+  padding: 1em;
+}
+
+.section_page_cours .navSecondaire li a:hover .section_page_cours .navSecondaire_coursName li {
+  list-style-type: none;
+}
+
+.section_page_cours .navSecondaire li a:hover .section_page_cours article {
+  flex-basis: 75%;
+  background-color: #fafafa;
+  border-radius: 5px;
+}
+
+.section_page_cours .navSecondaire li a:hover iframe {
+  width: 100%;
+  height: 500px;
+  display: block;
+}
+
+.section_page_cours .navSecondaire li a:hover .session {
+  padding: 1em;
+}
+
+.section_page_cours .navSecondaire li a:hover .session article {
+  margin-top: 1em;
+}
+
+@media all and (max-width: 900px) {
+  .section_page_cours .navSecondaire li a:hover .section_page_cours {
+    display: block;
+  }
+
+  .section_page_cours .navSecondaire li a:hover .section_page_cours .aside_page_cours {
+    height: auto;
+    width: 100%;
+    background: #ececec;
+  }
+
+  .section_page_cours .navSecondaire li a:hover .section_page_cours .navSecondaire_coursName {
+    width: 100%;
+  }
 }
 
 .section_page_cours .navSecondaire_coursName {
@@ -588,6 +677,10 @@ div.footer nav ul li a:hover {
   color: #808080;
 }
 
+div.footer nav ul li:last-of-type {
+  margin-left: auto;
+}
+
 div.mentions {
   width: 98%;
   text-align: left;
@@ -658,73 +751,107 @@ div.home ul {
   padding: 0 1em;
 }
 
-/*--------------- Fichier_cours_admin_(showBaldephp).scss ---------------*/
+/*--------------- Fichier_cours_admin_(showBladephp).scss ---------------*/
 
-#section_page_cours .aside_page_cours .drag-container .draggable a {
+.section_page_cours .aside_page_cours .drag-container .draggable {
+  background-color: #fafafa;
+  border-radius: 5px;
+  margin: 0.7em 0;
+  padding: 0.5em;
+  border: 2px solid #808080;
+}
+
+.section_page_cours .aside_page_cours .drag-container .draggable a {
   color: #808080;
   text-decoration: none;
 }
 
-#section_page_cours .aside_page_cours .drag-container .draggable a:hover {
+.section_page_cours .aside_page_cours .drag-container .draggable a:hover {
   color: #000000;
 }
 
-#section_page_cours .aside_page_cours article {
-  flex-basis: 75%;
-  background-color: #fafafa;
-  border-radius: 5px;
+.section_page_cours .aside_page_cours .drag-container .draggable form {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.section_page_cours .aside_page_cours .drag-container .draggable form #delete {
+  margin: 0;
+  border: 1px solid #d4d4d4;
+  padding: 0.5em;
+}
+
+.section_page_cours .aside_page_cours .drag-container .draggable form #delete i::after {
+  content: 'Supprimer le module';
+  font-size: 0.9rem;
+  font-weight: normal;
+}
+
+.section_page_cours .aside_page_cours .drag-container .draggable div {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.section_page_cours .aside_page_cours .drag-container .draggable div a {
+  text-align: center;
+}
+
+.section_page_cours .aside_page_cours .drag-container .draggable div #modifier {
+  margin: 0;
+  padding: 0.3em;
+}
+
+.section_page_cours .aside_page_cours .drag-container .draggable:hover,
+.section_page_cours .aside_page_cours .drag-container .draggable:focus {
+  background-color: #d4d4d4;
+}
+
+.section_page_cours .aside_page_cours #addModule div {
+  padding: 5% 3%;
+}
+
+.section_page_cours .aside_page_cours #addModule textarea {
+  max-width: 100%;
+  min-width: 100%;
+  min-height: 100px;
+  max-height: 100px;
+  resize: none;
+}
+
+.section_page_cours .aside_page_cours #addModule input {
+  width: 100%;
+}
+
+.section_page_cours .session .module {
+  width: 100%;
+}
+
+.section_page_cours .session .module #form-module #edit-titre,
+.section_page_cours .session .module #form-module #edit-video {
+  margin: 2%;
+}
+
+.section_page_cours .session .module #form-module #edit-desc {
+  padding: 2%;
+  width: 100%;
+}
+
+button #open-modal-user {
+  z-index: 100;
+}
+
+@media all and (max-width: 900px) {
+  .section_page_cours .aside_page_cours #addModule div {
+    padding: 2% 1%;
+  }
 }
 
 .coursName_titre {
   padding: 1em;
 }
 
-/*
-.drag-container {
-    width: 25%;
-    overflow-x: hidden;
-    background-color: lightgrey;
-    padding: 5px;
-}
-
-.draggable {
-    background-color: #333;
-    color: white;
-    padding: 1px;
-    cursor: move;
-    margin-bottom: 15px;
-}
-
-.draggable.dragging {
-    opacity: .5;
-}
-
-.form-modules {
-    display: none;
-}
-
-.form-modules.show {
-    display: block;
-}
-*/
-
-@media all and (max-width: 900px) {
-  .section_page_cours {
-    display: block;
-  }
-
-  .section_page_cours .aside_page_cours {
-    height: auto;
-    width: 100%;
-    background: #ececec;
-  }
-
-  .navSecondaire_coursName {
-    width: 100%;
-  }
-}
-
-/*--------------- Fichier_cours_admin_(showBaldephp).scss - FIN ----------*/
+/*--------------- Fichier_cours_admin_(showBladephp).scss - FIN ----------*/
 
 * {
   box-sizing: border-box;
@@ -788,7 +915,8 @@ button a {
 
 button,
 #show {
-  padding: 0.6em;
+  width: auto;
+  padding: 0.5em;
   margin: 1em 1em 1em 0;
   border-radius: 4px;
   text-decoration: none;
@@ -860,18 +988,22 @@ button:active,
   background-color: #e52519;
 }
 
-#modifier {
+#modifier,
+.save-btn {
   color: #ff962d;
   border: 2px solid #ff962d;
 }
 
 #modifier:hover,
-#modifier:focus {
+#modifier:focus,
+.save-btn:hover,
+.save-btn:focus {
   background-color: #ff962d;
   color: #ffffff;
 }
 
-#modifier:active {
+#modifier:active,
+.save-btn:active {
   background-color: #ff8914;
 }
 
@@ -889,6 +1021,7 @@ button:active,
 
 form input {
   width: 300px;
+  height: auto;
   padding: 1%;
   border: 1px solid #d4d4d4;
   border-radius: 5px;
@@ -897,6 +1030,19 @@ form input {
 
 input[type="file"] {
   border: none;
+}
+
+tr td input.line-input {
+  width: 100%;
+  padding: 2% 0;
+  text-align: left;
+  border: 1px solid #d4d4d4;
+  border-radius: 5px;
+  outline: none;
+}
+
+.a {
+  width: 8%;
 }
 
 .commentaire section form {

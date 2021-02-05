@@ -1,14 +1,9 @@
 <template>
   <div class="commentaire">
     <section>
-      <form v-on:submit.prevent="postData" method="post">
-        <input
-          type="area"
-          name="text"
-          placeholder="Tapez votre commentaire ici"
-          v-model="comment"
-        />
-        <br />
+      <form v-on:submit.prevent="postData" method="post" enctype="multipart/form-data" id="formCommentaire">
+        <input type="area" name="text" placeholder="Tapez votre commentaire ici" v-model="comment">
+        <br>
         <button type="submit">Envoyer</button>
       </form>
     </section>
@@ -17,22 +12,26 @@
 
 <script>
 export default {
-  props: ["userInfos"],
+  props: ['userInfos', 'module'],
 
   data() {
     return {
-      userId: this.userInfos.user_id,
-      apiToken: this.userInfos.api_token,
       url: document.querySelector("#envUrl").getAttribute("content"),
       comment: "",
+      coursId: JSON.parse(sessionStorage.getItem("coursid")),
     };
   },
-
   methods: {
     postData() {
-      axios.post("postData", { text: this.comment }).then((response) => {
-        console.log(response);
-      });
+      axios
+        .post(`${this.url}/api/commentaires/?api_token=${this.userInfos.api_token}`, {
+          text: this.comment,
+          user_id: this.userInfos.id,
+          module_id: this.module,
+          cours_id: this.coursId,
+        })
+        .then(response => console.log(response))
+        .catch(error => console.log(error))
     },
   },
 };

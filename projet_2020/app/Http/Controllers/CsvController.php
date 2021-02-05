@@ -31,8 +31,6 @@ class CsvController extends Controller
 
   public function add_to_cours(Request $request)
   {
-
-
     $res = fopen(request('file'), 'r');
     $cours = Cours::find($request->request->get('cours'));
     while (!feof($res)) {

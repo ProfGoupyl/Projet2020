@@ -3838,27 +3838,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["userInfos"],
+  props: ['userInfos', 'module'],
   data: function data() {
     return {
-      userId: this.userInfos.user_id,
-      apiToken: this.userInfos.api_token,
       url: document.querySelector("#envUrl").getAttribute("content"),
-      comment: ""
+      comment: "",
+      coursId: JSON.parse(sessionStorage.getItem("coursid"))
     };
   },
   methods: {
     postData: function postData() {
-      axios.post("postData", {
-        text: this.comment
+      axios.post("".concat(this.url, "/api/commentaires/?api_token=").concat(this.userInfos.api_token), {
+        text: this.comment,
+        user_id: this.userInfos.id,
+        module_id: this.module,
+        cours_id: this.coursId
       }).then(function (response) {
-        console.log(response);
+        return console.log(response);
+      })["catch"](function (error) {
+        return console.log(error);
       });
     }
   }
@@ -4223,6 +4222,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4234,14 +4240,13 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       moduleList: [],
-      componentKey: 0,
+      handleButton: 2,
       moduleId: JSON.parse(sessionStorage.getItem("moduleid")),
-      url: document.querySelector("#envUrl").getAttribute("content"),
-      hasPrevious: false,
-      hasNext: true
+      url: document.querySelector("#envUrl").getAttribute("content")
     };
   },
   computed: {
+    // Récupération du module qui a le même id que moduleId
     filterModules: function filterModules() {
       var _this = this;
 
@@ -4253,17 +4258,19 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this2 = this;
 
+    // Récupération de la liste des modules
     axios.get("".concat(this.url, "/api/module?api_token=").concat(this.userInfos.api_token)).then(function (response) {
       return _this2.moduleList = response.data;
     })["catch"](function (error) {
       return console.log(error);
     });
   },
-  // permet de clear l'id du module
+  // Permet de clear l'id du module
   updated: function updated() {
     sessionStorage.removeItem("moduleid");
   },
   methods: {
+    // Gestion du bouton précédent
     onPrevious: function onPrevious() {
       var current;
 
@@ -4278,7 +4285,14 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         this.moduleId = this.modules[current - 1];
       }
+
+      if (this.moduleId === this.modules[0]) {
+        this.handleButton = 2;
+      } else {
+        this.handleButton = 3;
+      }
     },
+    // Gestion du bouton suivant
     onNext: function onNext() {
       var current;
       var max = this.modules.length - 1;
@@ -4291,8 +4305,16 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.moduleId === this.modules[max]) {
         this.moduleId = this.moduleId;
+        this.handleButton = 1;
       } else {
         this.moduleId = this.modules[current + 1];
+        this.handleButton = 3;
+      }
+
+      if (this.moduleId === this.modules[max]) {
+        this.handleButton = 1;
+      } else {
+        this.handleButton = 3;
       }
     }
   }
@@ -61534,7 +61556,11 @@ var render = function() {
       _c(
         "form",
         {
-          attrs: { method: "post" },
+          attrs: {
+            method: "post",
+            enctype: "multipart/form-data",
+            id: "formCommentaire"
+          },
           on: {
             submit: function($event) {
               $event.preventDefault()
@@ -61963,7 +61989,7 @@ var render = function() {
           _c("div", [
             _c("h2", [_vm._v(_vm._s(modules.titre))]),
             _vm._v(" "),
-            _c("p", [_vm._v(_vm._s(modules.description))]),
+            _c("p", { domProps: { innerHTML: _vm._s(modules.description) } }),
             _vm._v(" "),
             _c("iframe", {
               attrs: {
@@ -61978,31 +62004,35 @@ var render = function() {
             }),
             _vm._v(" "),
             _c("div", [
-              _c(
-                "button",
-                {
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      return _vm.onPrevious()
-                    }
-                  }
-                },
-                [_vm._v("Précédent")]
-              ),
+              _vm.handleButton === 1 || _vm.handleButton === 3
+                ? _c(
+                    "button",
+                    {
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.onPrevious()
+                        }
+                      }
+                    },
+                    [_vm._v("\n          Précédent\n        ")]
+                  )
+                : _vm._e(),
               _vm._v(" "),
-              _c(
-                "button",
-                {
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      return _vm.onNext()
-                    }
-                  }
-                },
-                [_vm._v("Suivant")]
-              )
+              _vm.handleButton === 2 || _vm.handleButton === 3
+                ? _c(
+                    "button",
+                    {
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.onNext()
+                        }
+                      }
+                    },
+                    [_vm._v("\n          Suivant\n        ")]
+                  )
+                : _vm._e()
             ])
           ])
         ])
@@ -62020,7 +62050,11 @@ var render = function() {
       _vm._v(" "),
       _c(
         "article",
-        [_c("Comment", { attrs: { "user-infos": this.userInfos } })],
+        [
+          _c("Comment", {
+            attrs: { "user-infos": this.userInfos, module: this.moduleId }
+          })
+        ],
         1
       )
     ],

@@ -96,7 +96,7 @@
         </tbody>
     </table>
     </div>
-    <div id="delete-modal" style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#333;display:none">
+    <div id="delete-modal" style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);display:none">
         <h2>Etes-vous sur de vouloir supprimer le cours: <span id="delete-title"></span> ?</h2>
         <form id="delete-form" action='' method="post">
             @csrf

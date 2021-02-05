@@ -67,3 +67,11 @@ openModal.addEventListener('click', () => {
         userModal.style.zIndex = -500
     }
 })
+
+ClassicEditor
+    .create(document.querySelector('#textarea-editor'), {
+        link: { addTargetToExternalLinks: true }
+    })
+    .catch(error => {
+        console.error(error);
+    });

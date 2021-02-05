@@ -17,8 +17,7 @@ class FaqAdminController extends Controller
      */
     public function index()
     {
-        $faqs = Faqs::all();
-        return view('admin.faqs.index', compact('faqs'));
+        //
     }
 
     /**
@@ -61,10 +60,14 @@ class FaqAdminController extends Controller
      */
     public function show($id)
     {
-        $faqs = Faqs::where('module_id', '=', $id)->get();
+        $faqs = Faqs::where('module_id','=', $id)->get();
+    
+        $module= Module::find($id);
+        
         return view('admin.faqs.index', [
             'faqs' => $faqs,
-            'id' => $id
+            'id' => $id,
+            'module'=>$module
         ]);
     }
 
