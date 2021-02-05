@@ -6,7 +6,7 @@
     <i class="fas fa-eye  fa-lg"></i> Consulter la liste des étudiants
 </button>
 <div style="position:fixed;top:50%;left:50%;z-index:-500;transform:translate(-50%,-50%);background:#f5f5f5;padding:25px;border:2px solid #333"
-    id="user-modal">
+    id="user-modal" class='close-div'>
     <h2>Liste des utilisateurs pour le cours {{$cours->titre}}</h2>
     <form action='/admin/coursusers' method='post'>
     @csrf
@@ -22,6 +22,7 @@
         @endforeach
     </ul>
     </form>
+    <button class='close'>X</button>
 </div>
 
 <section class="section_page_cours">
@@ -109,5 +110,6 @@
         </div>
     </article>
 </section>
+
 
 @stop
