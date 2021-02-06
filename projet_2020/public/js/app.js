@@ -4156,6 +4156,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["userInfos"],
   data: function data() {
@@ -4231,6 +4232,11 @@ __webpack_require__.r(__webpack_exports__);
 
         reader.readAsDataURL(preview);
       }
+    },
+    deleteImage: function deleteImage() {
+      var fd = new FormData();
+      fd.append("id", this.userId);
+      axios.post('deleteImage', fd);
     }
   }
 });
@@ -61944,7 +61950,19 @@ var render = function() {
                   width: "50px",
                   height: "50px"
                 }
-              })
+              }),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  on: {
+                    click: function($event) {
+                      return _vm.deleteImage()
+                    }
+                  }
+                },
+                [_vm._v("Supprimer mon image")]
+              )
             ]),
             _vm._v(" "),
             _vm._m(0),

@@ -27,6 +27,9 @@ use App\Http\Controllers\CommentaireController;
 // Route pour upload une image
 Route::post('uploadImage', [UploadImageController::class, 'upload']);
 
+// Route pour supprimer une image
+Route::post('deleteImage', [UploadImageController::class, 'delete']);
+
 // Route pour les com
 
 Route::post('postData', [CommentaireController::class, 'store']);

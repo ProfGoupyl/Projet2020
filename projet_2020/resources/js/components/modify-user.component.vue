@@ -22,6 +22,7 @@
           <p>
             <label for="currentPicture">Photo de profil actuelle:</label>
             <img :src="urlSrc" alt="Photo de profil" class="UserImage" width="50px" height="50px">
+            <button v-on:click="deleteImage()">Supprimer mon image</button>
           </p>
           <label for="userPhoto">Type de fichier accepté: PNG<br>Volume maximum autorisé: 50 ko</label>
           <input type="file" accept="image/png" name="userPhoto" id="userPhoto" v-on:change="selectImage">
@@ -104,6 +105,7 @@ export default {
           this.iSend = false
         });
     },
+
     selectImage(event) {
       if(event.target.files[0].size > 50000) {
         $('#userPhoto').val('')
@@ -126,6 +128,13 @@ export default {
         }
         reader.readAsDataURL(preview)
       }
+    },
+
+    deleteImage() {
+      const fd = new FormData();
+      fd.append("id", this.userId);
+
+      axios.post('deleteImage', fd)
     },
   },
 };
