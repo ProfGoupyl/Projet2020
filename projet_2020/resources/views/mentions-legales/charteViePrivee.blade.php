@@ -14,13 +14,13 @@
 
     Goupyl Education
 
-    Adresse :
-    <br/>
-    N° de TVA:
-    <br/>
-    E-mail:
-    <br/>
-    Téléphone:
+    Adresse : Rue de la limite, 6 - 1300 Wavre
+    <br />
+    N° de TVA: NA
+    <br />
+    E-mail:rudy.renard@ifosupwavre.be
+    <br />
+    Téléphone: 010/22 20 26
 
     <h2>3. Quelles données personnelles sont collectées?</h2>
     <p>Le traitement de vos données personnelles est limité au strict nécessaire pour atteindre les finalités poursuivies par Goupyl Education. Ci-dessous, sont énumérées les catégories de données concernées par le traitement.</p>
@@ -81,7 +81,7 @@
     <h3>6.8. Droit du retrait de votre consentement</h3>
     <p>Vous pouvez retirer à tout moment votre consentement au traitement de vos données personnelles. Le retrait de votre consentement n’entache pas la validité des opérations de traitement antérieures au retrait.</p>
     <h2>7. Comment exercer mes droits ?</h2>
-    <p>Pour exercer vos droits, vous devez nous envoyer une demande par courrier recommandé à Goupyl Education, Adresse ou par mail à email. Nous y répondrons dans les meilleurs délais, et au plus tard un (1) mois après réception de la demande.</p>
+    <p>Pour exercer vos droits, vous devez nous envoyer une demande par courrier recommandé à Goupyl Education, Rue de la Limite, 6 - 1300 Wavre ou par mail à rudy.renard@ifosupwavre.be. Nous y répondrons dans les meilleurs délais, et au plus tard un (1) mois après réception de la demande.</p>
     <h2>8. Possibilité d’introduire une plainte</h2>
     <p>Si vous n’êtes pas satisfait du traitement de vos données personnelles par la Goupyl Education, vous avez le droit d’introduire une plainte auprès de la Commission pour la Protection de la Vie Privée, qui devient l’Autorité de Protection des Données à partir du 25 mai 2018 (https://www.privacycommission.be/).</p>
 </div>

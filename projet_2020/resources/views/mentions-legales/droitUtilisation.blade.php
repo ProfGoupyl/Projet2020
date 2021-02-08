@@ -4,10 +4,10 @@
 <div class="mentions">
     <h1>Droits de l'utilisation</h1>
     <p>Ce site web est la propriété de :</p>
-    <p><strong>Goupyl Education</strong></p>
-    <p>(Adresse)</p>
-    <p>(numéro de téléphone)</p>
-    <p>(email)</p>
+    <p><strong>Goupyl Education ( Ifosup )</strong></p>
+    <p>Rue de la limite, 6 - 1300 Wavre</p>
+    <p>010/22 20 26</p>
+    <p>rudy.renard@ifsoupwavre.be</p>
     <p>En accédant et en utilisant le site web, vous acceptez expressément les conditions générales suivantes.</p>
     <h2>Droits de propriété intellectuelle</h2>
     <p>
@@ -54,7 +54,7 @@
         <li>
             <strong>Goupyl Education</strong> attache une grande importance à la protection de votre vie privée. En tant que sous-traitant de données à caractère personnel, <strong>Goupyl Education</strong> prend toutes les mesures administratives et techniques
             (de sécurité) nécessaires pour se conformer aux exigences légales afin de garantir votre vie privée conformément à la législation locale applicable (par exemple, la loi du 8 décembre 1992), et aux dispositions du règlement
-            général sur la protection des données (AVG) du 27 avril 2016 en particulier. Pour toute question à ce sujet, veuillez contacter <strong>info@goupyl.com ou tél. (num de tél)</strong>.
+            général sur la protection des données (AVG) du 27 avril 2016 en particulier. Pour toute question à ce sujet, veuillez contacter <strong>rudy@goupyl.com ou tél. 010/22 20 26</strong>.
         </li>
         <li>
             <strong>Goupyl Education</strong> ne recueille que les données pertinentes. Dans la plupart des cas, cela ne concerne que le nom, l'adresse électronique et le numéro de téléphone. Si d'autres données à caractère personnel sont également

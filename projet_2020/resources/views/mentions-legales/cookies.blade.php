@@ -8,7 +8,7 @@
     <p>Les cookies assurent une interaction généralement plus aisée et plus rapide entre le visiteur et le site web. De plus, ils aident le visiteur à naviguer entre les différentes parties du site web. Les cookies peuvent également être utilisés pour rendre le contenu d'un site web ou la publicité présente sur ce site plus pertinents pour le visiteur et adapter le site web aux goûts personnels et aux besoins du visiteur.</p>
     <h2>Utilisation de cookies sur le site web Goupyl Education</h2>
 
-    <h3>Nous utilisons différents types de cookies sur le site web.</h3>
+    <h3>Nous utilisons différents types de cookies sur le site web Goupyl Education.</h3>
     <h4>1/ Cookies indispensables</h4>
     <p>Ces cookies sont requis pour permettre la visite de nos sites web et l'utilisation de certaines parties de ceux-ci. Ces cookies vous permettent par exemple de naviguer entre les différentes rubriques des sites web, de compléter des formulaires. Si vous refusez ces cookies, il est possible que certaines parties du site ne fonctionnent pas de façon optimale.</p>
     <h4>2/ Cookies fonctionnels</h4>
@@ -22,7 +22,7 @@
         <li>Youtube</li>
     </ul>
     <p>Pour les cookies placés par ces parties externes, nous nous référons aux déclarations de confidentialité de ces parties sur leurs propres sites web pour les informations sur la collection et le but dans lequel ces informations sont utilisées. Ces déclarations peuvent changer de temps en temps et Goupyl Education n'a aucun contrôle sur elles.
-    <h3>Gestion des cookies</h3>
-    <p>Dans les paramètres de votre navigateur, vous avez la possibilité de refuser l'installation des cookies. Vous pouvez à tout moment supprimer les cookies déjà installés sur votre ordinateur ou sur votre terminal mobile.</p>
+        <h3>Gestion des cookies</h3>
+        <p>Dans les paramètres de votre navigateur, vous avez la possibilité de refuser l'installation des cookies. Vous pouvez à tout moment supprimer les cookies déjà installés sur votre ordinateur ou sur votre terminal mobile.</p>
 </div>
 @endsection
