@@ -27,6 +27,7 @@
             </li>
             <li>
                 <p>GENDARME Jo</p>
+                <a href="https://www.linkedin.com/in/jo-gendarme-64954a205" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a>
             </li>
             <li>
                 <p>GOMAND Jonathan
@@ -35,6 +36,7 @@
             </li>
             <li>
                 <p>GUERRERA Hugo</p>
+                <a href="https://www.linkedin.com/in/hugo-guerrera-594305192" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a>
             </li>
             <li>
                 <p>LEBEGUE Sébastien

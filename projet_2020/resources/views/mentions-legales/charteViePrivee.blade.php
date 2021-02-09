@@ -9,11 +9,11 @@
         Nous nous réservons le droit d’apporter à tout moment des modifications à notre Charte vie privée. Toute modification substantielle sera toujours communiquée clairement sur notre site. Nous vous conseillons néanmoins de consulter régulièrement ce document.
     </p>
     <h2>2. Qui traite vos données personnelles ?</h2>
-    <p>Goupyl Education est responsable du site Nom du site web</p>
+    <p>Goupyl Education est responsable du site https://goupyl.com</p>
     <h3>Informations de contact :</h3>
 
     Goupyl Education
-
+    <br /> 
     Adresse : Rue de la limite, 6 - 1300 Wavre
     <br />
     N° de TVA: NA
